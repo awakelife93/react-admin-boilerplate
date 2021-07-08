@@ -1,0 +1,20 @@
+{
+  "ko": "Korean",
+  "en": "English",
+
+  "sign_in": "SignIn",
+  "sign_out": "SignOut",
+  "sign_up": "SignUp",
+
+  "ad_title": "AD AREA",
+  "ad_content1": "In case of unforeseen circumstances",
+  "ad_content2": "Make space in advance.",
+
+  "email": "Email",
+  "nickname": "Nickname",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+
+  "update_user_info": "Update Info",
+  "delete_account": "Delete Account"
+}

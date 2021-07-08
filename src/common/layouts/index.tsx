@@ -1,0 +1,91 @@
+import React, { useCallback, useEffect } from "react";
+import _ from "lodash";
+
+import { connectWrapper } from "../../redux";
+
+import { Container, SideMenu } from "../components";
+import HeaderLayout from "./Header";
+import BodyLayout from "./Body";
+import BottomLayout from "./Bottom";
+import ModalLayout from "../components/Modal";
+
+import { getLocalStorageItem, initWindowFunc } from "../../core";
+import { findUserProfile } from "../../api/GetAPI";
+import { LayoutIE } from "../interface";
+import { UserInfoIE } from "../../api/interface";
+
+/**
+ * Layout (최상단 컴포넌트)
+ * @param {redux} props
+ * @returns {React.FC}
+ * @description
+ * 라우팅이 되거나, Store의 데이터 감지를 통해 스타일을 제작하여 전체에게 뿌린다.
+ * 해당 컴포넌트만 Redux에 연결하여 props로 자식 컴포넌트 전체 (페이지)에 뿌린다.
+ * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
+ */
+
+const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
+  const {
+    reduxStore: {
+      userStore,
+      globalStore: { modalItem, isShowAdContainer },
+      themeStore: { isDarkMode },
+    },
+    path,
+    Component,
+    showModalAction,
+    setUserInfoAction,
+    initUserInfoAction,
+  } = props;
+  // init
+  useEffect(() => {
+    // generate global function
+    if (_.isEmpty(window.globalFunc)) {
+      initWindowFunc({
+        initUserInfoAction,
+        showModalAction,
+      });
+    }
+
+    const token = getLocalStorageItem("token");
+    // 로그인이 된 상태라면
+    if (!_.isEmpty(token) && userStore.user.isLogin === false) {
+      initUserProfile();
+    }
+  }, []);
+
+  const initUserProfile = useCallback(async () => {
+    const profile: UserInfoIE = await findUserProfile();
+
+    setUserInfoAction({
+      isLogin: true,
+      info: { ...profile },
+    });
+  }, [userStore.user.isLogin]);
+
+  return (
+    <Container.LayoutContainer>
+      {modalItem.isShowModal && (
+        <ModalLayout
+          {...props}
+          children={modalItem.children}
+          childrenProps={modalItem.childrenProps}
+          style={{ ...modalItem.style }}
+          option={modalItem.option}
+        />
+      )}
+      <HeaderLayout {...props} />
+      <Container.RowContainer>
+        {/* Side Menu 들어갈 영역 */}
+        <SideMenu />
+        {/* Route Page 들어갈 영역*/}
+        <BodyLayout {...props}>
+          <Component {...props} />
+        </BodyLayout>
+      </Container.RowContainer>
+      <BottomLayout {...props} />
+    </Container.LayoutContainer>
+  );
+};
+
+export default connectWrapper(Layout);

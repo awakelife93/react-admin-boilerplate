@@ -1,0 +1,18 @@
+{
+  "ko": "한국어",
+  "en": "영어",
+  "sign_in": "로그인",
+  "sign_out": "로그아웃",
+  "sign_up": "회원가입",
+  "ad_title": "AD 영역",
+  "ad_content1": "혹시 모를 상황을 대비하여",
+  "ad_content2": "공간을 미리 만들어 둔다.",
+
+  "email": "이메일",
+  "nickname": "닉네임",
+  "password": "패스워드",
+  "confirm_password": "패스워드 확인",
+
+  "update_user_info": "회원정보 수정",
+  "delete_account": "회원 탈퇴"
+}
