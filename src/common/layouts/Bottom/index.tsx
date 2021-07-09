@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Label } from "../../components";
 import { ComponentIE } from "../../interface";
+import { CommonColor } from "../../styles";
 
 /**
  * @description Bottom Component
@@ -12,7 +13,7 @@ const Bottom: React.FC<ComponentIE> = (
 ): React.ReactElement => {
   return (
     <Container.BottomContainer>
-      <Label.CommonLabel>
+      <Label.CommonLabel style={{ color: CommonColor.WHITE }}>
         github:{" "}
         <a href="https://github.com/HyunwooP" rel="noreferrer" target="_blank">
           https://github.com/HyunwooP

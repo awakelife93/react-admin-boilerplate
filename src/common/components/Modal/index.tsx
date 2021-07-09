@@ -5,6 +5,7 @@ import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 
 import MessageLayout from "./layout/Message";
 import { ModalIE, ShowModalActionIE } from "./interface";
+import { CommonColor } from "../../styles";
 
 export const _showModalAction = ({
   next,
@@ -74,6 +75,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
       {/* dim area */}
       <Container.LayoutContainer
         style={{
+          border: `1px solid ${CommonColor.BLACK}`,
           position: "fixed",
           opacity: 0.5,
           zIndex: 1,
@@ -86,6 +88,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
       <Container.LayoutContainer
         style={{
           ...style,
+          border: `1px solid ${CommonColor.BLACK}`,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

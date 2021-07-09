@@ -1,9 +1,10 @@
 import React from "react";
 
-import Dashboard from "../pages/Dashboard";
-import User from "../pages/User";
-import Design from "../pages/Design";
-import Contents from "../pages/Contents";
+import DashboardPage from "../pages/Dashboard";
+import UserPage from "../pages/User";
+import DesignPage from "../pages/Design";
+import ContentsPage from "../pages/Contents";
+import SignInPage from "../pages/Sign";
 
 import { ComponentIE } from "../common/interface";
 
@@ -12,6 +13,8 @@ export enum RoutePath {
   USER = "/user",
   DESIGN = "/design",
   CONTENTS = "/contents",
+  SIGN_IN = "/signIn",
+  SIGN_UP = "/signUp",
 }
 export interface RouteIE {
   path: string;
@@ -25,25 +28,31 @@ const routes: RouteIE[] = [
     path: RoutePath.DASHBOARD,
     exact: true,
     title: "대시보드",
-    Component: Dashboard,
+    Component: DashboardPage,
   },
   {
     path: RoutePath.USER,
-    exact: true,
+    exact: false,
     title: "유저 관리",
-    Component: User,
+    Component: UserPage,
   },
   {
     path: RoutePath.CONTENTS,
-    exact: true,
+    exact: false,
     title: "컨텐츠 관리",
-    Component: Contents,
+    Component: ContentsPage,
   },
   {
     path: RoutePath.DESIGN,
-    exact: true,
+    exact: false,
     title: "디자인 관리",
-    Component: Design,
+    Component: DesignPage,
+  },
+  {
+    path: RoutePath.SIGN_IN,
+    exact: false,
+    title: "",
+    Component: SignInPage,
   },
 ];
 

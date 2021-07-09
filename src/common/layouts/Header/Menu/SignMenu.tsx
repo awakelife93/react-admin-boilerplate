@@ -10,7 +10,6 @@ interface SignMenuIE {
   userInfo: UserStoreIE;
   _routePush: Function;
   _signOut: Function;
-  _updateUserInfo: Function;
 }
 
 /**
@@ -24,7 +23,6 @@ const SignMenu: React.FC<SignMenuIE> = (
   const {
     _routePush,
     _signOut,
-    _updateUserInfo,
     userInfo: { user },
   } = props;
 
@@ -35,13 +33,7 @@ const SignMenu: React.FC<SignMenuIE> = (
         <Container.RowContainer>
           <Button.TextButton
             style={{}}
-            onClick={() => _routePush(RoutePath.DASHBOARD)}
-          >
-            {t(I18nCommandEnum.SIGN_UP)}
-          </Button.TextButton>
-          <Button.TextButton
-            style={{}}
-            onClick={() => _routePush(RoutePath.DASHBOARD)}
+            onClick={() => _routePush(RoutePath.SIGN_IN)}
           >
             {t(I18nCommandEnum.SIGN_IN)}
           </Button.TextButton>
@@ -76,16 +68,8 @@ const SignMenu: React.FC<SignMenuIE> = (
             renderType={"column"}
             renderItems={[
               {
-                displayName: t(I18nCommandEnum.UPDATE_USER_INFO),
-                value: () => _updateUserInfo(),
-              },
-              {
-                displayName: t(I18nCommandEnum.DELETE_ACCOUNT),
-                value: () => _signOut({ isDelete: true }),
-              },
-              {
                 displayName: t(I18nCommandEnum.SIGN_OUT),
-                value: () => _signOut({ isDelete: false }),
+                value: () => _signOut(),
               },
             ]}
             onClick={(action: Function) => {

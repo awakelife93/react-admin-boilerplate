@@ -3,7 +3,7 @@ import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Container, Image } from ".";
 import routes, { RouteIE } from "../../route/routes";
-import CommonColor from "../styles/color";
+import { CommonColor } from "../styles";
 
 const SideMenu = () => {
   return (
@@ -22,20 +22,22 @@ const SideMenu = () => {
       <Container.ColumnContainer>
         {!_.isEmpty(routes) &&
           routes.map((route: RouteIE, idx: number) => {
-            return (
-              <Link key={`sidMenu_list_Key${idx}`} to={route.path}>
-                <Navbar.Brand>
-                  <img
-                    alt=""
-                    src="/assets/images/logo.svg"
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                  />{" "}
-                  {route.title}
-                </Navbar.Brand>
-              </Link>
-            );
+            if (!_.isEmpty(route.title)) {
+              return (
+                <Link key={`sidMenu_list_Key${idx}`} to={route.path}>
+                  <Navbar.Brand>
+                    <img
+                      alt=""
+                      src="/assets/images/logo.svg"
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                    />{" "}
+                    {route.title}
+                  </Navbar.Brand>
+                </Link>
+              );
+            }
           })}
       </Container.ColumnContainer>
     </Navbar>

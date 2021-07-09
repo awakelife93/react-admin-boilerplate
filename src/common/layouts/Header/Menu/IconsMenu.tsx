@@ -1,17 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
-import { RoutePath } from "../../../../route/routes";
 import { Container, Button, Icon } from "../../../components";
 import { MenuBox } from "../../../components";
+import { CommonColor } from "../../../styles";
 
 interface IconMenuIE {
-  isShowAdContainer: boolean;
-  _darkMode: Function;
   _routePush: Function;
   _setLaunage: Function;
-  _showAdContainer: Function;
-  _showTemplateModal: Function;
 }
 
 /**
@@ -23,14 +19,7 @@ const IconMenu: React.FC<IconMenuIE> = (
   props: IconMenuIE
 ): React.ReactElement => {
   const { t } = useTranslation();
-  const {
-    isShowAdContainer,
-    _routePush,
-    _darkMode,
-    _showAdContainer,
-    _setLaunage,
-    _showTemplateModal,
-  } = props;
+  const { _routePush, _setLaunage } = props;
 
   return (
     <Container.RowContainer
@@ -46,39 +35,11 @@ const IconMenu: React.FC<IconMenuIE> = (
       >
         React Admin Project
       </Button.TextButton>
-      <Icon.FaList
-        style={{ marginLeft: 20, cursor: "pointer" }}
-        size={20}
-        onClick={() => _routePush(RoutePath.DASHBOARD)}
-      />
-      <Icon.IoIosFlashlight
-        style={{ marginLeft: 20, cursor: "pointer" }}
-        size={20}
-        onClick={() => _darkMode()}
-      />
-      {isShowAdContainer ? (
-        <Icon.FaAngleUp
-          style={{
-            marginLeft: 20,
-            cursor: "pointer",
-          }}
-          size={20}
-          onClick={() => _showAdContainer()}
-        />
-      ) : (
-        <Icon.FaAngleDown
-          style={{
-            marginLeft: 20,
-            cursor: "pointer",
-          }}
-          size={20}
-          onClick={() => _showAdContainer()}
-        />
-      )}
       <MenuBox
         children={
           <Icon.GiWorld
             style={{
+              color: CommonColor.WHITE,
               marginLeft: 20,
               cursor: "pointer",
             }}
@@ -90,6 +51,8 @@ const IconMenu: React.FC<IconMenuIE> = (
           // props로 던지자...
 
           // 애는 테마와 전혀 상관이 없어서 Theme에 안넣는다.
+          backgroundColor: CommonColor.WHITE,
+          border: `1px solid ${CommonColor.BLACK}`,
           borderRadius: 15,
           width: 150,
           height: 30,
@@ -112,11 +75,6 @@ const IconMenu: React.FC<IconMenuIE> = (
           },
         ]}
         onClick={(lng: string) => _setLaunage(lng)}
-      />
-      <Icon.FaThList
-        style={{ marginLeft: 20, cursor: "pointer" }}
-        size={20}
-        onClick={() => _showTemplateModal()}
       />
     </Container.RowContainer>
   );

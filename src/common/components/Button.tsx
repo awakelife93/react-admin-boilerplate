@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CommonColor } from "../styles";
 import { CommonComponentIE } from "./interface";
 
 /**
@@ -12,9 +13,9 @@ export const SubMitButton = styled.button`
   width: ${(props: SubMitButtonIE) => props.style?.width ?? "150px"};
   height: ${(props: SubMitButtonIE) => props.style?.height ?? "40px"};
   margin: ${(props: SubMitButtonIE) => props.style?.margin ?? "20px"};
-  color: ${(props: SubMitButtonIE) => props.style?.color ?? "black"};
+  color: ${(props: SubMitButtonIE) => props.style?.color ?? CommonColor.WHITE};
   background-color: ${(props: SubMitButtonIE) =>
-    props.style?.backgroundColor ?? "black"};
+    props.style?.backgroundColor ?? CommonColor.BLACK};
   border: ${(props: SubMitButtonIE) => props.style?.border ?? "none"};
   border-radius: ${(props: SubMitButtonIE) =>
     props.style?.borderRadius ?? "0.25em"};
@@ -23,8 +24,8 @@ export const SubMitButton = styled.button`
 interface TextButtonIE extends CommonComponentIE {}
 export const TextButton = styled.button`
   background-color: ${(props: TextButtonIE) =>
-    props.style?.backgroundColor ?? "black"};
+    props.style?.backgroundColor ?? CommonColor.BLACK};
   border: ${(props: TextButtonIE) => props.style?.border ?? "none"};
-  color: ${(props: TextButtonIE) => props.style?.color ?? "white"};
+  color: ${(props: TextButtonIE) => props.style?.color ?? CommonColor.WHITE};
   font-size: ${(props: TextButtonIE) => props.style?.fontSize ?? "15px"};
 `;

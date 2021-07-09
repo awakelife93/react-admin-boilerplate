@@ -14,7 +14,6 @@ import {
   removeLocalStorageItem,
 } from "../../../core";
 import { ComponentIE } from "../../interface";
-import { deleteUser } from "../../../api/DeleteAPI";
 
 /**
  * @description Header Component
@@ -25,14 +24,8 @@ const Header: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const {
-    setDarkModeAction,
-    showAdAction,
     initUserInfoAction,
-    reduxStore: {
-      globalStore: { isShowAdContainer },
-      themeStore: { isDarkMode },
-      userStore,
-    },
+    reduxStore: { userStore },
   } = props;
 
   const history = useHistory();
@@ -46,33 +39,12 @@ const Header: React.FC<ComponentIE> = (
     i18n.changeLanguage(lng);
   }, []);
 
-  const _updateUserInfo = useCallback(() => {}, []);
-
-  const _showTemplateModal = useCallback(() => {}, []);
-
-  const _darkMode = useCallback(() => {
-    if (_.isFunction(setDarkModeAction)) {
-      setLocalStorageItem({ darkMode: !isDarkMode });
-      setDarkModeAction(!isDarkMode);
-    }
-  }, [isDarkMode]);
-
-  const _showAdContainer = useCallback(() => {
-    if (_.isFunction(showAdAction)) {
-      showAdAction(!isShowAdContainer);
-    }
-  }, [isShowAdContainer]);
-
-  const _signOut = async ({ isDelete = false }: { isDelete: boolean }) => {
+  const _signOut = async () => {
     try {
       const token = getLocalStorageItem("token");
 
       if (!_.isEmpty(token)) {
-        if (isDelete === true) {
-          await deleteUser();
-        } else {
-          await signOut();
-        }
+        await signOut();
 
         // token 삭제
         removeLocalStorageItem("token");
@@ -97,19 +69,11 @@ const Header: React.FC<ComponentIE> = (
 
   return (
     <Container.HeaderContainer>
-      <IconsMenu
-        isShowAdContainer={isShowAdContainer}
-        _routePush={_routePush}
-        _darkMode={_darkMode}
-        _showAdContainer={_showAdContainer}
-        _setLaunage={_setLaunage}
-        _showTemplateModal={_showTemplateModal}
-      />
+      <IconsMenu _routePush={_routePush} _setLaunage={_setLaunage} />
       <SignMenu
         userInfo={userStore}
         _routePush={_routePush}
         _signOut={_signOut}
-        _updateUserInfo={_updateUserInfo}
       />
     </Container.HeaderContainer>
   );

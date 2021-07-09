@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { CommonColor } from "../styles";
 import { CommonComponentIE } from "./interface";
 
 /**
@@ -14,7 +15,7 @@ export const CommonInputBox = styled.input`
   padding: ${(props: InputBoxIE) => props.style?.padding ?? "0px"};
   margin: ${(props: InputBoxIE) => props.style?.margin ?? "0px"};
   border: ${(props: InputBoxIE) =>
-    props.style?.border ?? `1px solid ${"black"}`};
+    props.style?.border ?? `1px solid ${CommonColor.GRAY}`};
   border-radius: ${(props: InputBoxIE) =>
     props.style?.borderRadius ?? "0.25em"};
   margin-bottom: ${(props: InputBoxIE) => props.style?.marginBottom ?? "0px"};

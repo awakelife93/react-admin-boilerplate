@@ -11,7 +11,11 @@ const Body: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const { children } = props;
-  return <Container.BodyContainer>{children}</Container.BodyContainer>;
+  return (
+    <Container.BodyContainer style={{ padding: 100 }}>
+      {children}
+    </Container.BodyContainer>
+  );
 };
 
 export default React.memo(Body);
