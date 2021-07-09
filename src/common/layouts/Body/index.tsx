@@ -10,12 +10,8 @@ import { ComponentIE } from "../../interface";
 const Body: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const { layoutStyles, children } = props;
-  return (
-    <Container.BodyContainer style={{ ...layoutStyles }}>
-      {children}
-    </Container.BodyContainer>
-  );
+  const { children } = props;
+  return <Container.BodyContainer>{children}</Container.BodyContainer>;
 };
 
 export default React.memo(Body);

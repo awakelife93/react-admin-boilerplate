@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CommonColor from "../styles/color";
 import { CommonComponentIE } from "./interface";
 
 /**
@@ -7,6 +8,7 @@ import { CommonComponentIE } from "./interface";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
+
 export interface LayoutContainerIE extends CommonComponentIE {}
 export const LayoutContainer = styled.div`
   position: ${(props: LayoutContainerIE) => props.style?.position ?? ""};
@@ -23,7 +25,7 @@ export const BodyContainer = styled.div`
   min-height: ${(props: BodyContainerIE) => props.style?.minHeight ?? "100vh"};
   padding: ${(props: BodyContainerIE) => props.style?.padding ?? "0px"};
   background-color: ${(props: BodyContainerIE) =>
-    props.style?.backgroundColor ?? "black"};
+    props.style?.backgroundColor ?? CommonColor.WHITE};
 `;
 
 export interface HeaderContainerIE extends CommonComponentIE {}
@@ -40,7 +42,7 @@ export const HeaderContainer = styled.div`
   align-items: ${(props: HeaderContainerIE) =>
     props.style?.alignItems ?? "center"};
   background-color: ${(props: HeaderContainerIE) =>
-    props.style?.backgroundColor ?? "black"};
+    props.style?.backgroundColor ?? CommonColor.BLACK};
 `;
 
 export interface BottomContainerIE extends CommonComponentIE {}
@@ -49,7 +51,7 @@ export const BottomContainer = styled.footer`
   height: ${(props: BottomContainerIE) => props.style?.height ?? "100px"};
   padding: ${(props: BottomContainerIE) => props.style?.padding ?? "20px"};
   background-color: ${(props: BottomContainerIE) =>
-    props.style?.backgroundColor ?? "black"};
+    props.style?.backgroundColor ?? CommonColor.BLACK};
   font-size: ${(props: BottomContainerIE) => props.style?.fontSize ?? "30px"};
   font-weight: ${(props: BottomContainerIE) =>
     props.style?.fontWeight ?? "bold"};

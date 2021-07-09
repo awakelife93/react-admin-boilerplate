@@ -96,24 +96,22 @@ const Header: React.FC<ComponentIE> = (
   };
 
   return (
-    <header>
-      <Container.HeaderContainer>
-        <IconsMenu
-          isShowAdContainer={isShowAdContainer}
-          _routePush={_routePush}
-          _darkMode={_darkMode}
-          _showAdContainer={_showAdContainer}
-          _setLaunage={_setLaunage}
-          _showTemplateModal={_showTemplateModal}
-        />
-        <SignMenu
-          userInfo={userStore}
-          _routePush={_routePush}
-          _signOut={_signOut}
-          _updateUserInfo={_updateUserInfo}
-        />
-      </Container.HeaderContainer>
-    </header>
+    <Container.HeaderContainer>
+      <IconsMenu
+        isShowAdContainer={isShowAdContainer}
+        _routePush={_routePush}
+        _darkMode={_darkMode}
+        _showAdContainer={_showAdContainer}
+        _setLaunage={_setLaunage}
+        _showTemplateModal={_showTemplateModal}
+      />
+      <SignMenu
+        userInfo={userStore}
+        _routePush={_routePush}
+        _signOut={_signOut}
+        _updateUserInfo={_updateUserInfo}
+      />
+    </Container.HeaderContainer>
   );
 };
 

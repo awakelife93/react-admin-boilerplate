@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import _ from "lodash";
 import { CSSProperties } from "styled-components";
 import { Container } from "../components";
-import { defaultShowModal } from "../const";
 
 interface ItemIE {
   displayName: string;
@@ -39,7 +38,7 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
 
   const checkOutSideClick = useCallback((event: any) => {
     // 어느 영역을 눌러도 종료가 되게끔...
-    setShowMenuBox(defaultShowModal);
+    setShowMenuBox(false);
   }, []);
 
   const renderLayout = () => {
