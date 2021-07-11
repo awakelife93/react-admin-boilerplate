@@ -75,9 +75,10 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
       {/* dim area */}
       <Container.LayoutContainer
         style={{
+          backgroundColor: CommonColor.WHITE,
           border: `1px solid ${CommonColor.BLACK}`,
           position: "fixed",
-          opacity: 0.5,
+          opacity: 0.3,
           zIndex: 1,
         }}
         onClick={() => {
@@ -88,6 +89,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
       <Container.LayoutContainer
         style={{
           ...style,
+          backgroundColor: CommonColor.WHITE,
           border: `1px solid ${CommonColor.BLACK}`,
           display: "flex",
           justifyContent: "center",
