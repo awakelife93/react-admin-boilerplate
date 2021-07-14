@@ -50,7 +50,7 @@ const Header: React.FC<ComponentIE> = (
         removeLocalStorageItem("token");
         // 리덕스 초기화
         initUserInfoAction();
-        _routePush(RoutePath.DASHBOARD);
+        _routePush(RoutePath.SIGN_IN);
       } else {
         if (_.isFunction(window.globalFunc.showModalAction)) {
           window.globalFunc.showModalAction({

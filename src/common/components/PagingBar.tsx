@@ -35,7 +35,7 @@ const PagingBar = (props: PagingBarIE) => {
   }, [totalCount, limit, active]);
 
   return (
-    <Pagination style={{ margin: 20 }}>
+    <Pagination>
       {!_.isEmpty(pageItem) &&
         pageItem.map((element: React.ReactElement) => {
           return element;

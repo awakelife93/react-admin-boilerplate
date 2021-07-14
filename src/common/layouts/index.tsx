@@ -35,6 +35,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     setUserInfoAction,
     initUserInfoAction,
   } = props;
+
+  // todo: path가 달라질 때마다 로그인 유무를 검사하여, 로그아웃일 경우 강제 로그인 화면으로
   // init
   useEffect(() => {
     // generate global function
