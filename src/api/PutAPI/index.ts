@@ -2,19 +2,19 @@ import { putAPI } from "..";
 import { UserInfoIE } from "../interface";
 
 export const signUp = async ({
-  email,
-  nickname,
-  password,
+  userEmail,
+  userNickname,
+  userPw,
 }: {
-  email: string;
-  nickname: string;
-  password: string;
+  userEmail: string;
+  userNickname: string;
+  userPw: string;
 }) => {
   try {
     let result: UserInfoIE = await putAPI("signUp", {
-      email,
-      nickname,
-      password,
+      userEmail,
+      userNickname,
+      userPw,
     });
     return result;
   } catch (e) {

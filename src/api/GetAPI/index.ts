@@ -3,6 +3,29 @@ import { defaultPagingCount } from "../../common/const";
 import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
+export const findUserCount = async () => {
+  try {
+    const result: any = await getAPI("findUserCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findUserCount Error", e);
+    throw e;
+  }
+};
+
+export const findUser = async (skip: number = 0) => {
+  try {
+    const result: any = await getAPI("findUser", {
+      take: defaultPagingCount,
+      skip,
+    });
+    return result;
+  } catch (e) {
+    console.log("===============> findUser Error", e);
+    throw e;
+  }
+};
+
 export const findTheme = async () => {
   try {
     const result: any = await getAPI("findTheme");

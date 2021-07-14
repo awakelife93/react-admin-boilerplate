@@ -1,15 +1,16 @@
 import _ from "lodash";
+import React from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Container, Image } from ".";
+import { Container } from ".";
 import routes, { RouteIE } from "../../route/routes";
 import { CommonColor } from "../styles";
 
 const SideMenu = () => {
   return (
     <Navbar
-      bg="light"
-      variant="light"
+      bg="dark"
+      variant="dark"
       style={{
         width: 200,
         backgroundColor: CommonColor.WHITE,

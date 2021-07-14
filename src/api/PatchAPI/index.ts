@@ -3,19 +3,19 @@ import { patchAPI } from "..";
 import { UserInfoIE } from "../interface";
 
 export const updateUser = async ({
-  id,
-  nickname,
-  password,
+  userId,
+  userNickname,
+  userPw,
 }: {
-  id: number;
-  nickname: string;
-  password: string;
+  userId: number;
+  userNickname: string;
+  userPw: string;
 }) => {
   try {
-    const item: any = { id };
+    const item: any = { userId };
 
-    if (!_.isEmpty(nickname)) item.nickname = nickname;
-    if (!_.isEmpty(password)) item.password = password;
+    if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
+    if (!_.isEmpty(userPw)) item.userPw = userPw;
 
     let result: UserInfoIE = await patchAPI("updateUser", { ...item });
     return result;

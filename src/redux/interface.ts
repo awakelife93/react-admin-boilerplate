@@ -28,9 +28,9 @@ export interface UserStoreIE {
   user: {
     isLogin: boolean;
     info: {
-      id: number;
-      email: string;
-      nickname: string;
+      userId: number;
+      userEmail: string;
+      userNickname: string;
     };
   };
 }

@@ -5,6 +5,7 @@ import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { UserStoreIE } from "../../../../redux/interface";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
+import { CommonColor } from "../../../styles";
 
 interface SignMenuIE {
   userInfo: UserStoreIE;
@@ -32,7 +33,9 @@ const SignMenu: React.FC<SignMenuIE> = (
       {user.isLogin === false && (
         <Container.RowContainer>
           <Button.TextButton
-            style={{}}
+            style={{
+              color: CommonColor.WHITE,
+            }}
             onClick={() => _routePush(RoutePath.SIGN_IN)}
           >
             {t(I18nCommandEnum.SIGN_IN)}
@@ -45,17 +48,20 @@ const SignMenu: React.FC<SignMenuIE> = (
             children={
               <Label.CommonLabel
                 style={{
+                  color: CommonColor.WHITE,
                   margin: 0,
                   cursor: "pointer",
                 }}
               >
-                {user.info.nickname}
+                {user.info.userNickname}
               </Label.CommonLabel>
             }
             menuContainerStyle={{
+              backgroundColor: CommonColor.WHITE,
+              border: `1px solid ${CommonColor.BLACK}`,
               borderRadius: 15,
               width: 150,
-              height: 100,
+              height: 30,
               marginRight: 115,
               position: "absolute",
               top: 60,

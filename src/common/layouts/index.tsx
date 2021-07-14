@@ -28,10 +28,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   const {
     reduxStore: {
       userStore,
-      globalStore: { modalItem, isShowAdContainer },
-      themeStore: { isDarkMode },
+      globalStore: { modalItem },
     },
-    path,
     Component,
     showModalAction,
     setUserInfoAction,
@@ -74,16 +72,18 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
           option={modalItem.option}
         />
       )}
-      <HeaderLayout {...props} />
-      <Container.RowContainer>
-        {/* Side Menu 들어갈 영역 */}
+      <Container.RowContainer
+        style={{ alignItems: "", justifyContent: "", alignContent: "" }}
+      >
         <SideMenu />
-        {/* Route Page 들어갈 영역*/}
-        <BodyLayout {...props}>
-          <Component {...props} />
-        </BodyLayout>
+        <Container.ColumnContainer style={{ width: "100%" }}>
+          <HeaderLayout {...props} />
+          <BodyLayout {...props}>
+            <Component {...props} />
+          </BodyLayout>
+          <BottomLayout {...props} />
+        </Container.ColumnContainer>
       </Container.RowContainer>
-      <BottomLayout {...props} />
     </Container.LayoutContainer>
   );
 };

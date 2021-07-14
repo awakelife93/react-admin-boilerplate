@@ -25,8 +25,8 @@ const SignIn: React.FC<ComponentIE> = (
   const { t } = useTranslation();
 
   // Input
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userEmail, setuserEmail] = useState("");
+  const [userPw, setPassword] = useState("");
 
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
@@ -59,17 +59,17 @@ const SignIn: React.FC<ComponentIE> = (
 
       return true;
     },
-    [email, password]
+    [userEmail, userPw]
   );
 
   const history = useHistory();
   const _signIn = async () => {
     const { setUserInfoAction } = props;
-    const item = { email, password };
+    const item = { userEmail, userPw };
 
     if (validationItem(item) === true) {
       try {
-        const userInfo: UserInfoIE = await signIn({ email, password });
+        const userInfo: UserInfoIE = await signIn({ userEmail, userPw });
 
         if (_.isUndefined(userInfo)) {
           _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
@@ -79,19 +79,26 @@ const SignIn: React.FC<ComponentIE> = (
           setUserInfoAction({
             isLogin: true,
             info: {
-              id: userInfo.id,
-              email: userInfo.email,
-              nickname: userInfo.nickname,
+              userId: userInfo.userId,
+              userEmail: userInfo.userEmail,
+              userNickname: userInfo.userNickname,
             },
           });
           history.push(RoutePath.DASHBOARD);
         }
       } catch (e) {
         switch (e.status) {
+          // 비밀번호 틀렸을 경우
           case 401: {
             _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
             return false;
           }
+          // 관리자 권한이 없는 경우
+          case 403: {
+            _showMessageModal("잘못된 계정입니다.");
+            return false;
+          }
+          // 계정이 없는 경우
           case 404: {
             _showMessageModal("계정이 없습니다.");
             return false;
@@ -117,7 +124,7 @@ const SignIn: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setuserEmail(e.target.value)}
         />
         <Container.RowContainer
           style={{

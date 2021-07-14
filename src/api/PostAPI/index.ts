@@ -2,14 +2,17 @@ import { postAPI } from "..";
 import { UserInfoIE } from "../interface";
 
 export const signIn = async ({
-  email,
-  password,
+  userEmail,
+  userPw,
 }: {
-  email: string;
-  password: string;
+  userEmail: string;
+  userPw: string;
 }) => {
   try {
-    let result: UserInfoIE = await postAPI("signIn", { email, password });
+    let result: UserInfoIE = await postAPI("signInAdmin", {
+      userEmail,
+      userPw,
+    });
     return result;
   } catch (e) {
     console.log("===============> signIn Error", e);

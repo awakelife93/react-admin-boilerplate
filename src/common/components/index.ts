@@ -8,6 +8,7 @@ import Icon from "./Icon";
 import MenuBox from "./MenuBox";
 import ScrollPaging from "./ScrollPaging";
 import SideMenu from "./SideMenu";
+import PagingBar from "./PagingBar";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   ScrollPaging,
   Modal,
   SideMenu,
+  PagingBar,
 };

@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { Container, Label } from "../../common/components";
 import { CommonColor } from "../../common/styles";
 
 const Dashboard = () => {
+  useEffect(() => {
+    console.log("dashboard");
+  }, []);
   return (
-    <Container.LayoutContainer>
+    <Container.LayoutContainer style={{ margin: 50 }}>
       <Container.RowContainer>
         {/*  */}
         <Container.ColumnContainer style={{ marginRight: 20 }}>

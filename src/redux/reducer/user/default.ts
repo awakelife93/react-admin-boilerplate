@@ -2,9 +2,9 @@ export const initUserState = {
   user: {
     isLogin: false,
     info: {
-      id: -1,
-      email: "",
-      nickname: "",
+      userId: -1,
+      userEmail: "",
+      userNickname: "",
     },
   },
 };
