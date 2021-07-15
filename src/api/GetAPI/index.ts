@@ -141,6 +141,16 @@ export const findTheme = async (skip: number = 0) => {
   }
 };
 
+export const findDashboardCount = async () => {
+  try {
+    const result: any = await getAPI("findDashboardCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findDashboardCount Error", e);
+    throw e;
+  }
+};
+
 export const findUserProfile = async () => {
   try {
     const result: UserInfoIE = await getAPI("findUserProfile");

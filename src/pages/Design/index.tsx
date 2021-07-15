@@ -17,6 +17,8 @@ import {
 
 /**
  * @description Design Component
+ * 화면 기획 및 어떻게 테마별 디자인 및 부속 객체들을 관리할 지 정리가 안되서
+ * 제일 마지막으로 미룸. (틈틈히 고민중)
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
@@ -45,10 +47,12 @@ const Design: React.FC<ComponentIE> = (
    * Type별 초기화
    */
   const onTypeClick = (type: "component" | "layout" | "style" | "theme") => {
+    setDesigns([]);
+    setActive(1);
     setDesignType(type);
+
     getDesignCount(type);
     getDesignList(0, type);
-    setActive(1);
   };
 
   /**

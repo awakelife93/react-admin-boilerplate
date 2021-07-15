@@ -25,7 +25,7 @@ export const BodyContainer = styled.div`
   min-height: ${(props: BodyContainerIE) => props.style?.minHeight ?? "100vh"};
   padding: ${(props: BodyContainerIE) => props.style?.padding ?? "0px"};
   background-color: ${(props: BodyContainerIE) =>
-    props.style?.backgroundColor ?? CommonColor.WHITE};
+    props.style?.backgroundColor ?? CommonColor.BODY_COLOR};
 `;
 
 export interface HeaderContainerIE extends CommonComponentIE {}
@@ -42,7 +42,7 @@ export const HeaderContainer = styled.div`
   align-items: ${(props: HeaderContainerIE) =>
     props.style?.alignItems ?? "center"};
   background-color: ${(props: HeaderContainerIE) =>
-    props.style?.backgroundColor ?? CommonColor.DARK};
+    props.style?.backgroundColor ?? CommonColor.HEADER_COLOR};
 `;
 
 export interface BottomContainerIE extends CommonComponentIE {}
@@ -51,7 +51,7 @@ export const BottomContainer = styled.footer`
   height: ${(props: BottomContainerIE) => props.style?.height ?? "100px"};
   padding: ${(props: BottomContainerIE) => props.style?.padding ?? "20px"};
   background-color: ${(props: BottomContainerIE) =>
-    props.style?.backgroundColor ?? CommonColor.DARK};
+    props.style?.backgroundColor ?? CommonColor.BOTTOM_COLOR};
   font-size: ${(props: BottomContainerIE) => props.style?.fontSize ?? "30px"};
   font-weight: ${(props: BottomContainerIE) =>
     props.style?.fontWeight ?? "bold"};

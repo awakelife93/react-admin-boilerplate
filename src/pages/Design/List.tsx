@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 // 이쪽 화면 기획해보기
 // 도저히 리스트로 뿌리기엔 복잡한 데이터 구조라서 단순 속성들과 그것에 대한 상세는 모달 or 상세 화면으로 객체 형식으로 보여줄지 고민중
 const ComponentList = (components: any[]) => {
+  console.log(components);
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -20,7 +21,6 @@ const ComponentList = (components: any[]) => {
             // 클라이언트에서 데이터 삽입이 가능해지면 이쪽 부분 수정할 예정
             const tempArray =
               component.attribute && Object.keys(component.attribute);
-
             return tempArray.map((attribute: any, idx: number) => {
               const tempArray2 = Object.keys(component.attribute[attribute]);
               return (

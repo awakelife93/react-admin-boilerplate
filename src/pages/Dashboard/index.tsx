@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useEffect } from "react";
+import { findDashboardCount } from "../../api/GetAPI";
 import { Container, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
@@ -13,12 +14,25 @@ import { CommonColor } from "../../common/styles";
 const Dashboard: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const [totalUserCount, setUserCount] = useState(0);
-  const [totalThemeCount, setThemeCount] = useState(0);
-  const [totalContentsCount, setContentsCount] = useState(0);
+  const [dashboardCount, setDashboardCount] = useState({
+    totalUser: 0,
+    clientUser: 0,
+    adminUser: 0,
+    totalContent: 0,
+  });
 
   useEffect(() => {
-    console.log("dashboard");
+    getDashboardCount();
+  }, []);
+
+  const getDashboardCount = useCallback(async () => {
+    const result = await findDashboardCount();
+    setDashboardCount({
+      totalUser: result.usersCount.total,
+      clientUser: result.usersCount.client,
+      adminUser: result.usersCount.admin,
+      totalContent: result.contentsCount.total,
+    });
   }, []);
 
   return (
@@ -38,13 +52,13 @@ const Dashboard: React.FC<ComponentIE> = (
             }}
           >
             <Label.CommonLabel style={{ fontSize: 40, fontWeight: "bold" }}>
-              5000
+              {dashboardCount.totalUser}
             </Label.CommonLabel>
             <Label.CommonLabel style={{ fontSize: 15 }}>
-              사용자 : 4980
+              사용자 : {dashboardCount.clientUser}
             </Label.CommonLabel>
             <Label.CommonLabel style={{ fontSize: 15 }}>
-              관리자 : 20
+              관리자 : {dashboardCount.adminUser}
             </Label.CommonLabel>
           </Container.ColumnContainer>
         </Container.ColumnContainer>
@@ -62,7 +76,7 @@ const Dashboard: React.FC<ComponentIE> = (
             }}
           >
             <Label.CommonLabel style={{ fontSize: 40, fontWeight: "bold" }}>
-              5000
+              {0}
             </Label.CommonLabel>
             <Label.CommonLabel style={{ fontSize: 15 }}>
               레이아웃: 50
@@ -89,7 +103,7 @@ const Dashboard: React.FC<ComponentIE> = (
             }}
           >
             <Label.CommonLabel style={{ fontSize: 40, fontWeight: "bold" }}>
-              5000
+              {dashboardCount.totalContent}
             </Label.CommonLabel>
           </Container.ColumnContainer>
         </Container.ColumnContainer>
