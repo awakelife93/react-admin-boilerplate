@@ -15,7 +15,7 @@ export const SubMitButton = styled.button`
   margin: ${(props: SubMitButtonIE) => props.style?.margin ?? "20px"};
   color: ${(props: SubMitButtonIE) => props.style?.color ?? CommonColor.WHITE};
   background-color: ${(props: SubMitButtonIE) =>
-    props.style?.backgroundColor ?? CommonColor.BLACK};
+    props.style?.backgroundColor ?? CommonColor.DARK};
   border: ${(props: SubMitButtonIE) => props.style?.border ?? "none"};
   border-radius: ${(props: SubMitButtonIE) =>
     props.style?.borderRadius ?? "0.25em"};
@@ -24,7 +24,7 @@ export const SubMitButton = styled.button`
 interface TextButtonIE extends CommonComponentIE {}
 export const TextButton = styled.button`
   background-color: ${(props: TextButtonIE) =>
-    props.style?.backgroundColor ?? CommonColor.BLACK};
+    props.style?.backgroundColor ?? CommonColor.TRANS_PARENT};
   border: ${(props: TextButtonIE) => props.style?.border ?? "none"};
   color: ${(props: TextButtonIE) => props.style?.color ?? CommonColor.WHITE};
   font-size: ${(props: TextButtonIE) => props.style?.fontSize ?? "15px"};

@@ -1,16 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 import { findUser, findUserCount } from "../../api/GetAPI";
+import { UserInfoIE } from "../../api/interface";
 import { Container, PagingBar } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
+import { ComponentIE } from "../../common/interface";
 import List from "./List";
 
 /**
  * @description User Component
- * @param {ComponentIE} props (props 재정의 해야함)
+ * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-const User = () => {
-  const [users, setUsers] = useState([]);
+const User: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
+  const [users, setUsers] = useState<UserInfoIE[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
 

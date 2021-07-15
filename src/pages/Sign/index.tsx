@@ -95,7 +95,7 @@ const SignIn: React.FC<ComponentIE> = (
           }
           // 관리자 권한이 없는 경우
           case 403: {
-            _showMessageModal("잘못된 계정입니다.");
+            _showMessageModal("권한이 없는 계정입니다.");
             return false;
           }
           // 계정이 없는 경우

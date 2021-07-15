@@ -11,11 +11,6 @@ interface PagingBarIE {
 
 const PagingBar = (props: PagingBarIE) => {
   const { active, onPageClick, limit, totalCount } = props;
-  const [pageItem, setPageItem] = useState([]);
-
-  useEffect(() => {
-    generatePageItem();
-  }, [totalCount, limit, active]);
 
   const generatePageItem = useCallback(() => {
     let item: any = [];
@@ -31,9 +26,10 @@ const PagingBar = (props: PagingBarIE) => {
         </PageItem>
       );
     }
-    setPageItem(item);
+    return item;
   }, [totalCount, limit, active]);
 
+  const pageItem = generatePageItem();
   return (
     <Pagination>
       {!_.isEmpty(pageItem) &&

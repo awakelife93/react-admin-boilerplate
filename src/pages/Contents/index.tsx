@@ -1,36 +1,74 @@
-import { Table } from "react-bootstrap";
+import { useCallback, useEffect, useState } from "react";
+import { findContents, findContentsCount } from "../../api/GetAPI";
+import { ContentsIE } from "../../api/GetAPI/interface";
+import { Container, PagingBar } from "../../common/components";
+import { defaultPagingCount } from "../../common/const";
+import { ComponentIE } from "../../common/interface";
+import List from "./List";
 
-const Contents = () => {
+/**
+ * @description Contents Component
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
+const Contents: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
+  const [contents, setContents] = useState<ContentsIE[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [active, setActive] = useState(1);
+
+  // init
+  useEffect(() => {
+    if (totalCount === 0) {
+      getContentsCount();
+    }
+
+    if (contents.length === 0) {
+      getContentsList(0);
+    }
+  }, [contents.length, totalCount]);
+
+  /**
+   * Contents List의 Total Count를 가져온다.
+   */
+  const getContentsCount = useCallback(async () => {
+    const totalCount = await findContentsCount();
+    setTotalCount(totalCount);
+  }, [totalCount]);
+
+  /**
+   * Contents 정보들을 가져온다.
+   */
+  const getContentsList = useCallback(
+    async (skip: number) => {
+      const contents = await findContents(skip);
+      setContents(contents);
+    },
+    [contents.length]
+  );
+
+  /**
+   * Page Click Event
+   */
+  const onPageClick = useCallback(
+    (page: number) => {
+      setActive(page + 1);
+      getContentsList(page * defaultPagingCount);
+    },
+    [active]
+  );
+
   return (
-    <Table striped bordered hover variant="dark">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
+    <Container.LayoutContainer>
+      <List contents={contents} />
+      <PagingBar
+        totalCount={totalCount}
+        limit={defaultPagingCount}
+        active={active}
+        onPageClick={onPageClick}
+      />
+    </Container.LayoutContainer>
   );
 };
 

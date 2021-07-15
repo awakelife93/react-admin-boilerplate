@@ -76,7 +76,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
       <Container.LayoutContainer
         style={{
           backgroundColor: CommonColor.WHITE,
-          border: `1px solid ${CommonColor.BLACK}`,
+          border: `1px solid ${CommonColor.DARK}`,
           position: "fixed",
           opacity: 0.3,
           zIndex: 1,
@@ -90,7 +90,7 @@ const Modal: React.FC<ModalIE> = (props: ModalIE) => {
         style={{
           ...style,
           backgroundColor: CommonColor.WHITE,
-          border: `1px solid ${CommonColor.BLACK}`,
+          border: `1px solid ${CommonColor.DARK}`,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

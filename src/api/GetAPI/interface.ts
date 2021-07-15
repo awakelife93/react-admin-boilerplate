@@ -1,7 +1,7 @@
 export interface ContentsIE {
-  id: number;
-  imageLink: string;
-  title: string;
-  subTitle: string;
-  description: string;
+  contId: number;
+  contImageLink: string;
+  contTitle: string;
+  contSubTitle: string;
+  contDesc: string;
 }

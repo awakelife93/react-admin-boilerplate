@@ -1,11 +1,26 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { Container, Label } from "../../common/components";
+import { ComponentIE } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 
-const Dashboard = () => {
+/**
+ * @description Dashboard Component
+ * @param {ComponentIE} props
+ * @returns {React.ReactElement}
+ */
+
+const Dashboard: React.FC<ComponentIE> = (
+  props: ComponentIE
+): React.ReactElement => {
+  const [totalUserCount, setUserCount] = useState(0);
+  const [totalThemeCount, setThemeCount] = useState(0);
+  const [totalContentsCount, setContentsCount] = useState(0);
+
   useEffect(() => {
     console.log("dashboard");
   }, []);
+
   return (
     <Container.LayoutContainer style={{ margin: 50 }}>
       <Container.RowContainer>

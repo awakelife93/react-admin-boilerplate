@@ -42,7 +42,7 @@ export const HeaderContainer = styled.div`
   align-items: ${(props: HeaderContainerIE) =>
     props.style?.alignItems ?? "center"};
   background-color: ${(props: HeaderContainerIE) =>
-    props.style?.backgroundColor ?? CommonColor.BLACK};
+    props.style?.backgroundColor ?? CommonColor.DARK};
 `;
 
 export interface BottomContainerIE extends CommonComponentIE {}
@@ -51,7 +51,7 @@ export const BottomContainer = styled.footer`
   height: ${(props: BottomContainerIE) => props.style?.height ?? "100px"};
   padding: ${(props: BottomContainerIE) => props.style?.padding ?? "20px"};
   background-color: ${(props: BottomContainerIE) =>
-    props.style?.backgroundColor ?? CommonColor.BLACK};
+    props.style?.backgroundColor ?? CommonColor.DARK};
   font-size: ${(props: BottomContainerIE) => props.style?.fontSize ?? "30px"};
   font-weight: ${(props: BottomContainerIE) =>
     props.style?.fontWeight ?? "bold"};

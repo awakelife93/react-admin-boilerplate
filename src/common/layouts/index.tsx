@@ -8,6 +8,7 @@ import HeaderLayout from "./Header";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
 import ModalLayout from "../components/Modal";
+import SignInPage from "../../pages/Sign";
 
 import { getLocalStorageItem, initWindowFunc } from "../../core";
 import { findUserProfile } from "../../api/GetAPI";
@@ -81,7 +82,12 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
         <Container.ColumnContainer style={{ width: "100%" }}>
           <HeaderLayout {...props} />
           <BodyLayout {...props}>
-            <Component {...props} />
+            {/* 로그인이 안되어있을 경우 무조건 로그인 페이지로 */}
+            {_.isEmpty(getLocalStorageItem("token")) ? (
+              <SignInPage {...props} />
+            ) : (
+              <Component {...props} />
+            )}
           </BodyLayout>
           <BottomLayout {...props} />
         </Container.ColumnContainer>

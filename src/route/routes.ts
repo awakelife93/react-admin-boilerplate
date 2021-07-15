@@ -14,7 +14,6 @@ export enum RoutePath {
   DESIGN = "/design",
   CONTENTS = "/contents",
   SIGN_IN = "/signIn",
-  SIGN_UP = "/signUp",
 }
 export interface RouteIE {
   path: string;

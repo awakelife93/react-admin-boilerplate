@@ -52,7 +52,7 @@ const IconMenu: React.FC<IconMenuIE> = (
 
           // 애는 테마와 전혀 상관이 없어서 Theme에 안넣는다.
           backgroundColor: CommonColor.WHITE,
-          border: `1px solid ${CommonColor.BLACK}`,
+          border: `1px solid ${CommonColor.DARK}`,
           borderRadius: 15,
           width: 150,
           height: 30,

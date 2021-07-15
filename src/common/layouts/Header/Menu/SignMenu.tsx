@@ -58,7 +58,7 @@ const SignMenu: React.FC<SignMenuIE> = (
             }
             menuContainerStyle={{
               backgroundColor: CommonColor.WHITE,
-              border: `1px solid ${CommonColor.BLACK}`,
+              border: `1px solid ${CommonColor.DARK}`,
               borderRadius: 15,
               width: 150,
               height: 30,

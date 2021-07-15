@@ -5,7 +5,7 @@ import { ContentsIE } from "./interface";
 
 export const findUserCount = async () => {
   try {
-    const result: any = await getAPI("findUserCount");
+    const result: number = await getAPI("findUserCount");
     return result;
   } catch (e) {
     console.log("===============> findUserCount Error", e);
@@ -13,9 +13,59 @@ export const findUserCount = async () => {
   }
 };
 
+export const findComponentCount = async () => {
+  try {
+    const result: number = await getAPI("findComponentCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findComponentCount Error", e);
+    throw e;
+  }
+};
+
+export const findLayoutCount = async () => {
+  try {
+    const result: number = await getAPI("findLayoutCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findLayoutCount Error", e);
+    throw e;
+  }
+};
+
+export const findStyleCount = async () => {
+  try {
+    const result: number = await getAPI("findStyleCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findStyleCount Error", e);
+    throw e;
+  }
+};
+
+export const findThemeCount = async () => {
+  try {
+    const result: number = await getAPI("findThemeCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findThemeCount Error", e);
+    throw e;
+  }
+};
+
+export const findContentsCount = async () => {
+  try {
+    const result: number = await getAPI("findContentsCount");
+    return result;
+  } catch (e) {
+    console.log("===============> findContentsCount Error", e);
+    throw e;
+  }
+};
+
 export const findUser = async (skip: number = 0) => {
   try {
-    const result: any = await getAPI("findUser", {
+    const result: UserInfoIE[] = await getAPI("findUser", {
       take: defaultPagingCount,
       skip,
     });
@@ -26,19 +76,8 @@ export const findUser = async (skip: number = 0) => {
   }
 };
 
-export const findTheme = async () => {
-  try {
-    const result: any = await getAPI("findTheme");
-    return result;
-  } catch (e) {
-    console.log("===============> findTheme Error", e);
-    throw e;
-  }
-};
-
 export const findContents = async (skip: number = 0) => {
   try {
-    // typeorm 엔티티의 take, skip을 그대로 전송하기 위해 프로퍼티를 지어줌.
     const result: ContentsIE[] = await getAPI("findContents", {
       take: defaultPagingCount,
       skip,
@@ -46,6 +85,58 @@ export const findContents = async (skip: number = 0) => {
     return result;
   } catch (e) {
     console.log("===============> findContents Error", e);
+    throw e;
+  }
+};
+
+export const findComponent = async (skip: number = 0) => {
+  try {
+    const result: any[] = await getAPI("findComponent", {
+      take: defaultPagingCount,
+      skip,
+    });
+    return result;
+  } catch (e) {
+    console.log("===============> findComponent Error", e);
+    throw e;
+  }
+};
+
+export const findLayout = async (skip: number = 0) => {
+  try {
+    const result: any[] = await getAPI("findLayout", {
+      take: defaultPagingCount,
+      skip,
+    });
+    return result;
+  } catch (e) {
+    console.log("===============> findLayout Error", e);
+    throw e;
+  }
+};
+
+export const findStyle = async (skip: number = 0) => {
+  try {
+    const result: any[] = await getAPI("findStyle", {
+      take: defaultPagingCount,
+      skip,
+    });
+    return result;
+  } catch (e) {
+    console.log("===============> findStyle Error", e);
+    throw e;
+  }
+};
+
+export const findTheme = async (skip: number = 0) => {
+  try {
+    const result: any[] = await getAPI("findTheme", {
+      take: defaultPagingCount,
+      skip,
+    });
+    return result;
+  } catch (e) {
+    console.log("===============> findTheme Error", e);
     throw e;
   }
 };
