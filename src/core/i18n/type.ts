@@ -11,6 +11,8 @@ export enum I18nCommandEnum {
   SIGN_OUT = "sign_out",
   SIGN_UP = "sign_up",
 
+  CREATE = "create",
+
   AD_TITLE = "ad_title",
   AD_CONTENT1 = "ad_content1",
   AD_CONTENT2 = "ad_content2",

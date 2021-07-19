@@ -2,6 +2,7 @@ import React from "react";
 
 import DashboardPage from "../pages/Dashboard";
 import UserPage from "../pages/User";
+import UserDetailPage from "../pages/User/Detail";
 import DesignPage from "../pages/Design";
 import ContentsPage from "../pages/Contents";
 import SignInPage from "../pages/Sign";
@@ -11,6 +12,7 @@ import { ComponentIE } from "../common/interface";
 export enum RoutePath {
   DASHBOARD = "/",
   USER = "/user",
+  USER_DETAIL = "/userDetail",
   DESIGN = "/design",
   CONTENTS = "/contents",
   SIGN_IN = "/signIn",
@@ -34,6 +36,12 @@ const routes: RouteIE[] = [
     exact: false,
     title: "유저 관리",
     Component: UserPage,
+  },
+  {
+    path: RoutePath.USER_DETAIL,
+    exact: false,
+    title: "",
+    Component: UserDetailPage,
   },
   {
     path: RoutePath.CONTENTS,

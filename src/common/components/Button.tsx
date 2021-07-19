@@ -16,7 +16,8 @@ export const SubMitButton = styled.button`
   color: ${(props: SubMitButtonIE) => props.style?.color ?? CommonColor.WHITE};
   background-color: ${(props: SubMitButtonIE) =>
     props.style?.backgroundColor ?? CommonColor.DARK};
-  border: ${(props: SubMitButtonIE) => props.style?.border ?? "none"};
+  border: ${(props: SubMitButtonIE) =>
+    props.style?.border ?? `1px solid ${CommonColor.GRAY}`};
   border-radius: ${(props: SubMitButtonIE) =>
     props.style?.borderRadius ?? "0.25em"};
 `;

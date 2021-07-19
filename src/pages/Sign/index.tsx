@@ -109,7 +109,9 @@ const SignIn: React.FC<ComponentIE> = (
   };
 
   return (
-    <Container.RowContainer>
+    <Container.RowContainer
+      style={{ display: "flex", justifyContent: "center" }}
+    >
       <Container.ColumnContainer>
         <Container.RowContainer
           style={{

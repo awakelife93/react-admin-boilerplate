@@ -10,6 +10,7 @@ const List = ({ users }: { users: UserInfoIE[] }): React.ReactElement => {
           <th>ID</th>
           <th>이메일</th>
           <th>닉네임</th>
+          <th>등급</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,13 @@ const List = ({ users }: { users: UserInfoIE[] }): React.ReactElement => {
                 <td>{user.userId}</td>
                 <td>{user.userEmail}</td>
                 <td>{user.userNickname}</td>
+                {user.userRoles.map((roles: any, index2: number) => {
+                  return (
+                    <td key={`user_List_Role_Key${index}`}>
+                      {roles.role.roleName}
+                    </td>
+                  );
+                })}
               </tr>
             );
           })}

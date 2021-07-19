@@ -6,4 +6,6 @@ export interface UserInfoIE {
   token: string;
   userEmail: string;
   userNickname: string;
+  // todo: role 인터페이스 만들기
+  userRoles: any[];
 }

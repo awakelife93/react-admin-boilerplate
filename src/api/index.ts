@@ -19,7 +19,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const localStorageToken = getLocalStorageItem("token");
-
+    console.log("localStorageToken", localStorageToken);
     // 토큰이 소실되었을 경우 지워주기
     if (_.isEmpty(localStorageToken)) {
       config.headers.Authorization = "";

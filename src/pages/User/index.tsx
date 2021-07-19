@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { findUser, findUserCount } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
-import { Container, PagingBar } from "../../common/components";
+import { Button, Container, PagingBar } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
+import { RoutePath } from "../../route/routes";
 import List from "./List";
 
 /**
@@ -59,8 +61,19 @@ const User: React.FC<ComponentIE> = (
     [active]
   );
 
+  const history = useHistory();
+  const onDetailClick = useCallback(() => {
+    history.push(RoutePath.USER_DETAIL);
+  }, []);
+
   return (
     <Container.LayoutContainer>
+      <Button.SubMitButton
+        onClick={onDetailClick}
+        style={{ margin: 0, marginBottom: 10 }}
+      >
+        계정 생성
+      </Button.SubMitButton>
       <List users={users} />
       <PagingBar
         totalCount={totalCount}

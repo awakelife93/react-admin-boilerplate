@@ -1,4 +1,5 @@
 import { Container, Label } from "../..";
+import { CommonColor } from "../../../styles";
 
 interface MessageLayoutIE {
   message: string;
@@ -10,6 +11,7 @@ const MessageLayout: React.FC<MessageLayoutIE> = (props: MessageLayoutIE) => {
     <Container.ColumnContainer>
       <Label.CommonLabel
         style={{
+          color: CommonColor.BLACK,
           fontWeight: "bold",
         }}
       >
