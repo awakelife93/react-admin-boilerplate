@@ -19,7 +19,7 @@ const List = ({
           <th>ID</th>
           <th>이메일</th>
           <th>닉네임</th>
-          <th>권한</th>
+          <th colSpan={2}>권한</th>
           <th colSpan={2}></th>
         </tr>
       </thead>

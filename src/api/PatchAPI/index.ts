@@ -17,7 +17,9 @@ export const updateUser = async ({
     const item: any = { userId };
 
     if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
+
     if (!_.isEmpty(userPw)) item.userPw = userPw;
+
     if (!_.isEmpty(userRoleIds)) item.userRoleIds = userRoleIds;
 
     let result: UserInfoIE = await patchAPI("updateUser", { ...item });
