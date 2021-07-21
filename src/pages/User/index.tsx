@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { isTemplateExpression } from "typescript";
 import { findUser, findUserCount } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import { Button, Container, PagingBar } from "../../common/components";
@@ -62,19 +63,30 @@ const User: React.FC<ComponentIE> = (
   );
 
   const history = useHistory();
-  const onDetailClick = useCallback(() => {
-    history.push(RoutePath.USER_DETAIL);
+  const onDetailClick = useCallback(
+    ({ type, item }: { type: "CREATE" | "MODIFY"; item?: UserInfoIE }) => {
+      history.push(RoutePath.USER_DETAIL, { ...item, type });
+    },
+    []
+  );
+
+  const onDeleteClick = useCallback((userId: number) => {
+    console.log(userId);
   }, []);
 
   return (
     <Container.LayoutContainer>
       <Button.SubMitButton
-        onClick={onDetailClick}
+        onClick={() => onDetailClick({ type: "CREATE" })}
         style={{ margin: 0, marginBottom: 10 }}
       >
         계정 생성
       </Button.SubMitButton>
-      <List users={users} />
+      <List
+        users={users}
+        onDeleteClick={onDeleteClick}
+        onDetailClick={onDetailClick}
+      />
       <PagingBar
         totalCount={totalCount}
         limit={defaultPagingCount}

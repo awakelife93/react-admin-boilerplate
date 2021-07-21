@@ -4,6 +4,9 @@ import * as InputBox from "./InputBox";
 import * as Image from "./Image";
 import * as Label from "./Label";
 import * as Modal from "./Modal";
+import * as Select from "./SelectBox";
+import * as CommonRender from "./CommonRender";
+
 import Icon from "./Icon";
 import MenuBox from "./MenuBox";
 import ScrollPaging from "./ScrollPaging";
@@ -13,13 +16,15 @@ import PagingBar from "./PagingBar";
 export {
   Button,
   Container,
-  Icon,
   InputBox,
   Label,
   Image,
-  MenuBox,
   ScrollPaging,
   Modal,
+  Select,
+  CommonRender,
+  Icon,
+  MenuBox,
   SideMenu,
   PagingBar,
 };

@@ -17,3 +17,20 @@ export const validationObject = (object: any): boolean => {
     return !_.isUndefined(object[key]) && !_.isEmpty(object[key]);
   });
 };
+
+/**
+ * @description
+ * roleId === 1 사용자
+ * roleId === 2 관리자
+ * @param userRoles
+ * @returns
+ */
+export const isUser = (userRoles: number[]) =>
+  userRoles.some((roleId: number) => {
+    return roleId === 1;
+  });
+
+export const isAdmin = (userRoles: number[]) =>
+  userRoles.some((roleId: number) => {
+    return roleId === 2;
+  });

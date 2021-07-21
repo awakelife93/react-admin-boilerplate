@@ -1,5 +1,6 @@
 {
   "create": "Create",
+  "modify": "Modify",
   "ko": "Korean",
   "en": "English",
 
@@ -11,6 +12,7 @@
   "ad_content1": "In case of unforeseen circumstances",
   "ad_content2": "Make space in advance.",
 
+  "role": "Role",
   "email": "Email",
   "nickname": "Nickname",
   "password": "Password",

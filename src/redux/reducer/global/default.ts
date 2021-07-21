@@ -1,4 +1,4 @@
-import { defaultFC } from "../../../common/components/CommonRender";
+import { CommonRender } from "../../../common/components";
 import {
   defaultDimClose,
   defaultKeyClose,
@@ -10,7 +10,7 @@ export const initGlobalState = {
   isShowAdContainer: defaultShowAdContainer,
   modalItem: {
     isShowModal: defaultShowModal,
-    children: defaultFC,
+    children: CommonRender.DefaultFC,
     childrenProps: {},
     style: {},
     option: {

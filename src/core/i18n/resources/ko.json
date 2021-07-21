@@ -1,5 +1,6 @@
 {
   "create": "생성",
+  "modify": "수정",
   "ko": "한국어",
   "en": "영어",
   "sign_in": "로그인",
@@ -9,6 +10,7 @@
   "ad_content1": "혹시 모를 상황을 대비하여",
   "ad_content2": "공간을 미리 만들어 둔다.",
 
+  "role": "권한",
   "email": "이메일",
   "nickname": "닉네임",
   "password": "패스워드",

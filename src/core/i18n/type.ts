@@ -12,11 +12,13 @@ export enum I18nCommandEnum {
   SIGN_UP = "sign_up",
 
   CREATE = "create",
+  MODIFY = "modify",
 
   AD_TITLE = "ad_title",
   AD_CONTENT1 = "ad_content1",
   AD_CONTENT2 = "ad_content2",
 
+  ROLE = "role",
   EMAIL = "email",
   NICKNAME = "nickname",
   PASSWORD = "password",

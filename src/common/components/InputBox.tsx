@@ -20,3 +20,8 @@ export const CommonInputBox = styled.input`
     props.style?.borderRadius ?? "0.25em"};
   margin-bottom: ${(props: InputBoxIE) => props.style?.marginBottom ?? "0px"};
 `;
+
+interface RadioBoxIE extends CommonComponentIE {}
+export const RadioBox = styled.input.attrs((props) => ({
+  type: "radio",
+}))``;
