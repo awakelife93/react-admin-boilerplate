@@ -7,10 +7,12 @@ export const DefaultFC: React.FC = (): React.ReactElement => {
 };
 
 export const DefaultUserRoleFC = ({
+  type,
   style,
   userRoleIds,
   onClickUserRole,
 }: {
+  type: "CREATE" | "MODIFY";
   style?: CSSProperties;
   userRoleIds: any[];
   onClickUserRole: Function;
@@ -22,7 +24,7 @@ export const DefaultUserRoleFC = ({
           사용자
         </Label.CommonLabel>
         <InputBox.RadioBox
-          checked={isUser(userRoleIds)}
+          checked={type === "CREATE" ? true : isUser(userRoleIds)}
           onClick={() => onClickUserRole(1)}
           readOnly
         />
@@ -33,7 +35,7 @@ export const DefaultUserRoleFC = ({
           관리자
         </Label.CommonLabel>
         <InputBox.RadioBox
-          checked={isAdmin(userRoleIds)}
+          checked={type === "CREATE" ? false : isAdmin(userRoleIds)}
           onClick={() => onClickUserRole(2)}
           readOnly
         />

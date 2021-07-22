@@ -41,7 +41,7 @@ const UserDetail: React.FC<ComponentIE> = (
   const [userRoleIds, setUserRole] = useState<number[]>(
     state.type === "MODIFY"
       ? state.userRoles.map((roles) => roles.role.roleId)
-      : []
+      : [1]
   );
 
   const _showMessageModal = (message: string) => {
@@ -171,6 +171,7 @@ const UserDetail: React.FC<ComponentIE> = (
           <Label.CommonLabel>{t(I18nCommandEnum.ROLE)}</Label.CommonLabel>
         </Container.RowContainer>
         <CommonRender.DefaultUserRoleFC
+          type={state.type}
           style={{ marginBottom: 15 }}
           userRoleIds={userRoleIds}
           onClickUserRole={(roleId: number) => onClickRoleBox(roleId)}
@@ -233,6 +234,7 @@ const UserDetail: React.FC<ComponentIE> = (
           <Label.CommonLabel>{t(I18nCommandEnum.ROLE)}</Label.CommonLabel>
         </Container.RowContainer>
         <CommonRender.DefaultUserRoleFC
+          type={state.type}
           style={{ marginBottom: 15 }}
           userRoleIds={userRoleIds}
           onClickUserRole={(roleId: number) => onClickRoleBox(roleId)}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { isTemplateExpression } from "typescript";
+import { deleteUser } from "../../api/DeleteAPI";
 import { findUser, findUserCount } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import { Button, Container, PagingBar } from "../../common/components";
@@ -21,7 +22,6 @@ const User: React.FC<ComponentIE> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
 
-  // init
   useEffect(() => {
     if (totalCount === 0) {
       getUserCount();
@@ -32,6 +32,11 @@ const User: React.FC<ComponentIE> = (
     }
   }, [users.length, totalCount]);
 
+  // init
+  const init = useCallback(() => {
+    getUserCount();
+    getUserList(0);
+  }, []);
   /**
    * User List의 Total Count를 가져온다.
    */
@@ -70,8 +75,9 @@ const User: React.FC<ComponentIE> = (
     []
   );
 
-  const onDeleteClick = useCallback((userId: number) => {
-    console.log(userId);
+  const onDeleteClick = useCallback(async (userId: number) => {
+    await deleteUser({ userId });
+    init();
   }, []);
 
   return (
