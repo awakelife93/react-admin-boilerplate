@@ -38,9 +38,11 @@ const UserDetail: React.FC<ComponentIE> = (
   const [userEmail, setEmail] = useState("");
   const [userNickname, setNickname] = useState(state.userNickname ?? "");
   const [userPw, setPassword] = useState("");
-  const [userRoleIds, setUserRole] = useState<number[]>([
-    ...state.userRoles.map((roles) => roles.role.roleId),
-  ]);
+  const [userRoleIds, setUserRole] = useState<number[]>(
+    state.type === "MODIFY"
+      ? state.userRoles.map((roles) => roles.role.roleId)
+      : []
+  );
 
   const _showMessageModal = (message: string) => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
@@ -67,7 +69,7 @@ const UserDetail: React.FC<ComponentIE> = (
 
   const history = useHistory();
   const _signUp = async () => {
-    const item = { userEmail, userNickname, userPw };
+    const item = { userEmail, userNickname, userPw, userRoleIds };
 
     if (validationItem(item) === true) {
       try {
@@ -159,6 +161,19 @@ const UserDetail: React.FC<ComponentIE> = (
           type={"password"}
           placeholder={t(I18nCommandEnum.PASSWORD)}
           onChange={(e) => setPassword(e.target.value)}
+        />
+        {/**********************************************************/}
+        <Container.RowContainer
+          style={{
+            alignSelf: "flex-start",
+          }}
+        >
+          <Label.CommonLabel>{t(I18nCommandEnum.ROLE)}</Label.CommonLabel>
+        </Container.RowContainer>
+        <CommonRender.DefaultUserRoleFC
+          style={{ marginBottom: 15 }}
+          userRoleIds={userRoleIds}
+          onClickUserRole={(roleId: number) => onClickRoleBox(roleId)}
         />
         {/**********************************************************/}
         <Button.SubMitButton

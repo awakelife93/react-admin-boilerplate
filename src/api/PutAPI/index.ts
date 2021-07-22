@@ -5,16 +5,19 @@ export const signUp = async ({
   userEmail,
   userNickname,
   userPw,
+  userRoleIds,
 }: {
   userEmail: string;
   userNickname: string;
   userPw: string;
+  userRoleIds: number[];
 }) => {
   try {
     let result: UserInfoIE = await putAPI("signUp", {
       userEmail,
       userNickname,
       userPw,
+      userRoleIds,
     });
     return result;
   } catch (e) {
