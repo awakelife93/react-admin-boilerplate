@@ -4,7 +4,12 @@ import { isTemplateExpression } from "typescript";
 import { deleteUser } from "../../api/DeleteAPI";
 import { findUser, findUserCount } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
-import { Button, Container, PagingBar } from "../../common/components";
+import {
+  Button,
+  Container,
+  InputBox,
+  PagingBar,
+} from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
 import { RoutePath } from "../../route/routes";
@@ -80,14 +85,26 @@ const User: React.FC<ComponentIE> = (
     init();
   }, []);
 
+  // todo: 검색 기능, 정렬 기능
   return (
     <Container.LayoutContainer>
-      <Button.SubMitButton
-        onClick={() => onDetailClick({ type: "CREATE" })}
-        style={{ margin: 0, marginBottom: 10 }}
-      >
-        계정 생성
-      </Button.SubMitButton>
+      <Container.RowContainer style={{ justifyContent: "space-between" }}>
+        <Button.SubMitButton
+          onClick={() => onDetailClick({ type: "CREATE" })}
+          style={{ margin: 0, marginBottom: 10 }}
+        >
+          계정 생성
+        </Button.SubMitButton>
+        <Container.RowContainer>
+          <InputBox.CommonInputBox
+            style={{ marginBottom: 10, marginRight: 10, paddingLeft: 10 }}
+            placeholder={"검색 키워드"}
+          />
+          <Button.SubMitButton style={{ margin: 0, marginBottom: 10 }}>
+            검색
+          </Button.SubMitButton>
+        </Container.RowContainer>
+      </Container.RowContainer>
       <List
         users={users}
         onDeleteClick={onDeleteClick}
