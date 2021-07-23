@@ -42,7 +42,7 @@ const Contents: React.FC<ComponentIE> = (
    */
   const getContentsList = useCallback(
     async (skip: number) => {
-      const contents = await findContents(skip);
+      const contents = await findContents({ skip });
       setContents(contents);
     },
     [contents.length]

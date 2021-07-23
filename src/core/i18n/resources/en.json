@@ -1,6 +1,9 @@
 {
   "create": "Create",
   "modify": "Modify",
+  "search": "Search",
+  "search_note": "Search Keyword",
+
   "ko": "Korean",
   "en": "English",
 

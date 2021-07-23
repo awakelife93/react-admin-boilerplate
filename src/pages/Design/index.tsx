@@ -88,16 +88,16 @@ const Design: React.FC<ComponentIE> = (
       let designs: any;
       switch (type) {
         case "component":
-          designs = await findComponent(skip);
+          designs = await findComponent({ skip });
           break;
         case "layout":
-          designs = await findLayout(skip);
+          designs = await findLayout({ skip });
           break;
         case "style":
-          designs = await findStyle(skip);
+          designs = await findStyle({ skip });
           break;
         case "theme":
-          designs = await findTheme(skip);
+          designs = await findTheme({ skip });
           break;
       }
       setDesigns(designs);

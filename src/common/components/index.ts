@@ -12,6 +12,7 @@ import MenuBox from "./MenuBox";
 import ScrollPaging from "./ScrollPaging";
 import SideMenu from "./SideMenu";
 import PagingBar from "./PagingBar";
+import SearchBar from "./SearchBar";
 
 export {
   Button,
@@ -27,4 +28,5 @@ export {
   MenuBox,
   SideMenu,
   PagingBar,
+  SearchBar,
 };

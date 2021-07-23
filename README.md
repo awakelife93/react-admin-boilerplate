@@ -46,7 +46,7 @@ Author: 박현우
 ### 설명
 
 ```
-https://github.com/HyunwooP/react_client_template를 사용하여 만드는 중
+1. https://github.com/HyunwooP/react_client_template를 사용하여 만드는 중
 ```
 
 ### 실행

@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { isTemplateExpression } from "typescript";
 import { deleteUser } from "../../api/DeleteAPI";
 import { findUser, findUserCount } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import {
   Button,
   Container,
-  InputBox,
   PagingBar,
+  SearchBar,
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
@@ -26,6 +25,7 @@ const User: React.FC<ComponentIE> = (
   const [users, setUsers] = useState<UserInfoIE[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
     if (totalCount === 0) {
@@ -39,23 +39,27 @@ const User: React.FC<ComponentIE> = (
 
   // init
   const init = useCallback(() => {
+    setActive(1);
     getUserCount();
     getUserList(0);
   }, []);
   /**
    * User List의 Total Count를 가져온다.
    */
-  const getUserCount = useCallback(async () => {
-    const totalCount = await findUserCount();
-    setTotalCount(totalCount);
-  }, [totalCount]);
+  const getUserCount = useCallback(
+    async (searchKeyword?: string) => {
+      const totalCount = await findUserCount({ searchKeyword });
+      setTotalCount(totalCount);
+    },
+    [totalCount]
+  );
 
   /**
    * User 정보들을 가져온다.
    */
   const getUserList = useCallback(
-    async (skip: number) => {
-      const users = await findUser(skip);
+    async (skip: number, searchKeyword?: string) => {
+      const users = await findUser({ skip, searchKeyword });
       setUsers(users);
     },
     [users.length]
@@ -67,9 +71,9 @@ const User: React.FC<ComponentIE> = (
   const onPageClick = useCallback(
     (page: number) => {
       setActive(page + 1);
-      getUserList(page * defaultPagingCount);
+      getUserList(page * defaultPagingCount, searchKeyword);
     },
-    [active]
+    [active, searchKeyword]
   );
 
   const history = useHistory();
@@ -85,7 +89,14 @@ const User: React.FC<ComponentIE> = (
     init();
   }, []);
 
-  // todo: 검색 기능, 정렬 기능
+  const onSearchKeyword = useCallback(async (searchKeyword: string) => {
+    setActive(1);
+    setSearchKeyword(searchKeyword);
+    getUserList(0, searchKeyword);
+    getUserCount(searchKeyword);
+  }, []);
+
+  // todo: 정렬 기능
   return (
     <Container.LayoutContainer>
       <Container.RowContainer style={{ justifyContent: "space-between" }}>
@@ -95,15 +106,7 @@ const User: React.FC<ComponentIE> = (
         >
           계정 생성
         </Button.SubMitButton>
-        <Container.RowContainer>
-          <InputBox.CommonInputBox
-            style={{ marginBottom: 10, marginRight: 10, paddingLeft: 10 }}
-            placeholder={"검색 키워드"}
-          />
-          <Button.SubMitButton style={{ margin: 0, marginBottom: 10 }}>
-            검색
-          </Button.SubMitButton>
-        </Container.RowContainer>
+        <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List
         users={users}

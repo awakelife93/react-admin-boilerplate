@@ -6,7 +6,7 @@ import { Container } from ".";
 import routes, { RouteIE } from "../../route/routes";
 import { CommonColor } from "../styles";
 
-const SideMenu = () => {
+const SideMenu: React.FC = (): React.ReactElement => {
   return (
     <Navbar
       bg="dark"

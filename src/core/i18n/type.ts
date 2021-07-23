@@ -13,6 +13,8 @@ export enum I18nCommandEnum {
 
   CREATE = "create",
   MODIFY = "modify",
+  SEARCH = "search",
+  SEARCH_NOTE = "search_note",
 
   AD_TITLE = "ad_title",
   AD_CONTENT1 = "ad_content1",

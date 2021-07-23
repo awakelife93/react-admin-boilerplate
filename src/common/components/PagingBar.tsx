@@ -9,7 +9,9 @@ interface PagingBarIE {
   onPageClick: Function;
 }
 
-const PagingBar = (props: PagingBarIE) => {
+const PagingBar: React.FC<PagingBarIE> = (
+  props: PagingBarIE
+): React.ReactElement => {
   const { active, onPageClick, limit, totalCount } = props;
 
   const generatePageItem = useCallback(() => {

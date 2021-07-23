@@ -1,6 +1,9 @@
 {
   "create": "생성",
   "modify": "수정",
+  "search": "검색",
+  "search_note": "검색 키워드",
+
   "ko": "한국어",
   "en": "영어",
   "sign_in": "로그인",

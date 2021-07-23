@@ -3,9 +3,13 @@ import { defaultPagingCount } from "../../common/const";
 import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
-export const findUserCount = async () => {
+export const findUserCount = async ({
+  searchKeyword = "",
+}: {
+  searchKeyword?: string;
+}) => {
   try {
-    const result: number = await getAPI("findUserCount");
+    const result: number = await getAPI("findUserCount", { searchKeyword });
     return result;
   } catch (e) {
     console.log("===============> findUserCount Error", e);
@@ -63,11 +67,18 @@ export const findContentsCount = async () => {
   }
 };
 
-export const findUser = async (skip: number = 0) => {
+export const findUser = async ({
+  skip = 0,
+  searchKeyword = "",
+}: {
+  skip: number;
+  searchKeyword?: string;
+}) => {
   try {
     const result: UserInfoIE[] = await getAPI("findUser", {
       take: defaultPagingCount,
       skip,
+      searchKeyword,
     });
     return result;
   } catch (e) {
@@ -76,7 +87,7 @@ export const findUser = async (skip: number = 0) => {
   }
 };
 
-export const findContents = async (skip: number = 0) => {
+export const findContents = async ({ skip = 0 }: { skip: number }) => {
   try {
     const result: ContentsIE[] = await getAPI("findContents", {
       take: defaultPagingCount,
@@ -89,7 +100,7 @@ export const findContents = async (skip: number = 0) => {
   }
 };
 
-export const findComponent = async (skip: number = 0) => {
+export const findComponent = async ({ skip = 0 }: { skip: number }) => {
   try {
     const result: any[] = await getAPI("findComponent", {
       take: defaultPagingCount,
@@ -102,7 +113,7 @@ export const findComponent = async (skip: number = 0) => {
   }
 };
 
-export const findLayout = async (skip: number = 0) => {
+export const findLayout = async ({ skip = 0 }: { skip: number }) => {
   try {
     const result: any[] = await getAPI("findLayout", {
       take: defaultPagingCount,
@@ -115,7 +126,7 @@ export const findLayout = async (skip: number = 0) => {
   }
 };
 
-export const findStyle = async (skip: number = 0) => {
+export const findStyle = async ({ skip = 0 }: { skip: number }) => {
   try {
     const result: any[] = await getAPI("findStyle", {
       take: defaultPagingCount,
@@ -128,7 +139,7 @@ export const findStyle = async (skip: number = 0) => {
   }
 };
 
-export const findTheme = async (skip: number = 0) => {
+export const findTheme = async ({ skip = 0 }: { skip: number }) => {
   try {
     const result: any[] = await getAPI("findTheme", {
       take: defaultPagingCount,
