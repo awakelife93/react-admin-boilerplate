@@ -97,7 +97,7 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     return (
       <Container.ColumnContainer
         onClick={() => setShowMenuBox(!isShowMenuBox)}
-        style={{ zIndex: 1 }}
+        style={{ zIndex: 1, alignItems: "flex-start" }}
       >
         {children}
         {isShowMenuBox === true && renderLayout()}

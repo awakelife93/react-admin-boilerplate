@@ -56,7 +56,7 @@ const IconMenu: React.FC<IconMenuIE> = (
           borderRadius: 15,
           width: 150,
           height: 30,
-          marginLeft: 150,
+          marginLeft: 20,
           position: "absolute",
           top: 60,
         }}
