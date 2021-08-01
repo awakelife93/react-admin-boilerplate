@@ -6,7 +6,9 @@ import * as Label from "./Label";
 import * as Modal from "./Modal";
 import * as Select from "./SelectBox";
 import * as CommonRender from "./CommonRender";
+import * as TextArea from "./TextArea";
 
+import Downloader from "./Downloader";
 import Icon from "./Icon";
 import MenuBox from "./MenuBox";
 import ScrollPaging from "./ScrollPaging";
@@ -24,6 +26,8 @@ export {
   Modal,
   Select,
   CommonRender,
+  TextArea,
+  Downloader,
   Icon,
   MenuBox,
   SideMenu,

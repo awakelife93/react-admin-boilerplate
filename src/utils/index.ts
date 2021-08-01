@@ -1,5 +1,9 @@
 import _ from "lodash";
 
+export const scrollTop = (): void => {
+  window.scrollTo(0, 0);
+};
+
 export const removeBodyScroll = (): void => {
   document.body.style.overflow = "hidden";
 };

@@ -18,3 +18,15 @@ export interface PagingIE {
     threshold?: number;
   };
 }
+
+export interface DynamicColorComponentIE extends CSSProperties {
+  hoverBackgroundColor?: string;
+  activeBackgroundColor?: string;
+  defaultBackgroundColor?: string;
+}
+
+export interface ScrollComponentIE extends CSSProperties {
+  scrollStyles?: CSSProperties;
+  trackStyles?: CSSProperties;
+  thumbStyles?: CSSProperties;
+}

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { CommonColor } from "../styles";
-import { CommonComponentIE } from "./interface";
+import {
+  CommonComponentIE,
+  DynamicColorComponentIE,
+  ScrollComponentIE,
+} from "./interface";
 
 /**
  * @description
@@ -71,7 +75,7 @@ export const RowContainer = styled.div`
     props.style?.flexDirection ?? "row"};
 `;
 
-interface ColumnContainerIE extends CommonComponentIE {}
+interface ColumnContainerIE extends CommonComponentIE, ScrollComponentIE {}
 export const ColumnContainer = styled.div`
   display: ${(props: ColumnContainerIE) => props.style?.display ?? "flex"};
   justify-content: ${(props: ColumnContainerIE) =>
@@ -83,4 +87,52 @@ export const ColumnContainer = styled.div`
   flex-direction: ${(props: ColumnContainerIE) =>
     props.style?.flexDirection ?? "column"};
   margin-left: ${(props: ColumnContainerIE) => props.style?.marginLeft};
+
+  /* Chrome/Safari */
+  /******************************************************************************/
+  /* scroll style */
+  ::-webkit-scrollbar {
+    width: ${(props: ColumnContainerIE) => props.scrollStyles?.width ?? "6px"};
+  }
+
+  /* scroll을 감싸는 컨테이너 */
+  ::-webkit-scrollbar-track {
+    background-color: ${(props: ColumnContainerIE) =>
+      props.trackStyles?.backgroundColor ?? CommonColor.TRANS_PARENT};
+  }
+
+  /* 움직이는 scroll 객체 */
+  ::-webkit-scrollbar-thumb {
+    border-radius: ${(props: ColumnContainerIE) =>
+      props.thumbStyles?.borderRadius ?? "4px"};
+    background-color: ${(props: ColumnContainerIE) =>
+      props.thumbStyles?.backgroundColor ?? "rgba(0, 0, 0, 0.24)"};
+  }
+  /******************************************************************************/
+
+  /* FireFox */
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width */
+  /******************************************************************************/
+  scrollbar-width: thin;
+  scrollbar-color: ${(props: ColumnContainerIE) =>
+    `${props.thumbStyles?.backgroundColor ?? CommonColor.WHITE} ${
+      props.trackStyles?.backgroundColor ?? CommonColor.BLACK
+    }`};
+  /******************************************************************************/
+`;
+
+interface DynamicColorContainerIE
+  extends CommonComponentIE,
+    DynamicColorComponentIE {}
+export const DynamicColorContainer = styled.div`
+  &:hover {
+    background-color: ${(props: DynamicColorContainerIE) =>
+      props.hoverBackgroundColor};
+  }
+  &:active {
+    background-color: ${(props: DynamicColorContainerIE) =>
+      props.activeBackgroundColor};
+  }
+  background-color: ${(props: DynamicColorContainerIE) =>
+    props.defaultBackgroundColor};
 `;
