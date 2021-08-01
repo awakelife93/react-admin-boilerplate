@@ -6,6 +6,13 @@ import { I18nCommandEnum } from "../../core";
 interface SearchBarIE {
   next: Function;
 }
+
+/**
+ * SearchBar
+ * @description 검색 컴포넌트
+ * @param {SearchBarIE} props
+ * @returns {React.ReactElement}
+ */
 const SearchBar: React.FC<SearchBarIE> = (
   props: SearchBarIE
 ): React.ReactElement => {

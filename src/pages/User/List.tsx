@@ -1,14 +1,16 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 import { UserInfoIE } from "../../api/interface";
-import { Button } from "../../common/components";
+import { Button, Icon, TableSort } from "../../common/components";
 
 const List = ({
   users,
+  onSortClick,
   onDeleteClick,
   onDetailClick,
 }: {
   users: UserInfoIE[];
+  onSortClick: Function;
   onDeleteClick: Function;
   onDetailClick: Function;
 }): React.ReactElement => {
@@ -17,8 +19,14 @@ const List = ({
       <thead>
         <tr>
           <th>ID</th>
-          <th>이메일</th>
-          <th>닉네임</th>
+          <TableSort
+            title={"이메일"}
+            next={(sort: boolean) => onSortClick("userEmail", sort)}
+          />
+          <TableSort
+            title={"닉네임"}
+            next={(sort: boolean) => onSortClick("userNickname", sort)}
+          />
           <th colSpan={2}>권한</th>
           <th colSpan={2}></th>
         </tr>

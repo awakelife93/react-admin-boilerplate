@@ -76,6 +76,9 @@ const User: React.FC<ComponentIE> = (
     [active, searchKeyword]
   );
 
+  /**
+   * 상세
+   */
   const history = useHistory();
   const onDetailClick = useCallback(
     ({ type, item }: { type: "CREATE" | "MODIFY"; item?: UserInfoIE }) => {
@@ -84,11 +87,17 @@ const User: React.FC<ComponentIE> = (
     []
   );
 
+  /**
+   * 삭제
+   */
   const onDeleteClick = useCallback(async (userId: number) => {
     await deleteUser({ userId });
     init();
   }, []);
 
+  /**
+   * 검색
+   */
   const onSearchKeyword = useCallback(async (searchKeyword: string) => {
     setActive(1);
     setSearchKeyword(searchKeyword);
@@ -96,7 +105,14 @@ const User: React.FC<ComponentIE> = (
     getUserCount(searchKeyword);
   }, []);
 
-  // todo: 정렬 기능
+  /**
+   * 정렬
+   */
+  const onSortClick = (type: string, sort: boolean) => {
+    console.log(type, sort);
+    console.log("개발중");
+  };
+
   return (
     <Container.LayoutContainer>
       <Container.RowContainer style={{ justifyContent: "space-between" }}>
@@ -110,6 +126,7 @@ const User: React.FC<ComponentIE> = (
       </Container.RowContainer>
       <List
         users={users}
+        onSortClick={onSortClick}
         onDeleteClick={onDeleteClick}
         onDetailClick={onDetailClick}
       />

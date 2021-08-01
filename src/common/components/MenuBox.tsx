@@ -17,6 +17,12 @@ interface MenuBoxIE {
   menuItemStyle: CSSProperties;
 }
 
+/**
+ * MenuBox
+ * @description 컴포넌트에 달라붙는 메뉴 박스
+ * @param {MenuBoxIE} props
+ * @returns {React.ReactElement}
+ */
 const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
   const {

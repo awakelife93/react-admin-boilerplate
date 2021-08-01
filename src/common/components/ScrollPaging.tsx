@@ -3,10 +3,6 @@ import _ from "lodash";
 import { useCallback, useEffect, useRef } from "react";
 import { Container } from ".";
 
-/**
- * @description
- * Scroll을 감지하여 Paging
- */
 interface ScrollPagingIE {
   children: React.ReactElement;
   target: {
@@ -17,6 +13,13 @@ interface ScrollPagingIE {
     threshold?: number;
   };
 }
+
+/**
+ * ScrollPaging
+ * @description 스크롤을 감지하여 페이징
+ * @param {ScrollPagingIE} props
+ * @returns {React.ReactElement}
+ */
 const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
   const {
     children,

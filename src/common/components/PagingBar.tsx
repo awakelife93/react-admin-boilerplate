@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { Pagination, PageItem } from "react-bootstrap";
 
 interface PagingBarIE {
@@ -9,6 +9,12 @@ interface PagingBarIE {
   onPageClick: Function;
 }
 
+/**
+ * PagingBar
+ * @description 페이징 처리
+ * @param {PagingBarIE} props
+ * @returns {React.ReactElement}
+ */
 const PagingBar: React.FC<PagingBarIE> = (
   props: PagingBarIE
 ): React.ReactElement => {

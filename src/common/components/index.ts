@@ -15,6 +15,7 @@ import ScrollPaging from "./ScrollPaging";
 import SideMenu from "./SideMenu";
 import PagingBar from "./PagingBar";
 import SearchBar from "./SearchBar";
+import TableSort from "./TableSort";
 
 export {
   Button,
@@ -28,6 +29,7 @@ export {
   CommonRender,
   TextArea,
   Downloader,
+  TableSort,
   Icon,
   MenuBox,
   SideMenu,

@@ -18,7 +18,7 @@ interface DownLoaderIE {
 }
 /**
  * DownLoader
- * @description 다운로드 컴포넌트이다.
+ * @description 다운로드 컴포넌트
  * @param {DownLoaderIE} props
  * @returns {React.ReactElement}
  */

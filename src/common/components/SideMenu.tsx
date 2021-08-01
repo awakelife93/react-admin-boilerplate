@@ -6,6 +6,12 @@ import { Container } from ".";
 import routes, { RouteIE } from "../../route/routes";
 import { CommonColor } from "../styles";
 
+/**
+ * SideMenu
+ * @description 네비게이션 바
+ * @param {} props
+ * @returns {React.ReactElement}
+ */
 const SideMenu: React.FC = (): React.ReactElement => {
   return (
     <Navbar
