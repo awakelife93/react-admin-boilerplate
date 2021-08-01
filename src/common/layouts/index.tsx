@@ -73,6 +73,8 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
           childrenProps={modalItem.childrenProps}
           style={{ ...modalItem.style }}
           option={modalItem.option}
+          buttonItem={modalItem.buttonItem}
+          titleItem={modalItem.titleItem}
         />
       )}
       <Container.RowContainer

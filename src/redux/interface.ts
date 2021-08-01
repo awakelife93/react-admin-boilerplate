@@ -18,6 +18,21 @@ export interface GlobalStoreIE {
     children: React.FC<any>;
     childrenProps: any;
     style: CSSProperties;
+    titleItem: {
+      title: string;
+      subTitle: string;
+      titleStyle: {};
+      subTitleStyle: {};
+    };
+    buttonItem: {
+      title: string;
+      next: Function;
+      containerStyleItems: {
+        hoverBackgroundColor?: string;
+        defaultBackgroundColor?: string;
+        activeBackgroundColor?: string;
+      };
+    }[];
     option: {
       dimClose: boolean;
       keyClose: boolean;
