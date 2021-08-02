@@ -1,7 +1,8 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 import { UserInfoIE } from "../../api/interface";
-import { Button, Icon, TableSort } from "../../common/components";
+import { Button, TableSort } from "../../common/components";
+import { SortType } from "../../common/interface";
 
 const List = ({
   users,
@@ -21,11 +22,11 @@ const List = ({
           <th>ID</th>
           <TableSort
             title={"이메일"}
-            next={(sort: boolean) => onSortClick("userEmail", sort)}
+            next={(sort: SortType) => onSortClick("userEmail", sort)}
           />
           <TableSort
             title={"닉네임"}
-            next={(sort: boolean) => onSortClick("userNickname", sort)}
+            next={(sort: SortType) => onSortClick("userNickname", sort)}
           />
           <th colSpan={2}>권한</th>
           <th colSpan={2}></th>

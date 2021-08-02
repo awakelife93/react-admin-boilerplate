@@ -18,7 +18,6 @@ import { useCallback } from "react";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-
 const SignIn: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {

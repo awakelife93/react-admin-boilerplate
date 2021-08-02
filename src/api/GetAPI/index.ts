@@ -1,5 +1,6 @@
 import { getAPI } from "..";
 import { defaultPagingCount } from "../../common/const";
+import { SortType } from "../../common/interface";
 import { UserInfoIE } from "../interface";
 import { ContentsIE } from "./interface";
 
@@ -70,16 +71,23 @@ export const findContentsCount = async () => {
 export const findUser = async ({
   skip = 0,
   searchKeyword = "",
+  userEmailSort,
+  userNicknameSort,
 }: {
   skip: number;
   searchKeyword?: string;
+  userEmailSort?: SortType;
+  userNicknameSort?: SortType;
 }) => {
   try {
-    const result: UserInfoIE[] = await getAPI("findUser", {
+    const items = {
       take: defaultPagingCount,
       skip,
-      searchKeyword,
-    });
+      searchKeyword: searchKeyword ?? "",
+      userEmailSort: userEmailSort ?? "",
+      userNicknameSort: userNicknameSort ?? "",
+    };
+    const result: UserInfoIE[] = await getAPI("findUser", items);
     return result;
   } catch (e) {
     console.log("===============> findUser Error", e);

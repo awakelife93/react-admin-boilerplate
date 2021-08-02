@@ -10,7 +10,7 @@ import {
   SearchBar,
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
-import { ComponentIE } from "../../common/interface";
+import { ComponentIE, SortType } from "../../common/interface";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 
@@ -26,23 +26,38 @@ const User: React.FC<ComponentIE> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [userEmailSort, setUserEmailSort] = useState<SortType>("DESC");
+  const [userNicknameSort, setUserNicknameSort] = useState<SortType>("DESC");
 
+  /**
+   * 초기 로드
+   */
   useEffect(() => {
     if (totalCount === 0) {
       getUserCount();
     }
 
     if (users.length === 0) {
-      getUserList(0);
+      getUserList({ skip: 0 });
     }
-  }, [users.length, totalCount]);
+  }, []);
 
-  // init
+  /**
+   * 상태별 로드 데이터
+   */
+  useEffect(() => {
+    getUserList({ skip: 0, searchKeyword, userEmailSort, userNicknameSort });
+  }, [searchKeyword, userEmailSort, userNicknameSort]);
+
+  /**
+   * init
+   */
   const init = useCallback(() => {
     setActive(1);
     getUserCount();
-    getUserList(0);
+    getUserList({ skip: 0 });
   }, []);
+
   /**
    * User List의 Total Count를 가져온다.
    */
@@ -58,8 +73,23 @@ const User: React.FC<ComponentIE> = (
    * User 정보들을 가져온다.
    */
   const getUserList = useCallback(
-    async (skip: number, searchKeyword?: string) => {
-      const users = await findUser({ skip, searchKeyword });
+    async ({
+      skip,
+      searchKeyword,
+      userEmailSort,
+      userNicknameSort,
+    }: {
+      skip: number;
+      searchKeyword?: string;
+      userEmailSort?: SortType;
+      userNicknameSort?: SortType;
+    }) => {
+      const users = await findUser({
+        skip,
+        searchKeyword,
+        userEmailSort,
+        userNicknameSort,
+      });
       setUsers(users);
     },
     [users.length]
@@ -71,9 +101,14 @@ const User: React.FC<ComponentIE> = (
   const onPageClick = useCallback(
     (page: number) => {
       setActive(page + 1);
-      getUserList(page * defaultPagingCount, searchKeyword);
+      getUserList({
+        skip: page * defaultPagingCount,
+        searchKeyword,
+        userEmailSort,
+        userNicknameSort,
+      });
     },
-    [active, searchKeyword]
+    [searchKeyword, userEmailSort, userNicknameSort]
   );
 
   /**
@@ -101,17 +136,21 @@ const User: React.FC<ComponentIE> = (
   const onSearchKeyword = useCallback(async (searchKeyword: string) => {
     setActive(1);
     setSearchKeyword(searchKeyword);
-    getUserList(0, searchKeyword);
     getUserCount(searchKeyword);
   }, []);
 
   /**
    * 정렬
    */
-  const onSortClick = (type: string, sort: boolean) => {
-    console.log(type, sort);
-    console.log("개발중");
-  };
+  const onSortClick = useCallback((entity: string, type: SortType) => {
+    setActive(1);
+    if (entity.match("userEmail")) {
+      setUserEmailSort(type);
+    }
+    if (entity.match("userNickname")) {
+      setUserNicknameSort(type);
+    }
+  }, []);
 
   return (
     <Container.LayoutContainer>

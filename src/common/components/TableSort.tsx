@@ -2,6 +2,7 @@ import _ from "lodash";
 import React, { useCallback } from "react";
 import { useState } from "react";
 import { Icon, Label } from ".";
+import { SortType } from "../interface";
 import { CommonColor } from "../styles";
 import { DynamicColorContainer } from "./Container";
 
@@ -27,7 +28,8 @@ interface TableSortIE {
 const TableSort: React.FC<TableSortIE> = (
   props: TableSortIE
 ): React.ReactElement => {
-  const [sort, setSort] = useState(false);
+  // false = desc, true = asc
+  const [sort, setSort] = useState<SortType>("DESC");
   const {
     title,
     next,
@@ -38,7 +40,7 @@ const TableSort: React.FC<TableSortIE> = (
   } = props;
 
   const onClickSort = useCallback(() => {
-    const _sort = !sort;
+    const _sort = sort === "DESC" ? "ASC" : "DESC";
     setSort(_sort);
 
     if (_.isFunction(next)) {
@@ -75,7 +77,7 @@ const TableSort: React.FC<TableSortIE> = (
         <Label.CommonLabel style={{ ...textStyleItems }}>
           {title}
         </Label.CommonLabel>
-        {sort === true ? (
+        {sort === "DESC" ? (
           !_.isEmpty(UpIcon) === true ? (
             UpIcon
           ) : (
