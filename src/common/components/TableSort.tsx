@@ -1,12 +1,12 @@
 import _ from "lodash";
 import React, { useCallback } from "react";
-import { useState } from "react";
 import { Icon, Label } from ".";
 import { SortType } from "../interface";
 import { CommonColor } from "../styles";
 import { DynamicColorContainer } from "./Container";
 
 interface TableSortIE {
+  sort: SortType;
   title: string;
   next: Function;
   containerStyleItems?: {
@@ -29,8 +29,8 @@ const TableSort: React.FC<TableSortIE> = (
   props: TableSortIE
 ): React.ReactElement => {
   // false = desc, true = asc
-  const [sort, setSort] = useState<SortType>("DESC");
   const {
+    sort,
     title,
     next,
     containerStyleItems,
@@ -41,7 +41,6 @@ const TableSort: React.FC<TableSortIE> = (
 
   const onClickSort = useCallback(() => {
     const _sort = sort === "DESC" ? "ASC" : "DESC";
-    setSort(_sort);
 
     if (_.isFunction(next)) {
       next(_sort);

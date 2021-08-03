@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { ReduxIE } from "../redux/interface";
 import { RouteIE } from "../route/routes";
 
-export type SortType = "DESC" | "ASC";
+export type SortType = "DESC" | "ASC" | undefined;
 export interface LayoutIE extends ReduxIE, RouteComponentProps, RouteIE {}
 
 export interface ComponentIE extends LayoutIE {
