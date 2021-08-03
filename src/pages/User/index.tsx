@@ -26,20 +26,14 @@ const User: React.FC<ComponentIE> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [userEmailSort, setUserEmailSort] = useState<SortType>("DESC");
-  const [userNicknameSort, setUserNicknameSort] = useState<SortType>("DESC");
+  const [userEmailSort, setUserEmailSort] = useState<SortType>(undefined);
+  const [userNicknameSort, setUserNicknameSort] = useState<SortType>(undefined);
 
   /**
    * 초기 로드
    */
   useEffect(() => {
-    if (totalCount === 0) {
-      getUserCount();
-    }
-
-    if (users.length === 0) {
-      getUserList({ skip: 0 });
-    }
+    getUserList({ skip: 0 });
   }, []);
 
   /**
@@ -52,22 +46,10 @@ const User: React.FC<ComponentIE> = (
   /**
    * init
    */
-  const init = useCallback(() => {
+  const init = useCallback((): void => {
     setActive(1);
-    getUserCount();
     getUserList({ skip: 0 });
   }, []);
-
-  /**
-   * User List의 Total Count를 가져온다.
-   */
-  const getUserCount = useCallback(
-    async (searchKeyword?: string) => {
-      const totalCount = await findUserCount({ searchKeyword });
-      setTotalCount(totalCount);
-    },
-    [totalCount]
-  );
 
   /**
    * User 정보들을 가져온다.
@@ -83,14 +65,15 @@ const User: React.FC<ComponentIE> = (
       searchKeyword?: string;
       userEmailSort?: SortType;
       userNicknameSort?: SortType;
-    }) => {
+    }): Promise<void> => {
       const users = await findUser({
         skip,
         searchKeyword,
         userEmailSort,
         userNicknameSort,
       });
-      setUsers(users);
+      setUsers(users[0]);
+      setTotalCount(users[1]);
     },
     [users.length]
   );
@@ -99,7 +82,7 @@ const User: React.FC<ComponentIE> = (
    * Page Click Event
    */
   const onPageClick = useCallback(
-    (page: number) => {
+    (page: number): void => {
       setActive(page + 1);
       getUserList({
         skip: page * defaultPagingCount,
@@ -116,7 +99,13 @@ const User: React.FC<ComponentIE> = (
    */
   const history = useHistory();
   const onDetailClick = useCallback(
-    ({ type, item }: { type: "CREATE" | "MODIFY"; item?: UserInfoIE }) => {
+    ({
+      type,
+      item,
+    }: {
+      type: "CREATE" | "MODIFY";
+      item?: UserInfoIE;
+    }): void => {
       history.push(RoutePath.USER_DETAIL, { ...item, type });
     },
     []
@@ -125,7 +114,7 @@ const User: React.FC<ComponentIE> = (
   /**
    * 삭제
    */
-  const onDeleteClick = useCallback(async (userId: number) => {
+  const onDeleteClick = useCallback(async (userId: number): Promise<void> => {
     await deleteUser({ userId });
     init();
   }, []);
@@ -133,22 +122,23 @@ const User: React.FC<ComponentIE> = (
   /**
    * 검색
    */
-  const onSearchKeyword = useCallback(async (searchKeyword: string) => {
+  const onSearchKeyword = useCallback((searchKeyword: string): void => {
     setActive(1);
     setSearchKeyword(searchKeyword);
-    getUserCount(searchKeyword);
   }, []);
 
   /**
    * 정렬
    */
-  const onSortClick = useCallback((entity: string, type: SortType) => {
+  const onSortClick = useCallback((entity: string, type: SortType): void => {
     setActive(1);
     if (entity.match("userEmail")) {
       setUserEmailSort(type);
+      setUserNicknameSort(undefined);
     }
     if (entity.match("userNickname")) {
       setUserNicknameSort(type);
+      setUserEmailSort(undefined);
     }
   }, []);
 
@@ -164,6 +154,8 @@ const User: React.FC<ComponentIE> = (
         <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List
+        userEmailSort={userEmailSort}
+        userNicknameSort={userNicknameSort}
         users={users}
         onSortClick={onSortClick}
         onDeleteClick={onDeleteClick}

@@ -5,11 +5,15 @@ import { Button, TableSort } from "../../common/components";
 import { SortType } from "../../common/interface";
 
 const List = ({
+  userEmailSort,
+  userNicknameSort,
   users,
   onSortClick,
   onDeleteClick,
   onDetailClick,
 }: {
+  userEmailSort: SortType;
+  userNicknameSort: SortType;
   users: UserInfoIE[];
   onSortClick: Function;
   onDeleteClick: Function;
@@ -21,10 +25,12 @@ const List = ({
         <tr>
           <th>ID</th>
           <TableSort
+            sort={userEmailSort}
             title={"이메일"}
             next={(sort: SortType) => onSortClick("userEmail", sort)}
           />
           <TableSort
+            sort={userNicknameSort}
             title={"닉네임"}
             next={(sort: SortType) => onSortClick("userNickname", sort)}
           />
