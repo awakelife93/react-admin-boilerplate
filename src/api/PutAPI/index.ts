@@ -11,7 +11,7 @@ export const signUp = async ({
   userNickname: string;
   userPw: string;
   userRoleIds: number[];
-}) => {
+}): Promise<UserInfoIE> => {
   try {
     let result: UserInfoIE = await putAPI("signUp", {
       userEmail,

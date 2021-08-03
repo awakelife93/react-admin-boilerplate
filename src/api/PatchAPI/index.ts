@@ -12,7 +12,7 @@ export const updateUser = async ({
   userNickname?: string;
   userPw?: string;
   userRoleIds?: number[];
-}) => {
+}): Promise<UserInfoIE> => {
   try {
     const item: any = { userId };
 

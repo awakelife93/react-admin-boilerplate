@@ -8,7 +8,7 @@ export const findUserCount = async ({
   searchKeyword = "",
 }: {
   searchKeyword?: string;
-}) => {
+}): Promise<number> => {
   try {
     const result: number = await getAPI("findUserCount", { searchKeyword });
     return result;
@@ -18,7 +18,21 @@ export const findUserCount = async ({
   }
 };
 
-export const findComponentCount = async () => {
+export const findContentsCount = async ({
+  searchKeyword = "",
+}: {
+  searchKeyword?: string;
+}): Promise<number> => {
+  try {
+    const result: number = await getAPI("findContentsCount", { searchKeyword });
+    return result;
+  } catch (e) {
+    console.log("===============> findContentsCount Error", e);
+    throw e;
+  }
+};
+
+export const findComponentCount = async (): Promise<number> => {
   try {
     const result: number = await getAPI("findComponentCount");
     return result;
@@ -28,7 +42,7 @@ export const findComponentCount = async () => {
   }
 };
 
-export const findLayoutCount = async () => {
+export const findLayoutCount = async (): Promise<number> => {
   try {
     const result: number = await getAPI("findLayoutCount");
     return result;
@@ -38,7 +52,7 @@ export const findLayoutCount = async () => {
   }
 };
 
-export const findStyleCount = async () => {
+export const findStyleCount = async (): Promise<number> => {
   try {
     const result: number = await getAPI("findStyleCount");
     return result;
@@ -48,22 +62,12 @@ export const findStyleCount = async () => {
   }
 };
 
-export const findThemeCount = async () => {
+export const findThemeCount = async (): Promise<number> => {
   try {
     const result: number = await getAPI("findThemeCount");
     return result;
   } catch (e) {
     console.log("===============> findThemeCount Error", e);
-    throw e;
-  }
-};
-
-export const findContentsCount = async () => {
-  try {
-    const result: number = await getAPI("findContentsCount");
-    return result;
-  } catch (e) {
-    console.log("===============> findContentsCount Error", e);
     throw e;
   }
 };
@@ -78,7 +82,7 @@ export const findUser = async ({
   searchKeyword?: string;
   userEmailSort?: SortType;
   userNicknameSort?: SortType;
-}) => {
+}): Promise<[UserInfoIE[], number]> => {
   try {
     const items = {
       take: defaultPagingCount,
@@ -87,7 +91,10 @@ export const findUser = async ({
       userEmailSort: userEmailSort ?? "",
       userNicknameSort: userNicknameSort ?? "",
     };
-    const result: UserInfoIE[] = await getAPI("findUser", items);
+    const result: Promise<[UserInfoIE[], number]> = await getAPI(
+      "findUser",
+      items
+    );
     return result;
   } catch (e) {
     console.log("===============> findUser Error", e);
@@ -95,12 +102,28 @@ export const findUser = async ({
   }
 };
 
-export const findContents = async ({ skip = 0 }: { skip: number }) => {
+export const findContents = async ({
+  skip = 0,
+  searchKeyword = "",
+  contTitleSort,
+  contSubTitleSort,
+}: {
+  skip: number;
+  searchKeyword?: string;
+  contTitleSort?: SortType;
+  contSubTitleSort?: SortType;
+}): Promise<[ContentsIE[], number]> => {
   try {
-    const result: ContentsIE[] = await getAPI("findContents", {
-      take: defaultPagingCount,
-      skip,
-    });
+    const result: Promise<[ContentsIE[], number]> = await getAPI(
+      "findContents",
+      {
+        take: defaultPagingCount,
+        skip,
+        searchKeyword: searchKeyword ?? "",
+        contTitleSort: contTitleSort ?? "",
+        contSubTitleSort: contSubTitleSort ?? "",
+      }
+    );
     return result;
   } catch (e) {
     console.log("===============> findContents Error", e);
@@ -170,7 +193,7 @@ export const findDashboardCount = async () => {
   }
 };
 
-export const findUserProfile = async () => {
+export const findUserProfile = async (): Promise<UserInfoIE> => {
   try {
     const result: UserInfoIE = await getAPI("findUserProfile");
     return result;
