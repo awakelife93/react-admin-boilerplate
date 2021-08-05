@@ -12,7 +12,7 @@ import {
   Label,
   CommonRender,
 } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { ComponentIE, PageType } from "../../common/interface";
 import { I18nCommandEnum } from "../../core";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
@@ -24,7 +24,7 @@ import { validationObject } from "../../utils";
  * @returns {React.ReactElement}
  */
 interface UserDetailPropsIE extends UserInfoIE {
-  type: "CREATE" | "MODIFY";
+  type: PageType;
 }
 
 const UserDetail: React.FC<ComponentIE> = (
@@ -44,7 +44,7 @@ const UserDetail: React.FC<ComponentIE> = (
       : [1]
   );
 
-  const _showMessageModal = (message: string) => {
+  const _showMessageModal = (message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -56,7 +56,7 @@ const UserDetail: React.FC<ComponentIE> = (
   };
 
   const validationItem = useCallback(
-    (item: any) => {
+    (item: any): boolean => {
       if (!validationObject(item)) {
         _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
@@ -68,7 +68,7 @@ const UserDetail: React.FC<ComponentIE> = (
   );
 
   const history = useHistory();
-  const _signUp = async () => {
+  const _signUp = useCallback(async (): Promise<void | boolean> => {
     const item = { userEmail, userNickname, userPw, userRoleIds };
 
     if (validationItem(item) === true) {
@@ -87,9 +87,9 @@ const UserDetail: React.FC<ComponentIE> = (
         }
       }
     }
-  };
+  }, [userEmail, userNickname, userPw, userRoleIds]);
 
-  const _updateUser = async () => {
+  const _updateUser = useCallback(async (): Promise<void> => {
     const item = { userId: state.userId, userNickname, userPw, userRoleIds };
     try {
       await updateUser(item);
@@ -97,20 +97,23 @@ const UserDetail: React.FC<ComponentIE> = (
     } catch (e) {
       console.log("_updateUser Error", e);
     }
-  };
+  }, [userNickname, userPw, userRoleIds]);
 
-  const onClickRoleBox = (roleId: number) => {
-    if (userRoleIds.indexOf(roleId) !== -1) {
-      const _userRole = userRoleIds.filter((_roleId: number) => {
-        return roleId !== _roleId;
-      });
-      setUserRole(_userRole);
-    } else {
-      setUserRole([...userRoleIds, roleId]);
-    }
-  };
+  const onClickRoleBox = useCallback(
+    (roleId: number): void => {
+      if (userRoleIds.indexOf(roleId) !== -1) {
+        const _userRole = userRoleIds.filter((_roleId: number) => {
+          return roleId !== _roleId;
+        });
+        setUserRole(_userRole);
+      } else {
+        setUserRole([...userRoleIds, roleId]);
+      }
+    },
+    [userRoleIds]
+  );
 
-  const createTypeRender = () => {
+  const createTypeRender = useCallback((): React.ReactElement => {
     return (
       <Container.ColumnContainer>
         {/**********************************************************/}
@@ -187,9 +190,9 @@ const UserDetail: React.FC<ComponentIE> = (
         </Button.SubMitButton>
       </Container.ColumnContainer>
     );
-  };
+  }, [setEmail, setNickname, setPassword, onClickRoleBox, _signUp]);
 
-  const modifyTypeRender = () => {
+  const modifyTypeRender = useCallback((): React.ReactElement => {
     return (
       <Container.ColumnContainer>
         <Container.RowContainer
@@ -250,7 +253,8 @@ const UserDetail: React.FC<ComponentIE> = (
         </Button.SubMitButton>
       </Container.ColumnContainer>
     );
-  };
+  }, [setNickname, setPassword, onClickRoleBox, _updateUser]);
+
   return (
     <Container.RowContainer style={{ justifyContent: "flex-start" }}>
       {state.type === "CREATE" ? createTypeRender() : modifyTypeRender()}

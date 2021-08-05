@@ -1,6 +1,7 @@
 import { CSSProperties } from "styled-components";
 import { InputBox, Container, Label } from ".";
 import { isAdmin, isUser } from "../../utils";
+import { PageType } from "../interface";
 
 export const DefaultFC: React.FC = (): React.ReactElement => {
   return <></>;
@@ -12,7 +13,7 @@ export const DefaultUserRoleFC = ({
   userRoleIds,
   onClickUserRole,
 }: {
-  type: "CREATE" | "MODIFY";
+  type: PageType;
   style?: CSSProperties;
   userRoleIds: any[];
   onClickUserRole: Function;

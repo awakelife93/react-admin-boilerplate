@@ -10,6 +10,7 @@ import { CommonColor } from "../../common/styles";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
+
 const Dashboard: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
@@ -24,7 +25,7 @@ const Dashboard: React.FC<ComponentIE> = (
     getDashboardCount();
   }, []);
 
-  const getDashboardCount = useCallback(async () => {
+  const getDashboardCount = useCallback(async (): Promise<void> => {
     const result = await findDashboardCount();
     setDashboardCount({
       totalUser: result.usersCount.total,

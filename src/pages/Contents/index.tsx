@@ -10,7 +10,7 @@ import {
   SearchBar,
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
-import { ComponentIE, SortType } from "../../common/interface";
+import { ComponentIE, PageType, SortType } from "../../common/interface";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 
@@ -99,13 +99,7 @@ const Contents: React.FC<ComponentIE> = (
    */
   const history = useHistory();
   const onDetailClick = useCallback(
-    ({
-      type,
-      item,
-    }: {
-      type: "CREATE" | "MODIFY";
-      item?: ContentsIE;
-    }): void => {
+    ({ type, item }: { type: PageType; item?: ContentsIE }): void => {
       alert("개발중");
       // history.push(RoutePath.USER_DETAIL, { ...item, type });
     },

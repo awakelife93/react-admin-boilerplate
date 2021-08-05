@@ -60,7 +60,7 @@ export const removeWindowData = (key: string): void => {
   window.globalEntity[key] = "";
 };
 
-export const clearWindowData = () => {
+export const clearWindowData = (): void => {
   let keys = Object.keys(window.globalEntity);
 
   keys.forEach((key: string) => {

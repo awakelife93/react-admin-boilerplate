@@ -15,7 +15,7 @@ const ScrollFadeIn = (
   const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
 
   const onScroll = useCallback(
-    ([entry]: any) => {
+    ([entry]: any): void => {
       const { current } = component;
       if (entry.isIntersecting) {
         current.style.transitionDuration = `${option.duration}s`;
