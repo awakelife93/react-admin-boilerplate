@@ -35,7 +35,7 @@ const DownLoader: React.FC<DownLoaderIE> = (
     containerStyleItems,
   } = props;
 
-  const init = () => {
+  const init = (): void => {
     if (downloadInput.current) {
       downloadInput.current.value = "";
     }

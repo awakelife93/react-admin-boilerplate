@@ -43,14 +43,17 @@ const SignIn: React.FC<ComponentIE> = (
     }
   }, []);
 
-  const validationItem = useCallback((item: any) => {
-    if (!validationObject(item)) {
-      _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
-      return false;
-    }
+  const validationItem = useCallback(
+    (item: any) => {
+      if (!validationObject(item)) {
+        _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+        return false;
+      }
 
-    return true;
-  }, []);
+      return true;
+    },
+    [_showMessageModal]
+  );
 
   const history = useHistory();
   const _signIn = useCallback(async (): Promise<void | boolean> => {
@@ -96,7 +99,7 @@ const SignIn: React.FC<ComponentIE> = (
         }
       }
     }
-  }, [userEmail, userPw, _showMessageModal]);
+  }, [history, props, userEmail, userPw, _showMessageModal, validationItem]);
 
   const checkKeyPress = useCallback(
     (event: any): void => {

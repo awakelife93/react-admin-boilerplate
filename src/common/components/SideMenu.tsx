@@ -44,7 +44,7 @@ const SideMenu: React.FC = (): React.ReactElement => {
                   </Navbar.Brand>
                 </Link>
               );
-            }
+            } else return null;
           })}
       </Container.ColumnContainer>
     </Navbar>

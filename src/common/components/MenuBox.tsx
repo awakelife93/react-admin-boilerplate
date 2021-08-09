@@ -34,20 +34,20 @@ const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
     renderType = "row",
   } = props;
 
+  const checkOutSideClick = useCallback((event: any): void => {
+    // 어느 영역을 눌러도 종료가 되게끔...
+    setShowMenuBox(false);
+  }, []);
+
   useEffect(() => {
     if (isShowMenuBox === true) {
       window.addEventListener("click", checkOutSideClick);
     }
 
     return () => window.removeEventListener("click", checkOutSideClick);
-  }, [isShowMenuBox]);
+  }, [isShowMenuBox, checkOutSideClick]);
 
-  const checkOutSideClick = useCallback((event: any) => {
-    // 어느 영역을 눌러도 종료가 되게끔...
-    setShowMenuBox(false);
-  }, []);
-
-  const renderLayout = () => {
+  const renderLayout = (): React.ReactElement => {
     // item이 수평으로 나열
     if (renderType === "row") {
       return (

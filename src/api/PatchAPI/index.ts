@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { patchAPI, postAPI } from "..";
+import { patchAPI } from "..";
 import { ContentsIE } from "../GetAPI/interface";
 import { UserInfoIE } from "../interface";
 

@@ -73,15 +73,26 @@ const ContentsDetail: React.FC<ComponentIE> = (
 
       if (state.type === "MODIFY") {
         await updateContents({ contId: state.contId, ...item });
+        history.push(RoutePath.CONTENTS);
       } else {
-        await createContents(item);
+        // require value - title
+        if (validationItem({ contTitle: item.contTitle })) {
+          await createContents(item);
+          history.push(RoutePath.CONTENTS);
+        }
       }
-
-      history.push(RoutePath.CONTENTS);
     } catch (e) {
       console.log("_updateContents Error", e);
     }
-  }, [state.contId, contTitle, contSubTitle, contDesc, history]);
+  }, [
+    state.type,
+    state.contId,
+    contTitle,
+    contSubTitle,
+    contDesc,
+    history,
+    validationItem,
+  ]);
 
   const detailRender = useCallback((): React.ReactElement => {
     const buttonName =
@@ -183,6 +194,7 @@ const ContentsDetail: React.FC<ComponentIE> = (
     contTitle,
     contSubTitle,
     contDesc,
+    contImageLink,
     t,
     setContTitle,
     setContSubTitle,

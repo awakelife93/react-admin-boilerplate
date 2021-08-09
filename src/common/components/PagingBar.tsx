@@ -20,7 +20,7 @@ const PagingBar: React.FC<PagingBarIE> = (
 ): React.ReactElement => {
   const { active, onPageClick, limit, totalCount } = props;
 
-  const generatePageItem = useCallback(() => {
+  const generatePageItem = useCallback((): React.ReactElement[] => {
     let item: any = [];
 
     for (let i = 0; i < Math.ceil(totalCount / limit); i++) {
@@ -35,9 +35,10 @@ const PagingBar: React.FC<PagingBarIE> = (
       );
     }
     return item;
-  }, [totalCount, limit, active]);
+  }, [totalCount, limit, active, onPageClick]);
 
-  const pageItem = generatePageItem();
+  const pageItem: React.ReactElement[] = generatePageItem();
+
   return (
     <Pagination>
       {!_.isEmpty(pageItem) &&

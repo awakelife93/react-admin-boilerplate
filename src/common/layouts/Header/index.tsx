@@ -29,15 +29,21 @@ const Header: React.FC<ComponentIE> = (
   } = props;
 
   const history = useHistory();
-  const _routePush = useCallback((route: string) => {
-    history.push(route);
-  }, []);
+  const _routePush = useCallback(
+    (route: string) => {
+      history.push(route);
+    },
+    [history]
+  );
 
   const { i18n } = useTranslation();
-  const _setLaunage = useCallback((lng: string) => {
-    setLocalStorageItem({ lng });
-    i18n.changeLanguage(lng);
-  }, []);
+  const _setLaunage = useCallback(
+    (lng: string) => {
+      setLocalStorageItem({ lng });
+      i18n.changeLanguage(lng);
+    },
+    [i18n]
+  );
 
   const _signOut = async () => {
     try {

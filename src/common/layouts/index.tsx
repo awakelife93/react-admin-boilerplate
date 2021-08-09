@@ -37,7 +37,15 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     initUserInfoAction,
   } = props;
 
-  // todo: path가 달라질 때마다 로그인 유무를 검사하여, 로그아웃일 경우 강제 로그인 화면으로
+  const initUserProfile = useCallback(async () => {
+    const profile: UserInfoIE = await findUserProfile();
+
+    setUserInfoAction({
+      isLogin: true,
+      info: { ...profile },
+    });
+  }, [setUserInfoAction]);
+
   // init
   useEffect(() => {
     // generate global function
@@ -53,16 +61,12 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
     if (!_.isEmpty(token) && userStore.user.isLogin === false) {
       initUserProfile();
     }
-  }, []);
-
-  const initUserProfile = useCallback(async () => {
-    const profile: UserInfoIE = await findUserProfile();
-
-    setUserInfoAction({
-      isLogin: true,
-      info: { ...profile },
-    });
-  }, [userStore.user.isLogin]);
+  }, [
+    userStore.user.isLogin,
+    initUserInfoAction,
+    showModalAction,
+    initUserProfile,
+  ]);
 
   return (
     <Container.LayoutContainer>

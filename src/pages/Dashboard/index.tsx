@@ -21,10 +21,6 @@ const Dashboard: React.FC<ComponentIE> = (
     totalContent: 0,
   });
 
-  useEffect(() => {
-    getDashboardCount();
-  }, []);
-
   const getDashboardCount = useCallback(async (): Promise<void> => {
     const result = await findDashboardCount();
     setDashboardCount({
@@ -34,6 +30,10 @@ const Dashboard: React.FC<ComponentIE> = (
       totalContent: result.contentsCount.total,
     });
   }, []);
+
+  useEffect(() => {
+    getDashboardCount();
+  }, [getDashboardCount]);
 
   return (
     <Container.LayoutContainer style={{ margin: 50 }}>

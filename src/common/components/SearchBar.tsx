@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Container, InputBox } from ".";
@@ -19,14 +20,18 @@ const SearchBar: React.FC<SearchBarIE> = (
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState("");
 
-  const onChangeInput = useCallback((e: any) => {
+  const onChangeInput = useCallback((e: any): void => {
     const v = e.target.value;
     setInputValue(v);
   }, []);
 
-  const onClickSearch = useCallback(() => {
-    props.next(inputValue);
-  }, [inputValue]);
+  const onClickSearch = useCallback((): void => {
+    const { next } = props;
+
+    if (_.isFunction(next)) {
+      next(inputValue);
+    }
+  }, [inputValue, props]);
 
   return (
     <Container.RowContainer>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { deleteContents } from "../../api/DeleteAPI";
-import { findContents, findContentsCount } from "../../api/GetAPI";
+import { findContents } from "../../api/GetAPI";
 import { ContentsIE } from "../../api/GetAPI/interface";
 import {
   Button,
@@ -30,33 +30,6 @@ const Contents: React.FC<ComponentIE> = (
   const [contSubTitleSort, setContSubTitleSort] = useState<SortType>(undefined);
 
   /**
-   * 초기 로드
-   */
-  useEffect(() => {
-    getContentsList({ skip: 0 });
-  }, []);
-
-  /**
-   * 상태별 로드 데이터
-   */
-  useEffect(() => {
-    getContentsList({
-      skip: 0,
-      searchKeyword,
-      contTitleSort,
-      contSubTitleSort,
-    });
-  }, [searchKeyword, contTitleSort, contSubTitleSort]);
-
-  /**
-   * init
-   */
-  const init = useCallback((): void => {
-    setActive(1);
-    getContentsList({ skip: 0 });
-  }, []);
-
-  /**
    * Contents 정보들을 가져온다.
    */
   const getContentsList = useCallback(
@@ -71,17 +44,44 @@ const Contents: React.FC<ComponentIE> = (
       contTitleSort?: SortType;
       contSubTitleSort?: SortType;
     }): Promise<void> => {
-      const contents = await findContents({
+      const _contents = await findContents({
         skip,
         searchKeyword,
         contTitleSort,
         contSubTitleSort,
       });
-      setContents(contents[0]);
-      setTotalCount(contents[1]);
+      setContents(_contents[0]);
+      setTotalCount(_contents[1]);
     },
-    [contents.length]
+    []
   );
+
+  /**
+   * 초기 로드
+   */
+  useEffect(() => {
+    getContentsList({ skip: 0 });
+  }, [getContentsList]);
+
+  /**
+   * 상태별 로드 데이터
+   */
+  useEffect(() => {
+    getContentsList({
+      skip: 0,
+      searchKeyword,
+      contTitleSort,
+      contSubTitleSort,
+    });
+  }, [getContentsList, searchKeyword, contTitleSort, contSubTitleSort]);
+
+  /**
+   * init
+   */
+  const init = useCallback((): void => {
+    setActive(1);
+    getContentsList({ skip: 0 });
+  }, [getContentsList]);
 
   /**
    * Page Click Event
@@ -91,35 +91,8 @@ const Contents: React.FC<ComponentIE> = (
       setActive(page + 1);
       getContentsList({ skip: page * defaultPagingCount });
     },
-    [active]
+    [getContentsList]
   );
-
-  /**
-   * 상세
-   */
-  const history = useHistory();
-  const onDetailClick = useCallback(
-    ({ type, item }: { type: PageType; item?: ContentsIE }): void => {
-      history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
-    },
-    []
-  );
-
-  /**
-   * 삭제
-   */
-  const onDeleteClick = useCallback(async (contId: number): Promise<void> => {
-    await deleteContents({ contId });
-    init();
-  }, []);
-
-  /**
-   * 검색
-   */
-  const onSearchKeyword = useCallback((searchKeyword: string): void => {
-    setActive(1);
-    setSearchKeyword(searchKeyword);
-  }, []);
 
   /**
    * 정렬
@@ -134,6 +107,36 @@ const Contents: React.FC<ComponentIE> = (
       setContSubTitleSort(type);
       setContTitleSort(undefined);
     }
+  }, []);
+
+  /**
+   * 상세
+   */
+  const history = useHistory();
+  const onDetailClick = useCallback(
+    ({ type, item }: { type: PageType; item?: ContentsIE }): void => {
+      history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
+    },
+    [history]
+  );
+
+  /**
+   * 삭제
+   */
+  const onDeleteClick = useCallback(
+    async (contId: number): Promise<void> => {
+      await deleteContents({ contId });
+      init();
+    },
+    [init]
+  );
+
+  /**
+   * 검색
+   */
+  const onSearchKeyword = useCallback((searchKeyword: string): void => {
+    setActive(1);
+    setSearchKeyword(searchKeyword);
   }, []);
 
   return (

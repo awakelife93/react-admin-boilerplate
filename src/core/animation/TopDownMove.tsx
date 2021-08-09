@@ -32,7 +32,7 @@ const TopDownMove = (
         position: option.position,
       });
     }
-  }, [animationObject]);
+  }, [animationObject.isMove, option.endPosition, option.position]);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -43,7 +43,7 @@ const TopDownMove = (
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [animationObject.isMove]);
+  }, [animationObject.isMove, option.delay, move]);
 
   return {
     ref: component,

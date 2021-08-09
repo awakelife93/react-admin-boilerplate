@@ -39,7 +39,7 @@ const TableSort: React.FC<TableSortIE> = (
     DownIcon,
   } = props;
 
-  const onClickSort = useCallback(() => {
+  const onClickSort = useCallback((): void => {
     const _sort = sort === "DESC" ? "ASC" : "DESC";
 
     if (_.isFunction(next)) {
