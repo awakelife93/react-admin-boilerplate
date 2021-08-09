@@ -39,7 +39,7 @@ const PagingBar: React.FC<PagingBarIE> = (
 
   const pageItem: React.ReactElement[] = useMemo(
     () => generatePageItem() ?? [],
-    [totalCount, limit, active]
+    [generatePageItem]
   );
 
   return (

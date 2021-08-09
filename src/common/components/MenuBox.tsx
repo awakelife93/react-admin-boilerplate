@@ -23,7 +23,9 @@ interface MenuBoxIE {
  * @param {MenuBoxIE} props
  * @returns {React.ReactElement}
  */
-const MenuBox: React.FC<MenuBoxIE> = (props: MenuBoxIE) => {
+const MenuBox: React.FC<MenuBoxIE> = (
+  props: MenuBoxIE
+): React.ReactElement | null => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
   const {
     children,
