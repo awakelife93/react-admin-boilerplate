@@ -23,5 +23,10 @@
   "contents_image": "Image",
 
   "update_user_info": "Update Info",
-  "delete_account": "Delete Account"
+  "delete_account": "Delete Account",
+
+  "dashboard": "Dashboard",
+  "user_list": "User List",
+  "contents_list": "Contents List",
+  "design_list": "Design List"
 }

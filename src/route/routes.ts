@@ -22,7 +22,7 @@ export enum RoutePath {
 export interface RouteIE {
   path: string;
   exact: boolean;
-  title: string;
+  i18nKey: string;
   Component: React.FC<ComponentIE>;
 }
 
@@ -30,43 +30,43 @@ const routes: RouteIE[] = [
   {
     path: RoutePath.DASHBOARD,
     exact: true,
-    title: "대시보드",
+    i18nKey: "dashboard",
     Component: DashboardPage,
   },
   {
     path: RoutePath.USER,
     exact: false,
-    title: "유저 관리",
+    i18nKey: "user_list",
     Component: UserPage,
   },
   {
     path: RoutePath.USER_DETAIL,
     exact: false,
-    title: "",
+    i18nKey: "",
     Component: UserDetailPage,
   },
   {
     path: RoutePath.CONTENTS,
     exact: false,
-    title: "컨텐츠 관리",
+    i18nKey: "contents_list",
     Component: ContentsPage,
   },
   {
     path: RoutePath.CONTENTS_DETAIL,
     exact: false,
-    title: "",
+    i18nKey: "",
     Component: ContentsDetailPage,
   },
   {
     path: RoutePath.DESIGN,
     exact: false,
-    title: "디자인 관리",
+    i18nKey: "design_list",
     Component: DesignPage,
   },
   {
     path: RoutePath.SIGN_IN,
     exact: false,
-    title: "",
+    i18nKey: "",
     Component: SignInPage,
   },
 ];

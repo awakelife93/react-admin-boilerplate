@@ -25,5 +25,10 @@
   "contents_image": "이미지",
 
   "update_user_info": "회원정보 수정",
-  "delete_account": "회원 탈퇴"
+  "delete_account": "회원 탈퇴",
+
+  "dashboard": "대시보드",
+  "user_list": "유저 관리",
+  "contents_list": "컨텐츠 관리",
+  "design_list": "디자인 관리"
 }

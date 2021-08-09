@@ -2,6 +2,7 @@ import _ from "lodash";
 import React from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Container } from ".";
 import routes, { RouteIE } from "../../route/routes";
 import { CommonColor } from "../styles";
@@ -13,6 +14,8 @@ import { CommonColor } from "../styles";
  * @returns {React.ReactElement}
  */
 const SideMenu: React.FC = (): React.ReactElement => {
+  const { t } = useTranslation();
+
   return (
     <Navbar
       bg="dark"
@@ -23,13 +26,13 @@ const SideMenu: React.FC = (): React.ReactElement => {
         minHeight: "100vh",
         display: "flex",
         alignItems: "flex-start",
-        padding: 30,
+        padding: "30px 15px 15px",
       }}
     >
       <Container.ColumnContainer>
         {!_.isEmpty(routes) &&
           routes.map((route: RouteIE, idx: number) => {
-            if (!_.isEmpty(route.title)) {
+            if (!_.isEmpty(route.i18nKey)) {
               return (
                 <Link key={`sidMenu_list_Key${idx}`} to={route.path}>
                   <Navbar.Brand>
@@ -40,7 +43,7 @@ const SideMenu: React.FC = (): React.ReactElement => {
                       height="30"
                       className="d-inline-block align-top"
                     />{" "}
-                    {route.title}
+                    {t(route.i18nKey)}
                   </Navbar.Brand>
                 </Link>
               );
