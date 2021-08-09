@@ -48,7 +48,7 @@ const TableSort: React.FC<TableSortIE> = (
   }, [sort, next]);
 
   return (
-    <th onClick={() => onClickSort()} style={{ padding: 0 }}>
+    <th onClick={() => onClickSort()} style={{ padding: 0, cursor: "pointer" }}>
       <DynamicColorContainer
         style={{
           display: "flex",
