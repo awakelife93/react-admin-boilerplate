@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import _ from "lodash";
 import {
   getLocalStorageItem,
@@ -6,8 +6,19 @@ import {
   removeLocalStorageItem,
 } from "../core";
 
+const _showMessageModal = (message: string) => {
+  if (_.isFunction(window.globalFunc.showModalAction)) {
+    window.globalFunc.showModalAction({
+      type: "MESSAGE",
+      item: {
+        childrenProps: { message },
+      },
+    });
+  }
+};
+
 const baseURL = "http://localhost:8080/";
-const instance = axios.create({
+const instance: AxiosInstance = axios.create({
   baseURL,
   headers: {
     Authorization: getLocalStorageItem("token")
@@ -19,7 +30,6 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const localStorageToken = getLocalStorageItem("token");
-    console.log("localStorageToken", localStorageToken);
     // 토큰이 소실되었을 경우 지워주기
     if (_.isEmpty(localStorageToken)) {
       config.headers.Authorization = "";
@@ -35,17 +45,6 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-const _showMessageModal = (message: string) => {
-  if (_.isFunction(window.globalFunc.showModalAction)) {
-    window.globalFunc.showModalAction({
-      type: "MESSAGE",
-      item: {
-        childrenProps: { message },
-      },
-    });
-  }
-};
 
 instance.interceptors.response.use(
   (response) => {

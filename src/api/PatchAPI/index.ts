@@ -1,5 +1,6 @@
 import _ from "lodash";
-import { patchAPI } from "..";
+import { patchAPI, postAPI } from "..";
+import { ContentsIE } from "../GetAPI/interface";
 import { UserInfoIE } from "../interface";
 
 export const updateUser = async ({
@@ -22,10 +23,36 @@ export const updateUser = async ({
 
     if (!_.isEmpty(userRoleIds)) item.userRoleIds = userRoleIds;
 
-    let result: UserInfoIE = await patchAPI("updateUser", { ...item });
-    return result;
+    return await patchAPI("updateUser", { ...item });
   } catch (e) {
     console.log("===============> updateUser Error", e);
+    throw e;
+  }
+};
+
+export const updateContents = async ({
+  contId,
+  contTitle,
+  contSubTitle,
+  contDesc,
+}: {
+  contId: number;
+  contTitle?: string;
+  contSubTitle?: string;
+  contDesc?: string;
+}): Promise<ContentsIE> => {
+  try {
+    const item: any = { contId };
+
+    if (!_.isEmpty(contTitle)) item.contTitle = contTitle;
+
+    if (!_.isEmpty(contSubTitle)) item.contSubTitle = contSubTitle;
+
+    if (!_.isEmpty(contDesc)) item.contDesc = contDesc;
+
+    return await patchAPI("updateContents", { ...item });
+  } catch (e) {
+    console.log("===============> updateContents Error", e);
     throw e;
   }
 };

@@ -27,4 +27,6 @@ export const CommonTextArea = styled.textarea`
     background-color: ${(props: CommonTextAreaIE) =>
       props.thumbStyles?.backgroundColor ?? "rgba(0, 0, 0, 0.24)"};
   }
+
+  resize: none;
 `;

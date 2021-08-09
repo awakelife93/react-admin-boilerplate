@@ -5,6 +5,7 @@ import UserPage from "../pages/User";
 import UserDetailPage from "../pages/User/Detail";
 import DesignPage from "../pages/Design";
 import ContentsPage from "../pages/Contents";
+import ContentsDetailPage from "../pages/Contents/Detail";
 import SignInPage from "../pages/Sign";
 
 import { ComponentIE } from "../common/interface";
@@ -15,6 +16,7 @@ export enum RoutePath {
   USER_DETAIL = "/userDetail",
   DESIGN = "/design",
   CONTENTS = "/contents",
+  CONTENTS_DETAIL = "/contentsDetail",
   SIGN_IN = "/signIn",
 }
 export interface RouteIE {
@@ -48,6 +50,12 @@ const routes: RouteIE[] = [
     exact: false,
     title: "컨텐츠 관리",
     Component: ContentsPage,
+  },
+  {
+    path: RoutePath.CONTENTS_DETAIL,
+    exact: false,
+    title: "",
+    Component: ContentsDetailPage,
   },
   {
     path: RoutePath.DESIGN,

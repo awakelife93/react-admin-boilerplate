@@ -6,8 +6,7 @@ export const deleteUser = async ({
   userId: number;
 }): Promise<object> => {
   try {
-    let result: object = await deleteAPI("removeUser", { userId });
-    return result;
+    return await deleteAPI("removeUser", { userId });
   } catch (e) {
     console.log("===============> deleteUser Error", e);
     throw e;
@@ -20,8 +19,7 @@ export const deleteContents = async ({
   contId: number;
 }): Promise<object> => {
   try {
-    let result: object = await deleteAPI("removeContents", { contId });
-    return result;
+    return await deleteAPI("removeContents", { contId });
   } catch (e) {
     console.log("===============> deleteContents Error", e);
     throw e;

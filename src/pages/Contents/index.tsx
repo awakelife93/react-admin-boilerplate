@@ -100,8 +100,7 @@ const Contents: React.FC<ComponentIE> = (
   const history = useHistory();
   const onDetailClick = useCallback(
     ({ type, item }: { type: PageType; item?: ContentsIE }): void => {
-      alert("개발중");
-      // history.push(RoutePath.USER_DETAIL, { ...item, type });
+      history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
     },
     []
   );
@@ -141,7 +140,7 @@ const Contents: React.FC<ComponentIE> = (
     <Container.LayoutContainer>
       <Container.RowContainer style={{ justifyContent: "space-between" }}>
         <Button.SubMitButton
-          onClick={() => () => null}
+          onClick={() => onDetailClick({ type: "CREATE" })}
           style={{ margin: 0, marginBottom: 10 }}
         >
           컨텐츠 생성

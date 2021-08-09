@@ -55,17 +55,14 @@ const UserDetail: React.FC<ComponentIE> = (
     }
   };
 
-  const validationItem = useCallback(
-    (item: any): boolean => {
-      if (!validationObject(item)) {
-        _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
-        return false;
-      }
+  const validationItem = useCallback((item: any): boolean => {
+    if (!validationObject(item)) {
+      _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
+      return false;
+    }
 
-      return true;
-    },
-    [userPw]
-  );
+    return true;
+  }, []);
 
   const history = useHistory();
   const _signUp = useCallback(async (): Promise<void | boolean> => {
@@ -87,17 +84,18 @@ const UserDetail: React.FC<ComponentIE> = (
         }
       }
     }
-  }, [userEmail, userNickname, userPw, userRoleIds]);
+  }, [userEmail, userNickname, userPw, userRoleIds, history, validationItem]);
 
   const _updateUser = useCallback(async (): Promise<void> => {
     const item = { userId: state.userId, userNickname, userPw, userRoleIds };
     try {
+      console.log(userNickname);
       await updateUser(item);
       history.push(RoutePath.USER);
     } catch (e) {
       console.log("_updateUser Error", e);
     }
-  }, [userNickname, userPw, userRoleIds]);
+  }, [state.userId, userNickname, userPw, userRoleIds, history]);
 
   const onClickRoleBox = useCallback(
     (roleId: number): void => {
@@ -190,7 +188,16 @@ const UserDetail: React.FC<ComponentIE> = (
         </Button.SubMitButton>
       </Container.ColumnContainer>
     );
-  }, [setEmail, setNickname, setPassword, onClickRoleBox, _signUp]);
+  }, [
+    state.type,
+    userRoleIds,
+    t,
+    setEmail,
+    setNickname,
+    setPassword,
+    onClickRoleBox,
+    _signUp,
+  ]);
 
   const modifyTypeRender = useCallback((): React.ReactElement => {
     return (
@@ -253,10 +260,21 @@ const UserDetail: React.FC<ComponentIE> = (
         </Button.SubMitButton>
       </Container.ColumnContainer>
     );
-  }, [setNickname, setPassword, onClickRoleBox, _updateUser]);
+  }, [
+    state.type,
+    userNickname,
+    userRoleIds,
+    t,
+    setNickname,
+    setPassword,
+    onClickRoleBox,
+    _updateUser,
+  ]);
 
   return (
-    <Container.RowContainer style={{ justifyContent: "flex-start" }}>
+    <Container.RowContainer
+      style={{ justifyContent: "flex-start", width: "100%", margin: 20 }}
+    >
       {state.type === "CREATE" ? createTypeRender() : modifyTypeRender()}
     </Container.RowContainer>
   );

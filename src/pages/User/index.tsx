@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { deleteUser } from "../../api/DeleteAPI";
-import { findUser, findUserCount } from "../../api/GetAPI";
+import { findUser } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import {
   Button,
@@ -30,28 +30,6 @@ const User: React.FC<ComponentIE> = (
   const [userNicknameSort, setUserNicknameSort] = useState<SortType>(undefined);
 
   /**
-   * 초기 로드
-   */
-  useEffect(() => {
-    getUserList({ skip: 0 });
-  }, []);
-
-  /**
-   * 상태별 로드 데이터
-   */
-  useEffect(() => {
-    getUserList({ skip: 0, searchKeyword, userEmailSort, userNicknameSort });
-  }, [searchKeyword, userEmailSort, userNicknameSort]);
-
-  /**
-   * init
-   */
-  const init = useCallback((): void => {
-    setActive(1);
-    getUserList({ skip: 0 });
-  }, []);
-
-  /**
    * User 정보들을 가져온다.
    */
   const getUserList = useCallback(
@@ -66,17 +44,39 @@ const User: React.FC<ComponentIE> = (
       userEmailSort?: SortType;
       userNicknameSort?: SortType;
     }): Promise<void> => {
-      const users = await findUser({
+      const _users = await findUser({
         skip,
         searchKeyword,
         userEmailSort,
         userNicknameSort,
       });
-      setUsers(users[0]);
-      setTotalCount(users[1]);
+      setUsers(_users[0]);
+      setTotalCount(_users[1]);
     },
-    [users.length]
+    []
   );
+
+  /**
+   * 초기 로드
+   */
+  useEffect(() => {
+    getUserList({ skip: 0 });
+  }, [getUserList]);
+
+  /**
+   * 상태별 로드 데이터
+   */
+  useEffect(() => {
+    getUserList({ skip: 0, searchKeyword, userEmailSort, userNicknameSort });
+  }, [searchKeyword, userEmailSort, userNicknameSort, getUserList]);
+
+  /**
+   * init
+   */
+  const init = useCallback((): void => {
+    setActive(1);
+    getUserList({ skip: 0 });
+  }, [getUserList]);
 
   /**
    * Page Click Event
@@ -91,35 +91,8 @@ const User: React.FC<ComponentIE> = (
         userNicknameSort,
       });
     },
-    [searchKeyword, userEmailSort, userNicknameSort]
+    [searchKeyword, userEmailSort, userNicknameSort, getUserList]
   );
-
-  /**
-   * 상세
-   */
-  const history = useHistory();
-  const onDetailClick = useCallback(
-    ({ type, item }: { type: PageType; item?: UserInfoIE }): void => {
-      history.push(RoutePath.USER_DETAIL, { ...item, type });
-    },
-    []
-  );
-
-  /**
-   * 삭제
-   */
-  const onDeleteClick = useCallback(async (userId: number): Promise<void> => {
-    await deleteUser({ userId });
-    init();
-  }, []);
-
-  /**
-   * 검색
-   */
-  const onSearchKeyword = useCallback((searchKeyword: string): void => {
-    setActive(1);
-    setSearchKeyword(searchKeyword);
-  }, []);
 
   /**
    * 정렬
@@ -134,6 +107,36 @@ const User: React.FC<ComponentIE> = (
       setUserNicknameSort(type);
       setUserEmailSort(undefined);
     }
+  }, []);
+
+  /**
+   * 상세
+   */
+  const history = useHistory();
+  const onDetailClick = useCallback(
+    ({ type, item }: { type: PageType; item?: UserInfoIE }): void => {
+      history.push(RoutePath.USER_DETAIL, { ...item, type });
+    },
+    [history]
+  );
+
+  /**
+   * 삭제
+   */
+  const onDeleteClick = useCallback(
+    async (userId: number): Promise<void> => {
+      await deleteUser({ userId });
+      init();
+    },
+    [init]
+  );
+
+  /**
+   * 검색
+   */
+  const onSearchKeyword = useCallback((searchKeyword: string): void => {
+    setActive(1);
+    setSearchKeyword(searchKeyword);
   }, []);
 
   return (

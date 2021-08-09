@@ -9,11 +9,10 @@ export const signIn = async ({
   userPw: string;
 }): Promise<UserInfoIE> => {
   try {
-    let result: UserInfoIE = await postAPI("signInAdmin", {
+    return await postAPI("signInAdmin", {
       userEmail,
       userPw,
     });
-    return result;
   } catch (e) {
     console.log("===============> signIn Error", e);
     throw e;
@@ -22,8 +21,7 @@ export const signIn = async ({
 
 export const signOut = async (): Promise<object> => {
   try {
-    let result: object = await postAPI("signOut");
-    return result;
+    return await postAPI("signOut");
   } catch (e) {
     console.log("===============> signOut Error", e);
     throw e;

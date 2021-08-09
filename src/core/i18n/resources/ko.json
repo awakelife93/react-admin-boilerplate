@@ -19,6 +19,11 @@
   "password": "패스워드",
   "confirm_password": "패스워드 확인",
 
+  "contents_title": "제목",
+  "contents_sub_title": "부제목",
+  "contents_desc": "설명",
+  "contents_image": "이미지",
+
   "update_user_info": "회원정보 수정",
   "delete_account": "회원 탈퇴"
 }

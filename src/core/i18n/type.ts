@@ -4,28 +4,35 @@
  * 자동으로 command를 만들어주는 함수를 만들까 했지만, 어차피 엔티티를 정의해줘야 하는거 Enum으로 땄음.
  */
 export enum I18nCommandEnum {
+  // 언어 종류
   KO = "ko",
   EN = "en",
 
+  // Auth 종류
   SIGN_IN = "sign_in",
   SIGN_OUT = "sign_out",
   SIGN_UP = "sign_up",
 
+  // Common
   CREATE = "create",
   MODIFY = "modify",
   SEARCH = "search",
   SEARCH_NOTE = "search_note",
 
-  AD_TITLE = "ad_title",
-  AD_CONTENT1 = "ad_content1",
-  AD_CONTENT2 = "ad_content2",
-
+  // User Model
   ROLE = "role",
   EMAIL = "email",
   NICKNAME = "nickname",
   PASSWORD = "password",
   CONFIRM_PASSWORD = "confirm_password",
 
+  // Contents Model
+  CONTENTS_TITLE = "contents_title",
+  CONTENTS_SUB_TITLE = "contents_sub_title",
+  CONTENTS_DESC = "contents_desc",
+  CONTENTS_IMAGE = "contents_image",
+
+  // User Model - Button
   UPDATE_USER_INFO = "update_user_info",
   DELETE_ACCOUNT = "delete_account",
 }

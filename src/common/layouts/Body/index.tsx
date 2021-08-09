@@ -12,7 +12,7 @@ const Body: React.FC<ComponentIE> = (
 ): React.ReactElement => {
   const { children } = props;
   return (
-    <Container.BodyContainer style={{ padding: 50 }}>
+    <Container.BodyContainer style={{ padding: 10 }}>
       {children}
     </Container.BodyContainer>
   );
