@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { Pagination, PageItem } from "react-bootstrap";
 
 interface PagingBarIE {
@@ -37,7 +37,10 @@ const PagingBar: React.FC<PagingBarIE> = (
     return item;
   }, [totalCount, limit, active, onPageClick]);
 
-  const pageItem: React.ReactElement[] = generatePageItem();
+  const pageItem: React.ReactElement[] = useMemo(
+    () => generatePageItem() ?? [],
+    [totalCount, limit, active]
+  );
 
   return (
     <Pagination>
