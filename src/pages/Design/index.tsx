@@ -1,24 +1,31 @@
 import { useCallback, useEffect, useState } from "react";
-import { Container, PagingBar } from "../../common/components";
+import {
+  Button,
+  Container,
+  PagingBar,
+  SearchBar,
+} from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
-import { ComponentIE } from "../../common/interface";
+import { ComponentIE, PageType } from "../../common/interface";
 import Tap from "./Tap";
 import List from "./List";
 import {
   findComponent,
-  findComponentCount,
   findLayout,
-  findLayoutCount,
   findStyle,
-  findStyleCount,
   findTheme,
-  findThemeCount,
 } from "../../api/GetAPI";
+import { useHistory } from "react-router-dom";
+import {
+  removeComponent,
+  removeLayout,
+  removeStyle,
+  removeTheme,
+} from "../../api/DeleteAPI";
 
 /**
  * @description Design Component
- * 화면 기획 및 어떻게 테마별 디자인 및 부속 객체들을 관리할 지 정리가 안되서
- * 제일 마지막으로 미룸. (틈틈히 고민중)
+ * todo: 서버와 클라이언트에 isActive도 추가해두기
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
@@ -31,60 +38,19 @@ const Design: React.FC<ComponentIE> = (
   const [designs, setDesigns] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
-
-  // init
-  useEffect(() => {
-    if (totalCount === 0) {
-      getDesignCount(designType);
-    }
-
-    if (designs.length === 0) {
-      getDesignList(0, designType);
-    }
-  }, [designs.length, totalCount]);
-
-  /**
-   * Type별 초기화
-   */
-  const onTypeClick = (type: "component" | "layout" | "style" | "theme") => {
-    setDesigns([]);
-    setActive(1);
-    setDesignType(type);
-
-    getDesignCount(type);
-    getDesignList(0, type);
-  };
-
-  /**
-   * Type별 List의 Total Count를 가져온다.
-   */
-  const getDesignCount = useCallback(
-    async (type: "component" | "layout" | "style" | "theme") => {
-      let totalCount: any;
-      switch (type) {
-        case "component":
-          totalCount = await findComponentCount();
-          break;
-        case "layout":
-          totalCount = await findLayoutCount();
-          break;
-        case "style":
-          totalCount = await findStyleCount();
-          break;
-        case "theme":
-          totalCount = await findThemeCount();
-          break;
-      }
-      setTotalCount(totalCount);
-    },
-    []
-  );
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   /**
    * Type별 디자인 정보들을 가져온다.
    */
   const getDesignList = useCallback(
-    async (skip: number, type: "component" | "layout" | "style" | "theme") => {
+    async ({
+      skip,
+      type,
+    }: {
+      skip: number;
+      type: "component" | "layout" | "style" | "theme";
+    }) => {
       let designs: any;
       switch (type) {
         case "component":
@@ -100,10 +66,37 @@ const Design: React.FC<ComponentIE> = (
           designs = await findTheme({ skip });
           break;
       }
-      setDesigns(designs);
+
+      setDesigns(designs[0]);
+      setTotalCount(designs[1]);
     },
     []
   );
+
+  /**
+   * 초기 로드
+   */
+  useEffect(() => {
+    getDesignList({ skip: 0, type: designType });
+  }, [getDesignList]);
+
+  /**
+   * 상태별 로드 데이터
+   */
+  useEffect(() => {
+    getDesignList({
+      skip: 0,
+      type: designType,
+    });
+  }, [getDesignList, designType]);
+
+  /**
+   * init
+   */
+  const init = useCallback((): void => {
+    setActive(1);
+    getDesignList({ skip: 0, type: designType });
+  }, [getDesignList, designType]);
 
   /**
    * Page Click Event
@@ -111,15 +104,86 @@ const Design: React.FC<ComponentIE> = (
   const onPageClick = useCallback(
     (page: number) => {
       setActive(page + 1);
-      getDesignList(page * defaultPagingCount, designType);
+      getDesignList({ skip: page * defaultPagingCount, type: designType });
     },
     [active]
   );
 
+  /**
+   * 상세
+   */
+  const history = useHistory();
+  const onDetailClick = useCallback(
+    ({ type, item }: { type: PageType; item?: any }): void => {
+      // history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
+      alert("개발 예정입니다.");
+    },
+    [history]
+  );
+
+  /**
+   * 삭제
+   */
+  const onDeleteClick = useCallback(
+    async (_id: number): Promise<void> => {
+      try {
+        switch (designType) {
+          case "component":
+            await removeComponent({ _id });
+            break;
+          case "layout":
+            await removeLayout({ _id });
+            break;
+          case "style":
+            await removeStyle({ _id });
+            break;
+          case "theme":
+            await removeTheme({ _id });
+            break;
+        }
+        init();
+      } catch (e) {
+        console.log("onDeleteClick Error", e);
+      }
+    },
+    [designType, init]
+  );
+
+  /**
+   * 검색
+   */
+  const onSearchKeyword = useCallback((searchKeyword: string): void => {
+    setActive(1);
+    setSearchKeyword(searchKeyword);
+  }, []);
+
+  /**
+   * Type별 초기화
+   */
+  const onTypeClick = (type: "component" | "layout" | "style" | "theme") => {
+    setDesigns([]);
+    setActive(1);
+    setDesignType(type);
+  };
+
   return (
     <Container.LayoutContainer>
       <Tap type={designType} onTypeClick={onTypeClick} />
-      <List type={designType} designs={designs} />
+      <Container.RowContainer style={{ justifyContent: "space-between" }}>
+        <Button.SubMitButton
+          onClick={() => onDetailClick({ type: "CREATE" })}
+          style={{ margin: 0, marginBottom: 10 }}
+        >
+          {designType.toUpperCase()} 생성
+        </Button.SubMitButton>
+        <SearchBar next={onSearchKeyword} />
+      </Container.RowContainer>
+      <List
+        type={designType}
+        designs={designs}
+        onDeleteClick={onDeleteClick}
+        onDetailClick={onDetailClick}
+      />
       <PagingBar
         totalCount={totalCount}
         limit={defaultPagingCount}

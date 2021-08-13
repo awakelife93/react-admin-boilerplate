@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { deleteContents } from "../../api/DeleteAPI";
+import { removeContents } from "../../api/DeleteAPI";
 import { findContents } from "../../api/GetAPI";
 import { ContentsIE } from "../../api/GetAPI/interface";
 import {
@@ -125,7 +125,7 @@ const Contents: React.FC<ComponentIE> = (
    */
   const onDeleteClick = useCallback(
     async (contId: number): Promise<void> => {
-      await deleteContents({ contId });
+      await removeContents({ contId });
       init();
     },
     [init]

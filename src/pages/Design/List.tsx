@@ -1,38 +1,202 @@
 import _ from "lodash";
-import { Container } from "../../common/components";
+import { Button, Container } from "../../common/components";
 import { Table } from "react-bootstrap";
 
-// 이쪽 화면 기획해보기
-// 도저히 리스트로 뿌리기엔 복잡한 데이터 구조라서 단순 속성들과 그것에 대한 상세는 모달 or 상세 화면으로 객체 형식으로 보여줄지 고민중
-const ComponentList = (components: any[]) => {
-  console.log(components);
+const ComponentList = (
+  components: any[],
+  onDeleteClick: Function,
+  onDetailClick: Function
+) => {
   return (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>컴포넌트 이름</th>
-          <th>속성</th>
+          <th>컴포넌트명</th>
+          <th>상태</th>
+          <th colSpan={3}></th>
         </tr>
       </thead>
       <tbody>
         {!_.isEmpty(components) &&
           components.map((component: any, index: number) => {
-            // 서버단에서 임시로 만든 데이터 구조로 불러오기 때문에 변수명을 temp로 명명
-            // 클라이언트에서 데이터 삽입이 가능해지면 이쪽 부분 수정할 예정
-            const tempArray =
-              component.attribute && Object.keys(component.attribute);
-            return tempArray.map((attribute: any, idx: number) => {
-              const tempArray2 = Object.keys(component.attribute[attribute]);
-              return (
-                <tr key={`component_List_Key${idx}`}>
-                  <td>{attribute}</td>
-                  {!_.isEmpty(tempArray2) &&
-                    tempArray2.map((styles: any) => {
-                      return <td>{styles}</td>;
-                    })}
-                </tr>
-              );
-            });
+            console.log(component);
+            return (
+              <tr key={`component_List_Key${index}`}>
+                <td>{component.name}</td>
+                <td>{component.isDeleted === true ? "삭제" : "사용"}</td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() =>
+                      alert("모달로 상세 내용 대신하여 보여줄까 생각 중")
+                    }
+                  >
+                    보기
+                  </Button.TextButton>
+                </td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  >
+                    수정
+                  </Button.TextButton>
+                </td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDeleteClick(component._id)}
+                  >
+                    삭제
+                  </Button.TextButton>
+                </td>
+              </tr>
+            );
+          })}
+      </tbody>
+    </Table>
+  );
+};
+
+const LayoutList = (
+  layouts: any[],
+  onDeleteClick: Function,
+  onDetailClick: Function
+) => {
+  return (
+    <Table striped bordered hover variant="dark">
+      <thead>
+        <tr>
+          <th>레이아웃명</th>
+          <th>상태</th>
+          <th colSpan={2}></th>
+        </tr>
+      </thead>
+      <tbody>
+        {!_.isEmpty(layouts) &&
+          layouts.map((layout: any, index: number) => {
+            return (
+              <tr key={`layout_List_Key${index}`}>
+                <td>{layout.name}</td>
+                <td>{layout.isDeleted === true ? "삭제" : "사용"}</td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() =>
+                      alert("모달로 상세 내용 대신하여 보여줄까 생각 중")
+                    }
+                  >
+                    보기
+                  </Button.TextButton>
+                </td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  >
+                    수정
+                  </Button.TextButton>
+                </td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDeleteClick(layout._id)}
+                  >
+                    삭제
+                  </Button.TextButton>
+                </td>
+              </tr>
+            );
+          })}
+      </tbody>
+    </Table>
+  );
+};
+
+const StyleList = (
+  styles: any[],
+  onDeleteClick: Function,
+  onDetailClick: Function
+) => {
+  return (
+    <Table striped bordered hover variant="dark">
+      <thead>
+        <tr>
+          <th>스타일명</th>
+          <th>상태</th>
+          <th colSpan={2}></th>
+        </tr>
+      </thead>
+      <tbody>
+        {!_.isEmpty(styles) &&
+          styles.map((style: any, index: number) => {
+            return (
+              <tr key={`style_List_Key${index}`}>
+                <td>{style.name}</td>
+                <td>{style.isDeleted === true ? "삭제" : "사용"}</td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  >
+                    수정
+                  </Button.TextButton>
+                </td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDeleteClick(style._id)}
+                  >
+                    삭제
+                  </Button.TextButton>
+                </td>
+              </tr>
+            );
+          })}
+      </tbody>
+    </Table>
+  );
+};
+
+const ThemeList = (
+  themes: any[],
+  onDeleteClick: Function,
+  onDetailClick: Function
+) => {
+  return (
+    <Table striped bordered hover variant="dark">
+      <thead>
+        <tr>
+          <th>테마명</th>
+          <th>상태</th>
+          <th colSpan={2}></th>
+        </tr>
+      </thead>
+      <tbody>
+        {!_.isEmpty(themes) &&
+          themes.map((theme: any, index: number) => {
+            return (
+              <tr key={`theme_List_Key${index}`}>
+                <td>{theme.name}</td>
+                <td>{theme.isDeleted === true ? "삭제" : "사용"}</td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  >
+                    수정
+                  </Button.TextButton>
+                </td>
+                <td>
+                  <Button.TextButton
+                    style={{ width: "100%", height: "100%" }}
+                    onClick={() => onDeleteClick(theme._id)}
+                  >
+                    삭제
+                  </Button.TextButton>
+                </td>
+              </tr>
+            );
           })}
       </tbody>
     </Table>
@@ -42,13 +206,21 @@ const ComponentList = (components: any[]) => {
 const List = ({
   type,
   designs,
+  onDeleteClick,
+  onDetailClick,
 }: {
   type: "component" | "layout" | "style" | "theme";
   designs: any[];
+  onDeleteClick: Function;
+  onDetailClick: Function;
 }): React.ReactElement => {
   return (
     <Container.LayoutContainer>
-      {type === "component" && ComponentList(designs)}
+      {type === "component" &&
+        ComponentList(designs, onDeleteClick, onDetailClick)}
+      {type === "layout" && LayoutList(designs, onDeleteClick, onDetailClick)}
+      {type === "style" && StyleList(designs, onDeleteClick, onDetailClick)}
+      {type === "theme" && ThemeList(designs, onDeleteClick, onDetailClick)}
     </Container.LayoutContainer>
   );
 };

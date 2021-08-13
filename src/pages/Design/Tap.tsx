@@ -1,5 +1,5 @@
 import { Container, Button } from "../../common/components";
-import { CommonColor } from "../../common/styles";
+import { CommonColor, getSelectTabMenuStyle } from "../../common/styles";
 
 const Tap = ({
   type,
@@ -9,12 +9,12 @@ const Tap = ({
   onTypeClick: Function;
 }): React.ReactElement => {
   return (
-    <Container.LayoutContainer>
+    <Container.LayoutContainer style={{ marginBottom: 20 }}>
       <Button.TextButton
         style={{
           fontSize: 20,
-          color: CommonColor.DARK,
-          fontWeight: type === "component" ? "bold" : 100,
+          color: CommonColor.WHITE,
+          ...getSelectTabMenuStyle(type, "component"),
         }}
         onClick={() => onTypeClick("component")}
       >
@@ -23,8 +23,8 @@ const Tap = ({
       <Button.TextButton
         style={{
           fontSize: 20,
-          color: CommonColor.DARK,
-          fontWeight: type === "layout" ? "bold" : 100,
+          color: CommonColor.WHITE,
+          ...getSelectTabMenuStyle(type, "layout"),
         }}
         onClick={() => onTypeClick("layout")}
       >
@@ -33,8 +33,8 @@ const Tap = ({
       <Button.TextButton
         style={{
           fontSize: 20,
-          color: CommonColor.DARK,
-          fontWeight: type === "style" ? "bold" : 100,
+          color: CommonColor.WHITE,
+          ...getSelectTabMenuStyle(type, "style"),
         }}
         onClick={() => onTypeClick("style")}
       >
@@ -43,8 +43,8 @@ const Tap = ({
       <Button.TextButton
         style={{
           fontSize: 20,
-          color: CommonColor.DARK,
-          fontWeight: type === "theme" ? "bold" : 100,
+          color: CommonColor.WHITE,
+          ...getSelectTabMenuStyle(type, "theme"),
         }}
         onClick={() => onTypeClick("theme")}
       >
