@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container } from ".";
 import routes, { RouteIE } from "../../route/routes";
-import { CommonColor } from "../styles";
+import { CommonColor, getSelectTabMenuStyle } from "../styles";
 
 /**
  * SideMenu
@@ -35,7 +35,14 @@ const SideMenu: React.FC = (): React.ReactElement => {
             if (!_.isEmpty(route.i18nKey)) {
               return (
                 <Link key={`sidMenu_list_Key${idx}`} to={route.path}>
-                  <Navbar.Brand>
+                  <Navbar.Brand
+                    style={{
+                      ...getSelectTabMenuStyle(
+                        window.location.pathname,
+                        route.path
+                      ),
+                    }}
+                  >
                     <img
                       alt=""
                       src="/assets/images/logo.svg"
