@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { deleteUser } from "../../api/DeleteAPI";
+import { removeUser } from "../../api/DeleteAPI";
 import { findUser } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import {
@@ -125,7 +125,7 @@ const User: React.FC<ComponentIE> = (
    */
   const onDeleteClick = useCallback(
     async (userId: number): Promise<void> => {
-      await deleteUser({ userId });
+      await removeUser({ userId });
       init();
     },
     [init]

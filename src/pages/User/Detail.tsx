@@ -89,7 +89,6 @@ const UserDetail: React.FC<ComponentIE> = (
   const _updateUser = useCallback(async (): Promise<void> => {
     const item = { userId: state.userId, userNickname, userPw, userRoleIds };
     try {
-      console.log(userNickname);
       await updateUser(item);
       history.push(RoutePath.USER);
     } catch (e) {
