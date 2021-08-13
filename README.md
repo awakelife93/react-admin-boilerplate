@@ -20,6 +20,22 @@ https://github.com/HyunwooP/node_api_server
 
 https://github.com/HyunwooP/node_design_server
 
+## [노트]
+
+### 설명
+
+```
+1. https://github.com/HyunwooP/react_client_template를 사용하여 만드는 중
+2. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "__"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
+```
+
+## 작성자
+
+```
+2020.07.08
+Author: 박현우
+```
+
 ## Framework & Library
 
 ```
@@ -34,23 +50,7 @@ Redux
 Redux Thunk
 ```
 
-## 작성자
-
-```
-2020.07.08
-Author: 박현우
-```
-
-## [노트]
-
-### 설명
-
-```
-1. https://github.com/HyunwooP/react_client_template를 사용하여 만드는 중
-2. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "__"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
-```
-
-### 실행
+## 실행
 
 ```
 1. npm install
