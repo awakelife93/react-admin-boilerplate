@@ -47,6 +47,7 @@ Author: 박현우
 
 ```
 1. https://github.com/HyunwooP/react_client_template를 사용하여 만드는 중
+2. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "__"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
 ```
 
 ### 실행
