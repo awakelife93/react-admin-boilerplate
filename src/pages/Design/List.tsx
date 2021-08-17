@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { Button, Container, TableSort } from "../../common/components";
+import { Container, TableSort, TableButton } from "../../common/components";
 import { SortType } from "../../common/interface";
 
 const ComponentList = (
@@ -29,33 +29,16 @@ const ComponentList = (
             return (
               <tr key={`component_List_Key${index}`}>
                 <td>{component.name}</td>
-                <td>{component.isDeleted === true ? "삭제" : "사용"}</td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() =>
-                      alert("모달로 상세 내용 대신하여 보여줄까 생각 중")
-                    }
-                  >
-                    보기
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
-                  >
-                    수정
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDeleteClick(component._id)}
-                  >
-                    삭제
-                  </Button.TextButton>
-                </td>
+                <td>{component.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <TableButton title={"보기"} next={() => alert("구현 예정")} />
+                <TableButton
+                  title={"수정"}
+                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                />
+                <TableButton
+                  title={"삭제"}
+                  next={() => onDeleteClick(component._id)}
+                />
               </tr>
             );
           })}
@@ -81,7 +64,7 @@ const LayoutList = (
             next={(sort: SortType) => onSortClick(sort)}
           />
           <th>상태</th>
-          <th colSpan={2}></th>
+          <th colSpan={3}></th>
         </tr>
       </thead>
       <tbody>
@@ -90,33 +73,16 @@ const LayoutList = (
             return (
               <tr key={`layout_List_Key${index}`}>
                 <td>{layout.name}</td>
-                <td>{layout.isDeleted === true ? "삭제" : "사용"}</td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() =>
-                      alert("모달로 상세 내용 대신하여 보여줄까 생각 중")
-                    }
-                  >
-                    보기
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
-                  >
-                    수정
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDeleteClick(layout._id)}
-                  >
-                    삭제
-                  </Button.TextButton>
-                </td>
+                <td>{layout.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <TableButton title={"보기"} next={() => alert("구현 예정")} />
+                <TableButton
+                  title={"수정"}
+                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                />
+                <TableButton
+                  title={"삭제"}
+                  next={() => onDeleteClick(layout._id)}
+                />
               </tr>
             );
           })}
@@ -142,7 +108,7 @@ const StyleList = (
             next={(sort: SortType) => onSortClick(sort)}
           />
           <th>상태</th>
-          <th colSpan={2}></th>
+          <th colSpan={3}></th>
         </tr>
       </thead>
       <tbody>
@@ -151,23 +117,16 @@ const StyleList = (
             return (
               <tr key={`style_List_Key${index}`}>
                 <td>{style.name}</td>
-                <td>{style.isDeleted === true ? "삭제" : "사용"}</td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
-                  >
-                    수정
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDeleteClick(style._id)}
-                  >
-                    삭제
-                  </Button.TextButton>
-                </td>
+                <td>{style.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <TableButton title={"보기"} next={() => alert("구현 예정")} />
+                <TableButton
+                  title={"수정"}
+                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                />
+                <TableButton
+                  title={"삭제"}
+                  next={() => onDeleteClick(style._id)}
+                />
               </tr>
             );
           })}
@@ -193,7 +152,7 @@ const ThemeList = (
             next={(sort: SortType) => onSortClick(sort)}
           />
           <th>상태</th>
-          <th colSpan={2}></th>
+          <th colSpan={3}></th>
         </tr>
       </thead>
       <tbody>
@@ -202,23 +161,16 @@ const ThemeList = (
             return (
               <tr key={`theme_List_Key${index}`}>
                 <td>{theme.name}</td>
-                <td>{theme.isDeleted === true ? "삭제" : "사용"}</td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDetailClick({ type: "MODIFY", item: {} })}
-                  >
-                    수정
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDeleteClick(theme._id)}
-                  >
-                    삭제
-                  </Button.TextButton>
-                </td>
+                <td>{theme.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <TableButton title={"보기"} next={() => alert("구현 예정")} />
+                <TableButton
+                  title={"수정"}
+                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                />
+                <TableButton
+                  title={"삭제"}
+                  next={() => onDeleteClick(theme._id)}
+                />
               </tr>
             );
           })}

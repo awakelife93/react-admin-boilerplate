@@ -16,6 +16,7 @@ import SideMenu from "./SideMenu";
 import PagingBar from "./PagingBar";
 import SearchBar from "./SearchBar";
 import TableSort from "./TableSort";
+import TableButton from "./TableButton";
 
 export {
   Button,
@@ -30,6 +31,7 @@ export {
   TextArea,
   Downloader,
   TableSort,
+  TableButton,
   Icon,
   MenuBox,
   SideMenu,

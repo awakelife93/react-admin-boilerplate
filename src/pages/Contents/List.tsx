@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 import { ContentsIE } from "../../api/GetAPI/interface";
-import { Button, TableSort } from "../../common/components";
+import { TableButton, TableSort } from "../../common/components";
 import { SortType } from "../../common/interface";
 
 const List = ({
@@ -47,24 +47,14 @@ const List = ({
                 <td>{cont.contTitle}</td>
                 <td>{cont.contSubTitle}</td>
                 <td>{_.isEmpty(cont.contImageLink) ? "없음" : "있음"}</td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() =>
-                      onDetailClick({ type: "MODIFY", item: cont })
-                    }
-                  >
-                    수정
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDeleteClick(cont.contId)}
-                  >
-                    삭제
-                  </Button.TextButton>
-                </td>
+                <TableButton
+                  title={"수정"}
+                  next={() => onDetailClick({ type: "MODIFY", item: cont })}
+                />
+                <TableButton
+                  title={"삭제"}
+                  next={() => onDeleteClick(cont.contId)}
+                />
               </tr>
             );
           })}

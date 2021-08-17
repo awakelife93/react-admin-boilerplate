@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { useCallback } from "react";
+import { CSSProperties } from "styled-components";
 import { Icon, Label } from ".";
 import { SortType } from "../interface";
 import { CommonColor } from "../styles";
@@ -9,6 +10,7 @@ interface TableSortIE {
   sort: SortType;
   title: string;
   next: Function;
+  buttonStyleItems?: CSSProperties;
   containerStyleItems?: {
     hoverBackgroundColor?: string;
     defaultBackgroundColor?: string;
@@ -33,6 +35,7 @@ const TableSort: React.FC<TableSortIE> = (
     sort,
     title,
     next,
+    buttonStyleItems,
     containerStyleItems,
     textStyleItems,
     UpIcon,
@@ -56,6 +59,7 @@ const TableSort: React.FC<TableSortIE> = (
           justifyContent: "space-between",
           alignItems: "center",
           padding: ".75rem",
+          ...buttonStyleItems,
         }}
         hoverBackgroundColor={
           !_.isUndefined(containerStyleItems?.hoverBackgroundColor)

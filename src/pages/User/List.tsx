@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 import { UserInfoIE } from "../../api/interface";
-import { Button, TableSort } from "../../common/components";
+import { TableButton, TableSort } from "../../common/components";
 import { SortType } from "../../common/interface";
 
 const List = ({
@@ -53,24 +53,14 @@ const List = ({
                     </td>
                   );
                 })}
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() =>
-                      onDetailClick({ type: "MODIFY", item: user })
-                    }
-                  >
-                    수정
-                  </Button.TextButton>
-                </td>
-                <td>
-                  <Button.TextButton
-                    style={{ width: "100%", height: "100%" }}
-                    onClick={() => onDeleteClick(user.userId)}
-                  >
-                    삭제
-                  </Button.TextButton>
-                </td>
+                <TableButton
+                  title={"수정"}
+                  next={() => onDetailClick({ type: "MODIFY", item: user })}
+                />
+                <TableButton
+                  title={"삭제"}
+                  next={() => onDeleteClick(user.userId)}
+                />
               </tr>
             );
           })}
