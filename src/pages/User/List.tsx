@@ -41,16 +41,18 @@ const List = ({
       <tbody>
         {!_.isEmpty(users) &&
           users.map((user: UserInfoIE, index: number) => {
-            const roleName: string[] = user.userRoles.map((roles: any) => {
-              return roles.role.roleName;
-            });
+            const roleName: string = user.userRoles
+              .map((roles: any) => {
+                return roles.role.roleName;
+              })
+              .join(", ");
 
             return (
               <tr key={`user_List_Key${index}`}>
                 <td>{user.userId}</td>
                 <td>{user.userEmail}</td>
                 <td>{user.userNickname}</td>
-                <td>{roleName.join(", ")}</td>
+                <td>{roleName}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,
