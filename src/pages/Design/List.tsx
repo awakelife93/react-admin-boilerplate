@@ -1,9 +1,12 @@
 import _ from "lodash";
-import { Button, Container } from "../../common/components";
 import { Table } from "react-bootstrap";
+import { Button, Container, TableSort } from "../../common/components";
+import { SortType } from "../../common/interface";
 
 const ComponentList = (
+  nameSort: SortType,
   components: any[],
+  onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
 ) => {
@@ -11,7 +14,11 @@ const ComponentList = (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>컴포넌트명</th>
+          <TableSort
+            sort={nameSort}
+            title={"컴포넌트명"}
+            next={(sort: SortType) => onSortClick(sort)}
+          />
           <th>상태</th>
           <th colSpan={3}></th>
         </tr>
@@ -19,7 +26,6 @@ const ComponentList = (
       <tbody>
         {!_.isEmpty(components) &&
           components.map((component: any, index: number) => {
-            console.log(component);
             return (
               <tr key={`component_List_Key${index}`}>
                 <td>{component.name}</td>
@@ -59,7 +65,9 @@ const ComponentList = (
 };
 
 const LayoutList = (
+  nameSort: SortType,
   layouts: any[],
+  onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
 ) => {
@@ -67,7 +75,11 @@ const LayoutList = (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>레이아웃명</th>
+          <TableSort
+            sort={nameSort}
+            title={"레이아웃명"}
+            next={(sort: SortType) => onSortClick(sort)}
+          />
           <th>상태</th>
           <th colSpan={2}></th>
         </tr>
@@ -114,7 +126,9 @@ const LayoutList = (
 };
 
 const StyleList = (
+  nameSort: SortType,
   styles: any[],
+  onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
 ) => {
@@ -122,7 +136,11 @@ const StyleList = (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>스타일명</th>
+          <TableSort
+            sort={nameSort}
+            title={"스타일명"}
+            next={(sort: SortType) => onSortClick(sort)}
+          />
           <th>상태</th>
           <th colSpan={2}></th>
         </tr>
@@ -159,7 +177,9 @@ const StyleList = (
 };
 
 const ThemeList = (
+  nameSort: SortType,
   themes: any[],
+  onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
 ) => {
@@ -167,7 +187,11 @@ const ThemeList = (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>테마명</th>
+          <TableSort
+            sort={nameSort}
+            title={"테마명"}
+            next={(sort: SortType) => onSortClick(sort)}
+          />
           <th>상태</th>
           <th colSpan={2}></th>
         </tr>
@@ -204,23 +228,42 @@ const ThemeList = (
 };
 
 const List = ({
-  type,
+  nameSort,
   designs,
   onDeleteClick,
   onDetailClick,
+  onSortClick,
+  type,
 }: {
+  nameSort: SortType;
   type: "component" | "layout" | "style" | "theme";
   designs: any[];
   onDeleteClick: Function;
   onDetailClick: Function;
+  onSortClick: Function;
 }): React.ReactElement => {
   return (
     <Container.LayoutContainer>
       {type === "component" &&
-        ComponentList(designs, onDeleteClick, onDetailClick)}
-      {type === "layout" && LayoutList(designs, onDeleteClick, onDetailClick)}
-      {type === "style" && StyleList(designs, onDeleteClick, onDetailClick)}
-      {type === "theme" && ThemeList(designs, onDeleteClick, onDetailClick)}
+        ComponentList(
+          nameSort,
+          designs,
+          onSortClick,
+          onDeleteClick,
+          onDetailClick
+        )}
+      {type === "layout" &&
+        LayoutList(
+          nameSort,
+          designs,
+          onSortClick,
+          onDeleteClick,
+          onDetailClick
+        )}
+      {type === "style" &&
+        StyleList(nameSort, designs, onSortClick, onDeleteClick, onDetailClick)}
+      {type === "theme" &&
+        ThemeList(nameSort, designs, onSortClick, onDeleteClick, onDetailClick)}
     </Container.LayoutContainer>
   );
 };

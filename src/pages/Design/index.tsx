@@ -6,7 +6,7 @@ import {
   SearchBar,
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
-import { ComponentIE, PageType } from "../../common/interface";
+import { ComponentIE, PageType, SortType } from "../../common/interface";
 import Tap from "./Tap";
 import List from "./List";
 import {
@@ -39,6 +39,7 @@ const Design: React.FC<ComponentIE> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [nameSort, setNameSort] = useState<SortType>(undefined);
 
   /**
    * Type별 디자인 정보들을 가져온다.
@@ -47,23 +48,43 @@ const Design: React.FC<ComponentIE> = (
     async ({
       skip,
       type,
+      searchKeyword,
+      nameSort,
     }: {
       skip: number;
       type: "component" | "layout" | "style" | "theme";
+      searchKeyword?: string;
+      nameSort?: SortType;
     }) => {
       let designs: any;
       switch (type) {
         case "component":
-          designs = await findComponent({ skip });
+          designs = await findComponent({
+            skip,
+            searchKeyword,
+            nameSort,
+          });
           break;
         case "layout":
-          designs = await findLayout({ skip });
+          designs = await findLayout({
+            skip,
+            searchKeyword,
+            nameSort,
+          });
           break;
         case "style":
-          designs = await findStyle({ skip });
+          designs = await findStyle({
+            skip,
+            searchKeyword,
+            nameSort,
+          });
           break;
         case "theme":
-          designs = await findTheme({ skip });
+          designs = await findTheme({
+            skip,
+            searchKeyword,
+            nameSort,
+          });
           break;
       }
 
@@ -87,8 +108,10 @@ const Design: React.FC<ComponentIE> = (
     getDesignList({
       skip: 0,
       type: designType,
+      searchKeyword,
+      nameSort,
     });
-  }, [getDesignList, designType]);
+  }, [getDesignList, designType, searchKeyword, nameSort]);
 
   /**
    * init
@@ -108,6 +131,14 @@ const Design: React.FC<ComponentIE> = (
     },
     [active]
   );
+
+  /**
+   * 정렬
+   */
+  const onSortClick = useCallback((type: SortType): void => {
+    setActive(1);
+    setNameSort(type);
+  }, []);
 
   /**
    * 상세
@@ -179,10 +210,12 @@ const Design: React.FC<ComponentIE> = (
         <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List
-        type={designType}
+        nameSort={nameSort}
         designs={designs}
+        onSortClick={onSortClick}
         onDeleteClick={onDeleteClick}
         onDetailClick={onDetailClick}
+        type={designType}
       />
       <PagingBar
         totalCount={totalCount}

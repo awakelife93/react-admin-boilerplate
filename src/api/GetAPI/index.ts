@@ -117,11 +117,21 @@ export const findContents = async ({
   }
 };
 
-export const findComponent = async ({ skip = 0 }: { skip: number }) => {
+export const findComponent = async ({
+  skip = 0,
+  searchKeyword = "",
+  nameSort,
+}: {
+  skip: number;
+  searchKeyword?: string;
+  nameSort?: SortType;
+}) => {
   try {
     return await getAPI("findComponent", {
       take: defaultPagingCount,
       skip,
+      searchKeyword: searchKeyword ?? "",
+      nameSort: nameSort ?? "",
     });
   } catch (e) {
     console.log("===============> findComponent Error", e);
@@ -129,11 +139,21 @@ export const findComponent = async ({ skip = 0 }: { skip: number }) => {
   }
 };
 
-export const findLayout = async ({ skip = 0 }: { skip: number }) => {
+export const findLayout = async ({
+  skip = 0,
+  searchKeyword = "",
+  nameSort,
+}: {
+  skip: number;
+  searchKeyword?: string;
+  nameSort?: SortType;
+}) => {
   try {
     return await getAPI("findLayout", {
       take: defaultPagingCount,
       skip,
+      searchKeyword: searchKeyword ?? "",
+      nameSort: nameSort ?? "",
     });
   } catch (e) {
     console.log("===============> findLayout Error", e);
@@ -141,11 +161,21 @@ export const findLayout = async ({ skip = 0 }: { skip: number }) => {
   }
 };
 
-export const findStyle = async ({ skip = 0 }: { skip: number }) => {
+export const findStyle = async ({
+  skip = 0,
+  searchKeyword = "",
+  nameSort,
+}: {
+  skip: number;
+  searchKeyword?: string;
+  nameSort?: SortType;
+}) => {
   try {
     return await getAPI("findStyle", {
       take: defaultPagingCount,
       skip,
+      searchKeyword: searchKeyword ?? "",
+      nameSort: nameSort ?? "",
     });
   } catch (e) {
     console.log("===============> findStyle Error", e);
@@ -153,11 +183,21 @@ export const findStyle = async ({ skip = 0 }: { skip: number }) => {
   }
 };
 
-export const findTheme = async ({ skip = 0 }: { skip: number }) => {
+export const findTheme = async ({
+  skip = 0,
+  searchKeyword = "",
+  nameSort,
+}: {
+  skip: number;
+  searchKeyword?: string;
+  nameSort?: SortType;
+}) => {
   try {
     return await getAPI("findTheme", {
       take: defaultPagingCount,
       skip,
+      searchKeyword: searchKeyword ?? "",
+      nameSort: nameSort ?? "",
     });
   } catch (e) {
     console.log("===============> findTheme Error", e);
