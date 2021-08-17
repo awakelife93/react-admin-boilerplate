@@ -26,7 +26,7 @@ const TableButton: React.FC<TableButtonIE> = (
 ): React.ReactElement => {
   const { title, next, buttonStyleItems, containerStyleItems } = props;
 
-  const _next = useCallback(() => {
+  const _next = useCallback((): void => {
     if (_.isFunction(next)) {
       next();
     }

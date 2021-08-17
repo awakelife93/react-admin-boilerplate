@@ -9,7 +9,7 @@ const ComponentList = (
   onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
-) => {
+): React.ReactElement => {
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -53,7 +53,7 @@ const LayoutList = (
   onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
-) => {
+): React.ReactElement => {
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -97,7 +97,7 @@ const StyleList = (
   onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
-) => {
+): React.ReactElement => {
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -141,7 +141,7 @@ const ThemeList = (
   onSortClick: Function,
   onDeleteClick: Function,
   onDetailClick: Function
-) => {
+): React.ReactElement => {
   return (
     <Table striped bordered hover variant="dark">
       <thead>

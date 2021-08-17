@@ -191,7 +191,9 @@ const Design: React.FC<ComponentIE> = (
   /**
    * Type별 초기화
    */
-  const onTypeClick = (type: "component" | "layout" | "style" | "theme") => {
+  const onTypeClick = (
+    type: "component" | "layout" | "style" | "theme"
+  ): void => {
     setDesigns([]);
     setActive(1);
     setDesignType(type);

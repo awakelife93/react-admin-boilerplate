@@ -62,4 +62,5 @@ const List = ({
     </Table>
   );
 };
+
 export default List;
