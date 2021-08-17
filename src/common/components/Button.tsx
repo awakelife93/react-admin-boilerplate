@@ -35,7 +35,12 @@ interface DynamicColorButtonIE
   extends CommonComponentIE,
     DynamicColorComponentIE {}
 export const DynamicColorButton = styled.button`
-  border: ${(props: DynamicColorButtonIE) => props.style?.border ?? "none"};
+  width: ${(props: SubMitButtonIE) => props.style?.width ?? "150px"};
+  height: ${(props: SubMitButtonIE) => props.style?.height ?? "40px"};
+  border-radius: ${(props: SubMitButtonIE) =>
+    props.style?.borderRadius ?? "0.25em"};
+  border: ${(props: SubMitButtonIE) =>
+    props.style?.border ?? `1px solid ${CommonColor.GRAY}`};
   color: ${(props: DynamicColorButtonIE) =>
     props.style?.color ?? CommonColor.WHITE};
   font-size: ${(props: DynamicColorButtonIE) =>

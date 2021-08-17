@@ -48,6 +48,9 @@ const List = ({
                 <td>{cont.contSubTitle}</td>
                 <td>{_.isEmpty(cont.contImageLink) ? "없음" : "있음"}</td>
                 <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
                   title={"수정"}
                   next={() => onDetailClick({ type: "MODIFY", item: cont })}
                 />

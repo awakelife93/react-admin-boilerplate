@@ -7,6 +7,7 @@ import { CommonColor } from "../styles";
 interface TableButtonIE {
   title: string;
   next: Function;
+  tdStyleItems?: CSSProperties;
   buttonStyleItems?: CSSProperties;
   containerStyleItems?: {
     hoverBackgroundColor?: string;
@@ -24,7 +25,13 @@ interface TableButtonIE {
 const TableButton: React.FC<TableButtonIE> = (
   props: TableButtonIE
 ): React.ReactElement => {
-  const { title, next, buttonStyleItems, containerStyleItems } = props;
+  const {
+    title,
+    next,
+    tdStyleItems,
+    buttonStyleItems,
+    containerStyleItems,
+  } = props;
 
   const _next = useCallback((): void => {
     if (_.isFunction(next)) {
@@ -33,7 +40,7 @@ const TableButton: React.FC<TableButtonIE> = (
   }, [next]);
 
   return (
-    <td onClick={_next} style={{ padding: 0, border: 0 }}>
+    <td onClick={_next} style={{ padding: 0, border: 0, ...tdStyleItems }}>
       <Button.DynamicColorButton
         style={{
           padding: "0.75rem",

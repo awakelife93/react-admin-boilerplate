@@ -11,6 +11,7 @@ import {
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE, PageType, SortType } from "../../common/interface";
+import { CommonColor } from "../../common/styles";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 
@@ -142,12 +143,15 @@ const User: React.FC<ComponentIE> = (
   return (
     <Container.LayoutContainer>
       <Container.RowContainer style={{ justifyContent: "space-between" }}>
-        <Button.SubMitButton
+        <Button.DynamicColorButton
+          style={{ marginBottom: 10 }}
+          hoverBackgroundColor={CommonColor.HEADER_COLOR}
+          activeBackgroundColor={CommonColor.BODY_COLOR}
+          defaultBackgroundColor={CommonColor.TRANS_PARENT}
           onClick={() => onDetailClick({ type: "CREATE" })}
-          style={{ margin: 0, marginBottom: 10 }}
         >
           계정 생성
-        </Button.SubMitButton>
+        </Button.DynamicColorButton>
         <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List

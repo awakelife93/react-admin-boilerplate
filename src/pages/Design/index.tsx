@@ -22,6 +22,7 @@ import {
   removeStyle,
   removeTheme,
 } from "../../api/DeleteAPI";
+import { CommonColor } from "../../common/styles";
 
 /**
  * @description Design Component
@@ -203,12 +204,15 @@ const Design: React.FC<ComponentIE> = (
     <Container.LayoutContainer>
       <Tap type={designType} onTypeClick={onTypeClick} />
       <Container.RowContainer style={{ justifyContent: "space-between" }}>
-        <Button.SubMitButton
+        <Button.DynamicColorButton
+          style={{ marginBottom: 10 }}
+          hoverBackgroundColor={CommonColor.HEADER_COLOR}
+          activeBackgroundColor={CommonColor.BODY_COLOR}
+          defaultBackgroundColor={CommonColor.TRANS_PARENT}
           onClick={() => onDetailClick({ type: "CREATE" })}
-          style={{ margin: 0, marginBottom: 10 }}
         >
           {designType.toUpperCase()} 생성
-        </Button.SubMitButton>
+        </Button.DynamicColorButton>
         <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List

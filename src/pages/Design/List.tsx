@@ -30,8 +30,17 @@ const ComponentList = (
               <tr key={`component_List_Key${index}`}>
                 <td>{component.name}</td>
                 <td>{component.isDeleted === true ? "삭제" : "사용 중"}</td>
-                <TableButton title={"보기"} next={() => alert("구현 예정")} />
                 <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
+                  title={"보기"}
+                  next={() => alert("구현 예정")}
+                />
+                <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
                   title={"수정"}
                   next={() => onDetailClick({ type: "MODIFY", item: {} })}
                 />
@@ -74,8 +83,17 @@ const LayoutList = (
               <tr key={`layout_List_Key${index}`}>
                 <td>{layout.name}</td>
                 <td>{layout.isDeleted === true ? "삭제" : "사용 중"}</td>
-                <TableButton title={"보기"} next={() => alert("구현 예정")} />
                 <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
+                  title={"보기"}
+                  next={() => alert("구현 예정")}
+                />
+                <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
                   title={"수정"}
                   next={() => onDetailClick({ type: "MODIFY", item: {} })}
                 />
@@ -118,8 +136,17 @@ const StyleList = (
               <tr key={`style_List_Key${index}`}>
                 <td>{style.name}</td>
                 <td>{style.isDeleted === true ? "삭제" : "사용 중"}</td>
-                <TableButton title={"보기"} next={() => alert("구현 예정")} />
                 <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
+                  title={"보기"}
+                  next={() => alert("구현 예정")}
+                />
+                <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
                   title={"수정"}
                   next={() => onDetailClick({ type: "MODIFY", item: {} })}
                 />
@@ -162,8 +189,17 @@ const ThemeList = (
               <tr key={`theme_List_Key${index}`}>
                 <td>{theme.name}</td>
                 <td>{theme.isDeleted === true ? "삭제" : "사용 중"}</td>
-                <TableButton title={"보기"} next={() => alert("구현 예정")} />
                 <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
+                  title={"보기"}
+                  next={() => alert("구현 예정")}
+                />
+                <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
                   title={"수정"}
                   next={() => onDetailClick({ type: "MODIFY", item: {} })}
                 />

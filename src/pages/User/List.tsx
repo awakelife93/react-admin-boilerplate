@@ -34,26 +34,27 @@ const List = ({
             title={"닉네임"}
             next={(sort: SortType) => onSortClick("userNickname", sort)}
           />
-          <th colSpan={2}>권한</th>
+          <th>권한</th>
           <th colSpan={2}></th>
         </tr>
       </thead>
       <tbody>
         {!_.isEmpty(users) &&
           users.map((user: UserInfoIE, index: number) => {
+            const roleName: string[] = user.userRoles.map((roles: any) => {
+              return roles.role.roleName;
+            });
+
             return (
               <tr key={`user_List_Key${index}`}>
                 <td>{user.userId}</td>
                 <td>{user.userEmail}</td>
                 <td>{user.userNickname}</td>
-                {user.userRoles.map((roles: any, index2: number) => {
-                  return (
-                    <td key={`user_List_Role_Key${index2}`}>
-                      {roles.role.roleName}
-                    </td>
-                  );
-                })}
+                <td>{roleName.join(", ")}</td>
                 <TableButton
+                  tdStyleItems={{
+                    paddingRight: 1,
+                  }}
                   title={"수정"}
                   next={() => onDetailClick({ type: "MODIFY", item: user })}
                 />
