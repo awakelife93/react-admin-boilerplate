@@ -16,12 +16,14 @@ import { validationObject } from "../../utils";
  * 개발중
  * todo:
  * 1. 무한대로 늘어나는 attribute depth를 어떻게 처리할 것인가 고민해보기
+ * 1-1. 대부분은 2 depth로 끝나는 CSS들이지만, 애니메이션은 보통 2depth를 넘어감
  * 2. 수정 상태 - Attribute 추가 / 삭제 기능 넣기
  * 3. 생성 상태 구현하기
  * 4. CSS 값을 어떻게 유효성 검사할지... 고민 해보기
  * 4-1. 이상한 값을 넣을 수 없도록 CSS 입력 컴포넌트를 넣을지?
  * 4-2. 별도로 임의의 테스트 컴포넌트에 값을 전달하여 에러가 나는지 체크할지?
  * 4-3. 스타일과 테마는 컴포넌트와 레이아웃 ID 유효성 검사 API 추가 해줘야함.
+ * 5. 사용 유무 필드 추가하기
  * @param {ComponentIE} props
  * @param {DesignDetailPropsIE} location
  * @returns {React.ReactElement}
