@@ -2,7 +2,13 @@ import { getAPI } from "..";
 import { defaultPagingCount } from "../../common/const";
 import { SortType } from "../../common/interface";
 import { UserInfoIE } from "../interface";
-import { ContentsIE } from "./interface";
+import {
+  ContentsIE,
+  DesignComponentIE,
+  DesignLayoutIE,
+  DesignStyleIE,
+  DesignThemeIE,
+} from "./interface";
 
 export const findUserCount = async ({
   searchKeyword = "",
@@ -125,7 +131,7 @@ export const findComponent = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}) => {
+}): Promise<[DesignComponentIE[], number]> => {
   try {
     return await getAPI("findComponent", {
       take: defaultPagingCount,
@@ -147,7 +153,7 @@ export const findLayout = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}) => {
+}): Promise<[DesignLayoutIE[], number]> => {
   try {
     return await getAPI("findLayout", {
       take: defaultPagingCount,
@@ -169,7 +175,7 @@ export const findStyle = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}) => {
+}): Promise<[DesignStyleIE[], number]> => {
   try {
     return await getAPI("findStyle", {
       take: defaultPagingCount,
@@ -191,7 +197,7 @@ export const findTheme = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}) => {
+}): Promise<[DesignThemeIE[], number]> => {
   try {
     return await getAPI("findTheme", {
       take: defaultPagingCount,

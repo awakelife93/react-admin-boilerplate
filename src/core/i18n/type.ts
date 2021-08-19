@@ -32,6 +32,10 @@ export enum I18nCommandEnum {
   CONTENTS_DESC = "contents_desc",
   CONTENTS_IMAGE = "contents_image",
 
+  // Design Model
+  DESIGN_ID = "design_id",
+  DESIGN_NAME = "design_name",
+
   // User Model - Button
   UPDATE_USER_INFO = "update_user_info",
   DELETE_ACCOUNT = "delete_account",

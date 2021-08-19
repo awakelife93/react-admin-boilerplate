@@ -1,11 +1,12 @@
 import { Container, Button } from "../../common/components";
+import { DesignType } from "../../common/interface";
 import { CommonColor, getSelectTabMenuStyle } from "../../common/styles";
 
 const Tap = ({
   type,
   onTypeClick,
 }: {
-  type: "component" | "layout" | "style" | "theme";
+  type: DesignType;
   onTypeClick: Function;
 }): React.ReactElement => {
   return (

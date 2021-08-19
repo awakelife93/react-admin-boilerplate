@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import _ from "lodash";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -6,7 +7,12 @@ import {
   SearchBar,
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
-import { ComponentIE, PageType, SortType } from "../../common/interface";
+import {
+  ComponentIE,
+  DesignType,
+  PageType,
+  SortType,
+} from "../../common/interface";
 import Tap from "./Tap";
 import List from "./List";
 import {
@@ -23,6 +29,7 @@ import {
   removeTheme,
 } from "../../api/DeleteAPI";
 import { CommonColor } from "../../common/styles";
+import { RoutePath } from "../../route/routes";
 
 /**
  * @description Design Component
@@ -33,9 +40,7 @@ import { CommonColor } from "../../common/styles";
 const Design: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const [designType, setDesignType] = useState<
-    "component" | "layout" | "style" | "theme"
-  >("component");
+  const [designType, setDesignType] = useState<DesignType>("component");
   const [designs, setDesigns] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
@@ -53,7 +58,7 @@ const Design: React.FC<ComponentIE> = (
       nameSort,
     }: {
       skip: number;
-      type: "component" | "layout" | "style" | "theme";
+      type: DesignType;
       searchKeyword?: string;
       nameSort?: SortType;
     }) => {
@@ -146,9 +151,16 @@ const Design: React.FC<ComponentIE> = (
    */
   const history = useHistory();
   const onDetailClick = useCallback(
-    ({ type, item }: { type: PageType; item?: any }): void => {
-      // history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
-      alert("개발 예정입니다.");
+    ({
+      type,
+      item,
+      designType,
+    }: {
+      type: PageType;
+      item?: any;
+      designType: DesignType;
+    }): void => {
+      history.push(RoutePath.DESIGN_DETAIL, { ...item, type, designType });
     },
     [history]
   );
@@ -192,9 +204,7 @@ const Design: React.FC<ComponentIE> = (
   /**
    * Type별 초기화
    */
-  const onTypeClick = (
-    type: "component" | "layout" | "style" | "theme"
-  ): void => {
+  const onTypeClick = (type: DesignType): void => {
     setDesigns([]);
     setActive(1);
     setDesignType(type);
@@ -209,7 +219,7 @@ const Design: React.FC<ComponentIE> = (
           hoverBackgroundColor={CommonColor.HEADER_COLOR}
           activeBackgroundColor={CommonColor.BODY_COLOR}
           defaultBackgroundColor={CommonColor.TRANS_PARENT}
-          onClick={() => onDetailClick({ type: "CREATE" })}
+          onClick={() => onDetailClick({ type: "CREATE", designType })}
         >
           {designType.toUpperCase()} 생성
         </Button.DynamicColorButton>

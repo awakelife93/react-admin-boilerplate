@@ -22,6 +22,9 @@
   "contents_desc": "Description",
   "contents_image": "Image",
 
+  "design_id": "id",
+  "design_name": "{{type}} Name",
+
   "update_user_info": "Update Info",
   "delete_account": "Delete Account",
 

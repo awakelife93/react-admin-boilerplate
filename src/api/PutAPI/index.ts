@@ -1,4 +1,5 @@
 import { putAPI } from "..";
+import { ContentsIE } from "../GetAPI/interface";
 import { UserInfoIE } from "../interface";
 
 export const signUp = async ({
@@ -33,7 +34,7 @@ export const createContents = async ({
   contTitle: string;
   contSubTitle: string;
   contDesc: string;
-}): Promise<UserInfoIE> => {
+}): Promise<ContentsIE> => {
   try {
     return await putAPI("createContents", {
       contTitle,

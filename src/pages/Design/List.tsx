@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
 import { Container, TableSort, TableButton } from "../../common/components";
-import { SortType } from "../../common/interface";
+import { DesignType, SortType } from "../../common/interface";
 
 const ComponentList = (
   nameSort: SortType,
@@ -34,15 +34,14 @@ const ComponentList = (
                   tdStyleItems={{
                     paddingRight: 1,
                   }}
-                  title={"보기"}
-                  next={() => alert("구현 예정")}
-                />
-                <TableButton
-                  tdStyleItems={{
-                    paddingRight: 1,
-                  }}
                   title={"수정"}
-                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  next={() =>
+                    onDetailClick({
+                      type: "MODIFY",
+                      item: component,
+                      designType: "component",
+                    })
+                  }
                 />
                 <TableButton
                   title={"삭제"}
@@ -87,15 +86,14 @@ const LayoutList = (
                   tdStyleItems={{
                     paddingRight: 1,
                   }}
-                  title={"보기"}
-                  next={() => alert("구현 예정")}
-                />
-                <TableButton
-                  tdStyleItems={{
-                    paddingRight: 1,
-                  }}
                   title={"수정"}
-                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  next={() =>
+                    onDetailClick({
+                      type: "MODIFY",
+                      item: layout,
+                      designType: "layout",
+                    })
+                  }
                 />
                 <TableButton
                   title={"삭제"}
@@ -140,15 +138,14 @@ const StyleList = (
                   tdStyleItems={{
                     paddingRight: 1,
                   }}
-                  title={"보기"}
-                  next={() => alert("구현 예정")}
-                />
-                <TableButton
-                  tdStyleItems={{
-                    paddingRight: 1,
-                  }}
                   title={"수정"}
-                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  next={() =>
+                    onDetailClick({
+                      type: "MODIFY",
+                      item: style,
+                      designType: "style",
+                    })
+                  }
                 />
                 <TableButton
                   title={"삭제"}
@@ -193,15 +190,14 @@ const ThemeList = (
                   tdStyleItems={{
                     paddingRight: 1,
                   }}
-                  title={"보기"}
-                  next={() => alert("구현 예정")}
-                />
-                <TableButton
-                  tdStyleItems={{
-                    paddingRight: 1,
-                  }}
                   title={"수정"}
-                  next={() => onDetailClick({ type: "MODIFY", item: {} })}
+                  next={() =>
+                    onDetailClick({
+                      type: "MODIFY",
+                      item: theme,
+                      designType: "theme",
+                    })
+                  }
                 />
                 <TableButton
                   title={"삭제"}
@@ -224,7 +220,7 @@ const List = ({
   type,
 }: {
   nameSort: SortType;
-  type: "component" | "layout" | "style" | "theme";
+  type: DesignType;
   designs: any[];
   onDeleteClick: Function;
   onDetailClick: Function;

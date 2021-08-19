@@ -4,6 +4,7 @@ import DashboardPage from "../pages/Dashboard";
 import UserPage from "../pages/User";
 import UserDetailPage from "../pages/User/Detail";
 import DesignPage from "../pages/Design";
+import DesignDetailPage from "../pages/Design/Detail";
 import ContentsPage from "../pages/Contents";
 import ContentsDetailPage from "../pages/Contents/Detail";
 import SignInPage from "../pages/Sign";
@@ -15,6 +16,7 @@ export enum RoutePath {
   USER = "/user",
   USER_DETAIL = "/userDetail",
   DESIGN = "/design",
+  DESIGN_DETAIL = "/designDetail",
   CONTENTS = "/contents",
   CONTENTS_DETAIL = "/contentsDetail",
   SIGN_IN = "/signIn",
@@ -62,6 +64,12 @@ const routes: RouteIE[] = [
     exact: false,
     i18nKey: "design_list",
     Component: DesignPage,
+  },
+  {
+    path: RoutePath.DESIGN_DETAIL,
+    exact: false,
+    i18nKey: "",
+    Component: DesignDetailPage,
   },
   {
     path: RoutePath.SIGN_IN,

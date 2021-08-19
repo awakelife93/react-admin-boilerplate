@@ -24,6 +24,9 @@
   "contents_desc": "설명",
   "contents_image": "이미지",
 
+  "design_id": "고유 번호",
+  "design_name": "{{type}} 명",
+
   "update_user_info": "회원정보 수정",
   "delete_account": "회원 탈퇴",
 
