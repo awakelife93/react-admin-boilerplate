@@ -1,5 +1,5 @@
 import { CSSProperties } from "styled-components";
-import { InputBox, Container, Label } from ".";
+import { Container, InputBox, Label } from ".";
 import { isAdmin, isUser } from "../../utils";
 import { PageType } from "../interface";
 

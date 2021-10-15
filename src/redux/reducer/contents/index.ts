@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { ActionEnum } from "../../type";
 import { ActionIE, ContentsStoreIE } from "../../interface";
+import { ActionEnum } from "../../type";
 import { initContentState } from "./default";
 
 export default function contentsStore(

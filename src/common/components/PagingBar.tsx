@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { useCallback, useMemo } from "react";
-import { Pagination, PageItem } from "react-bootstrap";
+import { PageItem, Pagination } from "react-bootstrap";
 
 interface PagingBarIE {
   totalCount: number;

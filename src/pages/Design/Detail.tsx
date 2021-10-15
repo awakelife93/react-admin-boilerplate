@@ -1,14 +1,12 @@
 import _ from "lodash";
-import { useEffect } from "react";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { CommonDesignIE } from "../../api/interface";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import { ComponentIE, DesignType, PageType } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import { I18nCommandEnum } from "../../core";
-import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
 
 /**

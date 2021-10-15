@@ -7,10 +7,10 @@ import { updateUser } from "../../api/PatchAPI";
 import { signUp } from "../../api/PutAPI";
 import {
   Button,
+  CommonRender,
   Container,
   InputBox,
   Label,
-  CommonRender,
 } from "../../common/components";
 import { ComponentIE, PageType } from "../../common/interface";
 import { I18nCommandEnum } from "../../core";
@@ -72,7 +72,7 @@ const UserDetail: React.FC<ComponentIE> = (
       try {
         await signUp(item);
         history.push(RoutePath.USER);
-      } catch (e) {
+      } catch (e: any) {
         switch (e.status) {
           // 이메일 중복
           case 409: {

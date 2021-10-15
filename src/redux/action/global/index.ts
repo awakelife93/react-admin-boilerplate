@@ -1,5 +1,5 @@
-import { ActionEnum } from "../../type";
 import { initGlobalState } from "../../reducer/global/default";
+import { ActionEnum } from "../../type";
 
 export const initShowAdAction = () => ({
   type: ActionEnum.SET_AD_CONTAINER,

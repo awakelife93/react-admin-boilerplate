@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { ActionEnum } from "../../type";
 import { ActionIE, ThemeStoreIE } from "../../interface";
+import { ActionEnum } from "../../type";
 import { initDarkModeState } from "./default";
 
 export default function themeStore(

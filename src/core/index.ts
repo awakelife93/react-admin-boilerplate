@@ -1,24 +1,23 @@
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-  clearLocalStorageItem,
-  removeLocalStorageItem,
-} from "./storage";
-import {
-  initWindowFunc,
-  initWindowObject,
-  getWindowDataLength,
-  getWindowData,
-  removeWindowData,
-  clearWindowData,
-  setWindowData,
-} from "./window";
+import { ScrollFadeIn, TopDownMove } from "./animation";
 import i18n from "./i18n";
 import { I18nCommandEnum } from "./i18n/type";
-import { ScrollFadeIn, TopDownMove } from "./animation";
+import {
+  clearLocalStorageItem,
+  getLocalStorageItem,
+  removeLocalStorageItem,
+  setLocalStorageItem,
+} from "./storage";
+import {
+  clearWindowData,
+  getWindowData,
+  getWindowDataLength,
+  initWindowFunc,
+  initWindowObject,
+  removeWindowData,
+  setWindowData,
+} from "./window";
 
 export {
-  // local storage
   getLocalStorageItem,
   setLocalStorageItem,
   clearLocalStorageItem,

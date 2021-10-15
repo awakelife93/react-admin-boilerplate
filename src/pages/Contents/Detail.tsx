@@ -8,9 +8,9 @@ import { createContents } from "../../api/PutAPI";
 import {
   Button,
   Container,
+  Image,
   InputBox,
   Label,
-  Image,
   TextArea,
 } from "../../common/components";
 import { ComponentIE, PageType } from "../../common/interface";

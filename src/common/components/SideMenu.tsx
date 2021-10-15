@@ -1,8 +1,8 @@
 import _ from "lodash";
 import React from "react";
 import { Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Container } from ".";
 import routes, { RouteIE } from "../../route/routes";
 import { CommonColor, getSelectTabMenuStyle } from "../styles";

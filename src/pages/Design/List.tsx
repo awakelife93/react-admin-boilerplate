@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { Container, TableSort, TableButton } from "../../common/components";
+import { Container, TableButton, TableSort } from "../../common/components";
 import { DesignType, SortType } from "../../common/interface";
 
 const ComponentList = (

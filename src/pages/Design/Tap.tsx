@@ -1,4 +1,4 @@
-import { Container, Button } from "../../common/components";
+import { Button, Container } from "../../common/components";
 import { DesignType } from "../../common/interface";
 import { CommonColor, getSelectTabMenuStyle } from "../../common/styles";
 

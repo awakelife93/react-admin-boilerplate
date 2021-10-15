@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { defaultLng } from "../../common/const";
-
 import en from "./resources/en.json";
 import ko from "./resources/ko.json";
 

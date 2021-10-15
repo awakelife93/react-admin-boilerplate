@@ -1,10 +1,9 @@
+import { createBrowserHistory } from "history";
 import { Provider } from "react-redux";
 import { Route, RouteComponentProps, Router, Switch } from "react-router-dom";
-import { createBrowserHistory } from "history";
-
 import Layout from "../common/layouts";
-import routes, { RouteIE } from "./routes";
 import { configureStore } from "../redux";
+import routes, { RouteIE } from "./routes";
 
 const store = configureStore();
 

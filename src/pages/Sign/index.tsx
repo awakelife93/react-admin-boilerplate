@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
 import _ from "lodash";
-import { useHistory } from "react-router";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-import { Container, Label, InputBox, Button } from "../../common/components";
+import { useHistory } from "react-router";
+import { UserInfoIE } from "../../api/interface";
+import { signIn } from "../../api/PostAPI";
+import { Button, Container, InputBox, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
 import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
-import { signIn } from "../../api/PostAPI";
-import { UserInfoIE } from "../../api/interface";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
-import { useCallback } from "react";
 
 /**
  * @description SignIn Component
@@ -79,7 +77,7 @@ const SignIn: React.FC<ComponentIE> = (
           });
           history.push(RoutePath.DASHBOARD);
         }
-      } catch (e) {
+      } catch (e: any) {
         switch (e.status) {
           // 비밀번호 틀렸을 경우
           case 401: {

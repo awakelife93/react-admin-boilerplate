@@ -1,5 +1,17 @@
-import _ from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import {
+  removeComponent,
+  removeLayout,
+  removeStyle,
+  removeTheme,
+} from "../../api/DeleteAPI";
+import {
+  findComponent,
+  findLayout,
+  findStyle,
+  findTheme,
+} from "../../api/GetAPI";
 import {
   Button,
   Container,
@@ -13,23 +25,10 @@ import {
   PageType,
   SortType,
 } from "../../common/interface";
-import Tap from "./Tap";
-import List from "./List";
-import {
-  findComponent,
-  findLayout,
-  findStyle,
-  findTheme,
-} from "../../api/GetAPI";
-import { useHistory } from "react-router-dom";
-import {
-  removeComponent,
-  removeLayout,
-  removeStyle,
-  removeTheme,
-} from "../../api/DeleteAPI";
 import { CommonColor } from "../../common/styles";
 import { RoutePath } from "../../route/routes";
+import List from "./List";
+import Tap from "./Tap";
 
 /**
  * @description Design Component

@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { ActionEnum } from "../../type";
 import { ActionIE, GlobalStoreIE } from "../../interface";
+import { ActionEnum } from "../../type";
 import { initGlobalState } from "./default";
 
 export default function globalStore(

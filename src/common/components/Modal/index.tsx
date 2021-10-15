@@ -1,11 +1,10 @@
-import { useEffect } from "react";
 import _ from "lodash";
-import { Container, Icon } from "../../components";
+import { useEffect } from "react";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
-
-import MessageLayout from "./layout/Message";
-import { ModalIE, ShowModalActionIE } from "./interface";
+import { Container, Icon } from "../../components";
 import { CommonColor } from "../../styles";
+import { ModalIE, ShowModalActionIE } from "./interface";
+import MessageLayout from "./layout/Message";
 
 export const _showModalAction = ({
   next,

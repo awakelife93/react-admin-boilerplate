@@ -1,5 +1,5 @@
-import { ActionEnum } from "../../type";
 import { initUserState } from "../../reducer/user/default";
+import { ActionEnum } from "../../type";
 
 export const initUserInfoAction = () => ({
   type: ActionEnum.SET_USER_INFO,

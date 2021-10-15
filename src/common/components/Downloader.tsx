@@ -1,6 +1,5 @@
 import _ from "lodash";
-import React from "react";
-import { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { CSSProperties } from "styled-components";
 import { Container, InputBox, Label } from ".";
 

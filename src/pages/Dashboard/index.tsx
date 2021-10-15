@@ -1,5 +1,4 @@
-import { useCallback, useState } from "react";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { findDashboardCount } from "../../api/GetAPI";
 import { Container, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";

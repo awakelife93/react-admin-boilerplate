@@ -2,8 +2,8 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import _ from "lodash";
 import {
   getLocalStorageItem,
-  setLocalStorageItem,
   removeLocalStorageItem,
+  setLocalStorageItem,
 } from "../core";
 
 const _showMessageModal = (message: string) => {

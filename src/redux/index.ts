@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import thunkMiddleware from "redux-thunk";
 import {
   applyMiddleware,
   bindActionCreators,
   combineReducers,
   createStore,
 } from "redux";
+import thunkMiddleware from "redux-thunk";
 import * as action from "./action";
 import reducers from "./reducer";
 
