@@ -6,19 +6,19 @@ export const getLocalStorageItem = (key: string): string | null =>
 export const getLocalStorageItems = (
   keys: string[]
 ): { [index: string]: string } => {
-  let results: {
+  let storageItems: {
     [index: string]: string;
   } = {};
 
   _.forEach(keys, (key: string) => {
-    const result = getLocalStorageItem(key);
+    const storageItem = getLocalStorageItem(key);
 
-    if (result !== null) {
-      results[key] = result;
+    if (storageItem !== null) {
+      storageItems[key] = storageItem;
     }
   });
 
-  return results;
+  return storageItems;
 };
 
 export const setLocalStorageItem = (item: any): void => {
