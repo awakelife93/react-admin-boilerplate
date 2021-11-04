@@ -3,14 +3,18 @@ import _ from "lodash";
 export const getLocalStorageItem = (key: string): string | null =>
   window.localStorage.getItem(key);
 
-export const getLocalStorageItems = (keys: string[]): string[] => {
-  let results: string[] = [];
+export const getLocalStorageItems = (
+  keys: string[]
+): { [index: string]: string } => {
+  let results: {
+    [index: string]: string;
+  } = {};
 
   _.forEach(keys, (key: string) => {
     const result = getLocalStorageItem(key);
 
     if (result !== null) {
-      results.push(result);
+      results[key] = result;
     }
   });
 
