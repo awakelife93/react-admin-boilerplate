@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { _showModalAction } from "../../common/components/Modal";
 import { ShowModalActionIE } from "../../common/components/Modal/interface";
 
@@ -51,7 +52,8 @@ export const getWindowData = (key: string): string => {
 
 export const setWindowData = (item: any): void => {
   const keys = Object.keys(item);
-  keys.forEach((key: string) => {
+
+  _.forEach(keys, (key: string) => {
     window.globalEntity[key] = item[key];
   });
 };
@@ -61,9 +63,9 @@ export const removeWindowData = (key: string): void => {
 };
 
 export const clearWindowData = (): void => {
-  let keys = Object.keys(window.globalEntity);
+  const keys = Object.keys(window.globalEntity);
 
-  keys.forEach((key: string) => {
-    delete window.globalEntity[key];
+  _.forEach(keys, (key: string) => {
+    removeWindowData(key);
   });
 };
