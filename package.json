@@ -3,7 +3,7 @@
   "description": "React Template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HyunwooP/react_admin_template.git"
+    "url": "git+https://github.com/awakelife93/react_admin_template.git"
   },
   "keywords": [
     "React",
@@ -21,7 +21,7 @@
   "author": "HyunwooPark",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HyunwooP/react_admin_template/issues"
+    "url": "https://github.com/awakelife93/react_admin_template/issues"
   },
   "private": true,
   "dependencies": {
