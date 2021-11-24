@@ -6,19 +6,19 @@
 
 ## Client Repository
 
-https://github.com/HyunwooP/react_client_template
+https://github.com/awakelife93/react_client_template
 
 ## Gateway Server Repository
 
-https://github.com/HyunwooP/study_spring_boot
+https://github.com/awakelife93/study_spring_boot
 
 ## API Server Repository
 
-https://github.com/HyunwooP/node_api_server
+https://github.com/awakelife93/node_api_server
 
 ## Style Server Repository
 
-https://github.com/HyunwooP/node_design_server
+https://github.com/awakelife93/node_design_server
 
 ## [노트]
 
