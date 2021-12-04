@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
 import {
   getLocalStorageItem,
@@ -6,7 +6,7 @@ import {
   setLocalStorageItem,
 } from "../core";
 
-const _showMessageModal = (message: string) => {
+const _showMessageModal = (message: string): void => {
   if (_.isFunction(window.globalFunc.showModalAction)) {
     window.globalFunc.showModalAction({
       type: "MESSAGE",
@@ -41,20 +41,20 @@ instance.interceptors.request.use(
 
     return config;
   },
-  (error) => {
+  (error: any) => {
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
-  (response) => {
+  (response: AxiosResponse) => {
     // 토큰 연장
     if (response.status === 201 && !_.isEmpty(response.data.token)) {
       setLocalStorageItem({ token: response.data.token });
     }
     return response;
   },
-  (error) => {
+  (error: any) => {
     const err = error.response ?? error;
 
     // 네트워크 에러
@@ -84,7 +84,7 @@ instance.interceptors.response.use(
   }
 );
 
-const generateQueryEndPoint = (endPoint: string, params: any) => {
+const generateQueryEndPoint = (endPoint: string, params: any): string => {
   let _endPoint = `${endPoint}?`;
 
   Object.keys(params).forEach((key: string, index: number) => {
@@ -102,7 +102,7 @@ export const getAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-) => {
+): Promise<any> => {
   const getEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
@@ -114,7 +114,7 @@ export const deleteAPI = async (
   endPoint: string = "",
   params = {},
   axiosOption = {}
-) => {
+): Promise<any> => {
   const deleteEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
@@ -128,7 +128,7 @@ export const postAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-) => {
+): Promise<any> => {
   const result = await instance.post(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
@@ -139,7 +139,7 @@ export const putAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-) => {
+): Promise<any> => {
   const result = await instance.put(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
@@ -150,12 +150,12 @@ export const patchAPI = async (
   axiosOption = {
     timeout: 2000,
   }
-) => {
+): Promise<any> => {
   const result = await instance.patch(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 
-export const generateAPIData = async (res: any) => {
+export const generateAPIData = async (res: any): Promise<any> => {
   // 확장할 것이 있으면 여기에 작성
   return res.data;
 };
