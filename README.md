@@ -2,7 +2,7 @@
 
 ## React Client + React Admin + Gateway Server + API Server + Style Server
 
-![구조](https://user-images.githubusercontent.com/20429356/124894845-f89eef80-e016-11eb-9a37-0c037dbc0fe4.png)
+![구조](https://user-images.githubusercontent.com/20429356/153713139-ce6588af-2ab7-40d1-8bda-1de14a8a3257.png)
 
 ## Client Repository
 
