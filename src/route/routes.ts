@@ -1,15 +1,13 @@
 import React from "react";
-
-import DashboardPage from "../pages/Dashboard";
-import UserPage from "../pages/User";
-import UserDetailPage from "../pages/User/Detail";
-import DesignPage from "../pages/Design";
-import DesignDetailPage from "../pages/Design/Detail";
+import { ComponentIE } from "../common/interface";
 import ContentsPage from "../pages/Contents";
 import ContentsDetailPage from "../pages/Contents/Detail";
+import DashboardPage from "../pages/Dashboard";
+import DesignPage from "../pages/Design";
+import DesignDetailPage from "../pages/Design/Detail";
 import SignInPage from "../pages/Sign";
-
-import { ComponentIE } from "../common/interface";
+import UserPage from "../pages/User";
+import UserDetailPage from "../pages/User/Detail";
 
 export enum RoutePath {
   DASHBOARD = "/",

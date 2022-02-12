@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { ActionEnum } from "../../type";
 import { ActionIE, UserStoreIE } from "../../interface";
+import { ActionEnum } from "../../type";
 import { initUserState } from "./default";
 
 export default function themeStore(

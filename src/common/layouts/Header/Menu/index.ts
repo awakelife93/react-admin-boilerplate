@@ -1,4 +1,4 @@
-import SignMenu from "./SignMenu";
 import IconsMenu from "./IconsMenu";
+import SignMenu from "./SignMenu";
 
 export { SignMenu, IconsMenu };

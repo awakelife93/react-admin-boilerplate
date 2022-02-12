@@ -1,15 +1,15 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 export const scrollTop = (): void => {
   window.scrollTo(0, 0);
 };
 
 export const removeBodyScroll = (): void => {
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = "hidden";
 };
 
 export const revertBodyScroll = (): void => {
-  document.body.style.overflow = '';
+  document.body.style.overflow = "";
 };
 
 export const validationObject = (object: any): boolean => {

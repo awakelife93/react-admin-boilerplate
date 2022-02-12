@@ -11,7 +11,7 @@ import {
   Image,
   InputBox,
   Label,
-  TextArea,
+  TextArea
 } from "../../common/components";
 import { ComponentIE, PageType } from "../../common/interface";
 import { I18nCommandEnum } from "../../core";

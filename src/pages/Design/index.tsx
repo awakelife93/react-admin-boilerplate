@@ -4,26 +4,26 @@ import {
   removeComponent,
   removeLayout,
   removeStyle,
-  removeTheme,
+  removeTheme
 } from "../../api/DeleteAPI";
 import {
   findComponent,
   findLayout,
   findStyle,
-  findTheme,
+  findTheme
 } from "../../api/GetAPI";
 import {
   Button,
   Container,
   PagingBar,
-  SearchBar,
+  SearchBar
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import {
   ComponentIE,
   DesignType,
   PageType,
-  SortType,
+  SortType
 } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import { RoutePath } from "../../route/routes";

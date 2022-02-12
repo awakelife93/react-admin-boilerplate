@@ -7,7 +7,7 @@ import {
   Button,
   Container,
   PagingBar,
-  SearchBar,
+  SearchBar
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import { ComponentIE, PageType, SortType } from "../../common/interface";

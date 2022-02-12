@@ -3,7 +3,7 @@ import { CommonColor } from "../styles";
 import {
   CommonComponentIE,
   DynamicColorComponentIE,
-  ScrollComponentIE,
+  ScrollComponentIE
 } from "./interface";
 
 /**

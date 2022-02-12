@@ -1,19 +1,17 @@
-import React, { useCallback } from "react";
-import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import _ from "lodash";
-
+import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+import { signOut } from "../../../api/PostAPI";
+import {
+  getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
+} from "../../../core";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
-import { signOut } from "../../../api/PostAPI";
-import { SignMenu, IconsMenu } from "./Menu";
-
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-  removeLocalStorageItem,
-} from "../../../core";
 import { ComponentIE } from "../../interface";
+import { IconsMenu, SignMenu } from "./Menu";
+
+
 
 /**
  * @description Header Component

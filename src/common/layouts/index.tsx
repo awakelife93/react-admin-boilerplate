@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect } from "react";
 import _ from "lodash";
-
+import React, { useCallback, useEffect } from "react";
+import { findUserProfile } from "../../api/GetAPI";
+import { UserInfoIE } from "../../api/interface";
+import { getLocalStorageItem, initWindowFunc } from "../../core";
+import SignInPage from "../../pages/Sign";
 import { connectWrapper } from "../../redux";
-
 import { Container, SideMenu } from "../components";
-import HeaderLayout from "./Header";
+import ModalLayout from "../components/Modal";
+import { LayoutIE } from "../interface";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
-import ModalLayout from "../components/Modal";
-import SignInPage from "../../pages/Sign";
+import HeaderLayout from "./Header";
 
-import { getLocalStorageItem, initWindowFunc } from "../../core";
-import { findUserProfile } from "../../api/GetAPI";
-import { LayoutIE } from "../interface";
-import { UserInfoIE } from "../../api/interface";
+
+
 
 /**
  * Layout (최상단 컴포넌트)

@@ -10,7 +10,7 @@ import {
   CommonRender,
   Container,
   InputBox,
-  Label,
+  Label
 } from "../../common/components";
 import { ComponentIE, PageType } from "../../common/interface";
 import { I18nCommandEnum } from "../../core";

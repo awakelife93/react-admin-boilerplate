@@ -15,8 +15,8 @@ const Bottom: React.FC<ComponentIE> = (
     <Container.BottomContainer>
       <Label.CommonLabel style={{ color: CommonColor.WHITE }}>
         github:{" "}
-        <a href="https://github.com/HyunwooP" rel="noreferrer" target="_blank">
-          https://github.com/HyunwooP
+        <a href="https://github.com/awakelife93" rel="noreferrer" target="_blank">
+          https://github.com/awakelife93
         </a>
       </Label.CommonLabel>
     </Container.BottomContainer>
