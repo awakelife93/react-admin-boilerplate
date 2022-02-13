@@ -28,7 +28,7 @@ export const validationObject = (object: UnknownObject): boolean => {
  * roleId === 1 사용자
  * roleId === 2 관리자
  * @param userRoles
- * @returns
+ * @returns {boolean}
  */
 export const isUser = (userRoles: number[]): boolean =>
   userRoles.some((roleId: number) => {
