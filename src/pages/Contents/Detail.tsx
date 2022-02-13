@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 import { ContentsType } from "../../api/GetAPI/type";
@@ -14,7 +14,7 @@ import {
   TextArea
 } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
-import { PageType } from "../../common/type";
+import { PageType, UnknownObject } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
@@ -54,7 +54,7 @@ const ContentsDetail: React.FC<ComponentIE> = (
     }
   };
 
-  const validationItem = useCallback((item: any): boolean => {
+  const validationItem = useCallback((item: UnknownObject): boolean => {
     if (!validationObject(item)) {
       _showMessageModal("컨텐츠 정보를 확인해주시기 바랍니다.");
       return false;
@@ -123,7 +123,7 @@ const ContentsDetail: React.FC<ComponentIE> = (
             }}
             placeholder={t(I18nCommandEnum.CONTENTS_TITLE)}
             value={contTitle}
-            onChange={(e) => setContTitle(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setContTitle(e.target.value)}
           />
           {/**********************************************************/}
           <Container.RowContainer
@@ -142,7 +142,7 @@ const ContentsDetail: React.FC<ComponentIE> = (
             }}
             placeholder={t(I18nCommandEnum.CONTENTS_SUB_TITLE)}
             value={contSubTitle}
-            onChange={(e) => setContSubTitle(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setContSubTitle(e.target.value)}
           />
           {/**********************************************************/}
           <Button.SubMitButton
@@ -184,7 +184,7 @@ const ContentsDetail: React.FC<ComponentIE> = (
           </Container.RowContainer>
           <TextArea.CommonTextArea
             value={contDesc}
-            onChange={(e) => setContDesc(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContDesc(e.target.value)}
             style={{ width: 300, height: 200, padding: 20 }}
           ></TextArea.CommonTextArea>
         </Container.ColumnContainer>

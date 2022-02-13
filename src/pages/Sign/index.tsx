@@ -1,11 +1,12 @@
 import _ from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import { UserInfoIE } from "../../api/interface";
 import { signIn } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
+import { UnknownObject } from "../../common/type";
 import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n/type";
 import { RoutePath } from "../../route/routes";
@@ -42,7 +43,7 @@ const SignIn: React.FC<ComponentIE> = (
   }, []);
 
   const validationItem = useCallback(
-    (item: any) => {
+    (item: UnknownObject) => {
       if (!validationObject(item)) {
         _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
@@ -100,7 +101,7 @@ const SignIn: React.FC<ComponentIE> = (
   }, [history, props, userEmail, userPw, _showMessageModal, validationItem]);
 
   const checkKeyPress = useCallback(
-    (event: any): void => {
+    (event: KeyboardEvent): void => {
       if (_.isString(event.code) && event.code === "Enter") {
         _signIn();
       }
@@ -126,7 +127,7 @@ const SignIn: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => setUserEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setUserEmail(e.target.value)}
         />
         <Container.RowContainer
           style={{
@@ -142,7 +143,7 @@ const SignIn: React.FC<ComponentIE> = (
           }}
           placeholder={t(I18nCommandEnum.PASSWORD)}
           type={"password"}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
         <Button.SubMitButton
           style={{

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
@@ -13,7 +13,7 @@ import {
   Label
 } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
-import { PageType } from "../../common/type";
+import { PageType, UnknownObject } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
@@ -56,7 +56,7 @@ const UserDetail: React.FC<ComponentIE> = (
     }
   };
 
-  const validationItem = useCallback((item: any): boolean => {
+  const validationItem = useCallback((item: UnknownObject): boolean => {
     if (!validationObject(item)) {
       _showMessageModal("회원가입 정보를 다시 한번 확인 해주시기 바랍니다.");
       return false;
@@ -73,8 +73,8 @@ const UserDetail: React.FC<ComponentIE> = (
       try {
         await signUp(item);
         history.push(RoutePath.USER_LIST);
-      } catch (e: any) {
-        switch (e.status) {
+      } catch (error: any) {
+        switch (error.status) {
           // 이메일 중복
           case 409: {
             _showMessageModal(
@@ -92,8 +92,8 @@ const UserDetail: React.FC<ComponentIE> = (
     try {
       await updateUser(item);
       history.push(RoutePath.USER_LIST);
-    } catch (e) {
-      console.log("_updateUser Error", e);
+    } catch (error: any) {
+      console.log("_updateUser Error", error);
     }
   }, [state.userId, userNickname, userPw, userRoleIds, history]);
 
@@ -128,7 +128,7 @@ const UserDetail: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -144,7 +144,7 @@ const UserDetail: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
-          onChange={(e) => setNickname(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -161,7 +161,7 @@ const UserDetail: React.FC<ComponentIE> = (
           }}
           type={"password"}
           placeholder={t(I18nCommandEnum.PASSWORD)}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -216,7 +216,7 @@ const UserDetail: React.FC<ComponentIE> = (
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
           value={userNickname}
-          onChange={(e) => setNickname(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -233,7 +233,7 @@ const UserDetail: React.FC<ComponentIE> = (
           }}
           type={"password"}
           placeholder={t(I18nCommandEnum.PASSWORD)}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer

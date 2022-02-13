@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Container, InputBox } from ".";
 import { I18nCommandEnum } from "../../core";
@@ -20,11 +20,6 @@ const SearchBar: React.FC<SearchBarType> = (
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState("");
 
-  const onChangeInput = useCallback((e: any): void => {
-    const v = e.target.value;
-    setInputValue(v);
-  }, []);
-
   const onClickSearch = useCallback((): void => {
     const { next } = props;
 
@@ -37,7 +32,7 @@ const SearchBar: React.FC<SearchBarType> = (
     <Container.RowContainer>
       <InputBox.CommonInputBox
         style={{ marginBottom: 10, marginRight: 10, paddingLeft: 10 }}
-        onChange={onChangeInput}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
         placeholder={t(I18nCommandEnum.SEARCH_NOTE)}
       />
       <Button.SubMitButton

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { CommonDesignIE } from "../../api/interface";
@@ -104,7 +104,7 @@ const DesignDetail: React.FC<ComponentIE> = (
               </Label.CommonLabel>
               <InputBox.CommonInputBox
                 defaultValue={attribute[key]}
-                onChange={(e) =>
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setComponentOrLayoutAttribute({
                     ...componentOrLayoutAttribute,
                     [key]: e.target.value,
@@ -152,7 +152,7 @@ const DesignDetail: React.FC<ComponentIE> = (
                     defaultValue={
                       componentOrLayoutAttribute[key][attributeValueKey]
                     }
-                    onChange={(e) => {
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setComponentOrLayoutAttribute({
                         ...componentOrLayoutAttribute,
                         [key]: {
@@ -197,7 +197,7 @@ const DesignDetail: React.FC<ComponentIE> = (
                     marginBottom: 15,
                   }}
                   defaultValue={styleOrThemeAttribute.components[index]}
-                  onChange={(e) => {
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     const _components: string[] = [
                       ...styleOrThemeAttribute.components,
                     ];
@@ -228,7 +228,7 @@ const DesignDetail: React.FC<ComponentIE> = (
                     marginBottom: 15,
                   }}
                   defaultValue={styleOrThemeAttribute.layouts[index]}
-                  onChange={(e) => {
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     const _layouts: string[] = [
                       ...styleOrThemeAttribute.layouts,
                     ];
@@ -267,7 +267,7 @@ const DesignDetail: React.FC<ComponentIE> = (
                 marginBottom: 15,
               }}
               defaultValue={styleOrThemeAttribute.styles[index]}
-              onChange={(e) => {
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 const _styles: string[] = [...styleOrThemeAttribute.styles];
                 _styles[index] = e.target.value;
                 setStyleOrThemeAttribute({
@@ -329,7 +329,7 @@ const DesignDetail: React.FC<ComponentIE> = (
               type: state.designType.toUpperCase(),
             })}
             value={designName}
-            onChange={(e) => setDesignName(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setDesignName(e.target.value)}
           />
           <Container.RowContainer
             style={{
