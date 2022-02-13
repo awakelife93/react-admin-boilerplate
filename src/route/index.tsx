@@ -5,11 +5,9 @@ import Layout from "../common/layouts";
 import { configureStore } from "../redux";
 import routes, { RouteType } from "./routes";
 
-const store = configureStore();
-
 const RouteComponent = () => {
   return (
-    <Provider store={store}>
+    <Provider store={configureStore()}>
       <Router history={createBrowserHistory()}>
         <Switch>
           {routes.map((route: RouteType, idx: number) => {
