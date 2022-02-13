@@ -54,7 +54,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
 
     const token = getLocalStorageItem("token");
     // 로그인이 된 상태라면
-    if (!_.isEmpty(token) && userStore.user.isLogin === false) {
+    if (!_.isNull(token) && !userStore.user.isLogin) {
       initUserProfile();
     }
   }, [
