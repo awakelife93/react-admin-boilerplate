@@ -78,8 +78,8 @@ const SignIn: React.FC<ComponentIE> = (
           });
           history.push(RoutePath.DASHBOARD);
         }
-      } catch (e: any) {
-        switch (e.status) {
+      } catch (error: any) {
+        switch (error.status) {
           // 비밀번호 틀렸을 경우
           case 401: {
             _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
