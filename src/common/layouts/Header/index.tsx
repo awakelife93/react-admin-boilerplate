@@ -11,8 +11,6 @@ import { Container } from "../../components";
 import { ComponentIE } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
-
-
 /**
  * @description Header Component
  * @param {ComponentIE} props
@@ -35,7 +33,7 @@ const Header: React.FC<ComponentIE> = (
   );
 
   const { i18n } = useTranslation();
-  const _setLaunage = useCallback(
+  const _setLanguage = useCallback(
     (lng: string) => {
       setLocalStorageItem({ lng });
       i18n.changeLanguage(lng);
@@ -73,7 +71,7 @@ const Header: React.FC<ComponentIE> = (
 
   return (
     <Container.HeaderContainer>
-      <IconsMenu _routePush={_routePush} _setLaunage={_setLaunage} />
+      <IconsMenu _routePush={_routePush} _setLanguage={_setLanguage} />
       <SignMenu
         userInfo={userStore}
         _routePush={_routePush}

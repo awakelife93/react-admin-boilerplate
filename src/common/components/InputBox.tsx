@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CommonColor } from "../styles";
-import { CommonComponentIE } from "./interface";
+import { CommonComponentType } from "./type";
 
 /**
  * @description
@@ -8,7 +8,7 @@ import { CommonComponentIE } from "./interface";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface InputBoxIE extends CommonComponentIE {}
+interface InputBoxIE extends Partial<CommonComponentType> {}
 export const CommonInputBox = styled.input`
   width: ${(props: InputBoxIE) => props.style?.width ?? "300px"};
   height: ${(props: InputBoxIE) => props.style?.height ?? "40px"};
@@ -21,7 +21,7 @@ export const CommonInputBox = styled.input`
   margin-bottom: ${(props: InputBoxIE) => props.style?.marginBottom ?? "0px"};
 `;
 
-interface RadioBoxIE extends CommonComponentIE {}
+interface RadioBoxIE extends Partial<CommonComponentType> {}
 export const RadioBox = styled.input.attrs((props) => ({
   type: "radio",
 }))``;

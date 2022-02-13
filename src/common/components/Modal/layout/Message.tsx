@@ -1,11 +1,11 @@
 import { Container, Label } from "../..";
 import { CommonColor } from "../../../styles";
 
-interface MessageLayoutIE {
+type MessageLayoutType = {
   message: string;
 }
 
-const MessageLayout: React.FC<MessageLayoutIE> = (props: MessageLayoutIE) => {
+const MessageLayout: React.FC<MessageLayoutType> = (props: MessageLayoutType) => {
   const { message } = props;
   return (
     <Container.ColumnContainer>

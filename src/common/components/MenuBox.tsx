@@ -3,13 +3,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import { CSSProperties } from "styled-components";
 import { Container } from "../components";
 
-interface ItemIE {
+type ItemType = {
   displayName: string;
   value: any;
 }
 
-interface MenuBoxIE {
-  renderItems: ItemIE[];
+type MenuBoxType = {
+  renderItems: ItemType[];
   renderType?: "row" | "column";
   children: React.ReactElement;
   onClick: Function;
@@ -20,11 +20,11 @@ interface MenuBoxIE {
 /**
  * MenuBox
  * @description 컴포넌트에 달라붙는 메뉴 박스
- * @param {MenuBoxIE} props
+ * @param {MenuBoxType} props
  * @returns {React.ReactElement}
  */
-const MenuBox: React.FC<MenuBoxIE> = (
-  props: MenuBoxIE
+const MenuBox: React.FC<MenuBoxType> = (
+  props: MenuBoxType
 ): React.ReactElement | null => {
   const [isShowMenuBox, setShowMenuBox] = useState(false);
   const {
@@ -54,7 +54,7 @@ const MenuBox: React.FC<MenuBoxIE> = (
     if (renderType === "row") {
       return (
         <Container.RowContainer style={{ ...menuContainerStyle }}>
-          {renderItems.map((item: ItemIE, idx: number) => {
+          {renderItems.map((item: ItemType, idx: number) => {
             return (
               <Container.RowContainer
                 key={`MenuBox_Row_Item_${idx}`}
@@ -74,7 +74,7 @@ const MenuBox: React.FC<MenuBoxIE> = (
     } else {
       return (
         <Container.ColumnContainer style={{ ...menuContainerStyle }}>
-          {renderItems.map((item: ItemIE, idx: number) => {
+          {renderItems.map((item: ItemType, idx: number) => {
             return (
               <Container.RowContainer
                 key={`MenuBox_Row_Item_${idx}`}

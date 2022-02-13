@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { CSSProperties } from "styled-components";
 import { Container, InputBox, Label } from ".";
 
-interface DownLoaderIE {
+type DownLoaderType = {
   children?: React.ReactElement;
   fileType?: string;
   containerStyles?: CSSProperties;
@@ -15,14 +15,15 @@ interface DownLoaderIE {
   };
   next: Function;
 }
+
 /**
  * DownLoader
- * @description 다운로드 컴포넌트
- * @param {DownLoaderIE} props
+ * @description 다운로드 컴포넌트이다.
+ * @param {DownLoaderType} props
  * @returns {React.ReactElement}
  */
-const DownLoader: React.FC<DownLoaderIE> = (
-  props: DownLoaderIE
+const DownLoader: React.FC<DownLoaderType> = (
+  props: DownLoaderType
 ): React.ReactElement => {
   const downloadInput: React.MutableRefObject<any> = useRef<HTMLDivElement>();
   const {
@@ -35,7 +36,7 @@ const DownLoader: React.FC<DownLoaderIE> = (
   } = props;
 
   const init = (): void => {
-    if (downloadInput.current) {
+    if (_.isEmpty(downloadInput.current)) {
       downloadInput.current.value = "";
     }
   };

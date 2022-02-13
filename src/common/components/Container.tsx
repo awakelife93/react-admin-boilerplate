@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { CommonColor } from "../styles";
 import {
-  CommonComponentIE,
-  DynamicColorComponentIE,
-  ScrollComponentIE
-} from "./interface";
+  CommonComponentType,
+  DynamicColorComponentType,
+  ScrollComponentType
+} from "./type";
 
 /**
  * @description
@@ -13,7 +13,7 @@ import {
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
 
-export interface LayoutContainerIE extends CommonComponentIE {}
+export interface LayoutContainerIE extends Partial<CommonComponentType> {}
 export const LayoutContainer = styled.div`
   position: ${(props: LayoutContainerIE) => props.style?.position ?? ""};
   top: ${(props: LayoutContainerIE) => props.style?.top ?? "0px"};
@@ -22,7 +22,7 @@ export const LayoutContainer = styled.div`
   right: ${(props: LayoutContainerIE) => props.style?.right ?? "0px"};
 `;
 
-export interface BodyContainerIE extends CommonComponentIE {}
+export interface BodyContainerIE extends Partial<CommonComponentType> {}
 export const BodyContainer = styled.div`
   width: ${(props: BodyContainerIE) => props.style?.width ?? "100%"};
   height: ${(props: BodyContainerIE) => props.style?.height ?? "100%"};
@@ -32,7 +32,7 @@ export const BodyContainer = styled.div`
     props.style?.backgroundColor ?? CommonColor.BODY_COLOR};
 `;
 
-export interface HeaderContainerIE extends CommonComponentIE {}
+export interface HeaderContainerIE extends Partial<CommonComponentType> {}
 export const HeaderContainer = styled.div`
   width: ${(props: HeaderContainerIE) => props.style?.width ?? "100%"};
   height: ${(props: HeaderContainerIE) => props.style?.height ?? "80px"};
@@ -49,7 +49,7 @@ export const HeaderContainer = styled.div`
     props.style?.backgroundColor ?? CommonColor.HEADER_COLOR};
 `;
 
-export interface BottomContainerIE extends CommonComponentIE {}
+export interface BottomContainerIE extends Partial<CommonComponentType> {}
 export const BottomContainer = styled.footer`
   width: ${(props: BottomContainerIE) => props.style?.width ?? "100%"};
   height: ${(props: BottomContainerIE) => props.style?.height ?? "100px"};
@@ -61,7 +61,7 @@ export const BottomContainer = styled.footer`
     props.style?.fontWeight ?? "bold"};
 `;
 
-interface RowContainerIE extends CommonComponentIE {}
+interface RowContainerIE extends Partial<CommonComponentType> {}
 export const RowContainer = styled.div`
   display: ${(props: RowContainerIE) => props.style?.display ?? "flex"};
   align-items: ${(props: RowContainerIE) =>
@@ -75,7 +75,7 @@ export const RowContainer = styled.div`
     props.style?.flexDirection ?? "row"};
 `;
 
-interface ColumnContainerIE extends CommonComponentIE, ScrollComponentIE {}
+interface ColumnContainerIE extends Partial<CommonComponentType>, Partial<ScrollComponentType> {}
 export const ColumnContainer = styled.div`
   display: ${(props: ColumnContainerIE) => props.style?.display ?? "flex"};
   justify-content: ${(props: ColumnContainerIE) =>
@@ -121,9 +121,7 @@ export const ColumnContainer = styled.div`
   /******************************************************************************/
 `;
 
-interface DynamicColorContainerIE
-  extends CommonComponentIE,
-    DynamicColorComponentIE {}
+interface DynamicColorContainerIE extends Partial<CommonComponentType>, Partial<DynamicColorComponentType> {}
 export const DynamicColorContainer = styled.div`
   &:hover {
     background-color: ${(props: DynamicColorContainerIE) =>

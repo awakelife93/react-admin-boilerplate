@@ -10,7 +10,7 @@ interface Window {
     /**
      * @description
      * src/modal/index.ts
-     * ShowModalActionIE 참고
+     * ShowModalActionType 참고
      *
      * todo: 레이아웃을 고르기 위해 분리했지만, 인터페이스 확장이 어려워져서 합칠까 고민중
      */

@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { _showModalAction } from "../../common/components/Modal";
-import { ShowModalActionIE } from "../../common/components/Modal/interface";
+import { ShowModalActionType } from "../../common/components/Modal/type";
+import { UnknownObject } from "../../common/type";
 
 export const initWindowFunc = ({
   initUserInfoAction,
@@ -11,7 +12,7 @@ export const initWindowFunc = ({
 }): void => {
   window.globalFunc = {
     initUserInfoAction: () => initUserInfoAction(),
-    showModalAction: ({ type, item, children }: ShowModalActionIE) =>
+    showModalAction: ({ type, item, children }: ShowModalActionType) =>
       _showModalAction({
         next: showModalAction,
         type,
@@ -50,7 +51,7 @@ export const getWindowData = (key: string): string => {
   return window.globalEntity[key] ?? "";
 };
 
-export const setWindowData = (item: any): void => {
+export const setWindowData = (item: UnknownObject): void => {
   const keys = Object.keys(item);
 
   _.forEach(keys, (key: string) => {

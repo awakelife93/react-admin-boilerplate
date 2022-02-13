@@ -3,15 +3,16 @@ import { useEffect } from "react";
 import { removeBodyScroll, revertBodyScroll } from "../../../utils";
 import { Container, Icon } from "../../components";
 import { CommonColor } from "../../styles";
-import { ModalIE, ShowModalActionIE } from "./interface";
+import { ModalIE } from "./interface";
 import MessageLayout from "./layout/Message";
+import { ShowModalActionType } from "./type";
 
 export const _showModalAction = ({
   next,
   type,
   children,
   item,
-}: ShowModalActionIE): void => {
+}: ShowModalActionType): void => {
   if (_.isFunction(next)) {
     // 넘겨 받은 children이 없거나, type을 주었을 경우 그것에 맞는 레이아웃 제공
     if (_.isEmpty(children) || !_.isEmpty(type)) {

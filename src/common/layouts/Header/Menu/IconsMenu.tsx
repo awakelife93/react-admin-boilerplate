@@ -4,21 +4,21 @@ import { I18nCommandEnum } from "../../../../core/i18n/type";
 import { Button, Container, Icon, MenuBox } from "../../../components";
 import { CommonColor } from "../../../styles";
 
-interface IconMenuIE {
+type IconMenuType = {
   _routePush: Function;
-  _setLaunage: Function;
+  _setLanguage: Function;
 }
 
 /**
  * @description Header Icons Component
- * @param {IconsActionIE} props
+ * @param {IconMenuType} props
  * @returns {React.ReactElement}
  */
-const IconMenu: React.FC<IconMenuIE> = (
-  props: IconMenuIE
+const IconMenu: React.FC<IconMenuType> = (
+  props: IconMenuType
 ): React.ReactElement => {
   const { t } = useTranslation();
-  const { _routePush, _setLaunage } = props;
+  const { _routePush, _setLanguage } = props;
 
   return (
     <Container.RowContainer
@@ -73,7 +73,7 @@ const IconMenu: React.FC<IconMenuIE> = (
             value: "en",
           },
         ]}
-        onClick={(lng: string) => _setLaunage(lng)}
+        onClick={(lng: string) => _setLanguage(lng)}
       />
     </Container.RowContainer>
   );

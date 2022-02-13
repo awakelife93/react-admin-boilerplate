@@ -7,7 +7,7 @@ import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
 import { CommonColor } from "../../../styles";
 
-interface SignMenuIE {
+type SignMenuType = {
   userInfo: UserStoreIE;
   _routePush: Function;
   _signOut: Function;
@@ -15,11 +15,11 @@ interface SignMenuIE {
 
 /**
  * @description Header Sign Component
- * @param {SignActionIE} props
+ * @param {SignMenuType} props
  * @returns {React.ReactElement}
  */
-const SignMenu: React.FC<SignMenuIE> = (
-  props: SignMenuIE
+const SignMenu: React.FC<SignMenuType> = (
+  props: SignMenuType
 ): React.ReactElement => {
   const {
     _routePush,

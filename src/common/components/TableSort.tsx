@@ -6,7 +6,7 @@ import { CommonColor } from "../styles";
 import { SortType } from "../type";
 import { DynamicColorContainer } from "./Container";
 
-interface TableSortIE {
+type TableSortType = {
   sort: SortType;
   title: string;
   next: Function;
@@ -24,11 +24,11 @@ interface TableSortIE {
 /**
  * TableSort
  * @description 테이블 정렬 컴포넌트
- * @param {TableSortIE} props
+ * @param {TableSortType} props
  * @returns {React.ReactElement}
  */
-const TableSort: React.FC<TableSortIE> = (
-  props: TableSortIE
+const TableSort: React.FC<TableSortType> = (
+  props: TableSortType
 ): React.ReactElement => {
   // false = desc, true = asc
   const {

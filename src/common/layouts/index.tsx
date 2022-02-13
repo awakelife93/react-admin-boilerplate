@@ -12,9 +12,6 @@ import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
 import HeaderLayout from "./Header";
 
-
-
-
 /**
  * Layout (최상단 컴포넌트)
  * @param {redux} props
@@ -24,7 +21,6 @@ import HeaderLayout from "./Header";
  * 해당 컴포넌트만 Redux에 연결하여 props로 자식 컴포넌트 전체 (페이지)에 뿌린다.
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
-
 const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   const {
     reduxStore: {

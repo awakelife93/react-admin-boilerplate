@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Container, InputBox } from ".";
 import { I18nCommandEnum } from "../../core";
 
-interface SearchBarIE {
+type SearchBarType = {
   next: Function;
 }
 
@@ -14,8 +14,8 @@ interface SearchBarIE {
  * @param {SearchBarIE} props
  * @returns {React.ReactElement}
  */
-const SearchBar: React.FC<SearchBarIE> = (
-  props: SearchBarIE
+const SearchBar: React.FC<SearchBarType> = (
+  props: SearchBarType
 ): React.ReactElement => {
   const { t } = useTranslation();
   const [inputValue, setInputValue] = useState("");

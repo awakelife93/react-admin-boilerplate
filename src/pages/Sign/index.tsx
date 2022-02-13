@@ -22,7 +22,7 @@ const SignIn: React.FC<ComponentIE> = (
   const { t } = useTranslation();
 
   // Input
-  const [userEmail, setuserEmail] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [userPw, setPassword] = useState("");
 
   useEffect(() => {
@@ -126,7 +126,7 @@ const SignIn: React.FC<ComponentIE> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e) => setuserEmail(e.target.value)}
+          onChange={(e) => setUserEmail(e.target.value)}
         />
         <Container.RowContainer
           style={{

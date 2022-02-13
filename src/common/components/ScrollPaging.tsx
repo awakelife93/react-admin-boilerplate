@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { useCallback, useEffect, useRef } from "react";
 import { Container } from ".";
 
-interface ScrollPagingIE {
+type ScrollPagingType = {
   children: React.ReactElement;
   target: {
     callback: Function;
@@ -16,28 +16,30 @@ interface ScrollPagingIE {
 /**
  * ScrollPaging
  * @description 스크롤을 감지하여 페이징
- * @param {ScrollPagingIE} props
+ * @param {ScrollPagingType} props
  * @returns {React.ReactElement}
  */
-const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
+const ScrollPaging: React.FC<ScrollPagingType> = (
+  props: ScrollPagingType
+): React.ReactElement => {
   const {
     children,
     target: { callback },
     observerOption,
   } = props;
-
+  
   const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
-
+  
   const onPagingEnd = useCallback(
-    ([entry]: any): void => {
+    ([entry]: IntersectionObserverEntry[]): void => {
       // ref가 화면에 완전히 표시 될때 (threshold === 1)
       if (entry.isIntersecting) {
         try {
           if (_.isFunction(callback)) {
             callback();
           }
-        } catch (e) {
-          console.log("Paging Callback Error", e);
+        } catch (error: unknown) {
+          console.log("Paging Callback Error", error);
         }
       }
     },
@@ -45,14 +47,13 @@ const ScrollPaging: React.FC<ScrollPagingIE> = (props: ScrollPagingIE) => {
   );
 
   useEffect(() => {
+    const { current } = component;
     let observer: IntersectionObserver;
 
-    if (component.current) {
+    if (!_.isUndefined(current)) {
       const threshold = observerOption?.threshold ?? 1;
-      observer = new IntersectionObserver(onPagingEnd, {
-        threshold,
-      });
-      observer.observe(component.current);
+      observer = new IntersectionObserver(onPagingEnd, { threshold });
+      observer.observe(current);
     }
 
     return () => observer && observer.disconnect();

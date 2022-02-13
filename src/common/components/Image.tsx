@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CommonComponentIE } from "./interface";
+import { CommonComponentType } from "./type";
 
 /**
  * @description
@@ -7,13 +7,13 @@ import { CommonComponentIE } from "./interface";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface CommonImageIE extends CommonComponentIE {}
+interface CommonImageIE extends Partial<CommonComponentType> {}
 export const CommonImage = styled.img`
   width: ${(props: CommonImageIE) => props.style?.width ?? "100%"};
   height: ${(props: CommonImageIE) =>
     props.style?.height ?? `${document.documentElement.clientHeight - 20}px`};
 `;
-interface BackgroundImageIE extends CommonComponentIE {
+interface BackgroundImageIE extends Partial<CommonComponentType> {
   requireStyle: {
     backgroundImage: string;
     backgroundRepeat?: string;

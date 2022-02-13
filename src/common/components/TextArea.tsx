@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CommonColor } from "../styles";
-import { CommonComponentIE, ScrollComponentIE } from "./interface";
+import { CommonComponentType, ScrollComponentType } from "./type";
 
 /**
  * @description
@@ -8,7 +8,7 @@ import { CommonComponentIE, ScrollComponentIE } from "./interface";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface CommonTextAreaIE extends CommonComponentIE, ScrollComponentIE {}
+interface CommonTextAreaIE extends Partial<CommonComponentType>, Partial<ScrollComponentType> {}
 export const CommonTextArea = styled.textarea`
   /* scroll style */
   ::-webkit-scrollbar {

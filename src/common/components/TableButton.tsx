@@ -4,7 +4,7 @@ import { CSSProperties } from "styled-components";
 import { Button } from ".";
 import { CommonColor } from "../styles";
 
-interface TableButtonIE {
+type TableButtonType = {
   title: string;
   next: Function;
   tdStyleItems?: CSSProperties;
@@ -19,11 +19,11 @@ interface TableButtonIE {
 /**
  * TableButton
  * @description 테이블 리스트 버튼 컴포넌트
- * @param {TableButtonIE} props
+ * @param {TableButtonType} props
  * @returns {React.ReactElement}
  */
-const TableButton: React.FC<TableButtonIE> = (
-  props: TableButtonIE
+const TableButton: React.FC<TableButtonType> = (
+  props: TableButtonType
 ): React.ReactElement => {
   const {
     title,

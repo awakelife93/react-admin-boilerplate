@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CommonColor } from "../styles";
-import { CommonComponentIE } from "./interface";
+import { CommonComponentType } from "./type";
 
 /**
  * @description
@@ -8,7 +8,7 @@ import { CommonComponentIE } from "./interface";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface CommonSelectBoxIE extends CommonComponentIE {}
+interface CommonSelectBoxIE extends Partial<CommonComponentType> {}
 export const CommonSelectBox = styled.select`
   width: ${(props: CommonSelectBoxIE) => props.style?.width ?? "300px"};
   height: ${(props: CommonSelectBoxIE) => props.style?.height ?? "40px"};

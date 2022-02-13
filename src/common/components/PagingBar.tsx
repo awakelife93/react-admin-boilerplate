@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useCallback, useMemo } from "react";
 import { PageItem, Pagination } from "react-bootstrap";
 
-interface PagingBarIE {
+type PagingBarType = {
   totalCount: number;
   limit: number;
   active: number;
@@ -12,11 +12,11 @@ interface PagingBarIE {
 /**
  * PagingBar
  * @description 페이징 처리
- * @param {PagingBarIE} props
+ * @param {PagingBarType} props
  * @returns {React.ReactElement}
  */
-const PagingBar: React.FC<PagingBarIE> = (
-  props: PagingBarIE
+const PagingBar: React.FC<PagingBarType> = (
+  props: PagingBarType
 ): React.ReactElement => {
   const { active, onPageClick, limit, totalCount } = props;
 
