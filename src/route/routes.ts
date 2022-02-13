@@ -1,5 +1,6 @@
 import React from "react";
 import { ComponentIE } from "../common/interface";
+import { I18nCommandEnum } from "../core";
 import ContentsPage from "../pages/Contents";
 import ContentsDetailPage from "../pages/Contents/Detail";
 import DashboardPage from "../pages/Dashboard";
@@ -20,9 +21,9 @@ export enum RoutePath {
   SIGN_IN = "/signIn",
 }
 export interface RouteIE {
-  path: string;
+  path: RoutePath;
   exact: boolean;
-  i18nKey: string;
+  i18nKey: I18nCommandEnum | undefined;
   Component: React.FC<ComponentIE>;
 }
 
@@ -30,49 +31,49 @@ const routes: RouteIE[] = [
   {
     path: RoutePath.DASHBOARD,
     exact: true,
-    i18nKey: "dashboard",
+    i18nKey: I18nCommandEnum.DASHBOARD,
     Component: DashboardPage,
   },
   {
     path: RoutePath.USER,
     exact: false,
-    i18nKey: "user_list",
+    i18nKey: I18nCommandEnum.USER_LIST,
     Component: UserPage,
   },
   {
     path: RoutePath.USER_DETAIL,
     exact: false,
-    i18nKey: "",
+    i18nKey: undefined,
     Component: UserDetailPage,
   },
   {
     path: RoutePath.CONTENTS,
     exact: false,
-    i18nKey: "contents_list",
+    i18nKey: I18nCommandEnum.CONTENTS_LIST,
     Component: ContentsPage,
   },
   {
     path: RoutePath.CONTENTS_DETAIL,
     exact: false,
-    i18nKey: "",
+    i18nKey: undefined,
     Component: ContentsDetailPage,
   },
   {
     path: RoutePath.DESIGN,
     exact: false,
-    i18nKey: "design_list",
+    i18nKey: I18nCommandEnum.DESIGN_LIST,
     Component: DesignPage,
   },
   {
     path: RoutePath.DESIGN_DETAIL,
     exact: false,
-    i18nKey: "",
+    i18nKey: undefined,
     Component: DesignDetailPage,
   },
   {
     path: RoutePath.SIGN_IN,
     exact: false,
-    i18nKey: "",
+    i18nKey: undefined,
     Component: SignInPage,
   },
 ];

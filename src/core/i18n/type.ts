@@ -39,4 +39,10 @@ export enum I18nCommandEnum {
   // User Model - Button
   UPDATE_USER_INFO = "update_user_info",
   DELETE_ACCOUNT = "delete_account",
+
+  // Tab
+  DASHBOARD = "dashboard",
+  USER_LIST = "user_list",
+  CONTENTS_LIST = "contents_list",
+  DESIGN_LIST = "design_list",
 }

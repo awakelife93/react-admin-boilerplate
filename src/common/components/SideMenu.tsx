@@ -32,7 +32,7 @@ const SideMenu: React.FC = (): React.ReactElement => {
       <Container.ColumnContainer>
         {!_.isEmpty(routes) &&
           routes.map((route: RouteIE, idx: number) => {
-            if (!_.isEmpty(route.i18nKey)) {
+            if (!_.isUndefined(route.i18nKey)) {
               return (
                 <Link key={`sidMenu_list_Key${idx}`} to={route.path}>
                   <Navbar.Brand
