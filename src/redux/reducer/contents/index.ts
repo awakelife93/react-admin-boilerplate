@@ -1,12 +1,12 @@
 import _ from "lodash";
-import { ActionIE, ContentsStoreIE } from "../../interface";
-import { ActionEnum } from "../../type";
+import { AnyAction } from "redux";
+import { ActionEnum, ContentsStoreType } from "../../type";
 import { initContentState } from "./default";
 
-export default function contentsStore(
-  state: ContentsStoreIE = initContentState,
-  action: ActionIE
-) {
+const contentsStore = (
+  state: ContentsStoreType = initContentState,
+  action: AnyAction
+): ContentsStoreType => {
   switch (action.type) {
     case ActionEnum.GET_CONTENTS:
       return _.merge([], state, {
@@ -16,4 +16,6 @@ export default function contentsStore(
     default:
       return state;
   }
-}
+};
+
+export default contentsStore;

@@ -2,13 +2,13 @@ import _ from "lodash";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { I18nCommandEnum } from "../../../../core/i18n/type";
-import { UserStoreIE } from "../../../../redux/interface";
+import { UserStoreType } from "../../../../redux/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
 import { CommonColor } from "../../../styles";
 
 type SignMenuType = {
-  userInfo: UserStoreIE;
+  userInfo: UserStoreType;
   _routePush: Function;
   _signOut: Function;
 }
