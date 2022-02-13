@@ -16,3 +16,5 @@ export const defaultDimClose = false;
 export const defaultKeyClose = true;
 // default Paging Count
 export const defaultPagingCount = 20;
+// default Input Debounce Time
+export const defaultInputDebounceTime = 200;

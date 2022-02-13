@@ -85,7 +85,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
           <HeaderLayout {...props} />
           <BodyLayout {...props}>
             {/* 로그인이 안되어있을 경우 무조건 로그인 페이지로 */}
-            {_.isEmpty(getLocalStorageItem("token")) ? (
+            {_.isNull(getLocalStorageItem("token")) ? (
               <SignInPage {...props} />
             ) : (
               <Component {...props} />
