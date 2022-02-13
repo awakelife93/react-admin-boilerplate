@@ -30,12 +30,12 @@ export const validationObject = (object: UnknownObject): boolean => {
  * @param userRoles
  * @returns
  */
-export const isUser = (userRoles: number[]) =>
+export const isUser = (userRoles: number[]): boolean =>
   userRoles.some((roleId: number) => {
     return roleId === 1;
   });
 
-export const isAdmin = (userRoles: number[]) =>
+export const isAdmin = (userRoles: number[]): boolean =>
   userRoles.some((roleId: number) => {
     return roleId === 2;
   });
