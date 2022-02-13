@@ -9,7 +9,6 @@ import { CommonColor } from "../../common/styles";
  * @param {ComponentIE} props
  * @returns {React.ReactElement}
  */
-
 const Dashboard: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
