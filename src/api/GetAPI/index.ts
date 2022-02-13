@@ -3,12 +3,12 @@ import { defaultPagingCount } from "../../common/const";
 import { SortType } from "../../common/type";
 import { UserInfoIE } from "../interface";
 import {
-  ContentsIE,
-  DesignComponentIE,
-  DesignLayoutIE,
-  DesignStyleIE,
-  DesignThemeIE,
-} from "./interface";
+  ContentsType,
+  DesignComponentType,
+  DesignLayoutType,
+  DesignStyleType,
+  DesignThemeType,
+} from "./type";
 
 export const findUserCount = async ({
   searchKeyword = "",
@@ -84,14 +84,13 @@ export const findUser = async ({
   userNicknameSort?: SortType;
 }): Promise<[UserInfoIE[], number]> => {
   try {
-    const items = {
+    return await getAPI("findUser", {
       take: defaultPagingCount,
       skip,
       searchKeyword: searchKeyword ?? "",
       userEmailSort: userEmailSort ?? "",
       userNicknameSort: userNicknameSort ?? "",
-    };
-    return await getAPI("findUser", items);
+    });
   } catch (e) {
     console.log("===============> findUser Error", e);
     throw e;
@@ -108,7 +107,7 @@ export const findContents = async ({
   searchKeyword?: string;
   contTitleSort?: SortType;
   contSubTitleSort?: SortType;
-}): Promise<[ContentsIE[], number]> => {
+}): Promise<[ContentsType[], number]> => {
   try {
     return await getAPI("findContents", {
       take: defaultPagingCount,
@@ -131,7 +130,7 @@ export const findComponent = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}): Promise<[DesignComponentIE[], number]> => {
+}): Promise<[DesignComponentType[], number]> => {
   try {
     return await getAPI("findComponent", {
       take: defaultPagingCount,
@@ -153,7 +152,7 @@ export const findLayout = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}): Promise<[DesignLayoutIE[], number]> => {
+}): Promise<[DesignLayoutType[], number]> => {
   try {
     return await getAPI("findLayout", {
       take: defaultPagingCount,
@@ -175,7 +174,7 @@ export const findStyle = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}): Promise<[DesignStyleIE[], number]> => {
+}): Promise<[DesignStyleType[], number]> => {
   try {
     return await getAPI("findStyle", {
       take: defaultPagingCount,
@@ -197,7 +196,7 @@ export const findTheme = async ({
   skip: number;
   searchKeyword?: string;
   nameSort?: SortType;
-}): Promise<[DesignThemeIE[], number]> => {
+}): Promise<[DesignThemeType[], number]> => {
   try {
     return await getAPI("findTheme", {
       take: defaultPagingCount,

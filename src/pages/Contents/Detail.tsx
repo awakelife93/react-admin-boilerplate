@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
-import { ContentsIE } from "../../api/GetAPI/interface";
+import { ContentsType } from "../../api/GetAPI/type";
 import { updateContents } from "../../api/PatchAPI";
 import { createContents } from "../../api/PutAPI";
 import {
@@ -25,7 +25,7 @@ import { validationObject } from "../../utils";
  * @param {ContentsDetailPropsIE} location
  * @returns {React.ReactElement}
  */
-interface ContentsDetailPropsIE extends ContentsIE {
+interface ContentsDetailPropsIE extends ContentsType {
   type: PageType;
 }
 

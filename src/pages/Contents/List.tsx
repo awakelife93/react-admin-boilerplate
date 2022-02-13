@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { ContentsIE } from "../../api/GetAPI/interface";
+import { ContentsType } from "../../api/GetAPI/type";
 import { TableButton, TableSort } from "../../common/components";
 import { SortType } from "../../common/type";
 
@@ -14,7 +14,7 @@ const List = ({
 }: {
   contTitleSort: SortType;
   contSubTitleSort: SortType;
-  contents: ContentsIE[];
+  contents: ContentsType[];
   onSortClick: Function;
   onDeleteClick: Function;
   onDetailClick: Function;
@@ -40,7 +40,7 @@ const List = ({
       </thead>
       <tbody>
         {!_.isEmpty(contents) &&
-          contents.map((cont: ContentsIE, index: number) => {
+          contents.map((cont: ContentsType, index: number) => {
             return (
               <tr key={`user_List_Key${index}`}>
                 <td>{cont.contId}</td>

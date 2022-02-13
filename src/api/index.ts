@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
+import { UnknownObject } from "../common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
@@ -17,7 +18,7 @@ const _showMessageModal = (message: string): void => {
   }
 };
 
-const baseURL = "http://localhost:8080/";
+const baseURL: string = "http://localhost:8080/";
 const instance: AxiosInstance = axios.create({
   baseURL,
   headers: {
@@ -30,18 +31,19 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const localStorageToken = getLocalStorageItem("token");
+
     // 토큰이 소실되었을 경우 지워주기
     if (_.isEmpty(localStorageToken)) {
       config.headers.Authorization = "";
     } else {
       if (_.isEmpty(config.headers.Authorization))
         // 토큰이 생겼을 경우 request headers에 달아주기
-        config.headers.Authorization = `Bearer ${localStorageToken ?? ""}`;
+        config.headers.Authorization = `Bearer ${localStorageToken}`;
     }
 
     return config;
   },
-  (error: any) => {
+  (error: unknown) => {
     return Promise.reject(error);
   }
 );
@@ -84,7 +86,10 @@ instance.interceptors.response.use(
   }
 );
 
-const generateQueryEndPoint = (endPoint: string, params: any): string => {
+const generateQueryEndPoint = (
+  endPoint: string,
+  params: UnknownObject
+): string => {
   let _endPoint = `${endPoint}?`;
 
   Object.keys(params).forEach((key: string, index: number) => {
@@ -100,62 +105,73 @@ const generateQueryEndPoint = (endPoint: string, params: any): string => {
 
 export const getAPI = async (
   endPoint: string = "",
-  params = {},
-  axiosOption = {}
-): Promise<any> => {
+  params: UnknownObject = {},
+  axiosOption: AxiosRequestConfig = {}
+) => {
   const getEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
-  const result = await instance.get(getEndPoint, axiosOption);
+  const result: AxiosResponse = await instance.get(getEndPoint, axiosOption);
   return await generateAPIData(result);
 };
 
 export const deleteAPI = async (
   endPoint: string = "",
-  params = {},
-  axiosOption = {}
-): Promise<any> => {
+  params: UnknownObject = {},
+  axiosOption: AxiosRequestConfig = {}
+) => {
   const deleteEndPoint = _.isEmpty(params)
     ? endPoint
     : generateQueryEndPoint(endPoint, params);
-  const result = await instance.delete(deleteEndPoint, axiosOption);
+  const result: AxiosResponse = await instance.delete(
+    deleteEndPoint,
+    axiosOption
+  );
   return await generateAPIData(result);
 };
 
 export const postAPI = async (
   endPoint: string = "",
-  data = {},
-  axiosOption = {
+  data: UnknownObject = {},
+  axiosOption: AxiosRequestConfig = {
     timeout: 2000,
   }
-): Promise<any> => {
-  const result = await instance.post(endPoint, data, axiosOption);
+) => {
+  const result: AxiosResponse = await instance.post(
+    endPoint,
+    data,
+    axiosOption
+  );
   return await generateAPIData(result);
 };
 
 export const putAPI = async (
   endPoint: string = "",
-  data = {},
-  axiosOption = {
+  data: UnknownObject = {},
+  axiosOption: AxiosRequestConfig = {
     timeout: 2000,
   }
-): Promise<any> => {
-  const result = await instance.put(endPoint, data, axiosOption);
+) => {
+  const result: AxiosResponse = await instance.put(endPoint, data, axiosOption);
   return await generateAPIData(result);
 };
 
 export const patchAPI = async (
   endPoint: string = "",
-  data = {},
-  axiosOption = {
+  data: UnknownObject = {},
+  axiosOption: AxiosRequestConfig = {
     timeout: 2000,
   }
-): Promise<any> => {
-  const result = await instance.patch(endPoint, data, axiosOption);
+) => {
+  const result: AxiosResponse = await instance.patch(
+    endPoint,
+    data,
+    axiosOption
+  );
   return await generateAPIData(result);
 };
 
-export const generateAPIData = async (res: any): Promise<any> => {
+export const generateAPIData = async (response: AxiosResponse) => {
   // 확장할 것이 있으면 여기에 작성
-  return res.data;
+  return response.data;
 };

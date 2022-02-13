@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { removeContents } from "../../api/DeleteAPI";
 import { findContents } from "../../api/GetAPI";
-import { ContentsIE } from "../../api/GetAPI/interface";
+import { ContentsType } from "../../api/GetAPI/type";
 import {
   Button,
   Container,
@@ -24,7 +24,7 @@ import List from "./List";
 const Contents: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const [contents, setContents] = useState<ContentsIE[]>([]);
+  const [contents, setContents] = useState<ContentsType[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -116,7 +116,7 @@ const Contents: React.FC<ComponentIE> = (
    */
   const history = useHistory();
   const onDetailClick = useCallback(
-    ({ type, item }: { type: PageType; item?: ContentsIE }): void => {
+    ({ type, item }: { type: PageType; item?: ContentsType }): void => {
       history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
     },
     [history]

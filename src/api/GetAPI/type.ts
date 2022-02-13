@@ -1,30 +1,30 @@
-export interface ContentsIE {
+export type ContentsType = {
   contId: number;
   contImageLink: string;
   contTitle: string;
   contSubTitle: string;
   contDesc: string;
-}
+};
 
-export interface DesignComponentIE {
+export type DesignComponentType = {
   _id: string;
   name: string;
   attribute: object | string | string[];
   createdAt: string;
   updatedAt: string;
   isDeleted: boolean;
-}
+};
 
-export interface DesignLayoutIE {
+export type DesignLayoutType = {
   _id: string;
   name: string;
   attribute: object | string | string[];
   createdAt: string;
   updatedAt: string;
   isDeleted: boolean;
-}
+};
 
-export interface DesignStyleIE {
+export type DesignStyleType = {
   _id: string;
   name: string;
   components: string[];
@@ -33,9 +33,9 @@ export interface DesignStyleIE {
   updatedAt: string;
   isActive: boolean;
   isDeleted: boolean;
-}
+};
 
-export interface DesignThemeIE {
+export type DesignThemeType = {
   _id: string;
   name: string;
   styles: string[];
@@ -43,4 +43,4 @@ export interface DesignThemeIE {
   updatedAt: string;
   isActive: boolean;
   isDeleted: boolean;
-}
+};

@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { patchAPI } from "..";
-import { ContentsIE } from "../GetAPI/interface";
+import { UnknownObject } from "../../common/type";
+import { ContentsType } from "../GetAPI/type";
 import { UserInfoIE } from "../interface";
 
 export const updateUser = async ({
@@ -15,7 +16,7 @@ export const updateUser = async ({
   userRoleIds?: number[];
 }): Promise<UserInfoIE> => {
   try {
-    const item: any = { userId };
+    const item: UnknownObject = { userId };
 
     if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
 
@@ -40,9 +41,9 @@ export const updateContents = async ({
   contTitle?: string;
   contSubTitle?: string;
   contDesc?: string;
-}): Promise<ContentsIE> => {
+}): Promise<ContentsType> => {
   try {
-    const item: any = { contId };
+    const item: UnknownObject = { contId };
 
     if (!_.isEmpty(contTitle)) item.contTitle = contTitle;
 

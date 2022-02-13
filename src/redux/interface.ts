@@ -1,12 +1,12 @@
 import React from "react";
 import { CSSProperties } from "styled-components";
-import { ContentsIE } from "../api/GetAPI/interface";
+import { ContentsType } from "../api/GetAPI/type";
 export interface ActionIE {
   type: string;
   value: any;
 }
 export interface ContentsStoreIE {
-  contents: ContentsIE[];
+  contents: ContentsType[];
 }
 export interface ThemeStoreIE {
   isDarkMode: boolean;

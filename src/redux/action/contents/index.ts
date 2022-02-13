@@ -1,4 +1,4 @@
-import { ContentsIE } from "../../../api/GetAPI/interface";
+import { ContentsType } from "../../../api/GetAPI/type";
 import { initContentState } from "../../reducer/contents/default";
 import { ActionEnum } from "../../type";
 
@@ -7,7 +7,7 @@ export const initContentsAction = () => ({
   value: initContentState.contents,
 });
 
-export const getContentsAction = (value: ContentsIE[]) => ({
+export const getContentsAction = (value: ContentsType[]) => ({
   type: ActionEnum.GET_CONTENTS,
   value,
 });
