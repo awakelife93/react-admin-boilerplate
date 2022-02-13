@@ -2,7 +2,7 @@ import _ from "lodash";
 import { Table } from "react-bootstrap";
 import { UserInfoIE } from "../../api/interface";
 import { TableButton, TableSort } from "../../common/components";
-import { SortType } from "../../common/interface";
+import { SortType } from "../../common/type";
 
 const List = ({
   userEmailSort,

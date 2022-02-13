@@ -1,16 +1,20 @@
 import _ from "lodash";
 
-export const getLocalStorageItem = (key: string): string | null =>
+type LocalStorageKey = "token" | "lng" | "darkMode";
+
+type LocalStorageItem = {
+  [key in LocalStorageKey]: unknown;
+};
+
+export const getLocalStorageItem = (key: LocalStorageKey): string | null =>
   window.localStorage.getItem(key);
 
 export const getLocalStorageItems = (
-  keys: string[]
-): { [index: string]: string } => {
-  let storageItems: {
-    [index: string]: string;
-  } = {};
+  keys: LocalStorageKey[]
+): LocalStorageItem => {
+  const storageItems = {} as LocalStorageItem;
 
-  _.forEach(keys, (key: string) => {
+  _.forEach(keys, (key: LocalStorageKey) => {
     const storageItem = getLocalStorageItem(key);
 
     if (storageItem !== null) {
@@ -21,17 +25,23 @@ export const getLocalStorageItems = (
   return storageItems;
 };
 
-export const setLocalStorageItem = (item: any): void => {
-  _.forEach(Object.keys(item), (key: string) => {
-    window.localStorage.setItem(key, item[key]);
+export const setLocalStorageItem = (item: Partial<LocalStorageItem>): void => {
+  const keys = Object.keys(item) as LocalStorageKey[];
+
+  _.forEach(keys, (key: LocalStorageKey) => {
+    const value = item[key];
+
+    if (!_.isEmpty(value)) {
+      window.localStorage.setItem(key, String(value));
+    }
   });
 };
 
-export const removeLocalStorageItem = (key: string): void =>
+export const removeLocalStorageItem = (key: LocalStorageKey): void =>
   window.localStorage.removeItem(key);
 
-export const removeLocalStorageItems = (keys: string[]): void => {
-  _.forEach(keys, (key: string) => {
+export const removeLocalStorageItems = (keys: LocalStorageKey[]): void => {
+  _.forEach(keys, (key: LocalStorageKey) => {
     removeLocalStorageItem(key);
   });
 };

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CommonAnimationReturnIE, MoveOptionIE } from "./interface";
+import { CommonAnimationReturn, MoveOptionIE } from "./type";
 
 /**
  * @description
@@ -13,8 +13,8 @@ const TopDownMove = (
     endPosition: 15,
     style: {},
   }
-): CommonAnimationReturnIE => {
-  const component: React.MutableRefObject<any> = useRef<HTMLDivElement>();
+): CommonAnimationReturn => {
+  const component: React.MutableRefObject<HTMLDivElement | undefined> = useRef<HTMLDivElement>();
   const [animationObject, setAnimationObject] = useState({
     isMove: false,
     position: option.position,
@@ -35,15 +35,12 @@ const TopDownMove = (
   }, [animationObject.isMove, option.endPosition, option.position]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    if (component.current) {
-      timeoutId = setTimeout(() => move(), option.delay);
-    }
-
+    const timeoutId: NodeJS.Timeout = setTimeout(() => move(), option.delay);
+    
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [animationObject.isMove, option.delay, move]);
+  }, [animationObject.isMove, move, option.delay]);
 
   return {
     ref: component,

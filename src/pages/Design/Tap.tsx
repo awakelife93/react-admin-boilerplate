@@ -1,6 +1,6 @@
 import { Button, Container } from "../../common/components";
-import { DesignType } from "../../common/interface";
 import { CommonColor, getSelectTabMenuStyle } from "../../common/styles";
+import { DesignType } from "../../common/type";
 
 const Tap = ({
   type,

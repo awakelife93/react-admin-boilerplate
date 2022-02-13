@@ -2,8 +2,8 @@ import _ from "lodash";
 import React, { useCallback } from "react";
 import { CSSProperties } from "styled-components";
 import { Icon, Label } from ".";
-import { SortType } from "../interface";
 import { CommonColor } from "../styles";
+import { SortType } from "../type";
 import { DynamicColorContainer } from "./Container";
 
 interface TableSortIE {

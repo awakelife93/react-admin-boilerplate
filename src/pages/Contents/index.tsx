@@ -10,8 +10,9 @@ import {
   SearchBar
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
-import { ComponentIE, PageType, SortType } from "../../common/interface";
+import { ComponentIE } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
+import { PageType, SortType } from "../../common/type";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 

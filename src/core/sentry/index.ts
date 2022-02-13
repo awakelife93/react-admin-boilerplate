@@ -1,11 +1,12 @@
 import Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import _ from "lodash";
+import { UnknownObject } from "../../common/type";
 
 export const sentryLogLevel = Sentry.Severity;
 
 export const sentryCaptureMessage = ({
-  message,
+  message = "",
   level = sentryLogLevel.Error,
 }: {
   message: string;
@@ -28,7 +29,7 @@ export const sentryCaptureException = ({
   });
 };
 
-export const sentrySetExtra = (extra: any): void => {
+export const sentrySetExtra = (extra: UnknownObject): void => {
   const keys = Object.keys(extra);
 
   _.forEach(keys, (key: string) => {

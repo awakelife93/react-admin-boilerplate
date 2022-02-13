@@ -20,12 +20,14 @@ import {
 } from "../../common/components";
 import { defaultPagingCount } from "../../common/const";
 import {
-  ComponentIE,
+  ComponentIE
+} from "../../common/interface";
+import { CommonColor } from "../../common/styles";
+import {
   DesignType,
   PageType,
   SortType
-} from "../../common/interface";
-import { CommonColor } from "../../common/styles";
+} from "../../common/type";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
 import Tap from "./Tap";

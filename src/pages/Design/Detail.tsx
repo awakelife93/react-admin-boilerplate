@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { CommonDesignIE } from "../../api/interface";
 import { Button, Container, InputBox, Label } from "../../common/components";
-import { ComponentIE, DesignType, PageType } from "../../common/interface";
+import { ComponentIE } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
+import { DesignType, PageType } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
 import { validationObject } from "../../utils";
 

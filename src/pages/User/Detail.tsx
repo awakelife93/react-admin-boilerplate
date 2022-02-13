@@ -12,7 +12,8 @@ import {
   InputBox,
   Label
 } from "../../common/components";
-import { ComponentIE, PageType } from "../../common/interface";
+import { ComponentIE } from "../../common/interface";
+import { PageType } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";

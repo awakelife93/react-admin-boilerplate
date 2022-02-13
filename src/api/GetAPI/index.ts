@@ -1,6 +1,6 @@
 import { getAPI } from "..";
 import { defaultPagingCount } from "../../common/const";
-import { SortType } from "../../common/interface";
+import { SortType } from "../../common/type";
 import { UserInfoIE } from "../interface";
 import {
   ContentsIE,
