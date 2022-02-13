@@ -74,12 +74,12 @@ const ContentsDetail: React.FC<ComponentIE> = (
 
       if (state.type === "MODIFY") {
         await updateContents({ contId: state.contId, ...item });
-        history.push(RoutePath.CONTENTS);
+        history.push(RoutePath.CONTENTS_LIST);
       } else {
         // require value - title
         if (validationItem({ contTitle: item.contTitle })) {
           await createContents(item);
-          history.push(RoutePath.CONTENTS);
+          history.push(RoutePath.CONTENTS_LIST);
         }
       }
     } catch (e) {

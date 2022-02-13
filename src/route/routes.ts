@@ -12,22 +12,23 @@ import UserDetailPage from "../pages/User/Detail";
 
 export enum RoutePath {
   DASHBOARD = "/",
-  USER = "/user",
+  USER_LIST = "/user",
   USER_DETAIL = "/userDetail",
-  DESIGN = "/design",
+  DESIGN_LIST = "/design",
   DESIGN_DETAIL = "/designDetail",
-  CONTENTS = "/contents",
+  CONTENTS_LIST = "/contents",
   CONTENTS_DETAIL = "/contentsDetail",
   SIGN_IN = "/signIn",
 }
-export interface RouteIE {
+
+export type RouteType = {
   path: RoutePath;
   exact: boolean;
   i18nKey: I18nCommandEnum | undefined;
   Component: React.FC<ComponentIE>;
-}
+};
 
-const routes: RouteIE[] = [
+const routes: RouteType[] = [
   {
     path: RoutePath.DASHBOARD,
     exact: true,
@@ -35,7 +36,7 @@ const routes: RouteIE[] = [
     Component: DashboardPage,
   },
   {
-    path: RoutePath.USER,
+    path: RoutePath.USER_LIST,
     exact: false,
     i18nKey: I18nCommandEnum.USER_LIST,
     Component: UserPage,
@@ -47,7 +48,7 @@ const routes: RouteIE[] = [
     Component: UserDetailPage,
   },
   {
-    path: RoutePath.CONTENTS,
+    path: RoutePath.CONTENTS_LIST,
     exact: false,
     i18nKey: I18nCommandEnum.CONTENTS_LIST,
     Component: ContentsPage,
@@ -59,7 +60,7 @@ const routes: RouteIE[] = [
     Component: ContentsDetailPage,
   },
   {
-    path: RoutePath.DESIGN,
+    path: RoutePath.DESIGN_LIST,
     exact: false,
     i18nKey: I18nCommandEnum.DESIGN_LIST,
     Component: DesignPage,

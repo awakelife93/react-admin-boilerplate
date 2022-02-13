@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { Route, RouteComponentProps, Router, Switch } from "react-router-dom";
 import Layout from "../common/layouts";
 import { configureStore } from "../redux";
-import routes, { RouteIE } from "./routes";
+import routes, { RouteType } from "./routes";
 
 const store = configureStore();
 
@@ -12,7 +12,7 @@ const RouteComponent = () => {
     <Provider store={store}>
       <Router history={createBrowserHistory()}>
         <Switch>
-          {routes.map((route: RouteIE, idx: number) => {
+          {routes.map((route: RouteType, idx: number) => {
             return (
               <Route
                 key={`route_key_${idx}`}

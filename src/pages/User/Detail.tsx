@@ -72,7 +72,7 @@ const UserDetail: React.FC<ComponentIE> = (
     if (validationItem(item) === true) {
       try {
         await signUp(item);
-        history.push(RoutePath.USER);
+        history.push(RoutePath.USER_LIST);
       } catch (e: any) {
         switch (e.status) {
           // 이메일 중복
@@ -91,7 +91,7 @@ const UserDetail: React.FC<ComponentIE> = (
     const item = { userId: state.userId, userNickname, userPw, userRoleIds };
     try {
       await updateUser(item);
-      history.push(RoutePath.USER);
+      history.push(RoutePath.USER_LIST);
     } catch (e) {
       console.log("_updateUser Error", e);
     }
