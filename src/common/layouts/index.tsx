@@ -5,6 +5,7 @@ import { connectWrapper } from "../../redux";
 import { Container, SideMenu } from "../components";
 import ModalLayout from "../components/Modal";
 import AuthGuard from "../guards/AuthGuard";
+import useAuth from "../hooks/useAuth";
 import { LayoutIE } from "../interface";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
@@ -20,6 +21,7 @@ import HeaderLayout from "./Header";
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
 const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
+  useAuth();
   const {
     reduxStore: {
       globalStore: { modalItem },
