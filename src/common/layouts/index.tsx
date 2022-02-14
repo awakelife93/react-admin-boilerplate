@@ -21,7 +21,6 @@ import HeaderLayout from "./Header";
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
 const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
-  useAuth();
   const {
     reduxStore: {
       globalStore: { modalItem },
@@ -32,6 +31,7 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   } = props;
 
   // init
+  useAuth();
   useEffect(() => {
     // generate global function
     if (_.isEmpty(window.globalFunc)) {
