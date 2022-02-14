@@ -3,10 +3,10 @@ import React, { useCallback, useEffect } from "react";
 import { findUserProfile } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import { getLocalStorageItem, initWindowFunc } from "../../core";
-import SignInPage from "../../pages/Sign";
 import { connectWrapper } from "../../redux";
 import { Container, SideMenu } from "../components";
 import ModalLayout from "../components/Modal";
+import AuthGuard from "../guards/AuthGuard";
 import { LayoutIE } from "../interface";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
@@ -84,12 +84,9 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
         <Container.ColumnContainer style={{ width: "100%" }}>
           <HeaderLayout {...props} />
           <BodyLayout {...props}>
-            {/* 로그인이 안되어있을 경우 무조건 로그인 페이지로 */}
-            {_.isNull(getLocalStorageItem("token")) ? (
-              <SignInPage {...props} />
-            ) : (
+            <AuthGuard {...props}>
               <Component {...props} />
-            )}
+            </AuthGuard>
           </BodyLayout>
           <BottomLayout {...props} />
         </Container.ColumnContainer>
