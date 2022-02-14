@@ -1,8 +1,6 @@
 import _ from "lodash";
-import React, { useCallback, useEffect } from "react";
-import { findUserProfile } from "../../api/GetAPI";
-import { UserInfoIE } from "../../api/interface";
-import { getLocalStorageItem, initWindowFunc } from "../../core";
+import React, { useEffect } from "react";
+import { initWindowFunc } from "../../core";
 import { connectWrapper } from "../../redux";
 import { Container, SideMenu } from "../components";
 import ModalLayout from "../components/Modal";
@@ -24,23 +22,12 @@ import HeaderLayout from "./Header";
 const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   const {
     reduxStore: {
-      userStore,
       globalStore: { modalItem },
     },
     Component,
     showModalAction,
-    setUserInfoAction,
     initUserInfoAction,
   } = props;
-
-  const initUserProfile = useCallback(async () => {
-    const profile: UserInfoIE = await findUserProfile();
-
-    setUserInfoAction({
-      isLogin: true,
-      info: { ...profile },
-    });
-  }, [setUserInfoAction]);
 
   // init
   useEffect(() => {
@@ -51,17 +38,9 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
         showModalAction,
       });
     }
-
-    const token = getLocalStorageItem("token");
-    // 로그인이 된 상태라면
-    if (!_.isNull(token) && !userStore.user.isLogin) {
-      initUserProfile();
-    }
   }, [
-    userStore.user.isLogin,
     initUserInfoAction,
     showModalAction,
-    initUserProfile,
   ]);
 
   return (
