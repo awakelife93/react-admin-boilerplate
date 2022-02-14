@@ -6,7 +6,7 @@ import { ComponentIE } from "../interface";
 interface AuthProviderIE extends ComponentIE {
   children: ReactElement;
 }
-const AuthGuard = (props: AuthProviderIE): ReactElement => {
+const AuthGuard: React.FC<AuthProviderIE> = (props: AuthProviderIE): ReactElement => {
   useAuth();
   const { children, reduxStore: {
     userStore: {
