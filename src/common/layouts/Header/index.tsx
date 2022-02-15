@@ -1,13 +1,16 @@
 import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
 } from "../../../core";
+import { ReduxStoreType } from "../../../redux/type";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
+import useAction from "../../hooks/useAction";
 import { ComponentIE } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
@@ -20,10 +23,10 @@ const Header: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const {
-    initUserInfoAction,
-    reduxStore: { userStore },
-  } = props;
-
+    reduxStore: { userStore }
+  } = useSelector((state: ReduxStoreType) => state);
+  const { initUserInfoAction } = useAction();
+  
   const history = useHistory();
   const _routePush = useCallback(
     (route: string) => {

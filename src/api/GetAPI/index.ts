@@ -1,5 +1,4 @@
 import { getAPI } from "..";
-import { defaultPagingCount } from "../../common/const";
 import { SortType } from "../../common/type";
 import { UserInfoIE } from "../interface";
 import {
@@ -85,7 +84,7 @@ export const findUser = async ({
 }): Promise<[UserInfoIE[], number]> => {
   try {
     return await getAPI("findUser", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
       userEmailSort: userEmailSort ?? "",
@@ -110,7 +109,7 @@ export const findContents = async ({
 }): Promise<[ContentsType[], number]> => {
   try {
     return await getAPI("findContents", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
       contTitleSort: contTitleSort ?? "",
@@ -133,7 +132,7 @@ export const findComponent = async ({
 }): Promise<[DesignComponentType[], number]> => {
   try {
     return await getAPI("findComponent", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
@@ -155,7 +154,7 @@ export const findLayout = async ({
 }): Promise<[DesignLayoutType[], number]> => {
   try {
     return await getAPI("findLayout", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
@@ -177,7 +176,7 @@ export const findStyle = async ({
 }): Promise<[DesignStyleType[], number]> => {
   try {
     return await getAPI("findStyle", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
@@ -199,7 +198,7 @@ export const findTheme = async ({
 }): Promise<[DesignThemeType[], number]> => {
   try {
     return await getAPI("findTheme", {
-      take: defaultPagingCount,
+      take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",

@@ -1,15 +1,9 @@
 import { CommonRender } from "../../../common/components";
-import {
-  defaultDimClose,
-  defaultKeyClose,
-  defaultShowAdContainer,
-  defaultShowModal,
-} from "../../../common/const";
 
 export const initGlobalState = {
-  isShowAdContainer: defaultShowAdContainer,
+  isShowAdContainer: false,
   modalItem: {
-    isShowModal: defaultShowModal,
+    isShowModal: false,
     children: CommonRender.DefaultFC,
     childrenProps: {},
     style: {},
@@ -21,8 +15,8 @@ export const initGlobalState = {
     },
     buttonItem: [],
     option: {
-      dimClose: defaultDimClose,
-      keyClose: defaultKeyClose,
+      isDimClose: false,
+      isKeyClose: true,
     },
   },
 };

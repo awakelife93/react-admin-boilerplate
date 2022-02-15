@@ -3,7 +3,6 @@ import { ChangeEvent, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, InputBox } from ".";
 import { I18nCommandEnum } from "../../core";
-import { defaultInputDebounceTime } from "../const";
 
 type SearchBarType = {
   next: Function;
@@ -26,7 +25,7 @@ const SearchBar: React.FC<SearchBarType> = (
       if (_.isFunction(next)) {
         next(inputValue);
       }
-    }, defaultInputDebounceTime),
+    }, 200),
   [next]);
 
   return (

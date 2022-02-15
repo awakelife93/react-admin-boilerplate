@@ -7,6 +7,7 @@ type MessageLayoutType = {
 
 const MessageLayout: React.FC<MessageLayoutType> = (props: MessageLayoutType) => {
   const { message } = props;
+  
   return (
     <Container.ColumnContainer>
       <Label.CommonLabel

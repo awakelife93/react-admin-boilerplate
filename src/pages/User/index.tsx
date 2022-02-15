@@ -9,7 +9,6 @@ import {
   PagingBar,
   SearchBar
 } from "../../common/components";
-import { defaultPagingCount } from "../../common/const";
 import { ComponentIE } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import { PageType, SortType } from "../../common/type";
@@ -87,7 +86,7 @@ const User: React.FC<ComponentIE> = (
     (page: number): void => {
       setActive(page + 1);
       getUserList({
-        skip: page * defaultPagingCount,
+        skip: page * 20,
         searchKeyword,
         userEmailSort,
         userNicknameSort,
@@ -165,7 +164,7 @@ const User: React.FC<ComponentIE> = (
       />
       <PagingBar
         totalCount={totalCount}
-        limit={defaultPagingCount}
+        limit={20}
         active={active}
         onPageClick={onPageClick}
       />

@@ -8,6 +8,7 @@ import {
   Dispatch,
 } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { UnknownObject } from "../common/type";
 import * as action from "./action";
 import reducers from "./reducer";
 import { ReduxStoreType } from "./type";
@@ -20,7 +21,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 export const connectWrapper = (component: React.FC<any>) =>
   connect(mapStateToProps, mapDispatchToProps)(component);
 
-export const configureStore = (initialState: Partial<ReduxStoreType> = {}) => {
+export const configureStore = (initialState: UnknownObject = {}) => {
   const store = createStoreWithMiddleware(
     /**
      * reduxStore라는 이름으로 전역 Store들을 묶어준다.

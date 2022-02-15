@@ -12,24 +12,28 @@ export const initWindowFunc = ({
 }): void => {
   window.globalFunc = {
     initUserInfoAction: () => initUserInfoAction(),
-    showModalAction: ({ type, item, children }: ShowModalActionType) =>
+    showModalAction: ({
+      next = showModalAction,
+      type,
+      item,
+    }: ShowModalActionType) =>
       _showModalAction({
-        next: showModalAction,
+        next,
         type,
-        children,
         item: {
-          childrenProps: item?.childrenProps,
+          children: item.children,
+          childrenProps: item.childrenProps,
           style: {
             width: 500,
             height: 150,
             borderRadius: 25,
             padding: 20,
-            ...item?.style,
+            ...item.style,
           },
           option: {
-            dimClose: true,
-            keyClose: true,
-            ...item?.option,
+            isDimClose: true,
+            isKeyClose: true,
+            ...item.option,
           },
         },
       }),

@@ -1,6 +1,5 @@
-import React from "react";
-import { CSSProperties } from "styled-components";
 import { ContentsType } from "../api/GetAPI/type";
+import { ModalItem } from "../common/components/Modal/type";
 
 export type ContentsStoreType = {
   contents: ContentsType[];
@@ -12,31 +11,7 @@ export type ThemeStoreType = {
 
 export type GlobalStoreType = {
   isShowAdContainer: boolean;
-  modalItem: {
-    isShowModal: boolean;
-    children: React.FC<any>;
-    childrenProps: any;
-    style: CSSProperties;
-    titleItem: {
-      title: string;
-      subTitle: string;
-      titleStyle: {};
-      subTitleStyle: {};
-    };
-    buttonItem: {
-      title: string;
-      next: Function;
-      containerStyleItems: {
-        hoverBackgroundColor?: string;
-        defaultBackgroundColor?: string;
-        activeBackgroundColor?: string;
-      };
-    }[];
-    option: {
-      dimClose: boolean;
-      keyClose: boolean;
-    };
-  };
+  modalItem: ModalItem;
 };
 
 export type UserStoreType = {
@@ -59,6 +34,19 @@ export type StateType = {
 
 export type ReduxStoreType = {
   reduxStore: StateType;
+};
+
+export type ReduxActionType = {
+  initContentsAction: Function;
+  getContentsAction: Function;
+  initThemeAction: Function;
+  setThemeAction: Function;
+  initShowAdAction: Function;
+  showAdAction: Function;
+  initShowModalAction: Function;
+  showModalAction: Function;
+  setUserInfoAction: Function;
+  initUserInfoAction: Function;
 };
 
 /**

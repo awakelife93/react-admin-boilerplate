@@ -1,11 +1,14 @@
-import _ from "lodash";
-import React, { useEffect } from "react";
-import { initWindowFunc } from "../../core";
+import React from "react";
+import { useSelector } from "react-redux";
 import { connectWrapper } from "../../redux";
+import { ReduxStoreType } from "../../redux/type";
 import { Container, SideMenu } from "../components";
 import ModalLayout from "../components/Modal";
+import ActionProvider from "../contexts/ActionContext";
 import AuthGuard from "../guards/AuthGuard";
 import useAuth from "../hooks/useAuth";
+import useI18nChange from "../hooks/useI18nChange";
+import useSetupWindow from "../hooks/useSetupWindow";
 import { LayoutIE } from "../interface";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
@@ -22,57 +25,43 @@ import HeaderLayout from "./Header";
  */
 const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
   const {
-    reduxStore: {
-      globalStore: { modalItem },
-    },
+    setUserInfoAction,
     Component,
     showModalAction,
     initUserInfoAction,
   } = props;
-
-  // init
-  useAuth();
-  useEffect(() => {
-    // generate global function
-    if (_.isEmpty(window.globalFunc)) {
-      initWindowFunc({
-        initUserInfoAction,
-        showModalAction,
-      });
+  const {
+    reduxStore: {
+      globalStore: { modalItem },
     }
-  }, [
-    initUserInfoAction,
-    showModalAction,
-  ]);
-
+  } = useSelector((state: ReduxStoreType) => state);
+    
+  useAuth(setUserInfoAction);
+  useSetupWindow(initUserInfoAction, showModalAction);
+  useI18nChange();
+  
   return (
-    <Container.LayoutContainer>
-      {modalItem.isShowModal && (
-        <ModalLayout
-          {...props}
-          children={modalItem.children}
-          childrenProps={modalItem.childrenProps}
-          style={{ ...modalItem.style }}
-          option={modalItem.option}
-          buttonItem={modalItem.buttonItem}
-          titleItem={modalItem.titleItem}
-        />
-      )}
-      <Container.RowContainer
-        style={{ alignItems: "", justifyContent: "", alignContent: "" }}
-      >
-        <SideMenu />
-        <Container.ColumnContainer style={{ width: "100%" }}>
-          <HeaderLayout {...props} />
-          <BodyLayout {...props}>
-            <AuthGuard {...props}>
-              <Component {...props} />
-            </AuthGuard>
-          </BodyLayout>
-          <BottomLayout {...props} />
-        </Container.ColumnContainer>
-      </Container.RowContainer>
-    </Container.LayoutContainer>
+    <ActionProvider {...props}>
+      <Container.LayoutContainer>
+        {modalItem.isShowModal && (
+          <ModalLayout modalItem={modalItem} />
+        )}
+        <Container.RowContainer
+          style={{ alignItems: "", justifyContent: "", alignContent: "" }}
+        >
+          <SideMenu />
+          <Container.ColumnContainer style={{ width: "100%" }}>
+            <HeaderLayout {...props} />
+            <BodyLayout {...props}>
+              <AuthGuard {...props}>
+                <Component {...props} />
+              </AuthGuard>
+            </BodyLayout>
+            <BottomLayout {...props} />
+          </Container.ColumnContainer>
+        </Container.RowContainer>
+      </Container.LayoutContainer>
+    </ActionProvider>
   );
 };
 

@@ -1,4 +1,5 @@
 /// <reference types="react-scripts" />
+
 interface Window {
   globalEntity: {
     [index: string];
@@ -21,18 +22,20 @@ interface Window {
       item: {
         childrenProps,
         style,
-        option: { dimClose, keyClose },
+        option: { isDimClose, isKeyClose },
       },
     }: {
-      next?: Function;
+      next: Function;
       type: "MESSAGE";
-      children?: React.FC<any>;
-      item?: {
-        childrenProps?: any;
-        style?: CSSProperties;
-        option?: {
-          dimClose?: boolean;
-          keyClose?: boolean;
+      item: {
+        children: React.FC<any>;
+        childrenProps?: {
+          message?: string;
+        };
+        style: CSSProperties;
+        option: {
+          isDimClose?: boolean;
+          isKeyClose?: boolean;
         };
       };
     }) => void;
