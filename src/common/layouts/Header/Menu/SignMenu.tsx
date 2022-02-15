@@ -1,14 +1,14 @@
 import _ from "lodash";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { I18nCommandEnum } from "../../../../core/i18n/type";
-import { UserStoreType } from "../../../../redux/type";
+import { useSelector } from "react-redux";
+import { I18nCommandEnum } from "../../../../core/i18n";
+import { ReduxStoreType } from "../../../../redux/type";
 import { RoutePath } from "../../../../route/routes";
 import { Button, Container, Label, MenuBox } from "../../../components";
 import { CommonColor } from "../../../styles";
 
 type SignMenuType = {
-  userInfo: UserStoreType;
   _routePush: Function;
   _signOut: Function;
 }
@@ -24,13 +24,24 @@ const SignMenu: React.FC<SignMenuType> = (
   const {
     _routePush,
     _signOut,
-    userInfo: { user },
   } = props;
+  const {
+    reduxStore: {
+      userStore: {
+        user: {
+          isLogin,
+          info: {
+            userNickname
+          }
+        }
+      }
+    }
+  } = useSelector((state: ReduxStoreType) => state);
 
   const { t } = useTranslation();
   return (
     <Container.LayoutContainer>
-      {user.isLogin === false && (
+      {!isLogin && (
         <Container.RowContainer>
           <Button.TextButton
             style={{
@@ -42,7 +53,7 @@ const SignMenu: React.FC<SignMenuType> = (
           </Button.TextButton>
         </Container.RowContainer>
       )}
-      {user.isLogin === true && (
+      {isLogin && (
         <Container.RowContainer>
           <MenuBox
             children={
@@ -53,7 +64,7 @@ const SignMenu: React.FC<SignMenuType> = (
                   cursor: "pointer",
                 }}
               >
-                {user.info.userNickname}
+                {userNickname}
               </Label.CommonLabel>
             }
             menuContainerStyle={{

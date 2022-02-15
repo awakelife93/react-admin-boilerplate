@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { I18nCommandEnum } from "../../../../core/i18n/type";
+import { I18nCommandEnum } from "../../../../core/i18n";
 import { Button, Container, Icon, MenuBox } from "../../../components";
 import { CommonColor } from "../../../styles";
 

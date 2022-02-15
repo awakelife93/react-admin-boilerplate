@@ -21,7 +21,7 @@ const PagingBar: React.FC<PagingBarType> = (
   const { active, onPageClick, limit, totalCount } = props;
 
   const generatePageItem = useCallback((): React.ReactElement[] => {
-    let item: any = [];
+    let item: React.ReactElement[] = [];
 
     for (let i = 0; i < Math.ceil(totalCount / limit); i++) {
       item.push(
@@ -34,6 +34,7 @@ const PagingBar: React.FC<PagingBarType> = (
         </PageItem>
       );
     }
+    
     return item;
   }, [totalCount, limit, active, onPageClick]);
 

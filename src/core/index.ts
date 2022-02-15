@@ -1,6 +1,5 @@
 import { ScrollFadeIn, TopDownMove } from "./animation";
-import i18n from "./i18n";
-import { I18nCommandEnum } from "./i18n/type";
+import i18n, { I18nCommandEnum } from "./i18n";
 import {
   clearLocalStorageItem,
   getLocalStorageItem,

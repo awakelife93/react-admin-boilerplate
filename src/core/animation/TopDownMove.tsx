@@ -21,7 +21,7 @@ const TopDownMove = (
   });
 
   const move = useCallback(() => {
-    if (animationObject.isMove === false) {
+    if (!animationObject.isMove) {
       setAnimationObject({
         isMove: true,
         position: option.endPosition,

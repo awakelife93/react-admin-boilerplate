@@ -66,4 +66,4 @@ const ScrollPaging: React.FC<ScrollPagingType> = (
   );
 };
 
-export default React.memo(ScrollPaging);
+export default ScrollPaging;

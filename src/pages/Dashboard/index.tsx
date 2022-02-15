@@ -31,7 +31,7 @@ const Dashboard: React.FC<ComponentIE> = (
 
   useEffect(() => {
     getDashboardCount();
-  }, [getDashboardCount]);
+  }, []);
 
   return (
     <Container.LayoutContainer style={{ margin: 50 }}>

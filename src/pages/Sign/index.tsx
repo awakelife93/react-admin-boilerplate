@@ -8,7 +8,7 @@ import { Button, Container, InputBox, Label } from "../../common/components";
 import { ComponentIE } from "../../common/interface";
 import { UnknownObject } from "../../common/type";
 import { setLocalStorageItem } from "../../core";
-import { I18nCommandEnum } from "../../core/i18n/type";
+import { I18nCommandEnum } from "../../core/i18n";
 import { RoutePath } from "../../route/routes";
 import { validationObject } from "../../utils";
 

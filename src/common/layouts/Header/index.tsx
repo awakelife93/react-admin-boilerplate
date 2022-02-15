@@ -1,13 +1,11 @@
 import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
 } from "../../../core";
-import { ReduxStoreType } from "../../../redux/type";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
 import useAction from "../../hooks/useAction";
@@ -22,12 +20,9 @@ import { IconsMenu, SignMenu } from "./Menu";
 const Header: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
-  const {
-    reduxStore: { userStore }
-  } = useSelector((state: ReduxStoreType) => state);
   const { initUserInfoAction } = useAction();
-  
   const history = useHistory();
+  
   const _routePush = useCallback(
     (route: string) => {
       history.push(route);
@@ -76,7 +71,6 @@ const Header: React.FC<ComponentIE> = (
     <Container.HeaderContainer>
       <IconsMenu _routePush={_routePush} _setLanguage={_setLanguage} />
       <SignMenu
-        userInfo={userStore}
         _routePush={_routePush}
         _signOut={_signOut}
       />

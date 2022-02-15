@@ -1,5 +1,5 @@
 import { createBrowserHistory } from "history";
-import { Provider } from "react-redux";
+import { Provider as RouteProvider } from "react-redux";
 import { Route, RouteComponentProps, Router, Switch } from "react-router-dom";
 import Layout from "../common/layouts";
 import { configureStore } from "../redux";
@@ -7,7 +7,7 @@ import routes, { RouteType } from "./routes";
 
 const RouteComponent = () => {
   return (
-    <Provider store={configureStore()}>
+    <RouteProvider store={configureStore()}>
       <Router history={createBrowserHistory()}>
         <Switch>
           {routes.map((route: RouteType, idx: number) => {
@@ -24,7 +24,7 @@ const RouteComponent = () => {
           })}
         </Switch>
       </Router>
-    </Provider>
+    </RouteProvider>
   );
 };
 

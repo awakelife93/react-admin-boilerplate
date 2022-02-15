@@ -25,7 +25,7 @@ type DownLoaderType = {
 const DownLoader: React.FC<DownLoaderType> = (
   props: DownLoaderType
 ): React.ReactElement => {
-  const downloadInput: React.MutableRefObject<any> = useRef<HTMLDivElement>();
+  const downloadInput: React.MutableRefObject<any | undefined> = useRef<HTMLDivElement>();
   const {
     children,
     next,
@@ -34,24 +34,25 @@ const DownLoader: React.FC<DownLoaderType> = (
     labelStyles,
     containerStyleItems,
   } = props;
-
-  const init = (): void => {
-    if (_.isEmpty(downloadInput.current)) {
-      downloadInput.current.value = "";
+  
+  const initialize = (): void => {
+    const { current } = downloadInput;
+    if (!_.isUndefined(current)) {
+      current.value = "";
     }
   };
 
   const handleFileInput = useCallback(
     (e: any): void => {
       next(e.target.files[0]);
-      init();
+      initialize();
     },
     [next]
   );
 
   useEffect(() => {
     return () => {
-      init();
+      initialize();
     };
   }, []);
 
