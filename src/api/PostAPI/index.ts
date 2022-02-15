@@ -13,17 +13,17 @@ export const signIn = async ({
       userEmail,
       userPw,
     });
-  } catch (e) {
-    console.log("===============> signIn Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> signIn Error", error);
+    throw error;
   }
 };
 
 export const signOut = async (): Promise<object> => {
   try {
     return await postAPI("signOut");
-  } catch (e) {
-    console.log("===============> signOut Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> signOut Error", error);
+    throw error;
   }
 };

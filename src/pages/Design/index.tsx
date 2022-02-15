@@ -186,8 +186,8 @@ const Design: React.FC<ComponentIE> = (
             break;
         }
         init();
-      } catch (e) {
-        console.log("onDeleteClick Error", e);
+      } catch (error: unknown) {
+        console.log("onDeleteClick Error", error);
       }
     },
     [designType, init]

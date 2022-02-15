@@ -16,9 +16,9 @@ export const findUserCount = async ({
 }): Promise<number> => {
   try {
     return await getAPI("findUserCount", { searchKeyword });
-  } catch (e) {
-    console.log("===============> findUserCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findUserCount Error", error);
+    throw error;
   }
 };
 
@@ -29,45 +29,45 @@ export const findContentsCount = async ({
 }): Promise<number> => {
   try {
     return await getAPI("findContentsCount", { searchKeyword });
-  } catch (e) {
-    console.log("===============> findContentsCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findContentsCount Error", error);
+    throw error;
   }
 };
 
 export const findComponentCount = async (): Promise<number> => {
   try {
     return await getAPI("findComponentCount");
-  } catch (e) {
-    console.log("===============> findComponentCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findComponentCount Error", error);
+    throw error;
   }
 };
 
 export const findLayoutCount = async (): Promise<number> => {
   try {
     return await getAPI("findLayoutCount");
-  } catch (e) {
-    console.log("===============> findLayoutCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findLayoutCount Error", error);
+    throw error;
   }
 };
 
 export const findStyleCount = async (): Promise<number> => {
   try {
     return await getAPI("findStyleCount");
-  } catch (e) {
-    console.log("===============> findStyleCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findStyleCount Error", error);
+    throw error;
   }
 };
 
 export const findThemeCount = async (): Promise<number> => {
   try {
     return await getAPI("findThemeCount");
-  } catch (e) {
-    console.log("===============> findThemeCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findThemeCount Error", error);
+    throw error;
   }
 };
 
@@ -90,9 +90,9 @@ export const findUser = async ({
       userEmailSort: userEmailSort ?? "",
       userNicknameSort: userNicknameSort ?? "",
     });
-  } catch (e) {
-    console.log("===============> findUser Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findUser Error", error);
+    throw error;
   }
 };
 
@@ -115,9 +115,9 @@ export const findContents = async ({
       contTitleSort: contTitleSort ?? "",
       contSubTitleSort: contSubTitleSort ?? "",
     });
-  } catch (e) {
-    console.log("===============> findContents Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findContents Error", error);
+    throw error;
   }
 };
 
@@ -137,9 +137,9 @@ export const findComponent = async ({
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
     });
-  } catch (e) {
-    console.log("===============> findComponent Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findComponent Error", error);
+    throw error;
   }
 };
 
@@ -159,9 +159,9 @@ export const findLayout = async ({
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
     });
-  } catch (e) {
-    console.log("===============> findLayout Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findLayout Error", error);
+    throw error;
   }
 };
 
@@ -181,9 +181,9 @@ export const findStyle = async ({
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
     });
-  } catch (e) {
-    console.log("===============> findStyle Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findStyle Error", error);
+    throw error;
   }
 };
 
@@ -203,26 +203,26 @@ export const findTheme = async ({
       searchKeyword: searchKeyword ?? "",
       nameSort: nameSort ?? "",
     });
-  } catch (e) {
-    console.log("===============> findTheme Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findTheme Error", error);
+    throw error;
   }
 };
 
 export const findDashboardCount = async () => {
   try {
     return await getAPI("findDashboardCount");
-  } catch (e) {
-    console.log("===============> findDashboardCount Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findDashboardCount Error", error);
+    throw error;
   }
 };
 
 export const findUserProfile = async (): Promise<UserInfoIE> => {
   try {
     return await getAPI("findUserProfile");
-  } catch (e) {
-    console.log("===============> findUserProfile Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> findUserProfile Error", error);
+    throw error;
   }
 };

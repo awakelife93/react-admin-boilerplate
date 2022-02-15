@@ -7,9 +7,9 @@ export const removeUser = async ({
 }): Promise<object> => {
   try {
     return await deleteAPI("removeUser", { userId });
-  } catch (e) {
-    console.log("===============> removeUser Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> removeUser Error", error);
+    throw error;
   }
 };
 
@@ -20,9 +20,9 @@ export const removeContents = async ({
 }): Promise<object> => {
   try {
     return await deleteAPI("removeContents", { contId });
-  } catch (e) {
-    console.log("===============> removeContents Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> removeContents Error", error);
+    throw error;
   }
 };
 
@@ -33,9 +33,9 @@ export const removeComponent = async ({
 }): Promise<object> => {
   try {
     return await deleteAPI("removeComponent", { _id });
-  } catch (e) {
-    console.log("===============> removeComponent Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> removeComponent Error", error);
+    throw error;
   }
 };
 
@@ -46,9 +46,9 @@ export const removeLayout = async ({
 }): Promise<object> => {
   try {
     return await deleteAPI("removeLayout", { _id });
-  } catch (e) {
-    console.log("===============> removeLayout Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> removeLayout Error", error);
+    throw error;
   }
 };
 
@@ -59,9 +59,9 @@ export const removeStyle = async ({
 }): Promise<object> => {
   try {
     return await deleteAPI("removeStyle", { _id });
-  } catch (e) {
-    console.log("===============> removeStyle Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> removeStyle Error", error);
+    throw error;
   }
 };
 
@@ -72,8 +72,8 @@ export const removeTheme = async ({
 }): Promise<object> => {
   try {
     return await deleteAPI("removeTheme", { _id });
-  } catch (e) {
-    console.log("===============> removeTheme Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> removeTheme Error", error);
+    throw error;
   }
 };

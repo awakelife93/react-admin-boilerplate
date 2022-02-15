@@ -62,8 +62,8 @@ const Header: React.FC<ComponentIE> = (
         }
         await signOut();
       }
-    } catch (e) {
-      console.log("_signOut Error", e);
+    } catch (error: unknown) {
+      console.log("_signOut Error", error);
     }
   };
 

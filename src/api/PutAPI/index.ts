@@ -20,9 +20,9 @@ export const signUp = async ({
       userPw,
       userRoleIds,
     });
-  } catch (e) {
-    console.log("===============> signUp Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> signUp Error", error);
+    throw error;
   }
 };
 
@@ -41,8 +41,8 @@ export const createContents = async ({
       contSubTitle,
       contDesc,
     });
-  } catch (e) {
-    console.log("===============> createContents Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> createContents Error", error);
+    throw error;
   }
 };

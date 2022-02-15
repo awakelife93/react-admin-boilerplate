@@ -82,8 +82,8 @@ const ContentsDetail: React.FC<ComponentIE> = (
           history.push(RoutePath.CONTENTS_LIST);
         }
       }
-    } catch (e) {
-      console.log("_updateContents Error", e);
+    } catch (error: unknown) {
+      console.log("_updateContents Error", error);
     }
   }, [
     state.type,

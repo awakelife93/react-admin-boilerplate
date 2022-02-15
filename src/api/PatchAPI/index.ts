@@ -25,9 +25,9 @@ export const updateUser = async ({
     if (!_.isEmpty(userRoleIds)) item.userRoleIds = userRoleIds;
 
     return await patchAPI("updateUser", { ...item });
-  } catch (e) {
-    console.log("===============> updateUser Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> updateUser Error", error);
+    throw error;
   }
 };
 
@@ -52,8 +52,8 @@ export const updateContents = async ({
     if (!_.isEmpty(contDesc)) item.contDesc = contDesc;
 
     return await patchAPI("updateContents", { ...item });
-  } catch (e) {
-    console.log("===============> updateContents Error", e);
-    throw e;
+  } catch (error: unknown) {
+    console.log("===============> updateContents Error", error);
+    throw error;
   }
 };
