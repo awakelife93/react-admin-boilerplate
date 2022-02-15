@@ -29,10 +29,10 @@ export const setLocalStorageItem = (item: Partial<LocalStorageItem>): void => {
   const keys = Object.keys(item) as LocalStorageKey[];
 
   _.forEach(keys, (key: LocalStorageKey) => {
-    const value = item[key];
+    const value = String(item[key]);
 
     if (!_.isEmpty(value)) {
-      window.localStorage.setItem(key, String(value));
+      window.localStorage.setItem(key, value);
     }
   });
 };

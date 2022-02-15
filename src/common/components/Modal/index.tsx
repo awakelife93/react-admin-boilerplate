@@ -12,8 +12,7 @@ export const _showModalAction = ({
   type,
   item,
 }: ShowModalActionType): void => {
-  // 넘겨 받은 children이 없거나, type을 주었을 경우 그것에 맞는 레이아웃 제공
-  if (_.isEmpty(item.children) || !_.isEmpty(type)) {
+  if (_.isEmpty(item.children)) {
     switch (type) {
       case "MESSAGE":
         item.children = MessageLayout;
