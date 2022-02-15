@@ -51,7 +51,7 @@ const SignIn: React.FC<ComponentIE> = (
 
       return true;
     },
-    [_showMessageModal]
+    []
   );
 
   const history = useHistory();
@@ -59,7 +59,7 @@ const SignIn: React.FC<ComponentIE> = (
     const { setUserInfoAction } = props;
     const item = { userEmail, userPw };
 
-    if (validationItem(item) === true) {
+    if (validationItem(item)) {
       try {
         const userInfo: UserInfoIE = await signIn({ userEmail, userPw });
 
@@ -98,7 +98,7 @@ const SignIn: React.FC<ComponentIE> = (
         }
       }
     }
-  }, [history, props, userEmail, userPw, _showMessageModal, validationItem]);
+  }, [userEmail, userPw]);
 
   const checkKeyPress = useCallback(
     (event: KeyboardEvent): void => {
@@ -106,7 +106,7 @@ const SignIn: React.FC<ComponentIE> = (
         _signIn();
       }
     },
-    [_signIn]
+    []
   );
 
   return (

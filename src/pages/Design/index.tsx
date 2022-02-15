@@ -105,7 +105,7 @@ const Design: React.FC<ComponentIE> = (
    */
   useEffect(() => {
     getDesignList({ skip: 0, type: designType });
-  }, [getDesignList]);
+  }, []);
 
   /**
    * 상태별 로드 데이터
@@ -117,7 +117,7 @@ const Design: React.FC<ComponentIE> = (
       searchKeyword,
       nameSort,
     });
-  }, [getDesignList, designType, searchKeyword, nameSort]);
+  }, [designType, searchKeyword, nameSort]);
 
   /**
    * init
@@ -125,7 +125,7 @@ const Design: React.FC<ComponentIE> = (
   const init = useCallback((): void => {
     setActive(1);
     getDesignList({ skip: 0, type: designType });
-  }, [getDesignList, designType]);
+  }, [designType]);
 
   /**
    * Page Click Event
@@ -135,7 +135,7 @@ const Design: React.FC<ComponentIE> = (
       setActive(page + 1);
       getDesignList({ skip: page * 20, type: designType });
     },
-    [active]
+    []
   );
 
   /**

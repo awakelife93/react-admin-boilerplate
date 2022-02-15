@@ -29,7 +29,7 @@ const ComponentList = (
             return (
               <tr key={`component_List_Key${index}`}>
                 <td>{component.name}</td>
-                <td>{component.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <td>{component.isDeleted ? "삭제" : "사용 중"}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,
@@ -81,7 +81,7 @@ const LayoutList = (
             return (
               <tr key={`layout_List_Key${index}`}>
                 <td>{layout.name}</td>
-                <td>{layout.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <td>{layout.isDeleted ? "삭제" : "사용 중"}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,
@@ -133,7 +133,7 @@ const StyleList = (
             return (
               <tr key={`style_List_Key${index}`}>
                 <td>{style.name}</td>
-                <td>{style.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <td>{style.isDeleted ? "삭제" : "사용 중"}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,
@@ -185,7 +185,7 @@ const ThemeList = (
             return (
               <tr key={`theme_List_Key${index}`}>
                 <td>{theme.name}</td>
-                <td>{theme.isDeleted === true ? "삭제" : "사용 중"}</td>
+                <td>{theme.isDeleted ? "삭제" : "사용 중"}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,

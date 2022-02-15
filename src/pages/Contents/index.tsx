@@ -62,7 +62,7 @@ const Contents: React.FC<ComponentIE> = (
    */
   useEffect(() => {
     getContentsList({ skip: 0 });
-  }, [getContentsList]);
+  }, []);
 
   /**
    * 상태별 로드 데이터
@@ -74,7 +74,7 @@ const Contents: React.FC<ComponentIE> = (
       contTitleSort,
       contSubTitleSort,
     });
-  }, [getContentsList, searchKeyword, contTitleSort, contSubTitleSort]);
+  }, [searchKeyword, contTitleSort, contSubTitleSort]);
 
   /**
    * init
@@ -82,7 +82,7 @@ const Contents: React.FC<ComponentIE> = (
   const init = useCallback((): void => {
     setActive(1);
     getContentsList({ skip: 0 });
-  }, [getContentsList]);
+  }, []);
 
   /**
    * Page Click Event
@@ -92,7 +92,7 @@ const Contents: React.FC<ComponentIE> = (
       setActive(page + 1);
       getContentsList({ skip: page * 20 });
     },
-    [getContentsList]
+    []
   );
 
   /**
@@ -118,7 +118,7 @@ const Contents: React.FC<ComponentIE> = (
     ({ type, item }: { type: PageType; item?: ContentsType }): void => {
       history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
     },
-    [history]
+    []
   );
 
   /**
@@ -129,7 +129,7 @@ const Contents: React.FC<ComponentIE> = (
       await removeContents({ contId });
       init();
     },
-    [init]
+    []
   );
 
   /**

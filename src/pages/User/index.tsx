@@ -62,14 +62,14 @@ const User: React.FC<ComponentIE> = (
    */
   useEffect(() => {
     getUserList({ skip: 0 });
-  }, [getUserList]);
+  }, []);
 
   /**
    * 상태별 로드 데이터
    */
   useEffect(() => {
     getUserList({ skip: 0, searchKeyword, userEmailSort, userNicknameSort });
-  }, [searchKeyword, userEmailSort, userNicknameSort, getUserList]);
+  }, [searchKeyword, userEmailSort, userNicknameSort]);
 
   /**
    * init
@@ -77,7 +77,7 @@ const User: React.FC<ComponentIE> = (
   const init = useCallback((): void => {
     setActive(1);
     getUserList({ skip: 0 });
-  }, [getUserList]);
+  }, []);
 
   /**
    * Page Click Event
@@ -92,7 +92,7 @@ const User: React.FC<ComponentIE> = (
         userNicknameSort,
       });
     },
-    [searchKeyword, userEmailSort, userNicknameSort, getUserList]
+    [searchKeyword, userEmailSort, userNicknameSort]
   );
 
   /**
@@ -118,7 +118,7 @@ const User: React.FC<ComponentIE> = (
     ({ type, item }: { type: PageType; item?: UserInfoIE }): void => {
       history.push(RoutePath.USER_DETAIL, { ...item, type });
     },
-    [history]
+    []
   );
 
   /**
@@ -129,7 +129,7 @@ const User: React.FC<ComponentIE> = (
       await removeUser({ userId });
       init();
     },
-    [init]
+    []
   );
 
   /**

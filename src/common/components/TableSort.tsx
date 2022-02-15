@@ -81,12 +81,12 @@ const TableSort: React.FC<TableSortType> = (
           {title}
         </Label.CommonLabel>
         {sort === "DESC" ? (
-          !_.isEmpty(UpIcon) === true ? (
+          !_.isEmpty(UpIcon) ? (
             UpIcon
           ) : (
             <Icon.FaArrowCircleUp />
           )
-        ) : !_.isEmpty(DownIcon) === true ? (
+        ) : !_.isEmpty(DownIcon) ? (
           DownIcon
         ) : (
           <Icon.FaArrowCircleDown />

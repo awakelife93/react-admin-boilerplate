@@ -83,7 +83,7 @@ const DesignDetail: React.FC<ComponentIE> = (
     return keys.map((key: string, index: number) => {
       const attributeValue = attribute[key];
 
-      if (_.isString(attributeValue) === true) {
+      if (_.isString(attributeValue)) {
         return (
           <Container.ColumnContainer
             key={`componentOrLayoutAttributeRender_List_Key${index}`}

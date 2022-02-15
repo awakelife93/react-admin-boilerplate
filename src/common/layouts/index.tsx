@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "../../core/i18n";
 import { connectWrapper } from "../../redux";
 import { ReduxStoreType } from "../../redux/type";
 import { Container, SideMenu } from "../components";
@@ -13,7 +14,6 @@ import { LayoutIE } from "../interface";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
 import HeaderLayout from "./Header";
-
 /**
  * Layout (최상단 컴포넌트)
  * @param {redux} props

@@ -69,7 +69,7 @@ const UserDetail: React.FC<ComponentIE> = (
   const _signUp = useCallback(async (): Promise<void | boolean> => {
     const item = { userEmail, userNickname, userPw, userRoleIds };
 
-    if (validationItem(item) === true) {
+    if (validationItem(item)) {
       try {
         await signUp(item);
         history.push(RoutePath.USER_LIST);
@@ -85,17 +85,17 @@ const UserDetail: React.FC<ComponentIE> = (
         }
       }
     }
-  }, [userEmail, userNickname, userPw, userRoleIds, history, validationItem]);
+  }, [userEmail, userNickname, userPw, userRoleIds]);
 
   const _updateUser = useCallback(async (): Promise<void> => {
     const item = { userId: state.userId, userNickname, userPw, userRoleIds };
     try {
       await updateUser(item);
       history.push(RoutePath.USER_LIST);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log("_updateUser Error", error);
     }
-  }, [state.userId, userNickname, userPw, userRoleIds, history]);
+  }, [state.userId, userNickname, userPw, userRoleIds]);
 
   const onClickRoleBox = useCallback(
     (roleId: number): void => {
@@ -191,12 +191,6 @@ const UserDetail: React.FC<ComponentIE> = (
   }, [
     state.type,
     userRoleIds,
-    t,
-    setEmail,
-    setNickname,
-    setPassword,
-    onClickRoleBox,
-    _signUp,
   ]);
 
   const modifyTypeRender = useCallback((): React.ReactElement => {
@@ -264,11 +258,6 @@ const UserDetail: React.FC<ComponentIE> = (
     state.type,
     userNickname,
     userRoleIds,
-    t,
-    setNickname,
-    setPassword,
-    onClickRoleBox,
-    _updateUser,
   ]);
 
   return (
