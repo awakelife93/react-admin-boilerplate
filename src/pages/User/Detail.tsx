@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
 import { updateUser } from "../../api/PatchAPI";
 import { signUp } from "../../api/PutAPI";
@@ -65,14 +65,14 @@ const UserDetail: React.FC<ComponentIE> = (
     return true;
   }, []);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const _signUp = useCallback(async (): Promise<void | boolean> => {
     const item = { userEmail, userNickname, userPw, userRoleIds };
 
     if (validationItem(item)) {
       try {
         await signUp(item);
-        history.push(RoutePath.USER_LIST);
+        navigate(RoutePath.USER_LIST);
       } catch (error: any) {
         switch (error.status) {
           // 이메일 중복
@@ -91,7 +91,7 @@ const UserDetail: React.FC<ComponentIE> = (
     const item = { userId: state.userId, userNickname, userPw, userRoleIds };
     try {
       await updateUser(item);
-      history.push(RoutePath.USER_LIST);
+      navigate(RoutePath.USER_LIST);
     } catch (error: unknown) {
       console.log("_updateUser Error", error);
     }

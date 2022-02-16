@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../api/DeleteAPI";
 import { findUser } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
@@ -113,10 +113,10 @@ const User: React.FC<ComponentIE> = (
   /**
    * 상세
    */
-  const history = useHistory();
+  const navigate = useNavigate();
   const onDetailClick = useCallback(
     ({ type, item }: { type: PageType; item?: UserInfoIE }): void => {
-      history.push(RoutePath.USER_DETAIL, { ...item, type });
+      navigate(RoutePath.USER_DETAIL, { state: { ...item, type }});
     },
     []
   );

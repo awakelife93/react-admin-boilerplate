@@ -1,15 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 import "../../core/i18n";
-import { connectWrapper } from "../../redux";
 import { ReduxStoreType } from "../../redux/type";
 import { Container, SideMenu } from "../components";
 import ModalLayout from "../components/Modal";
-import ActionProvider from "../contexts/ActionContext";
 import AuthGuard from "../guards/AuthGuard";
-import useAuth from "../hooks/useAuth";
-import useI18nChange from "../hooks/useI18nChange";
-import useSetupWindow from "../hooks/useSetupWindow";
 import { LayoutIE } from "../interface";
 import BodyLayout from "./Body";
 import BottomLayout from "./Bottom";
@@ -23,25 +19,14 @@ import HeaderLayout from "./Header";
  * 해당 컴포넌트만 Redux에 연결하여 props로 자식 컴포넌트 전체 (페이지)에 뿌린다.
  * 그 외에 독립되는 컴포넌트는 connectWrapper로 연결
  */
-const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
-  const {
-    setUserInfoAction,
-    Component,
-    showModalAction,
-    initUserInfoAction,
-  } = props;
+const Layout: React.FC<LayoutIE> = (): React.ReactElement => {
   const {
     reduxStore: {
       globalStore: { modalItem },
     }
   } = useSelector((state: ReduxStoreType) => state);
-    
-  useAuth(setUserInfoAction);
-  useSetupWindow(initUserInfoAction, showModalAction);
-  useI18nChange();
   
   return (
-    <ActionProvider {...props}>
       <Container.LayoutContainer>
         {modalItem.isShowModal && (
           <ModalLayout modalItem={modalItem} />
@@ -51,18 +36,17 @@ const Layout: React.FC<LayoutIE> = (props: LayoutIE): React.ReactElement => {
         >
           <SideMenu />
           <Container.ColumnContainer style={{ width: "100%" }}>
-            <HeaderLayout {...props} />
-            <BodyLayout {...props}>
-              <AuthGuard {...props}>
-                <Component {...props} />
+            <HeaderLayout />
+            <BodyLayout>
+              <AuthGuard>
+                <Outlet />
               </AuthGuard>
             </BodyLayout>
-            <BottomLayout {...props} />
+            <BottomLayout />
           </Container.ColumnContainer>
         </Container.RowContainer>
       </Container.LayoutContainer>
-    </ActionProvider>
   );
 };
 
-export default connectWrapper(Layout);
+export default Layout;

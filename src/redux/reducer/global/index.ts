@@ -8,11 +8,6 @@ const globalStore = (
   action: AnyAction
 ): GlobalStoreType => {
   switch (action.type) {
-    case ActionEnum.SET_AD_CONTAINER:
-      return _.merge({}, state, {
-        isShowAdContainer: action.value,
-      });
-
     case ActionEnum.SET_MODAL_ITEM:
       return _.merge({}, state, {
         modalItem: action.value,

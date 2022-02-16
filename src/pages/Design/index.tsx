@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   removeComponent,
   removeLayout,
@@ -149,7 +149,7 @@ const Design: React.FC<ComponentIE> = (
   /**
    * 상세
    */
-  const history = useHistory();
+  const navigate = useNavigate();
   const onDetailClick = useCallback(
     ({
       type,
@@ -160,9 +160,9 @@ const Design: React.FC<ComponentIE> = (
       item?: any;
       designType: DesignType;
     }): void => {
-      history.push(RoutePath.DESIGN_DETAIL, { ...item, type, designType });
+      navigate(RoutePath.DESIGN_DETAIL, { state: { ...item, type, designType }});
     },
-    [history]
+    []
   );
 
   /**

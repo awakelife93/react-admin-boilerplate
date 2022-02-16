@@ -5,8 +5,10 @@ import { findUserProfile } from "../../api/GetAPI";
 import { UserInfoIE } from "../../api/interface";
 import { getLocalStorageItem } from "../../core";
 import { ReduxStoreType } from "../../redux/type";
+import useAction from "./useAction";
 
-const useAuth = (setUserInfoAction: Function): void => {
+const useAuth = (): void => {
+  const { setUserInfoAction } = useAction();
   const {
     reduxStore: { userStore },
   } = useSelector((state: ReduxStoreType) => state);
@@ -26,7 +28,7 @@ const useAuth = (setUserInfoAction: Function): void => {
 
   useEffect(() => {
     const token = getLocalStorageItem("token");
-    // 로그인이 된 상태라면
+    // * 로그인이 된 상태라면
     if (!_.isNull(token) && !userStore.user.isLogin) {
       initUserProfile();
     }

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeContents } from "../../api/DeleteAPI";
 import { findContents } from "../../api/GetAPI";
 import { ContentsType } from "../../api/GetAPI/type";
@@ -113,10 +113,10 @@ const Contents: React.FC<ComponentIE> = (
   /**
    * 상세
    */
-  const history = useHistory();
+  const navigate = useNavigate();
   const onDetailClick = useCallback(
     ({ type, item }: { type: PageType; item?: ContentsType }): void => {
-      history.push(RoutePath.CONTENTS_DETAIL, { ...item, type });
+      navigate(RoutePath.CONTENTS_DETAIL, { state: { ...item, type }});
     },
     []
   );

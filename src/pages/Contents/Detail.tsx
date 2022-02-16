@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ContentsType } from "../../api/GetAPI/type";
 import { updateContents } from "../../api/PatchAPI";
 import { createContents } from "../../api/PutAPI";
@@ -63,7 +63,7 @@ const ContentsDetail: React.FC<ComponentIE> = (
     return true;
   }, []);
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const _upsertContents = useCallback(async (): Promise<void> => {
     try {
       const item = {
@@ -74,12 +74,12 @@ const ContentsDetail: React.FC<ComponentIE> = (
 
       if (state.type === "MODIFY") {
         await updateContents({ contId: state.contId, ...item });
-        history.push(RoutePath.CONTENTS_LIST);
+        navigate(RoutePath.CONTENTS_LIST);
       } else {
         // require value - title
         if (validationItem({ contTitle: item.contTitle })) {
           await createContents(item);
-          history.push(RoutePath.CONTENTS_LIST);
+          navigate(RoutePath.CONTENTS_LIST);
         }
       }
     } catch (error: unknown) {
@@ -91,8 +91,6 @@ const ContentsDetail: React.FC<ComponentIE> = (
     contTitle,
     contSubTitle,
     contDesc,
-    history,
-    validationItem,
   ]);
 
   const detailRender = useCallback((): React.ReactElement => {
@@ -196,11 +194,6 @@ const ContentsDetail: React.FC<ComponentIE> = (
     contSubTitle,
     contDesc,
     contImageLink,
-    t,
-    setContTitle,
-    setContSubTitle,
-    setContDesc,
-    _upsertContents,
   ]);
 
   return (

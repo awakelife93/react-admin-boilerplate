@@ -4,7 +4,7 @@ import { Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Container } from ".";
-import routes, { RouteType } from "../../route/routes";
+import routes, { RouteIE } from "../../route/routes";
 import { CommonColor, getSelectTabMenuStyle } from "../styles";
 
 /**
@@ -31,15 +31,15 @@ const SideMenu: React.FC = (): React.ReactElement => {
     >
       <Container.ColumnContainer>
         {!_.isEmpty(routes) &&
-          routes.map((route: RouteType, idx: number) => {
+          routes.map((route: RouteIE, idx: number) => {
             if (!_.isUndefined(route.i18nKey)) {
               return (
-                <Link key={`sidMenu_list_Key${idx}`} to={route.path}>
+                <Link key={`sidMenu_list_Key${idx}`} to={route.path as string}>
                   <Navbar.Brand
                     style={{
                       ...getSelectTabMenuStyle(
                         window.location.pathname,
-                        route.path
+                        route.path as string
                       ),
                     }}
                   >

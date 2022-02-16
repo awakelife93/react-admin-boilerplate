@@ -39,10 +39,6 @@ export type ReduxStoreType = {
 export type ReduxActionType = {
   initContentsAction: Function;
   getContentsAction: Function;
-  initThemeAction: Function;
-  setThemeAction: Function;
-  initShowAdAction: Function;
-  showAdAction: Function;
   initShowModalAction: Function;
   showModalAction: Function;
   setUserInfoAction: Function;
@@ -57,6 +53,5 @@ export enum ActionEnum {
   SET_USER_INFO = "SET_USER_INFO",
   GET_CONTENTS = "GET_CONTENTS",
   SET_DARK_MODE = "SET_DARK_MODE",
-  SET_AD_CONTAINER = "SET_AD_CONTAINER",
   SET_MODAL_ITEM = "SET_MODAL_ITEM",
 }

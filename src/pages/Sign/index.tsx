@@ -1,10 +1,11 @@
 import _ from "lodash";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
 import { signIn } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
+import useAction from "../../common/hooks/useAction";
 import { ComponentIE } from "../../common/interface";
 import { UnknownObject } from "../../common/type";
 import { setLocalStorageItem } from "../../core";
@@ -21,7 +22,7 @@ const SignIn: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const { t } = useTranslation();
-
+  const { setUserInfoAction } = useAction();
   // Input
   const [userEmail, setUserEmail] = useState("");
   const [userPw, setPassword] = useState("");
@@ -54,9 +55,8 @@ const SignIn: React.FC<ComponentIE> = (
     []
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const _signIn = useCallback(async (): Promise<void | boolean> => {
-    const { setUserInfoAction } = props;
     const item = { userEmail, userPw };
 
     if (validationItem(item)) {
@@ -76,7 +76,7 @@ const SignIn: React.FC<ComponentIE> = (
               userNickname: userInfo.userNickname,
             },
           });
-          history.push(RoutePath.DASHBOARD);
+          navigate(RoutePath.DASHBOARD);
         }
       } catch (error: any) {
         switch (error.status) {

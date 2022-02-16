@@ -1,31 +1,6 @@
-import { createBrowserHistory } from "history";
-import { Provider as RouteProvider } from "react-redux";
-import { Route, RouteComponentProps, Router, Switch } from "react-router-dom";
-import Layout from "../common/layouts";
-import { configureStore } from "../redux";
-import routes, { RouteType } from "./routes";
+import { useRoutes } from "react-router-dom";
+import routes from "./routes";
 
-const RouteComponent = () => {
-  return (
-    <RouteProvider store={configureStore()}>
-      <Router history={createBrowserHistory()}>
-        <Switch>
-          {routes.map((route: RouteType, idx: number) => {
-            return (
-              <Route
-                key={`route_key_${idx}`}
-                path={route.path}
-                exact={route.exact}
-                render={(props: RouteComponentProps) => {
-                  return <Layout {...props} {...route} />;
-                }}
-              />
-            );
-          })}
-        </Switch>
-      </Router>
-    </RouteProvider>
-  );
-};
+const Route = () => useRoutes(routes);
 
-export default RouteComponent;
+export default Route;

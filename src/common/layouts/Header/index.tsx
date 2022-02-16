@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signOut } from "../../../api/PostAPI";
 import {
   getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
@@ -21,13 +21,13 @@ const Header: React.FC<ComponentIE> = (
   props: ComponentIE
 ): React.ReactElement => {
   const { initUserInfoAction } = useAction();
-  const history = useHistory();
+  const navigate = useNavigate();
   
   const _routePush = useCallback(
     (route: string) => {
-      history.push(route);
+      navigate(route);
     },
-    [history]
+    []
   );
 
   const { i18n } = useTranslation();
