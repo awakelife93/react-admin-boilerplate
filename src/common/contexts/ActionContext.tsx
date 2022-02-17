@@ -1,13 +1,3 @@
-// initContentsAction,
-//         getContentsAction,
-//         initThemeAction,
-//         setThemeAction,
-//         initShowAdAction,
-//         showAdAction,
-//         initShowModalAction,
-//         showModalAction,
-//         setUserInfoAction,
-//         initUserInfoAction,
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { ContentsType } from "../../api/GetAPI/type";

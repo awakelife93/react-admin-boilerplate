@@ -35,7 +35,6 @@ const UserDetail: React.FC<ComponentIE> = (
   const location = useLocation();
   const state = location.state as UserDetailPropsIE;
 
-  // Input
   const [userEmail, setEmail] = useState("");
   const [userNickname, setNickname] = useState(state.userNickname ?? "");
   const [userPw, setPassword] = useState("");
@@ -75,7 +74,6 @@ const UserDetail: React.FC<ComponentIE> = (
         navigate(RoutePath.USER_LIST);
       } catch (error: any) {
         switch (error.status) {
-          // 이메일 중복
           case 409: {
             _showMessageModal(
               "중복된 이메일이 있습니다. 다른 이메일을 사용해주시기 바랍니다."

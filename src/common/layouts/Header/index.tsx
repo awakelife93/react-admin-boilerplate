@@ -45,10 +45,7 @@ const Header: React.FC<ComponentIE> = (
 
       if (!_.isEmpty(token)) {
         await signOut();
-
-        // token 삭제
         removeLocalStorageItem("token");
-        // 리덕스 초기화
         initUserInfoAction();
         _routePush(RoutePath.SIGN_IN);
       } else {

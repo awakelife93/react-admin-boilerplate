@@ -39,7 +39,6 @@ const DesignDetail: React.FC<ComponentIE> = (
   const location = useLocation();
   const state = location.state as DesignDetailPropsIE;
 
-  // Input
   const [designName, setDesignName] = useState(state.name ?? "");
   const [componentOrLayoutAttribute, setComponentOrLayoutAttribute] = useState<{
     [index: string]: any;

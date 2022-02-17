@@ -32,12 +32,12 @@ instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const localStorageToken = getLocalStorageItem("token");
 
-    // 토큰이 소실되었을 경우 지워주기
+    // * 토큰이 소실되었을 경우 지워주기
     if (_.isEmpty(localStorageToken)) {
       config.headers.Authorization = "";
     } else {
       if (_.isEmpty(config.headers.Authorization))
-        // 토큰이 생겼을 경우 request headers에 달아주기
+        // * 토큰이 생겼을 경우 request headers에 달아주기
         config.headers.Authorization = `Bearer ${localStorageToken}`;
     }
 
@@ -50,7 +50,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    // 토큰 연장
+    // * 토큰 연장
     if (response.status === 201 && !_.isEmpty(response.data.token)) {
       setLocalStorageItem({ token: response.data.token });
     }
@@ -59,13 +59,13 @@ instance.interceptors.response.use(
   (error: any) => {
     const err = error.response ?? error;
 
-    // 네트워크 에러
+    // ! 네트워크 에러
     if (_.isUndefined(err.status)) {
       console.log("NETWORK ERROR", err);
       _showMessageModal("네트워크가 불안정합니다.");
     }
 
-    // 서버에서도 정의하지 못한 에러이기 때문에 공통 처리
+    // ! 서버에서도 정의하지 못한 에러이기 때문에 공통 처리
     if (err.status === 500) {
       console.log("500 ERROR", err);
       _showMessageModal(
@@ -73,7 +73,7 @@ instance.interceptors.response.use(
       );
     }
 
-    // 서버 Auth 실패 -> 로그아웃
+    // ! 서버 Auth 실패 -> 로그아웃
     if (err.status === 401) {
       console.log("401 ERROR", err);
       _showMessageModal("로그아웃 되었습니다.");
@@ -172,6 +172,6 @@ export const patchAPI = async (
 };
 
 export const generateAPIData = async (response: AxiosResponse) => {
-  // 확장할 것이 있으면 여기에 작성
+  // * 확장할 것이 있으면 여기에 작성
   return response.data;
 };

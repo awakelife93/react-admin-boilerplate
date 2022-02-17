@@ -30,7 +30,7 @@ type TableSortType = {
 const TableSort: React.FC<TableSortType> = (
   props: TableSortType
 ): React.ReactElement => {
-  // false = desc, true = asc
+  // * false = desc, true = asc
   const {
     sort,
     title,

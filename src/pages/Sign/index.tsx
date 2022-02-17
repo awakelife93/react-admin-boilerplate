@@ -23,7 +23,7 @@ const SignIn: React.FC<ComponentIE> = (
 ): React.ReactElement => {
   const { t } = useTranslation();
   const { setUserInfoAction } = useAction();
-  // Input
+  
   const [userEmail, setUserEmail] = useState("");
   const [userPw, setPassword] = useState("");
 
@@ -80,17 +80,14 @@ const SignIn: React.FC<ComponentIE> = (
         }
       } catch (error: any) {
         switch (error.status) {
-          // 비밀번호 틀렸을 경우
           case 401: {
             _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
             return false;
           }
-          // 관리자 권한이 없는 경우
           case 403: {
             _showMessageModal("권한이 없는 계정입니다.");
             return false;
           }
-          // 계정이 없는 경우
           case 404: {
             _showMessageModal("계정이 없습니다.");
             return false;

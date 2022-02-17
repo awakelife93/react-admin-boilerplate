@@ -32,7 +32,7 @@ const ScrollPaging: React.FC<ScrollPagingType> = (
   
   const onPagingEnd = useCallback(
     ([entry]: IntersectionObserverEntry[]): void => {
-      // ref가 화면에 완전히 표시 될때 (threshold === 1)
+      // * ref가 화면에 완전히 표시 될때 (threshold === 1)
       if (entry.isIntersecting) {
         try {
           if (_.isFunction(callback)) {

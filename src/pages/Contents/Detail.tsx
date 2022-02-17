@@ -37,7 +37,6 @@ const ContentsDetail: React.FC<ComponentIE> = (
   const location = useLocation();
   const state = location.state as ContentsDetailPropsIE;
 
-  // Input
   const [contTitle, setContTitle] = useState(state.contTitle ?? "");
   const [contSubTitle, setContSubTitle] = useState(state.contSubTitle ?? "");
   const [contDesc, setContDesc] = useState(state.contDesc ?? "");
@@ -76,7 +75,6 @@ const ContentsDetail: React.FC<ComponentIE> = (
         await updateContents({ contId: state.contId, ...item });
         navigate(RoutePath.CONTENTS_LIST);
       } else {
-        // require value - title
         if (validationItem({ contTitle: item.contTitle })) {
           await createContents(item);
           navigate(RoutePath.CONTENTS_LIST);

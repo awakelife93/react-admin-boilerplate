@@ -37,7 +37,6 @@ const MenuBox: React.FC<MenuBoxType> = (
   } = props;
 
   const checkOutSideClick = useCallback((event: MouseEvent): void => {
-    // 어느 영역을 눌러도 종료가 되게끔...
     setShowMenuBox(false);
   }, []);
 
@@ -50,7 +49,7 @@ const MenuBox: React.FC<MenuBoxType> = (
   }, [isShowMenuBox, checkOutSideClick]);
 
   const renderLayout = (): React.ReactElement => {
-    // item이 수평으로 나열
+    // * item이 수평으로 나열
     if (renderType === "row") {
       return (
         <Container.RowContainer style={{ ...menuContainerStyle }}>
@@ -70,7 +69,7 @@ const MenuBox: React.FC<MenuBoxType> = (
           })}
         </Container.RowContainer>
       );
-      // item이 수직으로 나열
+      // * item이 수직으로 나열
     } else {
       return (
         <Container.ColumnContainer style={{ ...menuContainerStyle }}>
