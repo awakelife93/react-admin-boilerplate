@@ -1,6 +1,7 @@
 import { CommonRender } from "../../../../common/components";
+import { GlobalStoreType } from "../../../type";
 
-export const initGlobalState = {
+export const initGlobalState: GlobalStoreType = {
   modalItem: {
     isShowModal: false,
     children: CommonRender.DefaultFC,
