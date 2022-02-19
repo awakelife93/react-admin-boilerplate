@@ -23,6 +23,7 @@ const store = (initialState: UnknownObject = {}) => {
     combineReducers({ reduxStore: reducers }),
     initialState
   );
+
   return _store;
 };
 
