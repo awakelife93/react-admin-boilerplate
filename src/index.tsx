@@ -4,12 +4,15 @@ import { Provider as ReduxProvider } from "react-redux";
 import App from "./App";
 import ActionProvider from "./common/contexts/ActionContext";
 import "./index.css";
-import { configureStore } from "./redux";
+import reduxSelector from "./redux";
+import { UseReduxType } from "./redux/type";
 import reportWebVitals from "./reportWebVitals";
 
+const useRedux: UseReduxType = "reduxLib";
+
 ReactDOM.render(
-  <ReduxProvider store={configureStore()}>
-    <ActionProvider>
+  <ReduxProvider store={reduxSelector[useRedux]()}>
+    <ActionProvider useRedux={useRedux}>
       <App />
     </ActionProvider>
   </ReduxProvider>,

@@ -1,6 +1,8 @@
 import { ContentsType } from "../api/GetAPI/type";
 import { ModalItem } from "../common/components/Modal/type";
 
+export type UseReduxType = "reduxLib" | "reduxToolkit";
+
 export type ContentsStoreType = {
   contents: ContentsType[];
 };
@@ -10,7 +12,6 @@ export type ThemeStoreType = {
 };
 
 export type GlobalStoreType = {
-  isShowAdContainer: boolean;
   modalItem: ModalItem;
 };
 
