@@ -8,49 +8,49 @@ import { CommonComponentType, DynamicColorComponentType } from "./type";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface SubMitButtonIE extends Partial<CommonComponentType> {}
+interface ISubMitButton extends Partial<CommonComponentType> {}
 export const SubMitButton = styled.button`
-  width: ${(props: SubMitButtonIE) => props.style?.width ?? "150px"};
-  height: ${(props: SubMitButtonIE) => props.style?.height ?? "40px"};
-  margin: ${(props: SubMitButtonIE) => props.style?.margin ?? "20px"};
-  color: ${(props: SubMitButtonIE) => props.style?.color ?? CommonColor.WHITE};
-  background-color: ${(props: SubMitButtonIE) =>
+  width: ${(props: ISubMitButton) => props.style?.width ?? "150px"};
+  height: ${(props: ISubMitButton) => props.style?.height ?? "40px"};
+  margin: ${(props: ISubMitButton) => props.style?.margin ?? "20px"};
+  color: ${(props: ISubMitButton) => props.style?.color ?? CommonColor.WHITE};
+  background-color: ${(props: ISubMitButton) =>
     props.style?.backgroundColor ?? CommonColor.DARK};
-  border: ${(props: SubMitButtonIE) =>
+  border: ${(props: ISubMitButton) =>
     props.style?.border ?? `1px solid ${CommonColor.GRAY}`};
-  border-radius: ${(props: SubMitButtonIE) =>
+  border-radius: ${(props: ISubMitButton) =>
     props.style?.borderRadius ?? "0.25em"};
 `;
 
-interface TextButtonIE extends Partial<CommonComponentType> {}
+interface ITextButton extends Partial<CommonComponentType> {}
 export const TextButton = styled.button`
-  background-color: ${(props: TextButtonIE) =>
+  background-color: ${(props: ITextButton) =>
     props.style?.backgroundColor ?? CommonColor.TRANS_PARENT};
-  border: ${(props: TextButtonIE) => props.style?.border ?? "none"};
-  color: ${(props: TextButtonIE) => props.style?.color ?? CommonColor.WHITE};
-  font-size: ${(props: TextButtonIE) => props.style?.fontSize ?? "15px"};
+  border: ${(props: ITextButton) => props.style?.border ?? "none"};
+  color: ${(props: ITextButton) => props.style?.color ?? CommonColor.WHITE};
+  font-size: ${(props: ITextButton) => props.style?.fontSize ?? "15px"};
 `;
 
-interface DynamicColorButtonIE extends Partial<CommonComponentType>, Partial<DynamicColorComponentType> {}
+interface IDynamicColorButton extends Partial<CommonComponentType>, Partial<DynamicColorComponentType> {}
 export const DynamicColorButton = styled.button`
-  width: ${(props: SubMitButtonIE) => props.style?.width ?? "150px"};
-  height: ${(props: SubMitButtonIE) => props.style?.height ?? "40px"};
-  border-radius: ${(props: SubMitButtonIE) =>
+  width: ${(props: ISubMitButton) => props.style?.width ?? "150px"};
+  height: ${(props: ISubMitButton) => props.style?.height ?? "40px"};
+  border-radius: ${(props: ISubMitButton) =>
     props.style?.borderRadius ?? "0.25em"};
-  border: ${(props: SubMitButtonIE) =>
+  border: ${(props: ISubMitButton) =>
     props.style?.border ?? `1px solid ${CommonColor.GRAY}`};
-  color: ${(props: DynamicColorButtonIE) =>
+  color: ${(props: IDynamicColorButton) =>
     props.style?.color ?? CommonColor.WHITE};
-  font-size: ${(props: DynamicColorButtonIE) =>
+  font-size: ${(props: IDynamicColorButton) =>
     props.style?.fontSize ?? "15px"};
-  background-color: ${(props: DynamicColorButtonIE) =>
+  background-color: ${(props: IDynamicColorButton) =>
     props.defaultBackgroundColor};
   &:hover {
-    background-color: ${(props: DynamicColorButtonIE) =>
+    background-color: ${(props: IDynamicColorButton) =>
       props.hoverBackgroundColor};
   }
   &:active {
-    background-color: ${(props: DynamicColorButtonIE) =>
+    background-color: ${(props: IDynamicColorButton) =>
       props.activeBackgroundColor};
   }
 `;

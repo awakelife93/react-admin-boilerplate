@@ -1,31 +1,31 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  removeComponent,
-  removeLayout,
-  removeStyle,
-  removeTheme
+    removeComponent,
+    removeLayout,
+    removeStyle,
+    removeTheme
 } from "../../api/DeleteAPI";
 import {
-  findComponent,
-  findLayout,
-  findStyle,
-  findTheme
+    findComponent,
+    findLayout,
+    findStyle,
+    findTheme
 } from "../../api/GetAPI";
 import {
-  Button,
-  Container,
-  PagingBar,
-  SearchBar
+    Button,
+    Container,
+    PagingBar,
+    SearchBar
 } from "../../common/components";
 import {
-  ComponentIE
+    IComponent
 } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import {
-  DesignType,
-  PageType,
-  SortType
+    DesignType,
+    PageType,
+    SortType
 } from "../../common/type";
 import { RoutePath } from "../../route/routes";
 import List from "./List";
@@ -34,11 +34,11 @@ import Tap from "./Tap";
 /**
  * @description Design Component
  * todo: 서버와 클라이언트에 isActive도 추가해두기
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Design: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Design: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const [designType, setDesignType] = useState<DesignType>("component");
   const [designs, setDesigns] = useState([]);

@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { UserInfoIE } from "../../api/interface";
+import { IUserInfo } from "../../api/interface";
 import { TableButton, TableSort } from "../../common/components";
 import { SortType } from "../../common/type";
 
@@ -14,7 +14,7 @@ const List = ({
 }: {
   userEmailSort: SortType;
   userNicknameSort: SortType;
-  users: UserInfoIE[];
+  users: IUserInfo[];
   onSortClick: Function;
   onDeleteClick: Function;
   onDetailClick: Function;
@@ -40,7 +40,7 @@ const List = ({
       </thead>
       <tbody>
         {!_.isEmpty(users) &&
-          users.map((user: UserInfoIE, index: number) => {
+          users.map((user: IUserInfo, index: number) => {
             const roleName: string = user.userRoles
               .map((roles: any) => {
                 return roles.role.roleName;

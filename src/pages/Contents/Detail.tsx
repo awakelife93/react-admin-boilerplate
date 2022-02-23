@@ -13,7 +13,7 @@ import {
   Label,
   TextArea
 } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { PageType, UnknownObject } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
 import { RoutePath } from "../../route/routes";
@@ -21,21 +21,21 @@ import { validationObject } from "../../utils";
 
 /**
  * @description Contents Detail Component
- * @param {ComponentIE} props
- * @param {ContentsDetailPropsIE} location
+ * @param {IComponent} props
+ * @param {IContentsDetailProps} location
  * @returns {React.ReactElement}
  */
-interface ContentsDetailPropsIE extends ContentsType {
+interface IContentsDetailProps extends ContentsType {
   type: PageType;
 }
 
 // todo: 이미지 관련 로직 구현해놓기
-const ContentsDetail: React.FC<ComponentIE> = (
-  props: ComponentIE
+const ContentsDetail: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { t } = useTranslation();
   const location = useLocation();
-  const state = location.state as ContentsDetailPropsIE;
+  const state = location.state as IContentsDetailProps;
 
   const [contTitle, setContTitle] = useState(state.contTitle ?? "");
   const [contSubTitle, setContSubTitle] = useState(state.contSubTitle ?? "");

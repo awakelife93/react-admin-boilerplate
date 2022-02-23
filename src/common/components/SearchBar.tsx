@@ -11,7 +11,7 @@ type SearchBarType = {
 /**
  * SearchBar
  * @description 검색 컴포넌트
- * @param {SearchBarIE} props
+ * @param {SearchBarType} props
  * @returns {React.ReactElement}
  */
 const SearchBar: React.FC<SearchBarType> = (

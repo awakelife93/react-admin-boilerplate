@@ -2,7 +2,7 @@ import _ from "lodash";
 import { patchAPI } from "..";
 import { UnknownObject } from "../../common/type";
 import { ContentsType } from "../GetAPI/type";
-import { UserInfoIE } from "../interface";
+import { IUserInfo } from "../interface";
 
 export const updateUser = async ({
   userId,
@@ -14,7 +14,7 @@ export const updateUser = async ({
   userNickname?: string;
   userPw?: string;
   userRoleIds?: number[];
-}): Promise<UserInfoIE> => {
+}): Promise<IUserInfo> => {
   try {
     const item: UnknownObject = { userId };
 

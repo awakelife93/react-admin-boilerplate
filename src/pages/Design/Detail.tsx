@@ -2,9 +2,9 @@ import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { CommonDesignIE } from "../../api/interface";
+import { ICommonDesign } from "../../api/interface";
 import { Button, Container, InputBox, Label } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import { DesignType, PageType } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
@@ -23,21 +23,21 @@ import { validationObject } from "../../utils";
  * 4-2. 별도로 임의의 테스트 컴포넌트에 값을 전달하여 에러가 나는지 체크할지?
  * 4-3. 스타일과 테마는 컴포넌트와 레이아웃 ID 유효성 검사 API 추가 해줘야함.
  * 5. 사용 유무 필드 추가하기
- * @param {ComponentIE} props
- * @param {DesignDetailPropsIE} location
+ * @param {IComponent} props
+ * @param {IDesignDetailProps} location
  * @returns {React.ReactElement}
  */
-interface DesignDetailPropsIE extends CommonDesignIE {
+interface IDesignDetailProps extends ICommonDesign {
   type: PageType;
   designType: DesignType;
 }
 
-const DesignDetail: React.FC<ComponentIE> = (
-  props: ComponentIE
+const DesignDetail: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { t } = useTranslation();
   const location = useLocation();
-  const state = location.state as DesignDetailPropsIE;
+  const state = location.state as IDesignDetailProps;
 
   const [designName, setDesignName] = useState(state.name ?? "");
   const [componentOrLayoutAttribute, setComponentOrLayoutAttribute] = useState<{

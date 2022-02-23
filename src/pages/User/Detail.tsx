@@ -2,7 +2,7 @@ import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
-import { UserInfoIE } from "../../api/interface";
+import { IUserInfo } from "../../api/interface";
 import { updateUser } from "../../api/PatchAPI";
 import { signUp } from "../../api/PostAPI";
 import {
@@ -12,7 +12,7 @@ import {
   InputBox,
   Label
 } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { PageType, UnknownObject } from "../../common/type";
 import { I18nCommandEnum } from "../../core";
 import { RoutePath } from "../../route/routes";
@@ -20,20 +20,20 @@ import { validationObject } from "../../utils";
 
 /**
  * @description User Detail Component
- * @param {ComponentIE} props
- * @param {UserDetailPropsIE} location
+ * @param {IComponent} props
+ * @param {IUserDetailProps} location
  * @returns {React.ReactElement}
  */
-interface UserDetailPropsIE extends UserInfoIE {
+interface IUserDetailProps extends IUserInfo {
   type: PageType;
 }
 
-const UserDetail: React.FC<ComponentIE> = (
-  props: ComponentIE
+const UserDetail: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { t } = useTranslation();
   const location = useLocation();
-  const state = location.state as UserDetailPropsIE;
+  const state = location.state as IUserDetailProps;
 
   const [userEmail, setEmail] = useState("");
   const [userNickname, setNickname] = useState(state.userNickname ?? "");

@@ -1,14 +1,14 @@
 import React from "react";
 import { Container } from "../../components";
-import { ComponentIE } from "../../interface";
+import { IComponent } from "../../interface";
 
 /**
  * @description Body Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Body: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Body: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { children } = props;
   return (

@@ -4,12 +4,12 @@ import { removeContents } from "../../api/DeleteAPI";
 import { findContents } from "../../api/GetAPI";
 import { ContentsType } from "../../api/GetAPI/type";
 import {
-  Button,
-  Container,
-  PagingBar,
-  SearchBar
+    Button,
+    Container,
+    PagingBar,
+    SearchBar
 } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import { PageType, SortType } from "../../common/type";
 import { RoutePath } from "../../route/routes";
@@ -17,11 +17,11 @@ import List from "./List";
 
 /**
  * @description Contents Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Contents: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Contents: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const [contents, setContents] = useState<ContentsType[]>([]);
   const [totalCount, setTotalCount] = useState(0);

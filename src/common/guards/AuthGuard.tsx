@@ -2,12 +2,12 @@ import { ReactElement } from "react";
 import { useSelector } from "react-redux";
 import SignInPage from "../../pages/Sign";
 import { ReduxStoreType } from "../../redux/type";
-import { ComponentIE } from "../interface";
+import { IComponent } from "../interface";
 
-interface AuthProviderIE extends ComponentIE {
+interface IAuthProvider extends IComponent {
   children: ReactElement;
 }
-const AuthGuard: React.FC<AuthProviderIE> = (props: AuthProviderIE): ReactElement => {
+const AuthGuard: React.FC<IAuthProvider> = (props: IAuthProvider): ReactElement => {
   const { children } = props;
   const {
     reduxStore: {

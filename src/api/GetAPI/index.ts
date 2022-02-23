@@ -1,12 +1,12 @@
 import { getAPI } from "..";
 import { SortType } from "../../common/type";
-import { UserInfoIE } from "../interface";
+import { IUserInfo } from "../interface";
 import {
-  ContentsType,
-  DesignComponentType,
-  DesignLayoutType,
-  DesignStyleType,
-  DesignThemeType,
+    ContentsType,
+    DesignComponentType,
+    DesignLayoutType,
+    DesignStyleType,
+    DesignThemeType
 } from "./type";
 
 export const findUserCount = async ({
@@ -81,7 +81,7 @@ export const findUser = async ({
   searchKeyword?: string;
   userEmailSort?: SortType;
   userNicknameSort?: SortType;
-}): Promise<[UserInfoIE[], number]> => {
+}): Promise<[IUserInfo[], number]> => {
   try {
     return await getAPI("findUser", {
       take: 20,
@@ -218,7 +218,7 @@ export const findDashboardCount = async () => {
   }
 };
 
-export const findUserProfile = async (): Promise<UserInfoIE> => {
+export const findUserProfile = async (): Promise<IUserInfo> => {
   try {
     return await getAPI("findUserProfile");
   } catch (error: unknown) {

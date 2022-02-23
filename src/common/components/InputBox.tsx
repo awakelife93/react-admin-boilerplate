@@ -8,20 +8,20 @@ import { CommonComponentType } from "./type";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface InputBoxIE extends Partial<CommonComponentType> {}
+interface IInputBox extends Partial<CommonComponentType> {}
 export const CommonInputBox = styled.input`
-  width: ${(props: InputBoxIE) => props.style?.width ?? "300px"};
-  height: ${(props: InputBoxIE) => props.style?.height ?? "40px"};
-  padding: ${(props: InputBoxIE) => props.style?.padding ?? "0px"};
-  margin: ${(props: InputBoxIE) => props.style?.margin ?? "0px"};
-  border: ${(props: InputBoxIE) =>
+  width: ${(props: IInputBox) => props.style?.width ?? "300px"};
+  height: ${(props: IInputBox) => props.style?.height ?? "40px"};
+  padding: ${(props: IInputBox) => props.style?.padding ?? "0px"};
+  margin: ${(props: IInputBox) => props.style?.margin ?? "0px"};
+  border: ${(props: IInputBox) =>
     props.style?.border ?? `1px solid ${CommonColor.GRAY}`};
-  border-radius: ${(props: InputBoxIE) =>
+  border-radius: ${(props: IInputBox) =>
     props.style?.borderRadius ?? "0.25em"};
-  margin-bottom: ${(props: InputBoxIE) => props.style?.marginBottom ?? "0px"};
+  margin-bottom: ${(props: IInputBox) => props.style?.marginBottom ?? "0px"};
 `;
 
-interface RadioBoxIE extends Partial<CommonComponentType> {}
+interface IRadioBox extends Partial<CommonComponentType> {}
 export const RadioBox = styled.input.attrs((props) => ({
   type: "radio",
 }))``;

@@ -4,21 +4,21 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "../../../api/PostAPI";
 import {
-  getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
+    getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
 } from "../../../core";
 import { RoutePath } from "../../../route/routes";
 import { Container } from "../../components";
 import useAction from "../../hooks/useAction";
-import { ComponentIE } from "../../interface";
+import { IComponent } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
 /**
  * @description Header Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Header: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Header: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { initUserInfoAction } = useAction();
   const navigate = useNavigate();

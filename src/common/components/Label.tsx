@@ -8,10 +8,10 @@ import { CommonComponentType } from "./type";
  * 다크모드등 다양한 조건에서 변경해야하는 스타일들을 props로 받는다.
  * 상속받는 default style이 아닌 필수적인 스타일은 requireStyle로 정의
  */
-interface CommonLabelIE extends Partial<CommonComponentType> {}
+interface ICommonLabel extends Partial<CommonComponentType> {}
 export const CommonLabel = styled.label`
-  font-size: ${(props: CommonLabelIE) => props.style?.fontSize ?? "1rem"};
-  font-weight: ${(props: CommonLabelIE) => props.style?.fontWeight ?? ""};
-  color: ${(props: CommonLabelIE) => props.style?.color ?? CommonColor.WHITE};
-  margin: ${(props: CommonLabelIE) => props.style?.margin ?? 0};
+  font-size: ${(props: ICommonLabel) => props.style?.fontSize ?? "1rem"};
+  font-weight: ${(props: ICommonLabel) => props.style?.fontWeight ?? ""};
+  color: ${(props: ICommonLabel) => props.style?.color ?? CommonColor.WHITE};
+  margin: ${(props: ICommonLabel) => props.style?.margin ?? 0};
 `;

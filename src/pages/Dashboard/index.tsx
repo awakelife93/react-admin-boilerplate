@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import { findDashboardCount } from "../../api/GetAPI";
 import { Container, Label } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 
 /**
  * @description Dashboard Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Dashboard: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Dashboard: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const [dashboardCount, setDashboardCount] = useState({
     totalUser: 0,

@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { findUserProfile } from "../../api/GetAPI";
-import { UserInfoIE } from "../../api/interface";
+import { IUserInfo } from "../../api/interface";
 import { getLocalStorageItem } from "../../core";
 import { ReduxStoreType } from "../../redux/type";
 import useAction from "./useAction";
@@ -14,7 +14,7 @@ const useAuth = (): void => {
   } = useSelector((state: ReduxStoreType) => state);
 
   const initUserProfile = async (): Promise<void> => {
-    const profile: UserInfoIE = await findUserProfile();
+    const profile: IUserInfo = await findUserProfile();
 
     if (_.isFunction(setUserInfoAction)) {
       setUserInfoAction({

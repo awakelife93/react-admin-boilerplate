@@ -1,6 +1,6 @@
 import { postAPI } from "..";
 import { ContentsType } from "../GetAPI/type";
-import { UserInfoIE } from "../interface";
+import { IUserInfo } from "../interface";
 
 export const signIn = async ({
   userEmail,
@@ -8,7 +8,7 @@ export const signIn = async ({
 }: {
   userEmail: string;
   userPw: string;
-}): Promise<UserInfoIE> => {
+}): Promise<IUserInfo> => {
   try {
     return await postAPI("signInAdmin", {
       userEmail,
@@ -39,7 +39,7 @@ export const signUp = async ({
   userNickname: string;
   userPw: string;
   userRoleIds: number[];
-}): Promise<UserInfoIE> => {
+}): Promise<IUserInfo> => {
   try {
     return await postAPI("signUp", {
       userEmail,

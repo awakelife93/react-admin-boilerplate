@@ -2,11 +2,11 @@ import _ from "lodash";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { UserInfoIE } from "../../api/interface";
+import { IUserInfo } from "../../api/interface";
 import { signIn } from "../../api/PostAPI";
 import { Button, Container, InputBox, Label } from "../../common/components";
 import useAction from "../../common/hooks/useAction";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { UnknownObject } from "../../common/type";
 import { setLocalStorageItem } from "../../core";
 import { I18nCommandEnum } from "../../core/i18n";
@@ -15,11 +15,11 @@ import { validationObject } from "../../utils";
 
 /**
  * @description SignIn Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const SignIn: React.FC<ComponentIE> = (
-  props: ComponentIE
+const SignIn: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   const { t } = useTranslation();
   const { setUserInfoAction } = useAction();
@@ -61,7 +61,7 @@ const SignIn: React.FC<ComponentIE> = (
 
     if (validationItem(item)) {
       try {
-        const userInfo: UserInfoIE = await signIn({ userEmail, userPw });
+        const userInfo: IUserInfo = await signIn({ userEmail, userPw });
 
         if (_.isUndefined(userInfo)) {
           _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");

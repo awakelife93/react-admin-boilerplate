@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CommonAnimationReturn, MoveOptionIE } from "./type";
+import { CommonAnimationReturn, IMoveOption } from "./type";
 
 /**
  * @description
  * Component가 Unmount할 때 까지 특정 딜레이 주기로 포지션 이동 Animation
  */
 const TopDownMove = (
-  option: MoveOptionIE = {
+  option: IMoveOption = {
     delay: 500,
     direction: "Y",
     position: 10,

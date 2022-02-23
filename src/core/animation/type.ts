@@ -12,7 +12,7 @@ export type CommonAnimationReturn = {
   style: CSSProperties;
 };
 
-export interface MoveOptionIE extends Partial<AnimationOption> {
+export interface IMoveOption extends Partial<AnimationOption> {
   direction: string;
   position: number;
   endPosition: number;

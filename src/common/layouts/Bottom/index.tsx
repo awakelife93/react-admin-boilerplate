@@ -1,15 +1,15 @@
 import React from "react";
 import { Container, Label } from "../../components";
-import { ComponentIE } from "../../interface";
+import { IComponent } from "../../interface";
 import { CommonColor } from "../../styles";
 
 /**
  * @description Bottom Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const Bottom: React.FC<ComponentIE> = (
-  props: ComponentIE
+const Bottom: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
   return (
     <Container.BottomContainer>

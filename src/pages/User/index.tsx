@@ -2,14 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../api/DeleteAPI";
 import { findUser } from "../../api/GetAPI";
-import { UserInfoIE } from "../../api/interface";
+import { IUserInfo } from "../../api/interface";
 import {
-  Button,
-  Container,
-  PagingBar,
-  SearchBar
+    Button,
+    Container,
+    PagingBar,
+    SearchBar
 } from "../../common/components";
-import { ComponentIE } from "../../common/interface";
+import { IComponent } from "../../common/interface";
 import { CommonColor } from "../../common/styles";
 import { PageType, SortType } from "../../common/type";
 import { RoutePath } from "../../route/routes";
@@ -17,13 +17,13 @@ import List from "./List";
 
 /**
  * @description User Component
- * @param {ComponentIE} props
+ * @param {IComponent} props
  * @returns {React.ReactElement}
  */
-const User: React.FC<ComponentIE> = (
-  props: ComponentIE
+const User: React.FC<IComponent> = (
+  props: IComponent
 ): React.ReactElement => {
-  const [users, setUsers] = useState<UserInfoIE[]>([]);
+  const [users, setUsers] = useState<IUserInfo[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -115,7 +115,7 @@ const User: React.FC<ComponentIE> = (
    */
   const navigate = useNavigate();
   const onDetailClick = useCallback(
-    ({ type, item }: { type: PageType; item?: UserInfoIE }): void => {
+    ({ type, item }: { type: PageType; item?: IUserInfo }): void => {
       navigate(RoutePath.USER_DETAIL, { state: { ...item, type }});
     },
     []

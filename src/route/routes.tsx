@@ -23,10 +23,11 @@ export enum RoutePath {
   SIGN_IN = "/signIn",
 }
 
-export interface RouteIE extends RouteObject {
+export interface IRoute extends RouteObject {
   i18nKey: I18nCommandEnum | undefined;
 }
-const routes: RouteIE[] = [
+
+const routes: IRoute[] = [
   {
     path: RoutePath.DASHBOARD,
     i18nKey: I18nCommandEnum.DASHBOARD,
