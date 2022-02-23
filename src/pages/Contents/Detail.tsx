@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ContentsType } from "../../api/GetAPI/type";
 import { updateContents } from "../../api/PatchAPI";
-import { createContents } from "../../api/PutAPI";
+import { createContents } from "../../api/PostAPI";
 import {
   Button,
   Container,

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserInfoIE } from "../../api/interface";
 import { updateUser } from "../../api/PatchAPI";
-import { signUp } from "../../api/PutAPI";
+import { signUp } from "../../api/PostAPI";
 import {
   Button,
   CommonRender,
