@@ -14,11 +14,11 @@ https://github.com/awakelife93/study-spring-boot
 
 ## API Server Repository
 
-https://github.com/awakelife93/node-api-server
+https://github.com/awakelife93/node-api-template
 
 ## Style Server Repository
 
-https://github.com/awakelife93/node-design-server
+https://github.com/awakelife93/node-design-template
 
 ## [노트]
 
