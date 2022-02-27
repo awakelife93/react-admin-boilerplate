@@ -6,7 +6,7 @@ import {
   DesignComponentType,
   DesignLayoutType,
   DesignStyleType,
-  DesignThemeType
+  DesignThemeType,
 } from "./type";
 
 export const findUserCount = async ({
