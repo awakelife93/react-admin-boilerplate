@@ -1,6 +1,6 @@
+import { UnknownObject } from "@/common/type";
+import { getLocalStorageItem, i18n, initWindowFunc } from "@/core";
 import _ from "lodash";
-import { UnknownObject } from "../common/type";
-import { getLocalStorageItem, i18n, initWindowFunc } from "../core";
 
 export const scrollTop = (): void => {
   window.scrollTo(0, 0);

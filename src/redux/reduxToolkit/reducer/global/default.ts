@@ -1,5 +1,5 @@
-import { DefaultFC } from "../../../../common/components/CommonRender";
-import { GlobalStoreType } from "../../../type";
+import { DefaultFC } from "@/common/components/CommonRender";
+import { GlobalStoreType } from "@/redux/type";
 
 export const initGlobalState: GlobalStoreType = {
   modalItem: {

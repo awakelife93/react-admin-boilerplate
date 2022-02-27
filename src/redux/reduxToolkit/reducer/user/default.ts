@@ -1,4 +1,4 @@
-import { UserStoreType } from "../../../type";
+import { UserStoreType } from "@/redux/type";
 
 export const initUserState: UserStoreType = {
   user: {

@@ -1,3 +1,4 @@
+import { UnknownObject } from "@/common/type";
 import React from "react";
 import { connect } from "react-redux";
 import {
@@ -5,10 +6,9 @@ import {
   bindActionCreators,
   combineReducers,
   createStore,
-  Dispatch,
+  Dispatch
 } from "redux";
 import thunkMiddleware from "redux-thunk";
-import { UnknownObject } from "../../common/type";
 import { ReduxStoreType } from "../type";
 import * as action from "./action";
 import reducers from "./reducer";

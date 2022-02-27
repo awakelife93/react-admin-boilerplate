@@ -1,5 +1,5 @@
-import { ContentsType } from "../../../../api/GetAPI/type";
-import { ActionEnum } from "../../../type";
+import { ContentsType } from "@/api/GetAPI/type";
+import { ActionEnum } from "@/redux/type";
 import { initContentState } from "../../reducer/contents/default";
 
 export const initContentsAction = () => ({

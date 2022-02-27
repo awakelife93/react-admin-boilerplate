@@ -1,6 +1,6 @@
+import { ActionEnum, ContentsStoreType } from "@/redux/type";
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, ContentsStoreType } from "../../../type";
 import { initContentState } from "./default";
 
 const contentsStore = (

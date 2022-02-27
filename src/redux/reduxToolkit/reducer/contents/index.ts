@@ -1,6 +1,6 @@
+import { ContentsType } from "@/api/GetAPI/type";
+import { ContentsStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ContentsType } from "../../../../api/GetAPI/type";
-import { ContentsStoreType } from "../../../type";
 import { initContentState } from "./default";
 
 const slice = createSlice({

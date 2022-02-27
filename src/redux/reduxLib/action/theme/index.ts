@@ -1,4 +1,4 @@
-import { ActionEnum } from "../../../type";
+import { ActionEnum } from "@/redux/type";
 import { initDarkModeState } from "../../reducer/theme/default";
 
 export const initDarkModeAction = () => ({

@@ -1,6 +1,6 @@
+import { ActionEnum, ThemeStoreType } from "@/redux/type";
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, ThemeStoreType } from "../../../type";
 import { initDarkModeState } from "./default";
 
 const themeStore = (

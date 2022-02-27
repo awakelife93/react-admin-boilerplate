@@ -1,4 +1,4 @@
-import { UserStoreType } from "../../../type";
+import { UserStoreType } from "@/redux/type";
 import userWorker from "../../reducer/user";
 
 export const initUserInfoAction = () => userWorker.actions.initUserInfo();

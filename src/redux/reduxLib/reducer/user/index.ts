@@ -1,6 +1,6 @@
+import { ActionEnum, UserStoreType } from "@/redux/type";
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, UserStoreType } from "../../../type";
 import { initUserState } from "./default";
 
 const userStore = (

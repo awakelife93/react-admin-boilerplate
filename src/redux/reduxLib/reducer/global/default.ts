@@ -1,5 +1,5 @@
-import { CommonRender } from "../../../../common/components";
-import { GlobalStoreType } from "../../../type";
+import { CommonRender } from "@/common/components";
+import { GlobalStoreType } from "@/redux/type";
 
 export const initGlobalState: GlobalStoreType = {
   modalItem: {

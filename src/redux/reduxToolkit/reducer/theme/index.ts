@@ -1,5 +1,5 @@
+import { ThemeStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ThemeStoreType } from "../../../type";
 import { initThemeState } from "./default";
 
 const slice = createSlice({

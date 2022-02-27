@@ -1,5 +1,5 @@
+import Layout from "@/common/layouts";
 import { ElementType, lazy, Suspense } from "react";
-import Layout from "../common/layouts";
 
 // * 추후 확장하기 위해 따로 빼둠.
 export const LayoutComponent = (): React.ReactElement => {

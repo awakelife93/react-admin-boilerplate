@@ -1,6 +1,6 @@
+import { ModalItem } from "@/common/components/Modal/type";
+import { GlobalStoreType } from "@/redux/type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ModalItem } from "../../../../common/components/Modal/type";
-import { GlobalStoreType } from "../../../type";
 import { initGlobalState } from "./default";
 
 const slice = createSlice({

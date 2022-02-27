@@ -1,5 +1,5 @@
+import { I18nCommandEnum } from "@/core";
 import { RouteObject } from "react-router-dom";
-import { I18nCommandEnum } from "../core";
 import {
   ContentsDetail,
   ContentsList,

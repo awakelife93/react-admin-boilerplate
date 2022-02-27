@@ -1,4 +1,4 @@
-import { ContentsType } from "../../../../api/GetAPI/type";
+import { ContentsType } from "@/api/GetAPI/type";
 import contentsWorker from "../../reducer/contents";
 
 export const initContentsAction = () => contentsWorker.actions.initContents();

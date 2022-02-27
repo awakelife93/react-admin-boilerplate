@@ -1,6 +1,6 @@
+import { ActionEnum, GlobalStoreType } from "@/redux/type";
 import _ from "lodash";
 import { AnyAction } from "redux";
-import { ActionEnum, GlobalStoreType } from "../../../type";
 import { initGlobalState } from "./default";
 
 const globalStore = (

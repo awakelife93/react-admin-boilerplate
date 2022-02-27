@@ -1,5 +1,5 @@
-import { ModalItem } from "../../../../common/components/Modal/type";
-import { ActionEnum } from "../../../type";
+import { ModalItem } from "@/common/components/Modal/type";
+import { ActionEnum } from "@/redux/type";
 import { initGlobalState } from "../../reducer/global/default";
 
 export const initShowModalAction = () => ({
