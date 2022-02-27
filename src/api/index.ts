@@ -1,11 +1,7 @@
+import { UnknownObject } from "@/common/type";
+import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from "@/core";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
-import { UnknownObject } from "../common/type";
-import {
-  getLocalStorageItem,
-  removeLocalStorageItem,
-  setLocalStorageItem,
-} from "../core";
 
 const _showMessageModal = (message: string): void => {
   if (_.isFunction(window.globalFunc.showModalAction)) {

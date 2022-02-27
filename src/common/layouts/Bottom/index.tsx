@@ -1,7 +1,7 @@
+import { Container, Label } from "@/common/components";
+import { IComponent } from "@/common/interface";
+import { CommonColor } from "@/common/styles";
 import React from "react";
-import { Container, Label } from "../../components";
-import { IComponent } from "../../interface";
-import { CommonColor } from "../../styles";
 
 /**
  * @description Bottom Component

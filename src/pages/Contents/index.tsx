@@ -1,18 +1,13 @@
+import { removeContents } from "@/api/DeleteAPI";
+import { findContents } from "@/api/GetAPI";
+import { ContentsType } from "@/api/GetAPI/type";
+import { Button, Container, PagingBar, SearchBar } from "@/common/components";
+import { IComponent } from "@/common/interface";
+import { CommonColor } from "@/common/styles";
+import { PageType, SortType } from "@/common/type";
+import { RoutePath } from "@/route/routes";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { removeContents } from "../../api/DeleteAPI";
-import { findContents } from "../../api/GetAPI";
-import { ContentsType } from "../../api/GetAPI/type";
-import {
-    Button,
-    Container,
-    PagingBar,
-    SearchBar
-} from "../../common/components";
-import { IComponent } from "../../common/interface";
-import { CommonColor } from "../../common/styles";
-import { PageType, SortType } from "../../common/type";
-import { RoutePath } from "../../route/routes";
 import List from "./List";
 
 /**

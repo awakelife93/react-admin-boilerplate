@@ -1,10 +1,10 @@
+import { findUserProfile } from "@/api/GetAPI";
+import { IUserInfo } from "@/api/interface";
+import { getLocalStorageItem } from "@/core";
+import { ReduxStoreType } from "@/redux/type";
 import _ from "lodash";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { findUserProfile } from "../../api/GetAPI";
-import { IUserInfo } from "../../api/interface";
-import { getLocalStorageItem } from "../../core";
-import { ReduxStoreType } from "../../redux/type";
 import useAction from "./useAction";
 
 const useAuth = (): void => {

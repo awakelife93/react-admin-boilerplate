@@ -1,8 +1,8 @@
+import { I18nCommandEnum } from "@/core";
 import _ from "lodash";
 import { ChangeEvent, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, InputBox } from ".";
-import { I18nCommandEnum } from "../../core";
 
 type SearchBarType = {
   next: Function;

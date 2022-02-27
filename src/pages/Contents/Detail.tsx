@@ -1,23 +1,16 @@
+import { ContentsType } from "@/api/GetAPI/type";
+import { updateContents } from "@/api/PatchAPI";
+import { createContents } from "@/api/PostAPI";
+import { Button, Container, Image, InputBox, Label, TextArea } from "@/common/components";
+import { IComponent } from "@/common/interface";
+import { PageType, UnknownObject } from "@/common/type";
+import { I18nCommandEnum } from "@/core";
+import { RoutePath } from "@/route/routes";
+import { validationObject } from "@/utils";
 import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ContentsType } from "../../api/GetAPI/type";
-import { updateContents } from "../../api/PatchAPI";
-import { createContents } from "../../api/PostAPI";
-import {
-  Button,
-  Container,
-  Image,
-  InputBox,
-  Label,
-  TextArea
-} from "../../common/components";
-import { IComponent } from "../../common/interface";
-import { PageType, UnknownObject } from "../../common/type";
-import { I18nCommandEnum } from "../../core";
-import { RoutePath } from "../../route/routes";
-import { validationObject } from "../../utils";
 
 /**
  * @description Contents Detail Component

@@ -1,12 +1,12 @@
+import { SortType } from "@/common/type";
 import { getAPI } from "..";
-import { SortType } from "../../common/type";
 import { IUserInfo } from "../interface";
 import {
-    ContentsType,
-    DesignComponentType,
-    DesignLayoutType,
-    DesignStyleType,
-    DesignThemeType
+  ContentsType,
+  DesignComponentType,
+  DesignLayoutType,
+  DesignStyleType,
+  DesignThemeType
 } from "./type";
 
 export const findUserCount = async ({

@@ -1,7 +1,7 @@
+import { ContentsType } from "@/api/GetAPI/type";
+import { ReduxActionType, UseReduxType, UserStoreType } from "@/redux/type";
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
-import { ContentsType } from "../../api/GetAPI/type";
-import { ReduxActionType, UseReduxType, UserStoreType } from "../../redux/type";
 import { ModalItem } from "../components/Modal/type";
 
 export const ActionContext = createContext<ReduxActionType | null>(null);

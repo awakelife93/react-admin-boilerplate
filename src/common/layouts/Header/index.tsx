@@ -1,15 +1,13 @@
+import { signOut } from "@/api/PostAPI";
+import { Container } from "@/common/components";
+import useAction from "@/common/hooks/useAction";
+import { IComponent } from "@/common/interface";
+import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from "@/core";
+import { RoutePath } from "@/route/routes";
 import _ from "lodash";
 import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { signOut } from "../../../api/PostAPI";
-import {
-    getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem
-} from "../../../core";
-import { RoutePath } from "../../../route/routes";
-import { Container } from "../../components";
-import useAction from "../../hooks/useAction";
-import { IComponent } from "../../interface";
 import { IconsMenu, SignMenu } from "./Menu";
 
 /**

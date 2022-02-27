@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 import { CSSProperties } from "styled-components";
-import { Container } from "../components";
+import { Container } from ".";
 
 type ItemType = {
   displayName: string;

@@ -1,6 +1,6 @@
+import { isAdmin, isUser } from "@/utils";
 import { CSSProperties } from "styled-components";
 import { Container, InputBox, Label } from ".";
-import { isAdmin, isUser } from "../../utils";
 import { PageType } from "../type";
 
 export const DefaultFC: React.FC = (): React.ReactElement => {

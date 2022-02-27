@@ -1,5 +1,5 @@
+import { CommonColor } from "@/common/styles";
 import { Container, Label } from "../..";
-import { CommonColor } from "../../../styles";
 
 type MessageLayoutType = {
   message: string;

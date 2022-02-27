@@ -1,6 +1,6 @@
+import { ReduxActionType } from "@/redux/type";
 import _ from "lodash";
 import { useContext } from "react";
-import { ReduxActionType } from "../../redux/type";
 import { ActionContext } from "../contexts/ActionContext";
 
 const useAction = (): ReduxActionType => {

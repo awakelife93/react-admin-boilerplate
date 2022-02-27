@@ -1,10 +1,10 @@
+import routes, { IRoute } from "@/route/routes";
 import _ from "lodash";
 import React from "react";
 import { Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Container } from ".";
-import routes, { IRoute } from "../../route/routes";
 import { CommonColor, getSelectTabMenuStyle } from "../styles";
 
 /**

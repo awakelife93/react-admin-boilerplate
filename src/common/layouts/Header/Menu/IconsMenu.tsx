@@ -1,8 +1,8 @@
+import { Button, Container, Icon, MenuBox } from "@/common/components";
+import { CommonColor } from "@/common/styles";
+import { I18nCommandEnum } from "@/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { I18nCommandEnum } from "../../../../core/i18n";
-import { Button, Container, Icon, MenuBox } from "../../../components";
-import { CommonColor } from "../../../styles";
 
 type IconMenuType = {
   _routePush: Function;

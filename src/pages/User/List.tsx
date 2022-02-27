@@ -1,8 +1,8 @@
+import { IUserInfo } from "@/api/interface";
+import { TableButton, TableSort } from "@/common/components";
+import { SortType } from "@/common/type";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { IUserInfo } from "../../api/interface";
-import { TableButton, TableSort } from "../../common/components";
-import { SortType } from "../../common/type";
 
 const List = ({
   userEmailSort,

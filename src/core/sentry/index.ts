@@ -1,7 +1,7 @@
+import { UnknownObject } from "@/common/type";
 import Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import _ from "lodash";
-import { UnknownObject } from "../../common/type";
 
 export const sentryLogLevel = Sentry.Severity;
 

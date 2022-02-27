@@ -1,8 +1,8 @@
+import { ContentsType } from "@/api/GetAPI/type";
+import { TableButton, TableSort } from "@/common/components";
+import { SortType } from "@/common/type";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { ContentsType } from "../../api/GetAPI/type";
-import { TableButton, TableSort } from "../../common/components";
-import { SortType } from "../../common/type";
 
 const List = ({
   contTitleSort,

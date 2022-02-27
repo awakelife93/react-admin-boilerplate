@@ -1,9 +1,8 @@
+import SignInPage from "@/pages/Sign";
+import { ReduxStoreType } from "@/redux/type";
 import { ReactElement } from "react";
 import { useSelector } from "react-redux";
-import SignInPage from "../../pages/Sign";
-import { ReduxStoreType } from "../../redux/type";
 import { IComponent } from "../interface";
-
 interface IAuthProvider extends IComponent {
   children: ReactElement;
 }

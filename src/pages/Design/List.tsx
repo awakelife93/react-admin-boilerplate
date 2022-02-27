@@ -1,7 +1,7 @@
+import { Container, TableButton, TableSort } from "@/common/components";
+import { DesignType, SortType } from "@/common/type";
 import _ from "lodash";
 import { Table } from "react-bootstrap";
-import { Container, TableButton, TableSort } from "../../common/components";
-import { DesignType, SortType } from "../../common/type";
 
 const ComponentList = (
   nameSort: SortType,

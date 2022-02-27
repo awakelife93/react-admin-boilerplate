@@ -1,6 +1,6 @@
+import { Container } from "@/common/components";
+import { IComponent } from "@/common/interface";
 import React from "react";
-import { Container } from "../../components";
-import { IComponent } from "../../interface";
 
 /**
  * @description Body Component

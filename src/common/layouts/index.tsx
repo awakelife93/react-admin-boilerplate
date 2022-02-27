@@ -1,8 +1,8 @@
+import "@/core/i18n";
+import { ReduxStoreType } from "@/redux/type";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-import "../../core/i18n";
-import { ReduxStoreType } from "../../redux/type";
 import { Container, SideMenu } from "../components";
 import ModalLayout from "../components/Modal";
 import AuthGuard from "../guards/AuthGuard";

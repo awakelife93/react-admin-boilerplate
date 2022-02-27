@@ -1,5 +1,5 @@
+import { UnknownObject } from "@/common/type";
 import { CSSProperties } from "styled-components";
-import { UnknownObject } from "../../type";
 
 type ModalTemplateType = "MESSAGE";
 

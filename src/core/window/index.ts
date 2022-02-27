@@ -1,7 +1,7 @@
+import { _showModalAction } from "@/common/components/Modal";
+import { ShowModalActionType } from "@/common/components/Modal/type";
+import { UnknownObject } from "@/common/type";
 import _ from "lodash";
-import { _showModalAction } from "../../common/components/Modal";
-import { ShowModalActionType } from "../../common/components/Modal/type";
-import { UnknownObject } from "../../common/type";
 
 export const initWindowFunc = ({
   initUserInfoAction,

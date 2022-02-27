@@ -1,14 +1,14 @@
+import { ICommonDesign } from "@/api/interface";
+import { Button, Container, InputBox, Label } from "@/common/components";
+import { IComponent } from "@/common/interface";
+import { CommonColor } from "@/common/styles";
+import { DesignType, PageType } from "@/common/type";
+import { I18nCommandEnum } from "@/core";
+import { validationObject } from "@/utils";
 import _ from "lodash";
 import { ChangeEvent, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { ICommonDesign } from "../../api/interface";
-import { Button, Container, InputBox, Label } from "../../common/components";
-import { IComponent } from "../../common/interface";
-import { CommonColor } from "../../common/styles";
-import { DesignType, PageType } from "../../common/type";
-import { I18nCommandEnum } from "../../core";
-import { validationObject } from "../../utils";
 
 /**
  * @description Design Detail Component
