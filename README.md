@@ -58,3 +58,8 @@ Craco
 1. npm install
 2. npm start
 ```
+
+#
+### Thanks To JetBrains
+![Thanks To JetBrains](https://user-images.githubusercontent.com/20429356/156112274-1e0d4de3-b62d-4a67-989b-dadb52a2ff3f.png)
+![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
