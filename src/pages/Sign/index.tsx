@@ -23,8 +23,8 @@ const SignIn: React.FC<IComponent> = (
   const { t } = useTranslation();
   const { setUserInfoAction } = useAction();
   
-  const [userEmail, setUserEmail] = useState("");
-  const [userPw, setPassword] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     window.addEventListener("keypress", checkKeyPress);
@@ -56,11 +56,11 @@ const SignIn: React.FC<IComponent> = (
 
   const navigate = useNavigate();
   const _signIn = useCallback(async (): Promise<void | boolean> => {
-    const item = { userEmail, userPw };
+    const item = { email, password };
 
     if (validationItem(item)) {
       try {
-        const userInfo: IUserInfo = await signIn({ userEmail, userPw });
+        const userInfo: IUserInfo = await signIn({ email, password });
 
         if (_.isUndefined(userInfo)) {
           _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
@@ -72,8 +72,8 @@ const SignIn: React.FC<IComponent> = (
               isLogin: true,
               info: {
                 userId: userInfo.userId,
-                userEmail: userInfo.userEmail,
-                userNickname: userInfo.userNickname,
+                email: userInfo.email,
+                name: userInfo.name,
               },
             }
           });
@@ -96,7 +96,7 @@ const SignIn: React.FC<IComponent> = (
         }
       }
     }
-  }, [userEmail, userPw]);
+  }, [email, password]);
 
   const checkKeyPress = useCallback(
     (event: KeyboardEvent): void => {
@@ -125,7 +125,7 @@ const SignIn: React.FC<IComponent> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.EMAIL)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setUserEmail(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setemail(e.target.value)}
         />
         <Container.RowContainer
           style={{

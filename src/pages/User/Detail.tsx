@@ -1,4 +1,4 @@
-import { IUserInfo } from "@/api/interface";
+import { IUserInfo, UserRoleType } from "@/api/interface";
 import { updateUser } from "@/api/PatchAPI";
 import { signUp } from "@/api/PostAPI";
 import { Button, CommonRender, Container, InputBox, Label } from "@/common/components";
@@ -29,13 +29,13 @@ const UserDetail: React.FC<IComponent> = (
   const location = useLocation();
   const state = location.state as IUserDetailProps;
 
-  const [userEmail, setEmail] = useState("");
-  const [userNickname, setNickname] = useState(state.userNickname ?? "");
-  const [userPw, setPassword] = useState("");
-  const [userRoleIds, setUserRole] = useState<number[]>(
+  const [email, setEmail] = useState("");
+  const [name, setNickname] = useState(state.name ?? "");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState<UserRoleType>(
     state.type === "MODIFY"
-      ? state.userRoles.map((roles) => roles.role.roleId)
-      : [1]
+      ? state.role
+      : "user"
   );
 
   const _showMessageModal = (message: string): void => {
@@ -60,7 +60,7 @@ const UserDetail: React.FC<IComponent> = (
 
   const navigate = useNavigate();
   const _signUp = useCallback(async (): Promise<void | boolean> => {
-    const item = { userEmail, userNickname, userPw, userRoleIds };
+    const item = { email, name, password, role };
 
     if (validationItem(item)) {
       try {
@@ -77,30 +77,23 @@ const UserDetail: React.FC<IComponent> = (
         }
       }
     }
-  }, [userEmail, userNickname, userPw, userRoleIds]);
+  }, [email, name, password, role]);
 
   const _updateUser = useCallback(async (): Promise<void> => {
-    const item = { userId: state.userId, userNickname, userPw, userRoleIds };
+    const item = { userId: state.userId, name, password, role };
     try {
       await updateUser(item);
       navigate(RoutePath.USER_LIST);
     } catch (error: unknown) {
       console.log("_updateUser Error", error);
     }
-  }, [state.userId, userNickname, userPw, userRoleIds]);
+  }, [state.userId, name, password, role]);
 
   const onClickRoleBox = useCallback(
-    (roleId: number): void => {
-      if (userRoleIds.indexOf(roleId) !== -1) {
-        const _userRole = userRoleIds.filter((_roleId: number) => {
-          return roleId !== _roleId;
-        });
-        setUserRole(_userRole);
-      } else {
-        setUserRole([...userRoleIds, roleId]);
-      }
+    (role: UserRoleType): void => {
+      setRole(role);
     },
-    [userRoleIds]
+    [role]
   );
 
   const createTypeRender = useCallback((): React.ReactElement => {
@@ -166,8 +159,8 @@ const UserDetail: React.FC<IComponent> = (
         <CommonRender.DefaultUserRoleFC
           type={state.type}
           style={{ marginBottom: 15 }}
-          userRoleIds={userRoleIds}
-          onClickUserRole={(roleId: number) => onClickRoleBox(roleId)}
+          role={role}
+          onClickRole={(role: UserRoleType) => onClickRoleBox(role)}
         />
         {/**********************************************************/}
         <Button.SubMitButton
@@ -182,7 +175,7 @@ const UserDetail: React.FC<IComponent> = (
     );
   }, [
     state.type,
-    userRoleIds,
+    role,
   ]);
 
   const modifyTypeRender = useCallback((): React.ReactElement => {
@@ -201,7 +194,7 @@ const UserDetail: React.FC<IComponent> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
-          value={userNickname}
+          value={name}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
         />
         {/**********************************************************/}
@@ -232,8 +225,8 @@ const UserDetail: React.FC<IComponent> = (
         <CommonRender.DefaultUserRoleFC
           type={state.type}
           style={{ marginBottom: 15 }}
-          userRoleIds={userRoleIds}
-          onClickUserRole={(roleId: number) => onClickRoleBox(roleId)}
+          role={role}
+          onClickRole={(role: UserRoleType) => onClickRoleBox(role)}
         />
         {/**********************************************************/}
         <Button.SubMitButton
@@ -248,8 +241,7 @@ const UserDetail: React.FC<IComponent> = (
     );
   }, [
     state.type,
-    userNickname,
-    userRoleIds,
+    name,
   ]);
 
   return (

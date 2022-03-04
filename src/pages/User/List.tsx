@@ -5,15 +5,15 @@ import _ from "lodash";
 import { Table } from "react-bootstrap";
 
 const List = ({
-  userEmailSort,
-  userNicknameSort,
+  emailSort,
+  nameSort,
   users,
   onSortClick,
   onDeleteClick,
   onDetailClick,
 }: {
-  userEmailSort: SortType;
-  userNicknameSort: SortType;
+  emailSort: SortType;
+  nameSort: SortType;
   users: IUserInfo[];
   onSortClick: Function;
   onDeleteClick: Function;
@@ -25,14 +25,14 @@ const List = ({
         <tr>
           <th>ID</th>
           <TableSort
-            sort={userEmailSort}
+            sort={emailSort}
             title={"이메일"}
-            next={(sort: SortType) => onSortClick("userEmail", sort)}
+            next={(sort: SortType) => onSortClick("email", sort)}
           />
           <TableSort
-            sort={userNicknameSort}
+            sort={nameSort}
             title={"닉네임"}
-            next={(sort: SortType) => onSortClick("userNickname", sort)}
+            next={(sort: SortType) => onSortClick("name", sort)}
           />
           <th>권한</th>
           <th colSpan={2}></th>
@@ -41,18 +41,12 @@ const List = ({
       <tbody>
         {!_.isEmpty(users) &&
           users.map((user: IUserInfo, index: number) => {
-            const roleName: string = user.userRoles
-              .map((roles: any) => {
-                return roles.role.roleName;
-              })
-              .join(", ");
-
             return (
               <tr key={`user_List_Key${index}`}>
                 <td>{user.userId}</td>
-                <td>{user.userEmail}</td>
-                <td>{user.userNickname}</td>
-                <td>{roleName}</td>
+                <td>{user.email}</td>
+                <td>{user.name}</td>
+                <td>{user.role}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,

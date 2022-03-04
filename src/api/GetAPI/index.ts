@@ -74,21 +74,21 @@ export const findThemeCount = async (): Promise<number> => {
 export const findUser = async ({
   skip = 0,
   searchKeyword = "",
-  userEmailSort,
-  userNicknameSort,
+  emailSort,
+  nameSort,
 }: {
   skip: number;
   searchKeyword?: string;
-  userEmailSort?: SortType;
-  userNicknameSort?: SortType;
+  emailSort?: SortType;
+  nameSort?: SortType;
 }): Promise<[IUserInfo[], number]> => {
   try {
     return await getAPI("findUser", {
       take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
-      userEmailSort: userEmailSort ?? "",
-      userNicknameSort: userNicknameSort ?? "",
+      emailSort: emailSort ?? "",
+      nameSort: nameSort ?? "",
     });
   } catch (error: unknown) {
     console.log("===============> findUser Error", error);

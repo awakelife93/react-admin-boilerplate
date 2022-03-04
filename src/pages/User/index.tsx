@@ -22,8 +22,8 @@ const User: React.FC<IComponent> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [userEmailSort, setUserEmailSort] = useState<SortType>(undefined);
-  const [userNicknameSort, setUserNicknameSort] = useState<SortType>(undefined);
+  const [emailSort, setemailSort] = useState<SortType>(undefined);
+  const [nameSort, setnameSort] = useState<SortType>(undefined);
 
   /**
    * User 정보들을 가져온다.
@@ -32,19 +32,19 @@ const User: React.FC<IComponent> = (
     async ({
       skip,
       searchKeyword,
-      userEmailSort,
-      userNicknameSort,
+      emailSort,
+      nameSort,
     }: {
       skip: number;
       searchKeyword?: string;
-      userEmailSort?: SortType;
-      userNicknameSort?: SortType;
+      emailSort?: SortType;
+      nameSort?: SortType;
     }): Promise<void> => {
       const _users = await findUser({
         skip,
         searchKeyword,
-        userEmailSort,
-        userNicknameSort,
+        emailSort,
+        nameSort,
       });
       setUsers(_users[0]);
       setTotalCount(_users[1]);
@@ -63,8 +63,8 @@ const User: React.FC<IComponent> = (
    * 상태별 로드 데이터
    */
   useEffect(() => {
-    getUserList({ skip: 0, searchKeyword, userEmailSort, userNicknameSort });
-  }, [searchKeyword, userEmailSort, userNicknameSort]);
+    getUserList({ skip: 0, searchKeyword, emailSort, nameSort });
+  }, [searchKeyword, emailSort, nameSort]);
 
   /**
    * init
@@ -83,11 +83,11 @@ const User: React.FC<IComponent> = (
       getUserList({
         skip: page * 20,
         searchKeyword,
-        userEmailSort,
-        userNicknameSort,
+        emailSort,
+        nameSort,
       });
     },
-    [searchKeyword, userEmailSort, userNicknameSort]
+    [searchKeyword, emailSort, nameSort]
   );
 
   /**
@@ -95,13 +95,13 @@ const User: React.FC<IComponent> = (
    */
   const onSortClick = useCallback((entity: string, type: SortType): void => {
     setActive(1);
-    if (entity.match("userEmail")) {
-      setUserEmailSort(type);
-      setUserNicknameSort(undefined);
+    if (entity.match("email")) {
+      setemailSort(type);
+      setnameSort(undefined);
     }
-    if (entity.match("userNickname")) {
-      setUserNicknameSort(type);
-      setUserEmailSort(undefined);
+    if (entity.match("name")) {
+      setnameSort(type);
+      setemailSort(undefined);
     }
   }, []);
 
@@ -150,8 +150,8 @@ const User: React.FC<IComponent> = (
         <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List
-        userEmailSort={userEmailSort}
-        userNicknameSort={userNicknameSort}
+        emailSort={emailSort}
+        nameSort={nameSort}
         users={users}
         onSortClick={onSortClick}
         onDeleteClick={onDeleteClick}

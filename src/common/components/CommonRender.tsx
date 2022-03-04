@@ -1,3 +1,4 @@
+import { UserRoleType } from "@/api/interface";
 import { isAdmin, isUser } from "@/utils";
 import { CSSProperties } from "styled-components";
 import { Container, InputBox, Label } from ".";
@@ -10,13 +11,13 @@ export const DefaultFC: React.FC = (): React.ReactElement => {
 export const DefaultUserRoleFC = ({
   type,
   style,
-  userRoleIds,
-  onClickUserRole,
+  role,
+  onClickRole,
 }: {
   type: PageType;
   style?: CSSProperties;
-  userRoleIds: any[];
-  onClickUserRole: Function;
+  role: UserRoleType;
+  onClickRole: Function;
 }): React.ReactElement => {
   return (
     <Container.RowContainer style={{ ...style }}>
@@ -25,8 +26,8 @@ export const DefaultUserRoleFC = ({
           사용자
         </Label.CommonLabel>
         <InputBox.RadioBox
-          checked={type === "CREATE" ? true : isUser(userRoleIds)}
-          onClick={() => onClickUserRole(1)}
+          checked={type === "CREATE" ? true : isUser(role)}
+          onClick={() => onClickRole("user")}
           readOnly
         />
       </Container.RowContainer>
@@ -36,8 +37,8 @@ export const DefaultUserRoleFC = ({
           관리자
         </Label.CommonLabel>
         <InputBox.RadioBox
-          checked={type === "CREATE" ? false : isAdmin(userRoleIds)}
-          onClick={() => onClickUserRole(2)}
+          checked={type === "CREATE" ? false : isAdmin(role)}
+          onClick={() => onClickRole("admin")}
           readOnly
         />
       </Container.RowContainer>

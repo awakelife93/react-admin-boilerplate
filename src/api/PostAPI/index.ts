@@ -1,18 +1,18 @@
 import { postAPI } from "..";
 import { ContentsType } from "../GetAPI/type";
-import { IUserInfo } from "../interface";
+import { IUserInfo, UserRoleType } from "../interface";
 
 export const signIn = async ({
-  userEmail,
-  userPw,
+  email,
+  password,
 }: {
-  userEmail: string;
-  userPw: string;
+  email: string;
+  password: string;
 }): Promise<IUserInfo> => {
   try {
     return await postAPI("signInAdmin", {
-      userEmail,
-      userPw,
+      email,
+      password,
     });
   } catch (error: unknown) {
     console.log("===============> signIn Error", error);
@@ -30,22 +30,22 @@ export const signOut = async (): Promise<object> => {
 };
 
 export const signUp = async ({
-  userEmail,
-  userNickname,
-  userPw,
-  userRoleIds,
+  email,
+  name,
+  password,
+  role
 }: {
-  userEmail: string;
-  userNickname: string;
-  userPw: string;
-  userRoleIds: number[];
+  email: string;
+  name: string;
+  password: string;
+  role: UserRoleType;
 }): Promise<IUserInfo> => {
   try {
     return await postAPI("signUp", {
-      userEmail,
-      userNickname,
-      userPw,
-      userRoleIds,
+      email,
+      name,
+      password,
+      role,
     });
   } catch (error: unknown) {
     console.log("===============> signUp Error", error);

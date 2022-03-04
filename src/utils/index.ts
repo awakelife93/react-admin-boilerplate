@@ -1,3 +1,4 @@
+import { UserRoleType } from "@/api/interface";
 import { UnknownObject } from "@/common/type";
 import { getLocalStorageItem, i18n, initWindowFunc } from "@/core";
 import _ from "lodash";
@@ -24,22 +25,9 @@ export const validationObject = (object: UnknownObject): boolean => {
   });
 };
 
-/**
- * @description
- * roleId === 1 사용자
- * roleId === 2 관리자
- * @param userRoles
- * @returns {boolean}
- */
-export const isUser = (userRoles: number[]): boolean =>
-  userRoles.some((roleId: number) => {
-    return roleId === 1;
-  });
+export const isUser = (role: UserRoleType): boolean => role === "user";
 
-export const isAdmin = (userRoles: number[]): boolean =>
-  userRoles.some((roleId: number) => {
-    return roleId === 2;
-  });
+export const isAdmin = (role: UserRoleType): boolean => role === "admin";
 
 export const setDefaultLanguage = (): void => {
   const localStorageLng = getLocalStorageItem("lng");

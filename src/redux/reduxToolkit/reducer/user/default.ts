@@ -5,8 +5,8 @@ export const initUserState: UserStoreType = {
     isLogin: false,
     info: {
       userId: -1,
-      userEmail: "",
-      userNickname: "",
+      email: "",
+      name: "",
     },
   },
 };

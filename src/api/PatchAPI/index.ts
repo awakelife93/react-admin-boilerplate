@@ -2,27 +2,27 @@ import { UnknownObject } from "@/common/type";
 import _ from "lodash";
 import { patchAPI } from "..";
 import { ContentsType } from "../GetAPI/type";
-import { IUserInfo } from "../interface";
+import { IUserInfo, UserRoleType } from "../interface";
 
 export const updateUser = async ({
   userId,
-  userNickname,
-  userPw,
-  userRoleIds,
+  name,
+  password,
+  role,
 }: {
   userId: number;
-  userNickname?: string;
-  userPw?: string;
-  userRoleIds?: number[];
+  name?: string;
+  password?: string;
+  role?: UserRoleType;
 }): Promise<IUserInfo> => {
   try {
     const item: UnknownObject = { userId };
 
-    if (!_.isEmpty(userNickname)) item.userNickname = userNickname;
+    if (!_.isEmpty(name)) item.name = name;
 
-    if (!_.isEmpty(userPw)) item.userPw = userPw;
+    if (!_.isEmpty(password)) item.password = password;
 
-    if (!_.isEmpty(userRoleIds)) item.userRoleIds = userRoleIds;
+    if (!_.isEmpty(role)) item.role = role;
 
     return await patchAPI("updateUser", { ...item });
   } catch (error: unknown) {
