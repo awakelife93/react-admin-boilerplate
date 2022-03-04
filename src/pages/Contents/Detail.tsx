@@ -30,10 +30,10 @@ const ContentsDetail: React.FC<IComponent> = (
   const location = useLocation();
   const state = location.state as IContentsDetailProps;
 
-  const [contTitle, setContTitle] = useState(state.contTitle ?? "");
-  const [contSubTitle, setContSubTitle] = useState(state.contSubTitle ?? "");
-  const [contDesc, setContDesc] = useState(state.contDesc ?? "");
-  const [contImageLink, setContImageLink] = useState(state.contImageLink ?? "");
+  const [title, setTitle] = useState(state.title ?? "");
+  const [subTitle, setSubTitle] = useState(state.subTitle ?? "");
+  const [description, setDescription] = useState(state.description ?? "");
+  const [imageLink, setImageLink] = useState(state.imageLink ?? "");
 
   const _showMessageModal = (message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
@@ -59,16 +59,16 @@ const ContentsDetail: React.FC<IComponent> = (
   const _upsertContents = useCallback(async (): Promise<void> => {
     try {
       const item = {
-        contTitle,
-        contSubTitle,
-        contDesc,
+        title,
+        subTitle,
+        description,
       };
 
       if (state.type === "MODIFY") {
-        await updateContents({ contId: state.contId, ...item });
+        await updateContents({ contentId: state.contentId, ...item });
         navigate(RoutePath.CONTENTS_LIST);
       } else {
-        if (validationItem({ contTitle: item.contTitle })) {
+        if (validationItem({ title: item.title })) {
           await createContents(item);
           navigate(RoutePath.CONTENTS_LIST);
         }
@@ -78,10 +78,10 @@ const ContentsDetail: React.FC<IComponent> = (
     }
   }, [
     state.type,
-    state.contId,
-    contTitle,
-    contSubTitle,
-    contDesc,
+    state.contentId,
+    title,
+    subTitle,
+    description,
   ]);
 
   const detailRender = useCallback((): React.ReactElement => {
@@ -111,8 +111,8 @@ const ContentsDetail: React.FC<IComponent> = (
               marginBottom: 15,
             }}
             placeholder={t(I18nCommandEnum.CONTENTS_TITLE)}
-            value={contTitle}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setContTitle(e.target.value)}
+            value={title}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
           />
           {/**********************************************************/}
           <Container.RowContainer
@@ -130,8 +130,8 @@ const ContentsDetail: React.FC<IComponent> = (
               marginBottom: 15,
             }}
             placeholder={t(I18nCommandEnum.CONTENTS_SUB_TITLE)}
-            value={contSubTitle}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setContSubTitle(e.target.value)}
+            value={subTitle}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setSubTitle(e.target.value)}
           />
           {/**********************************************************/}
           <Button.SubMitButton
@@ -145,7 +145,7 @@ const ContentsDetail: React.FC<IComponent> = (
         </Container.ColumnContainer>
         {/* right area */}
         <Container.ColumnContainer>
-          {!_.isEmpty(contImageLink) && (
+          {!_.isEmpty(imageLink) && (
             <>
               <Container.RowContainer
                 style={{
@@ -158,7 +158,7 @@ const ContentsDetail: React.FC<IComponent> = (
               </Container.RowContainer>
               <Image.CommonImage
                 style={{ width: 300, height: 200, marginBottom: 15 }}
-                src={contImageLink}
+                src={imageLink}
               />
             </>
           )}
@@ -172,8 +172,8 @@ const ContentsDetail: React.FC<IComponent> = (
             </Label.CommonLabel>
           </Container.RowContainer>
           <TextArea.CommonTextArea
-            value={contDesc}
-            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContDesc(e.target.value)}
+            value={description}
+            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}
             style={{ width: 300, height: 200, padding: 20 }}
           ></TextArea.CommonTextArea>
         </Container.ColumnContainer>
@@ -181,10 +181,10 @@ const ContentsDetail: React.FC<IComponent> = (
     );
   }, [
     state.type,
-    contTitle,
-    contSubTitle,
-    contDesc,
-    contImageLink,
+    title,
+    subTitle,
+    description,
+    imageLink,
   ]);
 
   return (

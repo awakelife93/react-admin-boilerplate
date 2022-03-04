@@ -6,7 +6,7 @@ import {
   DesignComponentType,
   DesignLayoutType,
   DesignStyleType,
-  DesignThemeType,
+  DesignThemeType
 } from "./type";
 
 export const findUserCount = async ({
@@ -99,21 +99,21 @@ export const findUser = async ({
 export const findContents = async ({
   skip = 0,
   searchKeyword = "",
-  contTitleSort,
-  contSubTitleSort,
+  titleSort,
+  subTitleSort,
 }: {
   skip: number;
   searchKeyword?: string;
-  contTitleSort?: SortType;
-  contSubTitleSort?: SortType;
+  titleSort?: SortType;
+  subTitleSort?: SortType;
 }): Promise<[ContentsType[], number]> => {
   try {
     return await getAPI("findContents", {
       take: 20,
       skip,
       searchKeyword: searchKeyword ?? "",
-      contTitleSort: contTitleSort ?? "",
-      contSubTitleSort: contSubTitleSort ?? "",
+      titleSort: titleSort ?? "",
+      subTitleSort: subTitleSort ?? "",
     });
   } catch (error: unknown) {
     console.log("===============> findContents Error", error);

@@ -32,24 +32,24 @@ export const updateUser = async ({
 };
 
 export const updateContents = async ({
-  contId,
-  contTitle,
-  contSubTitle,
-  contDesc,
+  contentId,
+  title,
+  subTitle,
+  description,
 }: {
-  contId: number;
-  contTitle?: string;
-  contSubTitle?: string;
-  contDesc?: string;
+  contentId: number;
+  title?: string;
+  subTitle?: string;
+  description?: string;
 }): Promise<ContentsType> => {
   try {
-    const item: UnknownObject = { contId };
+    const item: UnknownObject = { contentId };
 
-    if (!_.isEmpty(contTitle)) item.contTitle = contTitle;
+    if (!_.isEmpty(title)) item.title = title;
 
-    if (!_.isEmpty(contSubTitle)) item.contSubTitle = contSubTitle;
+    if (!_.isEmpty(subTitle)) item.subTitle = subTitle;
 
-    if (!_.isEmpty(contDesc)) item.contDesc = contDesc;
+    if (!_.isEmpty(description)) item.description = description;
 
     return await patchAPI("updateContents", { ...item });
   } catch (error: unknown) {

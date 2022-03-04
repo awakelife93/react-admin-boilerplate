@@ -5,15 +5,15 @@ import _ from "lodash";
 import { Table } from "react-bootstrap";
 
 const List = ({
-  contTitleSort,
-  contSubTitleSort,
+  titleSort,
+  subTitleSort,
   contents,
   onSortClick,
   onDeleteClick,
   onDetailClick,
 }: {
-  contTitleSort: SortType;
-  contSubTitleSort: SortType;
+  titleSort: SortType;
+  subTitleSort: SortType;
   contents: ContentsType[];
   onSortClick: Function;
   onDeleteClick: Function;
@@ -25,14 +25,14 @@ const List = ({
         <tr>
           <th>ID</th>
           <TableSort
-            sort={contTitleSort}
+            sort={titleSort}
             title={"제목"}
-            next={(sort: SortType) => onSortClick("contTitle", sort)}
+            next={(sort: SortType) => onSortClick("title", sort)}
           />
           <TableSort
-            sort={contSubTitleSort}
+            sort={subTitleSort}
             title={"부제목"}
-            next={(sort: SortType) => onSortClick("contSubTitle", sort)}
+            next={(sort: SortType) => onSortClick("subTitle", sort)}
           />
           <th>이미지 유무</th>
           <th colSpan={2}></th>
@@ -40,23 +40,23 @@ const List = ({
       </thead>
       <tbody>
         {!_.isEmpty(contents) &&
-          contents.map((cont: ContentsType, index: number) => {
+          contents.map((content: ContentsType, index: number) => {
             return (
               <tr key={`user_List_Key${index}`}>
-                <td>{cont.contId}</td>
-                <td>{cont.contTitle}</td>
-                <td>{cont.contSubTitle}</td>
-                <td>{_.isEmpty(cont.contImageLink) ? "없음" : "있음"}</td>
+                <td>{content.contentId}</td>
+                <td>{content.title}</td>
+                <td>{content.subTitle}</td>
+                <td>{_.isEmpty(content.imageLink) ? "없음" : "있음"}</td>
                 <TableButton
                   tdStyleItems={{
                     paddingRight: 1,
                   }}
                   title={"수정"}
-                  next={() => onDetailClick({ type: "MODIFY", item: cont })}
+                  next={() => onDetailClick({ type: "MODIFY", item: content })}
                 />
                 <TableButton
                   title={"삭제"}
-                  next={() => onDeleteClick(cont.contId)}
+                  next={() => onDeleteClick(content.contentId)}
                 />
               </tr>
             );

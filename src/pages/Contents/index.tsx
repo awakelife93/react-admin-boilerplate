@@ -22,8 +22,8 @@ const Contents: React.FC<IComponent> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [contTitleSort, setContTitleSort] = useState<SortType>(undefined);
-  const [contSubTitleSort, setContSubTitleSort] = useState<SortType>(undefined);
+  const [titleSort, setTitleSort] = useState<SortType>(undefined);
+  const [subTitleSort, setSubTitleSort] = useState<SortType>(undefined);
 
   /**
    * Contents 정보들을 가져온다.
@@ -32,19 +32,19 @@ const Contents: React.FC<IComponent> = (
     async ({
       skip,
       searchKeyword,
-      contTitleSort,
-      contSubTitleSort,
+      titleSort,
+      subTitleSort,
     }: {
       skip: number;
       searchKeyword?: string;
-      contTitleSort?: SortType;
-      contSubTitleSort?: SortType;
+      titleSort?: SortType;
+      subTitleSort?: SortType;
     }): Promise<void> => {
       const _contents = await findContents({
         skip,
         searchKeyword,
-        contTitleSort,
-        contSubTitleSort,
+        titleSort,
+        subTitleSort,
       });
       setContents(_contents[0]);
       setTotalCount(_contents[1]);
@@ -66,10 +66,10 @@ const Contents: React.FC<IComponent> = (
     getContentsList({
       skip: 0,
       searchKeyword,
-      contTitleSort,
-      contSubTitleSort,
+      titleSort,
+      subTitleSort,
     });
-  }, [searchKeyword, contTitleSort, contSubTitleSort]);
+  }, [searchKeyword, titleSort, subTitleSort]);
 
   /**
    * init
@@ -95,13 +95,13 @@ const Contents: React.FC<IComponent> = (
    */
   const onSortClick = useCallback((entity: string, type: SortType): void => {
     setActive(1);
-    if (entity.match("contTitle")) {
-      setContTitleSort(type);
-      setContSubTitleSort(undefined);
+    if (entity.match("title")) {
+      setTitleSort(type);
+      setSubTitleSort(undefined);
     }
-    if (entity.match("contSubTitle")) {
-      setContSubTitleSort(type);
-      setContTitleSort(undefined);
+    if (entity.match("subTitle")) {
+      setSubTitleSort(type);
+      setTitleSort(undefined);
     }
   }, []);
 
@@ -120,8 +120,8 @@ const Contents: React.FC<IComponent> = (
    * 삭제
    */
   const onDeleteClick = useCallback(
-    async (contId: number): Promise<void> => {
-      await removeContents({ contId });
+    async (contentId: number): Promise<void> => {
+      await removeContents({ contentId });
       init();
     },
     []
@@ -150,8 +150,8 @@ const Contents: React.FC<IComponent> = (
         <SearchBar next={onSearchKeyword} />
       </Container.RowContainer>
       <List
-        contTitleSort={contTitleSort}
-        contSubTitleSort={contSubTitleSort}
+        titleSort={titleSort}
+        subTitleSort={subTitleSort}
         contents={contents}
         onSortClick={onSortClick}
         onDeleteClick={onDeleteClick}

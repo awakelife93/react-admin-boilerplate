@@ -54,19 +54,19 @@ export const signUp = async ({
 };
 
 export const createContents = async ({
-  contTitle,
-  contSubTitle,
-  contDesc,
+  title,
+  subTitle,
+  description,
 }: {
-  contTitle: string;
-  contSubTitle: string;
-  contDesc: string;
+  title: string;
+  subTitle: string;
+  description: string;
 }): Promise<ContentsType> => {
   try {
     return await postAPI("createContents", {
-      contTitle,
-      contSubTitle,
-      contDesc,
+      title,
+      subTitle,
+      description,
     });
   } catch (error: unknown) {
     console.log("===============> createContents Error", error);

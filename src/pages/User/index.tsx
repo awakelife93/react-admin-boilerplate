@@ -22,8 +22,8 @@ const User: React.FC<IComponent> = (
   const [totalCount, setTotalCount] = useState(0);
   const [active, setActive] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [emailSort, setemailSort] = useState<SortType>(undefined);
-  const [nameSort, setnameSort] = useState<SortType>(undefined);
+  const [emailSort, setEmailSort] = useState<SortType>(undefined);
+  const [nameSort, setNameSort] = useState<SortType>(undefined);
 
   /**
    * User 정보들을 가져온다.
@@ -96,12 +96,12 @@ const User: React.FC<IComponent> = (
   const onSortClick = useCallback((entity: string, type: SortType): void => {
     setActive(1);
     if (entity.match("email")) {
-      setemailSort(type);
-      setnameSort(undefined);
+      setEmailSort(type);
+      setNameSort(undefined);
     }
     if (entity.match("name")) {
-      setnameSort(type);
-      setemailSort(undefined);
+      setNameSort(type);
+      setEmailSort(undefined);
     }
   }, []);
 

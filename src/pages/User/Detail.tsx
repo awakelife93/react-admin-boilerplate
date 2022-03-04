@@ -30,7 +30,7 @@ const UserDetail: React.FC<IComponent> = (
   const state = location.state as IUserDetailProps;
 
   const [email, setEmail] = useState("");
-  const [name, setNickname] = useState(state.name ?? "");
+  const [name, setName] = useState(state.name ?? "");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<UserRoleType>(
     state.type === "MODIFY"
@@ -129,7 +129,7 @@ const UserDetail: React.FC<IComponent> = (
             marginBottom: 15,
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer
@@ -195,7 +195,7 @@ const UserDetail: React.FC<IComponent> = (
           }}
           placeholder={t(I18nCommandEnum.NICKNAME)}
           value={name}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
         />
         {/**********************************************************/}
         <Container.RowContainer

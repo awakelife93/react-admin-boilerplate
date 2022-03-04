@@ -14,12 +14,12 @@ export const removeUser = async ({
 };
 
 export const removeContents = async ({
-  contId,
+  contentId,
 }: {
-  contId: number;
+  contentId: number;
 }): Promise<object> => {
   try {
-    return await deleteAPI("removeContents", { contId });
+    return await deleteAPI("removeContents", { contentId });
   } catch (error: unknown) {
     console.log("===============> removeContents Error", error);
     throw error;
