@@ -33,7 +33,7 @@ export const signUp = async ({
   email,
   name,
   password,
-  role
+  role,
 }: {
   email: string;
   name: string;
