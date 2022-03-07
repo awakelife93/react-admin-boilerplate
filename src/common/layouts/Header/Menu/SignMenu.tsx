@@ -9,8 +9,8 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 type SignMenuType = {
-  routePush: Function;
-  _signOut: Function;
+  routePush: (routePath: RoutePath) => void;
+  _signOut: VoidFunction;
 }
 
 /**

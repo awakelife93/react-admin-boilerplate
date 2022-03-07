@@ -22,8 +22,8 @@ const Header: React.FC<IComponent> = (
   const navigate = useNavigate();
   
   const routePush = useCallback(
-    (route: string) => {
-      navigate(route);
+    (routePath: RoutePath) => {
+      navigate(routePath);
     },
     []
   );
