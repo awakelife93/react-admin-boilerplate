@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 type SignMenuType = {
-  _routePush: Function;
+  routePush: Function;
   _signOut: Function;
 }
 
@@ -22,7 +22,7 @@ const SignMenu: React.FC<SignMenuType> = (
   props: SignMenuType
 ): React.ReactElement => {
   const {
-    _routePush,
+    routePush,
     _signOut,
   } = props;
   const {
@@ -47,7 +47,7 @@ const SignMenu: React.FC<SignMenuType> = (
             style={{
               color: CommonColor.WHITE,
             }}
-            onClick={() => _routePush(RoutePath.SIGN_IN)}
+            onClick={() => routePush(RoutePath.SIGN_IN)}
           >
             {t(I18nCommandEnum.SIGN_IN)}
           </Button.TextButton>

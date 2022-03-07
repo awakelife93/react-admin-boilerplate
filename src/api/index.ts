@@ -2,12 +2,12 @@ import { UnknownObject } from "@/common/type";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
-  setLocalStorageItem,
+  setLocalStorageItem
 } from "@/core";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
 
-const _showMessageModal = (message: string): void => {
+const showMessageModal = (message: string): void => {
   if (_.isFunction(window.globalFunc.showModalAction)) {
     window.globalFunc.showModalAction({
       type: "MESSAGE",
@@ -62,18 +62,18 @@ instance.interceptors.response.use(
     // ! 네트워크 에러
     if (_.isUndefined(_error.status)) {
       console.log("NETWORK ERROR", _error);
-      _showMessageModal("네트워크가 불안정합니다.");
+      showMessageModal("네트워크가 불안정합니다.");
     }
 
     // ! Circuit Breakers Error
     if (_error.status === 429) {
-      _showMessageModal("너무 많은 요청입니다.");
+      showMessageModal("너무 많은 요청입니다.");
     }
 
     // ! 서버에서도 정의하지 못한 에러이기 때문에 공통 처리
     if (_error.status === 500) {
       console.log("500 ERROR", _error);
-      _showMessageModal(
+      showMessageModal(
         "알 수 없는 에러입니다. awakelife93@gmail로 문의주시기 바랍니다."
       );
     }
@@ -81,7 +81,7 @@ instance.interceptors.response.use(
     // ! 서버 Auth 실패 -> 로그아웃
     if (_error.status === 401) {
       console.log("401 ERROR", _error);
-      _showMessageModal("로그아웃 되었습니다.");
+      showMessageModal("로그아웃 되었습니다.");
       removeLocalStorageItem("token");
       if (_.isFunction(window.globalFunc.initUserInfoAction))
         window.globalFunc.initUserInfoAction();

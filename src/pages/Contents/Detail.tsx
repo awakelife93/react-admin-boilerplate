@@ -35,7 +35,7 @@ const ContentsDetail: React.FC<IComponent> = (
   const [description, setDescription] = useState(state.description ?? "");
   const [imageLink, setImageLink] = useState(state.imageLink ?? "");
 
-  const _showMessageModal = (message: string): void => {
+  const showMessageModal = (message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -48,7 +48,7 @@ const ContentsDetail: React.FC<IComponent> = (
 
   const validationItem = useCallback((item: UnknownObject): boolean => {
     if (!validationObject(item)) {
-      _showMessageModal("컨텐츠 정보를 확인해주시기 바랍니다.");
+      showMessageModal("컨텐츠 정보를 확인해주시기 바랍니다.");
       return false;
     }
 

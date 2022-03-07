@@ -21,7 +21,7 @@ const Header: React.FC<IComponent> = (
   const { initUserInfoAction } = useAction();
   const navigate = useNavigate();
   
-  const _routePush = useCallback(
+  const routePush = useCallback(
     (route: string) => {
       navigate(route);
     },
@@ -29,7 +29,7 @@ const Header: React.FC<IComponent> = (
   );
 
   const { i18n } = useTranslation();
-  const _setLanguage = useCallback(
+  const setLanguage = useCallback(
     (lng: string) => {
       setLocalStorageItem({ lng });
       i18n.changeLanguage(lng);
@@ -45,7 +45,7 @@ const Header: React.FC<IComponent> = (
         await signOut();
         removeLocalStorageItem("token");
         initUserInfoAction();
-        _routePush(RoutePath.SIGN_IN);
+        routePush(RoutePath.SIGN_IN);
       } else {
         if (_.isFunction(window.globalFunc.showModalAction)) {
           window.globalFunc.showModalAction({
@@ -64,9 +64,9 @@ const Header: React.FC<IComponent> = (
 
   return (
     <Container.HeaderContainer>
-      <IconsMenu _routePush={_routePush} _setLanguage={_setLanguage} />
+      <IconsMenu routePush={routePush} setLanguage={setLanguage} />
       <SignMenu
-        _routePush={_routePush}
+        routePush={routePush}
         _signOut={_signOut}
       />
     </Container.HeaderContainer>

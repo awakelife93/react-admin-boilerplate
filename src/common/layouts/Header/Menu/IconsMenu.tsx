@@ -5,8 +5,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 type IconMenuType = {
-  _routePush: Function;
-  _setLanguage: Function;
+  routePush: Function;
+  setLanguage: Function;
 }
 
 /**
@@ -18,7 +18,7 @@ const IconMenu: React.FC<IconMenuType> = (
   props: IconMenuType
 ): React.ReactElement => {
   const { t } = useTranslation();
-  const { _routePush, _setLanguage } = props;
+  const { routePush, setLanguage } = props;
 
   return (
     <Container.RowContainer
@@ -30,7 +30,7 @@ const IconMenu: React.FC<IconMenuType> = (
         style={{
           fontSize: 35,
         }}
-        onClick={() => _routePush("/")}
+        onClick={() => routePush("/")}
       >
         React Admin Project
       </Button.TextButton>
@@ -73,7 +73,7 @@ const IconMenu: React.FC<IconMenuType> = (
             value: "en",
           },
         ]}
-        onClick={(lng: string) => _setLanguage(lng)}
+        onClick={(lng: string) => setLanguage(lng)}
       />
     </Container.RowContainer>
   );

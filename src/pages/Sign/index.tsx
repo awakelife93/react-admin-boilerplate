@@ -31,7 +31,7 @@ const SignIn: React.FC<IComponent> = (
     return () => window.removeEventListener("keypress", checkKeyPress);
   });
 
-  const _showMessageModal = useCallback((message: string): void => {
+  const showMessageModal = useCallback((message: string): void => {
     if (_.isFunction(window.globalFunc.showModalAction)) {
       window.globalFunc.showModalAction({
         type: "MESSAGE",
@@ -45,7 +45,7 @@ const SignIn: React.FC<IComponent> = (
   const validationItem = useCallback(
     (item: UnknownObject) => {
       if (!validationObject(item)) {
-        _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+        showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
         return false;
       }
 
@@ -63,7 +63,7 @@ const SignIn: React.FC<IComponent> = (
         const userInfo: IUserInfo = await signIn({ email, password });
 
         if (_.isUndefined(userInfo)) {
-          _showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
+          showMessageModal("로그인 정보를 다시 한번 확인 해주시기 바랍니다.");
           return false;
         } else {
           setLocalStorageItem({ token: userInfo.token });
@@ -82,15 +82,15 @@ const SignIn: React.FC<IComponent> = (
       } catch (error: any) {
         switch (error.status) {
           case 401: {
-            _showMessageModal("잘못된 이메일, 비밀번호 입니다.");
+            showMessageModal("잘못된 이메일, 비밀번호 입니다.");
             return false;
           }
           case 403: {
-            _showMessageModal("권한이 없는 계정입니다.");
+            showMessageModal("권한이 없는 계정입니다.");
             return false;
           }
           case 404: {
-            _showMessageModal("계정이 없습니다.");
+            showMessageModal("계정이 없습니다.");
             return false;
           }
         }
