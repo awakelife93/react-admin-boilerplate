@@ -1,9 +1,9 @@
-import { ReduxActionType } from "@/redux/type";
+import { ReduxProviderActionType } from "@/redux/type";
 import _ from "lodash";
 import { useContext } from "react";
 import { ActionContext } from "../contexts/ActionContext";
 
-const useAction = (): ReduxActionType => {
+const useAction = (): ReduxProviderActionType => {
   const context = useContext(ActionContext);
 
   if (_.isNull(context)) {

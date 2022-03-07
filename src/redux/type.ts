@@ -37,13 +37,13 @@ export type ReduxStoreType = {
   reduxStore: StateType;
 };
 
-export type ReduxActionType = {
-  initContentsAction: Function;
-  getContentsAction: Function;
-  initShowModalAction: Function;
-  showModalAction: Function;
-  setUserInfoAction: Function;
-  initUserInfoAction: Function;
+export type ReduxProviderActionType = {
+  initContentsAction: VoidFunction;
+  getContentsAction: (value: ContentsType[]) => void;
+  initShowModalAction: VoidFunction;
+  showModalAction: (value: ModalItem) => void;
+  setUserInfoAction: (value: UserStoreType) => void;
+  initUserInfoAction: VoidFunction;
 };
 
 /**

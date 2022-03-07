@@ -1,12 +1,13 @@
 import { Button, Container, Icon, MenuBox } from "@/common/components";
 import { CommonColor } from "@/common/styles";
 import { I18nCommandEnum } from "@/core";
+import { RoutePath } from "@/route/routes";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
 type IconMenuType = {
-  routePush: Function;
-  setLanguage: Function;
+  routePush: (routePath: RoutePath) => void;
+  setLanguage: (lng: string) => void;
 }
 
 /**
@@ -30,7 +31,7 @@ const IconMenu: React.FC<IconMenuType> = (
         style={{
           fontSize: 35,
         }}
-        onClick={() => routePush("/")}
+        onClick={() => routePush(RoutePath.DASHBOARD)}
       >
         React Admin Project
       </Button.TextButton>
