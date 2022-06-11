@@ -41,10 +41,10 @@ const MenuBox: React.FC<MenuBoxType> = (
     if (renderType === "row") {
       return (
         <Container.RowContainer style={{ ...menuContainerStyle }}>
-          {renderItems.map((item: ItemType, idx: number) => {
+          {renderItems.map((item: ItemType, index: number) => {
             return (
               <Container.RowContainer
-                key={`MenuBox_Row_Item_${idx}`}
+                key={`MenuBox_Row_Item_${index}`}
                 style={{
                   ...menuItemStyle,
                   cursor: "pointer",
@@ -61,10 +61,10 @@ const MenuBox: React.FC<MenuBoxType> = (
     } else {
       return (
         <Container.ColumnContainer style={{ ...menuContainerStyle }}>
-          {renderItems.map((item: ItemType, idx: number) => {
+          {renderItems.map((item: ItemType, index: number) => {
             return (
               <Container.RowContainer
-                key={`MenuBox_Row_Item_${idx}`}
+                key={`MenuBox_Row_Item_${index}`}
                 style={{
                   ...menuItemStyle,
                   cursor: "pointer",

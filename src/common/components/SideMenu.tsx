@@ -31,10 +31,10 @@ const SideMenu: React.FC = (): React.ReactElement => {
     >
       <Container.ColumnContainer>
         {!_.isEmpty(routes) &&
-          routes.map((route: IRoute, idx: number) => {
+          routes.map((route: IRoute, index: number) => {
             if (!_.isUndefined(route.i18nKey)) {
               return (
-                <Link key={`sidMenu_list_Key${idx}`} to={route.path as string}>
+                <Link key={`sidMenu_list_Key${index}`} to={route.path as string}>
                   <Navbar.Brand
                     style={{
                       ...getSelectTabMenuStyle(
