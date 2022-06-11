@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CSSProperties } from "styled-components";
 import { Container } from ".";
 
@@ -35,18 +35,6 @@ const MenuBox: React.FC<MenuBoxType> = (
     renderItems,
     renderType = "row",
   } = props;
-
-  const checkOutSideClick = useCallback((event: MouseEvent): void => {
-    setShowMenuBox(false);
-  }, []);
-
-  useEffect(() => {
-    if (isShowMenuBox) {
-      window.addEventListener("click", checkOutSideClick);
-    }
-
-    return () => window.removeEventListener("click", checkOutSideClick);
-  }, [isShowMenuBox, checkOutSideClick]);
 
   const renderLayout = (): React.ReactElement => {
     // * item이 수평으로 나열
