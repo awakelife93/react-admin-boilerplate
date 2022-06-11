@@ -1,4 +1,4 @@
-# React Admin Template
+# React Admin Boilerplate
 
 ## React Client + React Admin + Gateway Server + API Server + Style Server
 
@@ -6,26 +6,26 @@
 
 ## Client Repository
 
-https://github.com/awakelife93/react-template
+https://github.com/awakelife93/react-boilerplate
 
 ## Gateway Server Repository
 
-https://github.com/awakelife93/study-spring-boot
+https://github.com/awakelife93/spring-boot-api-gateway
 
 ## API Server Repository
 
-https://github.com/awakelife93/node-api-template
+https://github.com/awakelife93/express-boilerplate
 
 ## Style Server Repository
 
-https://github.com/awakelife93/node-design-template
+https://github.com/awakelife93/express-design-system-boilerplate
 
 ## [노트]
 
 ### 설명
 
 ```
-1. https://github.com/HyunwooP/react_client_template를 사용하여 만드는 중
+1. https://github.com/awakelife93/react-boilerplate 사용하여 만드는 중
 2. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "__"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
 ```
 

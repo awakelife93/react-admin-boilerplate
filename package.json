@@ -1,18 +1,15 @@
 {
   "version": "0.1.0",
-  "description": "React Admin Template",
+  "description": "React Admin Boilerplate",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awakelife93/react-admin-template.git"
+    "url": "git+https://github.com/awakelife93/react-admin-boilerplate.git"
   },
   "keywords": [
     "React",
-    "Template",
     "Admin",
-    "React Temaplte",
+    "React Boilerplate",
     "react",
-    "template",
-    "react template",
     "Design System",
     "Design",
     "design system",
@@ -21,7 +18,7 @@
   "author": "HyunwooPark",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/awakelife93/react-admin-template/issues"
+    "url": "https://github.com/awakelife93/react-admin-boilerplate/issues"
   },
   "private": true,
   "dependencies": {
