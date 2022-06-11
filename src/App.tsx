@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import useAction from "./common/hooks/useAction";
-import useAuth from "./common/hooks/useAuth";
+import useAuth from "./common/hooks/useInitUserProfile";
 import "./core/i18n";
 import Route from "./route";
 import { setDefaultLanguage, setWindowFunction } from "./utils";

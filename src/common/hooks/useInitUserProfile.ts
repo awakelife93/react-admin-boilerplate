@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import useAction from "./useAction";
 
-const useAuth = (): void => {
+const useInitUserProfile = (): void => {
   const { setUserInfoAction } = useAction();
   const {
     reduxStore: { userStore },
@@ -36,4 +36,4 @@ const useAuth = (): void => {
   }, []);
 };
 
-export default useAuth;
+export default useInitUserProfile;
