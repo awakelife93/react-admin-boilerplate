@@ -1,16 +1,17 @@
-import reduxLibStore from "./reduxLib";
-import reduxToolkitStore from "./reduxToolkit";
+import normalStore from "./normal";
+import toolkitStore from "./toolkit";
+import { ReduxType } from "./type";
 
 type ReduxSelectType = {
-  reduxLib: Function;
-  reduxToolkit: Function;
+  [key in ReduxType]: Function;
 };
+
 const reduxSelector: ReduxSelectType = {
-  reduxLib: () => {
-    return reduxLibStore();
+  normal: () => {
+    return normalStore();
   },
-  reduxToolkit: () => {
-    return reduxToolkitStore;
+  toolkit: () => {
+    return toolkitStore();
   },
 };
 

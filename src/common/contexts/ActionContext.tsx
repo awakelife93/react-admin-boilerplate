@@ -1,15 +1,12 @@
-import { ContentsType } from "@/api/GetAPI/type";
-import { ReduxProviderActionType, UseReduxType, UserStoreType } from "@/redux/type";
+import { ReduxProviderActionType, ReduxType, UserStoreType } from "@/redux/type";
 import React, { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { ModalItem } from "../components/Modal/type";
 
 export const ActionContext = createContext<ReduxProviderActionType | null>(null);
 
-const ActionProvider = ({ children, useRedux } : { children: React.ReactElement, useRedux: UseReduxType }) => {
+const ActionProvider = ({ children, useRedux } : { children: React.ReactElement, useRedux: ReduxType }) => {
   const {
-    getContentsAction,
-    initContentsAction,
     initShowModalAction,
     initUserInfoAction,
     setUserInfoAction,
@@ -17,14 +14,6 @@ const ActionProvider = ({ children, useRedux } : { children: React.ReactElement,
   } = require(`../../redux/${useRedux}/action`);
     
   const dispatch = useDispatch();
-
-  const _initContentsAction = () => {
-    dispatch(initContentsAction());
-  };
-
-  const _getContentsAction = (value: ContentsType[]) => {
-    dispatch(getContentsAction(value));
-  };
 
   const _initShowModalAction = () => {
     dispatch(initShowModalAction());
@@ -45,8 +34,6 @@ const ActionProvider = ({ children, useRedux } : { children: React.ReactElement,
   return (
     <ActionContext.Provider
       value={{
-        initContentsAction: _initContentsAction,
-        getContentsAction: _getContentsAction,
         initShowModalAction: _initShowModalAction,
         showModalAction: _showModalAction,
         setUserInfoAction: _setUserInfoAction,

@@ -33,9 +33,9 @@
     "bootstrap": "^4.6.0",
     "i18next": "^20.3.1",
     "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "^18.0.0",
     "react-i18next": "^11.10.0",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
@@ -76,16 +76,16 @@
   },
   "devDependencies": {
     "@craco/craco": "^6.4.3",
-    "craco-alias": "^3.0.1",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
     "@types/node": "^15.12.2",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.7",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-virtualized": "^9.21.11",
     "@types/styled-components": "^5.1.10",
+    "craco-alias": "^3.0.1",
     "prettier": "^2.2.1"
   }
 }

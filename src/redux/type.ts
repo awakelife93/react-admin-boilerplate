@@ -1,7 +1,7 @@
 import { ContentsType } from "@/api/GetAPI/type";
 import { ModalItem } from "@/common/components/Modal/type";
 
-export type UseReduxType = "reduxLib" | "reduxToolkit";
+export type ReduxType = "normal" | "toolkit";
 
 export type ContentsStoreType = {
   contents: ContentsType[];
@@ -38,8 +38,6 @@ export type ReduxStoreType = {
 };
 
 export type ReduxProviderActionType = {
-  initContentsAction: VoidFunction;
-  getContentsAction: (value: ContentsType[]) => void;
   initShowModalAction: VoidFunction;
   showModalAction: (value: ModalItem) => void;
   setUserInfoAction: (value: UserStoreType) => void;
