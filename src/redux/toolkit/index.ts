@@ -5,15 +5,17 @@ import reducers from "./reducer";
 
 const store = (initialState: UnknownObject = {}) => {
   const _store = configureStore({
-  reducer: combineReducers({ reduxStore: reducers }),
-  preloadedState: initialState,
-  middleware: (getDefaultMiddleware: CurriedGetDefaultMiddleware<unknown>) => [
-    ...getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-  ],
-  devTools: process.env.REACT_APP_ENABLE_REDUX_DEV_TOOLS === "true",
-});
+    reducer: combineReducers({ reduxStore: reducers }),
+    preloadedState: initialState,
+    middleware: (
+      getDefaultMiddleware: CurriedGetDefaultMiddleware<unknown>
+    ) => [
+      ...getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+    ],
+    devTools: process.env.REACT_APP_ENABLE_REDUX_DEV_TOOLS === "true",
+  });
 
   return _store;
 };
